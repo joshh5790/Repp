@@ -4,16 +4,43 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+    tiff = User(
+        firstName='Tiffany',
+        lastName='Day',
+        username='tiffanyday',
+        email='demo@aa.io',
+        gender='Female',
+        address='123 Main St',
+        city='Los Angeles',
+        state='CA',
+        password='password',
+        profile_img='https://thehiddenhits.files.wordpress.com/2021/01/tiffany-day-the-hidden-hits.jpg')
+    josiah = User(
+        firstName='Josiah',
+        lastName='Won',
+        username='josiahwon',
+        email='josiah@aa.io',
+        gender='Male',
+        address='122 Second St',
+        city='Los Angeles',
+        state='CA',
+        password='password',
+        profile_img='https://images.genius.com/e9a779c23099a34081cdd35250f273cc.539x539x1.jpg')
+    eric = User(
+        firstName='Eric',
+        lastName='Nam',
+        username='ericnam',
+        email='ericnam@aa.io',
+        gender='Male',
+        address='121 Third St',
+        city='Los Angeles',
+        state='CA',
+        password='password',
+        profile_img='https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg')
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(tiff)
+    db.session.add(josiah)
+    db.session.add(eric)
     db.session.commit()
 
 
@@ -28,5 +55,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-        
+
     db.session.commit()

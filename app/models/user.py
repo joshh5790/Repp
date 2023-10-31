@@ -10,9 +10,18 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    firstName = db.Column(db.String(40), nullable=False)
+    lastName = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    gender = db.Column(db.String(10), nullable=False)
+    address = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(255), nullable=False)
+    state = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+    profile_img = db.Column(db.String())
+
+    repp = db.relationship("Repp", back_populates="user")
 
     @property
     def password(self):
