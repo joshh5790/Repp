@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 15430eabbac1
+Revision ID: dc97e572479f
 Revises:
-Create Date: 2023-10-31 22:33:07.410755
+Create Date: 2023-11-01 02:38:23.027638
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '15430eabbac1'
+revision = 'dc97e572479f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,7 +37,7 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    op.create_table('repps',
+    op.create_table('repppages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('displayName', sa.String(length=40), nullable=False),
@@ -49,14 +49,6 @@ def upgrade():
     sa.Column('spotify', sa.String(), nullable=True),
     sa.Column('twitter', sa.String(), nullable=True),
     sa.Column('external', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('linkName'),
-    sa.UniqueConstraint('userId')
-    )
-    op.create_table('repppages',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('reppId', sa.Integer(), nullable=False),
     sa.Column('mainImage', sa.String(), nullable=False),
     sa.Column('isBanner', sa.Boolean(), nullable=False),
     sa.Column('mainVideo', sa.String(), nullable=True),
@@ -65,9 +57,10 @@ def upgrade():
     sa.Column('businessInquiries', sa.String(), nullable=True),
     sa.Column('videoSection', sa.Boolean(), nullable=False),
     sa.Column('shopSection', sa.Boolean(), nullable=False),
-    sa.ForeignKeyConstraint(['reppId'], ['repps.id'], ),
+    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('reppId')
+    sa.UniqueConstraint('linkName'),
+    sa.UniqueConstraint('userId')
     )
     op.create_table('carts',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -128,7 +121,6 @@ def upgrade():
         op.execute(f"ALTER TABLE products SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE carts SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE repppages SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE repps SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
 
@@ -141,6 +133,5 @@ def downgrade():
     op.drop_table('products')
     op.drop_table('carts')
     op.drop_table('repppages')
-    op.drop_table('repps')
     op.drop_table('users')
     # ### end Alembic commands ###
