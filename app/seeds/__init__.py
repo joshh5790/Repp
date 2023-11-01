@@ -4,6 +4,9 @@ from .repps import seed_repps, undo_repps
 from .reppPages import seed_reppPages, undo_reppPages
 from .products import seed_products, undo_products
 from .productImages import seed_productImages, undo_productImages
+from .productStocks import seed_productStocks, undo_productStocks
+
+
 
 
 
@@ -29,11 +32,13 @@ def seed():
         undo_reppPages()
         undo_products()
         undo_productImages()
+        undo_productStocks()
     seed_users()
     seed_repps()
     seed_reppPages()
     seed_products()
     seed_productImages()
+    seed_productStocks()
     # Add other seed functions here
 
 

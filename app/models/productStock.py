@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-class ProductImage(db.Model):
-  __tablename__ = 'productImages'
+class ProductStock(db.Model):
+  __tablename__ = 'productStocks'
 
   if environment == "production":
     __table_args__ = {'schema': SCHEMA}
@@ -9,13 +9,15 @@ class ProductImage(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   productId = db.Column(db.Integer(), db.ForeignKey(
     add_prefix_for_prod("products.id")), nullable=False)
-  image = db.Column(db.String(), nullable=False)
+  size = db.Column(db.String())
+  stock = db.Column(db.Integer(), nullable=False)
 
-  product = db.relationship("Product", back_populates="images")
+  product = db.relationship("Product", back_populates="stock")
 
   def to_dict(self):
     return {
       'id': self.id,
       'productId': self.productId,
-      'image': self.image,
+      'size': self.size,
+      'stock': self.stock,
     }
