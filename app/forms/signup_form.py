@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
 from wtforms import StringField, EmailField, URLField
-from wtforms.validators import DataRequired, Email, ValidationError, Length
+from wtforms.validators import DataRequired, ValidationError, Length
 from app.models import User
 
 
@@ -90,7 +90,7 @@ class SignUpForm(FlaskForm):
 	firstName = StringField('firstName', validators=[DataRequired(), firstName_data])
 	lastName = StringField('lastName', validators=[DataRequired(), lastName_data])
 	username = StringField('username', validators=[DataRequired(), username_exists])
-	email = EmailField('email', validators=[DataRequired(), Email(), user_exists])
+	email = EmailField('email', validators=[DataRequired(), user_exists])
 	gender = StringField('gender', validators=[DataRequired()], choices=[
 		'Male', 'Female', 'Non-binary', 'Prefer not to say'
 	])

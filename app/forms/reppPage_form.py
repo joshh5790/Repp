@@ -1,9 +1,14 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
 from wtforms import StringField, URLField, BooleanField
-from wtforms.validators import DataRequired, Email, ValidationError, Length
+from wtforms.validators import DataRequired, ValidationError
 from app.models import User
 
+
+def mainImage_data(form, field):
+	mainImage = field.data
+	if not mainImage:
+		raise ValidationError('Main image field is required.')
 
 def displayname_exists(form, field):
 	# Checking if user exists
