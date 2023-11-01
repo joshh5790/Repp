@@ -40,8 +40,8 @@ def seed_reppPages():
 # it will reset the primary keys for you as well.
 def undo_reppPages():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.reppPages RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.repppages RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM reppPages"))
+        db.session.execute(text("DELETE FROM repppages"))
 
     db.session.commit()

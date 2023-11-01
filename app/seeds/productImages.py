@@ -30,8 +30,8 @@ def seed_productImages():
 # it will reset the primary keys for you as well.
 def undo_productImages():
   if environment == "production":
-    db.session.execute(f"TRUNCATE table {SCHEMA}.productImage RESTART IDENTITY CASCADE;")
+    db.session.execute(f"TRUNCATE table {SCHEMA}.productimage RESTART IDENTITY CASCADE;")
   else:
-    db.session.execute(text("DELETE FROM productImage"))
+    db.session.execute(text("DELETE FROM productimage"))
 
   db.session.commit()
