@@ -33,6 +33,6 @@ class ReppPage(db.Model):
       'bio': self.bio,
       'newsletter': self.newsletter,
       'businessInquiries': self.businessInquiries,
-      'videos': self.videos,
-      'shop': self.shop,
+      'videoSection': self.videoSection,
+      'shopSection': self.shopSection,
     }
