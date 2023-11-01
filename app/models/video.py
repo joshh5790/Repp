@@ -8,7 +8,7 @@ class Video(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   reppPageId = db.Column(db.Integer(), db.ForeignKey(
-    add_prefix_for_prod("reppPages.id")), nullable=False)
+    add_prefix_for_prod("repppages.id")), nullable=False)
   video = db.Column(db.String(), nullable=False)
 
   page = db.relationship("ReppPage", back_populates="videos")
