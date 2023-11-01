@@ -48,3 +48,6 @@ class User(db.Model, UserMixin):
             'state': self.state,
             'profileImage': self.profileImage
         }
+
+    def get_repp(self):
+        return self.repp[0].to_dict() if self.repp else None

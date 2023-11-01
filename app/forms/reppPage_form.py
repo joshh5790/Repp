@@ -20,6 +20,11 @@ def videoSection_data(form, field):
 	if not videoSection:
 		raise ValidationError('Please indicate if the video section is enabled or not.')
 
+def shopSection_data(form, field):
+	shopSection = field.data
+	if not shopSection:
+		raise ValidationError('Please indicate if the shop section is enabled or not.')
+
 class ReppForm(FlaskForm):
   mainImage = URLField('mainImage', [DataRequired()])
   isBanner = BooleanField('isBanner', [DataRequired()])

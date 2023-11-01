@@ -2,32 +2,34 @@ from flask_wtf import FlaskForm
 from flask_login import current_user
 from wtforms import StringField, URLField
 from wtforms.validators import DataRequired, Email, ValidationError, Length
-from app.models import User
+from app.models import Repp
 
 
 def displayname_exists(form, field):
 	# Checking if user exists
-	email = field.data
-	if current_user.is_authenticated and current_user.email == email:
-		user = User.query.filter(User.email == email).all()
-		if len(user) > 1:
-			raise ValidationError('Email address is already in use.')
+	displayName = field.data
+	repp_data = current_user.get_repp()
+	if current_user.is_authenticated and repp_data['displayName'] == displayName:
+		repp = Repp.query.filter(Repp.displayName == displayName).all()
+		if len(repp) > 1:
+			raise ValidationError('Display name is already in use.')
 	else:
-		user = User.query.filter(User.email == email).first()
-		if user:
-			raise ValidationError('Email address is already in use.')
+		repp = Repp.query.filter(Repp.displayName == displayName).first()
+		if repp:
+			raise ValidationError('Display name is already in use.')
 
 
 def linkname_exists(form, field):
-	username = field.data
-	if current_user.is_authenticated and current_user.username == username:
-		user = User.query.filter(User.username == username).all()
-		if len(user) > 1:
-			raise ValidationError('Username is already in use.')
+	linkName = field.data
+	repp_data = current_user.get_repp()
+	if current_user.is_authenticated and repp_data['linkName'] == linkName:
+		repp = Repp.query.filter(Repp.linkName == linkName).all()
+		if len(repp) > 1:
+			raise ValidationError('Link name is already in use.')
 	else:
-		user = User.query.filter(User.username == username).first()
-		if user:
-			raise ValidationError('Username is already in use.')
+		repp = Repp.query.filter(Repp.linkName == linkName).first()
+		if repp:
+			raise ValidationError('Link name is already in use.')
 
 
 class ReppForm(FlaskForm):
