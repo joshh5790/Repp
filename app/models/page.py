@@ -54,3 +54,9 @@ class Page(db.Model):
       'videoSection': self.videoSection,
       'shopSection': self.shopSection,
     }
+
+  def get_products(self):
+    return [product.to_dict() for product in self.products]
+
+  def get_videos(self):
+    return [video.to_dict() for video in self.videos]

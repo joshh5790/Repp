@@ -8,7 +8,7 @@ def displayname_exists(form, field):
 	# Checking if user exists
 	displayName = field.data
 	page_data = current_user.get_page()
-	if current_user.is_authenticated and page_data['displayName'] == displayName:
+	if current_user.is_authenticated and 'displayName' in page_data and page_data['displayName'] == displayName:
 		page = Page.query.filter(Page.displayName == displayName).all()
 		if len(page) > 1:
 			raise ValidationError('Display name is already in use.')
@@ -21,7 +21,7 @@ def displayname_exists(form, field):
 def linkname_exists(form, field):
 	linkName = field.data
 	page_data = current_user.get_page()
-	if current_user.is_authenticated and page_data['linkName'] == linkName:
+	if current_user.is_authenticated and 'linkName' in page_data and page_data['linkName'] == linkName:
 		page = Page.query.filter(Page.linkName == linkName).all()
 		if len(page) > 1:
 			raise ValidationError('Link name is already in use.')
@@ -51,20 +51,20 @@ def shopSection_data(form, field):
 		raise ValidationError('Please indicate if the shop section is enabled or not.')
 
 class PageForm(FlaskForm):
-	displayName = StringField('displayName', validators=[DataRequired(), displayname_exists])
-	linkName = StringField('linkName', validators=[DataRequired(), linkname_exists])
+	displayName = StringField('Display Name', validators=[DataRequired(), displayname_exists])
+	linkName = StringField('Link Name', validators=[DataRequired(), linkname_exists])
 	tiktok = URLField('tiktok')
 	youtube = URLField('youtube')
-	instagram = URLField('instagram')
-	appleMusic = URLField('appleMusic')
-	spotify = URLField('spotify')
-	twitter = URLField('twitter')
-	external = URLField('external')
-	mainImage = URLField('mainImage', [DataRequired()])
+	instagram = URLField('Instagram')
+	applemusic = URLField('Apple Music')
+	spotify = URLField('Spotify')
+	twitter = URLField('Twitter')
+	external = URLField('External Link')
+	mainImage = URLField('Main Image', [DataRequired()])
 	isBanner = BooleanField('isBanner', [DataRequired()])
-	mainVideo = URLField('mainVideo')
-	bio = StringField('bio')
-	newsletter = StringField('newsletter')
-	businessInquiries = StringField('businessInquiries')
+	mainVideo = URLField('Main Video')
+	bio = StringField('Bio')
+	newsletter = StringField('Newsletter')
+	businessInquiries = StringField('Business Inquiries')
 	videoSection = BooleanField('videoSection', [DataRequired()])
 	shopSection = BooleanField('shopSection', [DataRequired()])

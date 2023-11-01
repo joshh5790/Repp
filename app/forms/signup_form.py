@@ -41,7 +41,7 @@ def lastName_data(form, field):
 	lastName = field.data
 	if not lastName:
 		raise ValidationError('Last name is required.')
-	if not lastName.isalpha():
+	if not all(char.isalpha() or char.isspace() for char in lastName):
 		raise ValidationError('Last name must be alphabetic.')
 
 def gender_data(form, field):
@@ -57,7 +57,7 @@ def address_data(form, field):
 		raise ValidationError('Address must be at least 6 characters long.')
 	if len(address) > 255:
 		raise ValidationError('Address must be less than 255 characters long.')
-	if not address.isalnum():
+	if not all(char.isalnum() or char.isspace() for char in address):
 		raise ValidationError('Address must be alphanumeric.')
 
 def city_data(form, field):
@@ -68,7 +68,7 @@ def city_data(form, field):
 		raise ValidationError('City must be at least 3 characters long.')
 	if len(city) > 255:
 		raise ValidationError('City must be less than 255 characters long.')
-	if not city.isalpha():
+	if not all(char.isalpha() or char.isspace() for char in city):
 		raise ValidationError('City must be alphabetic.')
 
 def state_data(form, field):
@@ -91,9 +91,7 @@ class SignUpForm(FlaskForm):
 	lastName = StringField('lastName', validators=[DataRequired(), lastName_data])
 	username = StringField('username', validators=[DataRequired(), username_exists])
 	email = EmailField('email', validators=[DataRequired(), user_exists])
-	gender = StringField('gender', validators=[DataRequired()], choices=[
-		'Male', 'Female', 'Non-binary', 'Prefer not to say'
-	])
+	gender = StringField('gender', validators=[DataRequired()])
 	address = StringField('address', validators=[DataRequired(), address_data])
 	city = StringField('city', validators=[DataRequired(), city_data])
 	state = StringField('state', validators=[DataRequired(), state_data])

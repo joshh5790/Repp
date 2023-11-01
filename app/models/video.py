@@ -9,6 +9,7 @@ class Video(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   pageId = db.Column(db.Integer(), db.ForeignKey(
     add_prefix_for_prod("pages.id")), nullable=False)
+  name = db.Column(db.String(), nullable=False)
   video = db.Column(db.String(), nullable=False)
 
   page = db.relationship("Page", back_populates="videos")
@@ -17,5 +18,6 @@ class Video(db.Model):
     return {
       'id': self.id,
       'pageId': self.pageId,
+      'name': self.name,
       'video': self.video,
     }

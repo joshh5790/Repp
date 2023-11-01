@@ -50,4 +50,4 @@ class User(db.Model, UserMixin):
         }
 
     def get_page(self):
-        return self.page[0].to_dict() if self.page else None
+        return self.page[0].to_dict() if self.page else {}

@@ -5,3 +5,4 @@ from .product_form import ProductForm
 from .productImage_form import ProductImageForm
 from .productStock_form import ProductStockForm
 from .cartItem_form import CartItemForm
+from .video_form import VideoForm
