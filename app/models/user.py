@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
     profileImage = db.Column(db.String())
 
     repp = db.relationship("Repp", back_populates="user")
+    cart = db.relationship("Cart", back_populates="user")
 
     @property
     def password(self):

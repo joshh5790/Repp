@@ -17,8 +17,8 @@ class Product(db.Model):
   page = db.relationship("ReppPage", back_populates="products")
 
   images = db.relationship("ProductImage", back_populates="product")
-
   stock = db.relationship("ProductStock", back_populates="product")
+  cartItems = db.relationship("CartItem", back_populates="product")
 
   def to_dict(self):
     return {

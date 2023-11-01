@@ -15,12 +15,13 @@ class ReppPage(db.Model):
   bio = db.Column(db.String())
   newsletter = db.Column(db.String())
   businessInquiries = db.Column(db.String())
-  videos = db.Column(db.Boolean(), nullable=False)
-  shop = db.Column(db.Boolean(), nullable=False)
+  videoSection = db.Column(db.Boolean(), nullable=False)
+  shopSection = db.Column(db.Boolean(), nullable=False)
 
   repp = db.relationship("Repp", back_populates="page")
-
   products = db.relationship("Product", back_populates="page")
+  videos = db.relationship("Video", back_populates="page")
+  cart = db.relationship("Cart", back_populates="page")
 
   def to_dict(self):
     return {
