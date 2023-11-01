@@ -1,9 +1,9 @@
-from app.models import db, ReppPage, environment, SCHEMA
+from app.models import db, Page, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
-def seed_reppPages():
-    tiff = ReppPage(
+def seed_pages():
+    tiff = Page(
       userId=1,
       displayName='Tiffany Day',
       linkName='tiffany-day',
@@ -17,7 +17,7 @@ def seed_reppPages():
       bio='my name is tiff. im 23 years old and i make music. um. that’s pretty much most of my life. um. i live in los angeles and um. it’s great here. um. i enjoy um rice. and um pasta. and i really like pickles but i have a health condition that um uh doesn’t um really let me eat them properly. um. anyways. the goal is the be um. a really big pop star. um. maybe you can help wid that. um. thanks. >.<',
       videoSection=False,
       shopSection=False)
-    josiah = ReppPage(
+    josiah = Page(
       userId=2,
       displayName='Highvyn',
       linkName='highvyn',
@@ -30,7 +30,7 @@ def seed_reppPages():
       bio='Sailing precariously between the borders of alternative rnb, indie pop, and electronic dance genres, Highvyn searches for an identity that blends sounds and emotions into a beautifully curated mess. Self-produced, written, and recorded in his DIY home studio in the dmv, Highvyn has carved out a space for himself as an artist that has no true equivalents. \nHighvyn balances his ever-changing sound with lyrics from the heart, with an intimate writing style that explores themes of self-discovery and the struggles of young love. In 2024, Highvyn hopes to expand the full potential of his artistry to create music that transcends time, space, and mediums.',
       videoSection=False,
       shopSection=False)
-    eric = ReppPage(
+    eric = Page(
       userId=3,
       displayName='Eric Nam',
       linkName='eric-nam',
@@ -59,10 +59,10 @@ def seed_reppPages():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_reppPages():
+def undo_pages():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.repppages RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.pages RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM repppages"))
+        db.session.execute(text("DELETE FROM pages"))
 
     db.session.commit()

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: dc97e572479f
+Revision ID: e93a96c50cf0
 Revises:
-Create Date: 2023-11-01 02:38:23.027638
+Create Date: 2023-11-01 12:52:47.529244
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'dc97e572479f'
+revision = 'e93a96c50cf0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,7 +37,7 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    op.create_table('repppages',
+    op.create_table('pages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('displayName', sa.String(length=40), nullable=False),
@@ -64,28 +64,28 @@ def upgrade():
     )
     op.create_table('carts',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('reppPageId', sa.Integer(), nullable=False),
+    sa.Column('pageId', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('subtotal', sa.Float(), nullable=False),
-    sa.ForeignKeyConstraint(['reppPageId'], ['repppages.id'], ),
+    sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('products',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('reppPageId', sa.Integer(), nullable=False),
+    sa.Column('pageId', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=40), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=True),
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('previewImage', sa.String(), nullable=False),
-    sa.ForeignKeyConstraint(['reppPageId'], ['repppages.id'], ),
+    sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('videos',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('reppPageId', sa.Integer(), nullable=False),
+    sa.Column('pageId', sa.Integer(), nullable=False),
     sa.Column('video', sa.String(), nullable=False),
-    sa.ForeignKeyConstraint(['reppPageId'], ['repppages.id'], ),
+    sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('cartitems',
@@ -120,7 +120,7 @@ def upgrade():
         op.execute(f"ALTER TABLE videos SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE products SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE carts SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE repppages SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE pages SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
 
@@ -132,6 +132,6 @@ def downgrade():
     op.drop_table('videos')
     op.drop_table('products')
     op.drop_table('carts')
-    op.drop_table('repppages')
+    op.drop_table('pages')
     op.drop_table('users')
     # ### end Alembic commands ###

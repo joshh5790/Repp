@@ -1,6 +1,6 @@
 from .db import db
 from .user import User
-from .reppPage import ReppPage
+from .page import Page
 from .product import Product
 from .productImage import ProductImage
 from .productStock import ProductStock

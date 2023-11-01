@@ -7,15 +7,15 @@ class Video(db.Model):
     __table_args__ = {'schema': SCHEMA}
 
   id = db.Column(db.Integer, primary_key=True)
-  reppPageId = db.Column(db.Integer(), db.ForeignKey(
-    add_prefix_for_prod("repppages.id")), nullable=False)
+  pageId = db.Column(db.Integer(), db.ForeignKey(
+    add_prefix_for_prod("pages.id")), nullable=False)
   video = db.Column(db.String(), nullable=False)
 
-  page = db.relationship("ReppPage", back_populates="videos")
+  page = db.relationship("Page", back_populates="videos")
 
   def to_dict(self):
     return {
       'id': self.id,
-      'reppPageId': self.reppPageId,
+      'pageId': self.pageId,
       'video': self.video,
     }
