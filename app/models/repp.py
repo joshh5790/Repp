@@ -20,7 +20,6 @@ class Repp(db.Model):
   external = db.Column(db.String())
 
   user = db.relationship("User", back_populates="repp")
-
   page = db.relationship("ReppPage", back_populates="repp")
 
   def to_dict(self):
