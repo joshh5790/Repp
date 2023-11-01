@@ -10,6 +10,11 @@ def mainImage_data(form, field):
 	if not mainImage:
 		raise ValidationError('Main image field is required.')
 
+def isBanner_data(form, field):
+	isBanner = field.data
+	if not isBanner:
+		raise ValidationError('Please indicate if the main image is a banner or a full size image.')
+
 def displayname_exists(form, field):
 	# Checking if user exists
 	email = field.data

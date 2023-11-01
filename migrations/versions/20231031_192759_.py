@@ -121,7 +121,7 @@ def upgrade():
     )
     # ### end Alembic commands ###
     if environment == "production":
-        op.execute(f"ALTER TABLE productStock SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE productStocks SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE productImages SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE cartItems SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE videos SET SCHEMA {SCHEMA};")
