@@ -14,7 +14,7 @@ def seed_users():
         city='Los Angeles',
         state='CA',
         password='password',
-        profile_img='https://thehiddenhits.files.wordpress.com/2021/01/tiffany-day-the-hidden-hits.jpg')
+        profileImage='https://thehiddenhits.files.wordpress.com/2021/01/tiffany-day-the-hidden-hits.jpg')
     josiah = User(
         firstName='Josiah',
         lastName='Won',
@@ -25,7 +25,7 @@ def seed_users():
         city='Los Angeles',
         state='CA',
         password='password',
-        profile_img='https://images.genius.com/e9a779c23099a34081cdd35250f273cc.539x539x1.jpg')
+        profileImage='https://images.genius.com/e9a779c23099a34081cdd35250f273cc.539x539x1.jpg')
     eric = User(
         firstName='Eric',
         lastName='Nam',
@@ -36,7 +36,7 @@ def seed_users():
         city='Los Angeles',
         state='CA',
         password='password',
-        profile_img='https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg')
+        profileImage='https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg')
 
     db.session.add(tiff)
     db.session.add(josiah)

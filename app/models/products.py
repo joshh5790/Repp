@@ -8,7 +8,7 @@ class Product(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   reppPageId = db.Column(db.Integer(), db.ForeignKey(
-    add_prefix_for_prod("repppages.id")), nullable=False)
+    add_prefix_for_prod("reppPages.id")), nullable=False)
   name = db.Column(db.String(40), nullable=False)
   description = db.Column(db.String(255))
   price = db.Column(db.Float(), nullable=False)
@@ -16,8 +16,11 @@ class Product(db.Model):
 
   page = db.relationship("ReppPage", back_populates="products")
 
+  images = db.relationship("ProductImage", back_populates="product")
+
   def to_dict(self):
     return {
+      'id': self.id,
       'reppPageId': self.reppPageId,
       'name': self.name,
       'description': self.description,

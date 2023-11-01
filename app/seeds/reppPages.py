@@ -2,7 +2,7 @@ from app.models import db, ReppPage, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
-def seed_repppages():
+def seed_reppPages():
     tiff = ReppPage(
       reppId=1,
       mainImage='https://yt3.googleusercontent.com/PyO-pFli2SK8gl5zFahqbZbrvN5AvKvyDE986bUw3JtHhe8ZX6KIRddNts_X16tPE7m7Gd6YcPE=w1138-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
@@ -38,10 +38,10 @@ def seed_repppages():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_repppages():
+def undo_reppPages():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.repppages RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.reppPages RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM repppages"))
+        db.session.execute(text("DELETE FROM reppPages"))
 
     db.session.commit()

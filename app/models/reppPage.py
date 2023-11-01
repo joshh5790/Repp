@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class ReppPage(db.Model):
-  __tablename__ = 'repppages'
+  __tablename__ = 'reppPages'
 
   if environment == "production":
     __table_args__ = {'schema': SCHEMA}
@@ -24,13 +24,14 @@ class ReppPage(db.Model):
 
   def to_dict(self):
     return {
+      'id': self.id,
       'userId': self.reppId,
-    'mainImage': self.mainImage,
-    'isBanner': self.isBanner,
-    'mainVideo': self.mainVideo,
-    'bio': self.bio,
-    'newsletter': self.newsletter,
-    'businessInquiries': self.businessInquiries,
-    'videos': self.videos,
-    'shop': self.shop,
+      'mainImage': self.mainImage,
+      'isBanner': self.isBanner,
+      'mainVideo': self.mainVideo,
+      'bio': self.bio,
+      'newsletter': self.newsletter,
+      'businessInquiries': self.businessInquiries,
+      'videos': self.videos,
+      'shop': self.shop,
     }

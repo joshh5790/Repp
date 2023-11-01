@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_img = db.Column(db.String())
+    profileImage = db.Column(db.String())
 
     repp = db.relationship("Repp", back_populates="user")
 
@@ -37,6 +37,13 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'firstName': self.firstName,
+            'lastName': self.lastName,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'gender': self.gender,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+            'profileImage': self.profileImage
         }

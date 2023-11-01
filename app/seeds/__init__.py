@@ -1,8 +1,11 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .repps import seed_repps, undo_repps
-from .reppPages import seed_repppages, undo_repppages
+from .reppPages import seed_reppPages, undo_reppPages
 from .products import seed_products, undo_products
+from .productImages import seed_productImages, undo_productImages
+
+
 
 
 
@@ -23,12 +26,14 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
         undo_repps()
-        undo_repppages()
+        undo_reppPages()
         undo_products()
+        undo_productImages()
     seed_users()
     seed_repps()
-    seed_repppages()
+    seed_reppPages()
     seed_products()
+    seed_productImages()
     # Add other seed functions here
 
 
