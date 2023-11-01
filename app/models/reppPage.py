@@ -7,8 +7,17 @@ class ReppPage(db.Model):
     __table_args__ = {'schema': SCHEMA}
 
   id = db.Column(db.Integer, primary_key=True)
-  reppId = db.Column(db.Integer(), db.ForeignKey(
-    add_prefix_for_prod("repps.id")), nullable=False, unique=True)
+  userId = db.Column(db.Integer(), db.ForeignKey(
+    add_prefix_for_prod("users.id")), nullable=False, unique=True)
+  displayName = db.Column(db.String(40), nullable=False)
+  linkName = db.Column(db.String(40), nullable=False, unique=True)
+  tiktok = db.Column(db.String())
+  youtube = db.Column(db.String())
+  instagram = db.Column(db.String())
+  applemusic = db.Column(db.String())
+  spotify = db.Column(db.String())
+  twitter = db.Column(db.String())
+  external = db.Column(db.String())
   mainImage = db.Column(db.String(), nullable=False)
   isBanner = db.Column(db.Boolean, nullable=False)
   mainVideo = db.Column(db.String())
@@ -18,7 +27,7 @@ class ReppPage(db.Model):
   videoSection = db.Column(db.Boolean(), nullable=False)
   shopSection = db.Column(db.Boolean(), nullable=False)
 
-  repp = db.relationship("Repp", back_populates="page")
+  user = db.relationship("User", back_populates="page")
   products = db.relationship("Product", back_populates="page")
   videos = db.relationship("Video", back_populates="page")
   cart = db.relationship("Cart", back_populates="page")
@@ -26,7 +35,16 @@ class ReppPage(db.Model):
   def to_dict(self):
     return {
       'id': self.id,
-      'userId': self.reppId,
+      'userId': self.userId,
+      'displayName': self.displayName,
+      'linkName': self.linkName,
+      'tiktok': self.tiktok,
+      'youtube': self.youtube,
+      'instagram': self.instagram,
+      'applemusic': self.applemusic,
+      'spotify': self.spotify,
+      'twitter': self.twitter,
+      'external': self.external,
       'mainImage': self.mainImage,
       'isBanner': self.isBanner,
       'mainVideo': self.mainVideo,

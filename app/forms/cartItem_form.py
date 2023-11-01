@@ -7,5 +7,5 @@ def quantity_data(form, field):
 	if not quantity:
 		raise ValidationError('Please enter a quantity.')
 
-class cartItemForm(FlaskForm):
+class CartItemForm(FlaskForm):
   quantity = StringField('Quantity', [DataRequired(), quantity_data])

@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profileImage = db.Column(db.String())
 
-    repp = db.relationship("Repp", back_populates="user")
+    page = db.relationship("ReppPage", back_populates="user")
     cart = db.relationship("Cart", back_populates="user")
 
     @property
@@ -49,5 +49,5 @@ class User(db.Model, UserMixin):
             'profileImage': self.profileImage
         }
 
-    def get_repp(self):
-        return self.repp[0].to_dict() if self.repp else None
+    def get_page(self):
+        return self.page[0].to_dict() if self.page else None
