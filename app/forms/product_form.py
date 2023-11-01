@@ -18,7 +18,7 @@ def previewImage_data(form, field):
 	if not previewImage:
 		raise ValidationError('Please enter a preview image.')
 
-class ReppForm(FlaskForm):
+class ProductForm(FlaskForm):
   name = StringField('name', [DataRequired(), name_data])
   description = StringField('description')
   price = StringField('price', [DataRequired(), price_data])
