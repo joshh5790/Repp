@@ -1,8 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from flask_login import UserMixin
 
-
-class ReppPage(db.Model, UserMixin):
+class ReppPage(db.Model):
   __tablename__ = 'repppages'
 
   if environment == "production":
@@ -22,9 +20,17 @@ class ReppPage(db.Model, UserMixin):
 
   repp = db.relationship("Repp", back_populates="page")
 
+  products = db.relationship("Product", back_populates="page")
+
   def to_dict(self):
     return {
-      'id': self.id,
-      'username': self.username,
-      'email': self.email
+      'userId': self.reppId,
+    'mainImage': self.mainImage,
+    'isBanner': self.isBanner,
+    'mainVideo': self.mainVideo,
+    'bio': self.bio,
+    'newsletter': self.newsletter,
+    'businessInquiries': self.businessInquiries,
+    'videos': self.videos,
+    'shop': self.shop,
     }

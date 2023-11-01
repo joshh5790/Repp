@@ -1,8 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from flask_login import UserMixin
 
-
-class Repp(db.Model, UserMixin):
+class Repp(db.Model):
   __tablename__ = 'repps'
 
   if environment == "production":

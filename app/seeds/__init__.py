@@ -2,6 +2,9 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .repps import seed_repps, undo_repps
 from .reppPages import seed_repppages, undo_repppages
+from .products import seed_products, undo_products
+
+
 
 from app.models.db import db, environment, SCHEMA
 
@@ -21,9 +24,11 @@ def seed():
         undo_users()
         undo_repps()
         undo_repppages()
+        undo_products()
     seed_users()
     seed_repps()
     seed_repppages()
+    seed_products()
     # Add other seed functions here
 
 
