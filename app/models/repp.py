@@ -1,5 +1,4 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
@@ -22,23 +21,21 @@ class Repp(db.Model, UserMixin):
   twitter = db.Column(db.String())
   external = db.Column(db.String())
 
-
   user = db.relationship("User", back_populates="repp")
 
-  @property
-  def password(self):
-    return self.hashed_password
-
-  @password.setter
-  def password(self, password):
-    self.hashed_password = generate_password_hash(password)
-
-  def check_password(self, password):
-    return check_password_hash(self.password, password)
+  page = db.relationship("ReppPage", back_populates="repp")
 
   def to_dict(self):
     return {
       'id': self.id,
-      'username': self.username,
-      'email': self.email
+      'userId': self.userId,
+      'displayName': self.displayName,
+      'linkName': self.linkName,
+      'tiktok': self.tiktok,
+      'youtube': self.youtube,
+      'instagram': self.instagram,
+      'applemusic': self.applemusic,
+      'spotify': self.spotify,
+      'twitter': self.twitter,
+      'external': self.external
     }

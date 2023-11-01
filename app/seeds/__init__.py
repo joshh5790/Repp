@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .repps import seed_repps, undo_repps
+from .reppPages import seed_repppages, undo_repppages
 
 from app.models.db import db, environment, SCHEMA
 
@@ -19,8 +20,10 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
         undo_repps()
+        undo_repppages()
     seed_users()
     seed_repps()
+    seed_repppages()
     # Add other seed functions here
 
 
