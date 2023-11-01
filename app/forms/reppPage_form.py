@@ -15,30 +15,10 @@ def isBanner_data(form, field):
 	if not isBanner:
 		raise ValidationError('Please indicate if the main image is a banner or a full size image.')
 
-def displayname_exists(form, field):
-	# Checking if user exists
-	email = field.data
-	if current_user.is_authenticated and current_user.email == email:
-		user = User.query.filter(User.email == email).all()
-		if len(user) > 1:
-			raise ValidationError('Email address is already in use.')
-	else:
-		user = User.query.filter(User.email == email).first()
-		if user:
-			raise ValidationError('Email address is already in use.')
-
-
-def linkname_exists(form, field):
-	username = field.data
-	if current_user.is_authenticated and current_user.username == username:
-		user = User.query.filter(User.username == username).all()
-		if len(user) > 1:
-			raise ValidationError('Username is already in use.')
-	else:
-		user = User.query.filter(User.username == username).first()
-		if user:
-			raise ValidationError('Username is already in use.')
-
+def videoSection_data(form, field):
+	videoSection = field.data
+	if not videoSection:
+		raise ValidationError('Please indicate if the video section is enabled or not.')
 
 class ReppForm(FlaskForm):
   mainImage = URLField('mainImage', [DataRequired()])
