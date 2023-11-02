@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf"
 
 // constants
 
-const SET_PRODUCTS = 'session/SET_PRODUCTS'
+const SET_PRODUCTS = 'products/SET_PRODUCTS'
 const ADD_PRODUCT = 'products/ADD_PRODUCT'
 const REMOVE_PRODUCT = 'products/REMOVE_PRODUCT'
 
@@ -44,24 +44,24 @@ export const getProductsThunk = (pageId) => async (dispatch) => {
 
 // POST /pages/:pageId/products/
 export const createProductThunk = (
-  pageId, name, description, price, previewImage
-) => async (dispatch) => {
-const response = await csrfFetch(`/api/pages/${pageId}/products/`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    name, description, price, previewImage
-  }),
-})
+    pageId, name, description, price, previewImage
+  ) => async (dispatch) => {
+  const response = await csrfFetch(`/api/pages/${pageId}/products/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name, description, price, previewImage
+    }),
+  })
 
-if (response.ok) {
-  const data = await response.json()
-  dispatch(addProduct({ [data.id]: data }))
-  return data
-} else if (response.status < 500) {
-  const data = await response.json()
-  if (data.errors) return data.errors
-} else return ["Failed to create product."]
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(addProduct({ [data.id]: data }))
+    return data
+  } else if (response.status < 500) {
+    const data = await response.json()
+    if (data.errors) return data.errors
+  } else return ["Failed to create product."]
 }
 
 // GET /products/:productId

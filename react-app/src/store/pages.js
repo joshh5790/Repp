@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf"
 
 // constants
 
-const SET_RPAGE = "session/SET_RPAGE"
+const SET_RPAGE = "pages/SET_RPAGE"
 
 // action creators
 

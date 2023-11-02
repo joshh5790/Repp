@@ -3,11 +3,21 @@ import thunk from 'redux-thunk'
 import session from './session'
 import pages from './pages'
 import products from './products'
+import productImages  from './productImages'
+import productStock from './productStock'
+import videos from './videos'
+import carts from './carts'
+import cartItems from './cartItems'
 
 const rootReducer = combineReducers({
   session,
   pages,
   products,
+  productImages,
+  productStock,
+  videos,
+  carts,
+  cartItems,
 })
 
 
