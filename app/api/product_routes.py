@@ -144,38 +144,3 @@ def create_product_stock(productId):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # move to productStock
-
-# POST /products/:productId/cartItems
-# product_routes.route('/<int:productId>/cartItems', methods=['POST'])
-# @login_required
-# def create_cart_item(productId):
-#     """
-#     Query for a product by id and creates a cartItem for that product
-#     """
-#     if not current_user:
-#       return { 'error': 'Unauthorized' }, 401
-#     product = Product.query.get(productId)
-#     if not product:
-#       return { 'error': 'Product not found' }, 404
-#     page = Page.query.get(product.pageId)
-#     if not page:
-#       return { 'error': 'Page not found' }, 404
-#     if current_user.id != page.userId:
-#       return { 'Unauthorized': 'User does not have permission to add a cart item to this product' }, 401
-#     cart = current_user.get_one_cart(page['id'])
-#     if not cart:
-#       return { 'error': 'Cart not found' }, 404
-#     form = CartItemForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#       data = form.data
-#       cartItem = CartItem(
-#         cartId=cart['id'],
-#         productId=productId,
-#         quantity=data['quantity']
-#       )
-#       db.session.add(cartItem)
-#       db.session.commit()
-#       return cartItem.to_dict()
-#     else:
-#       return {'errors': validation_errors_to_error_messages(form.errors)}, 400

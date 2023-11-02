@@ -12,6 +12,7 @@ class CartItem(db.Model):
   productId = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod(
     "products.id")), nullable=False)
   quantity = db.Column(db.Integer, nullable=False)
+  size = db.Column(db.String())
 
   product = db.relationship("Product", back_populates="cartItems")
   cart = db.relationship("Cart", back_populates="cartItems")
@@ -23,6 +24,7 @@ class CartItem(db.Model):
       "cartId": self.cartId,
       "productId": self.productId,
       "quantity": self.quantity,
+      "size": self.size,
       "name": product['name'],
       "price": product['price'],
       "description": product['description'],

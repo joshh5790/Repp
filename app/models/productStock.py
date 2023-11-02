@@ -21,3 +21,6 @@ class ProductStock(db.Model):
       'size': self.size,
       'stock': self.stock,
     }
+
+  def get_pageOwnerId(self):
+    return self.product.get_pageOwnerId()
