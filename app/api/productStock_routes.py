@@ -14,6 +14,8 @@ def update_product_stock(productStockId):
   """
   Updates a product stock
   """
+  if not current_user:
+    return { 'error': 'Unauthorized' }, 401
   productStock = ProductStock.query.get(productStockId)
   if not productStock:
     return { 'error': 'Product stock not found' }, 404
@@ -22,6 +24,7 @@ def update_product_stock(productStockId):
   form = ProductStockForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
+    productStock.size = form.data['size']
     productStock.stock = form.data['stock']
     db.session.commit()
     return productStock.to_dict()
@@ -32,6 +35,8 @@ def update_product_stock(productStockId):
 @productStock_routes.route('/<int:productStockId>', methods=['DELETE'])
 @login_required
 def delete_product_stock(productStockId):
+  if not current_user:
+    return { 'error': 'Unauthorized' }, 401
   productStock = ProductStock.query.get(productStockId)
   if not productStock:
     return { 'error': 'Product stock not found' }, 404
@@ -41,12 +46,12 @@ def delete_product_stock(productStockId):
   db.session.commit()
   return { 'message': 'Product stock deleted' }
 
-# POST /products/:productId/cartItems
-productStock_routes.route('/<int:productStockId>/cartItems', methods=['POST'])
+# POST /productStock/:productStockId/cartItems
+@productStock_routes.route('/<int:productStockId>/cartItems', methods=['POST'])
 @login_required
 def create_cart_item(productStockId):
     """
-    Query for a product by id and creates a cartItem for that product
+    Query for a productStock by id and creates a cartItem for that product
     """
     if not current_user:
       return { 'error': 'Unauthorized' }, 401
@@ -54,9 +59,7 @@ def create_cart_item(productStockId):
     if not productStock:
       return { 'error': 'Product not found or not in stock' }, 404
     product = Product.query.get(productStock.productId)
-    if current_user.id != product.get_pageOwnerId():
-      return { 'Unauthorized': 'User does not have permission to add a cart item to this product' }, 401
-    cart = current_user.get_one_cart(product['pageId'])
+    cart = current_user.get_one_cart(product.pageId)
     if not cart:
       return { 'error': 'Cart not found' }, 404
     form = CartItemForm()
@@ -65,9 +68,9 @@ def create_cart_item(productStockId):
       data = form.data
       cartItem = CartItem(
         cartId=cart['id'],
-        productId=product['id'],
+        productId=product.id,
         quantity=data['quantity'],
-        size=productStock['size']
+        size=productStock.size
       )
       db.session.add(cartItem)
       db.session.commit()

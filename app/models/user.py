@@ -58,6 +58,6 @@ class User(db.Model, UserMixin):
 	def get_one_cart(self, pageId):
 		carts = self.carts
 		for cart in carts:
-			if cart['pageId'] == pageId:
+			if cart.pageId == pageId:
 				return cart.to_dict()
 		return {}
