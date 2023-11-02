@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import IntegerField
 from wtforms.validators import DataRequired, ValidationError
 
 def quantity_data(form, field):
@@ -8,4 +8,4 @@ def quantity_data(form, field):
 		raise ValidationError('Please enter a quantity.')
 
 class CartItemForm(FlaskForm):
-  quantity = StringField('Quantity', [DataRequired(), quantity_data])
+	quantity = IntegerField('Quantity', [DataRequired(), quantity_data])
