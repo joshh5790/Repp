@@ -20,13 +20,13 @@ def get_pages():
   return {'pages': [page.to_dict() for page in pages]}
 
 # GET /pages/:pageId
-@page_routes.route('/<int:id>')
+@page_routes.route('/<int:pageId>')
 @login_required
-def get_page(id):
+def get_page(pageId):
   """
   Query for a page by id and returns that page in a dictionary
   """
-  page = Page.query.get(id)
+  page = Page.query.get(pageId)
   if not page:
     return { 'error': 'Page not found' }, 404
   return page.to_dict()
@@ -72,15 +72,15 @@ def create_page():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # PUT /pages/:pageId
-@page_routes.route('/<int:id>', methods=['PUT'])
+@page_routes.route('/<int:pageId>', methods=['PUT'])
 @login_required
-def update_page(id):
+def update_page(pageId):
   """
   Query for a page by id and updates that page
   """
   if not current_user:
     return { 'error': 'Unauthorized' }, 401
-  page = Page.query.get(id)
+  page = Page.query.get(pageId)
   if not page:
     return { 'error': 'Page not found' }, 404
   if page.userId != current_user.id:
@@ -113,15 +113,15 @@ def update_page(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # DELETE /pages/:pageId
-@page_routes.route('/<int:id>', methods=['DELETE'])
+@page_routes.route('/<int:pageId>', methods=['DELETE'])
 @login_required
-def delete_page(id):
+def delete_page(pageId):
   """
   Query for a page by id and deletes that page
   """
   if not current_user:
     return { 'error': 'Unauthorized' }, 401
-  page = Page.query.get(id)
+  page = Page.query.get(pageId)
   if not page:
     return { 'error': 'Page not found' }, 404
   if page.userId != current_user.id:
@@ -132,28 +132,28 @@ def delete_page(id):
   return { 'message': 'Page deleted successfully' }
 
 # GET /pages/:pageId/products
-@page_routes.route('/<int:id>/products', methods=['GET'])
-def get_products(id):
-  page = Page.query.get(id)
+@page_routes.route('/<int:pageId>/products', methods=['GET'])
+def get_products(pageId):
+  page = Page.query.get(pageId)
   if not page:
     return { 'error': 'Page not found' }, 404
   return page.get_products()
 
 # GET /pages/:pageId/videos
-@page_routes.route('/<int:id>/videos', methods=['GET'])
-def get_videos(id):
-  page = Page.query.get(id)
+@page_routes.route('/<int:pageId>/videos', methods=['GET'])
+def get_videos(pageId):
+  page = Page.query.get(pageId)
   if not page:
     return { 'error': 'Page not found' }, 404
   return page.get_videos()
 
 # POST /pages/:pageId/products
-@page_routes.route('/<int:id>/products', methods=['POST'])
+@page_routes.route('/<int:pageId>/products', methods=['POST'])
 @login_required
-def create_product(id):
+def create_product(pageId):
   if not current_user:
     return { 'error': 'Unauthorized' }, 401
-  page = Page.query.get(id)
+  page = Page.query.get(pageId)
   if not page:
     return { 'error': 'Page not found' }, 404
   if page.userId != current_user.id:
@@ -177,12 +177,12 @@ def create_product(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # POST /pages/:pageId/videos
-@page_routes.route('/<int:id>/videos', methods=['POST'])
+@page_routes.route('/<int:pageId>/videos', methods=['POST'])
 @login_required
-def create_video(id):
+def create_video(pageId):
   if not current_user:
     return { 'error': 'Unauthorized' }, 401
-  page = Page.query.get(id)
+  page = Page.query.get(pageId)
   if not page:
     return { 'error': 'Page not found' }, 404
   if page.userId != current_user.id:
@@ -204,12 +204,12 @@ def create_video(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # POST /pages/:pageId/cart
-@page_routes.route('/<int:id>/cart', methods=['POST'])
+@page_routes.route('/<int:pageId>/cart', methods=['POST'])
 @login_required
-def create_cart(id):
+def create_cart(pageId):
   if not current_user:
     return { 'error': 'Unauthorized' }, 401
-  page = Page.query.get(id)
+  page = Page.query.get(pageId)
   if not page:
     return { 'error': 'Page not found' }, 404
   cart = Cart(

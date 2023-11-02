@@ -14,7 +14,7 @@ class Cart(db.Model):
   subtotal = db.Column(db.Float(), nullable=False)
 
   page = db.relationship("Page", back_populates="cart")
-  user = db.relationship("User", back_populates="cart")
+  user = db.relationship("User", back_populates="carts")
   cartItems = db.relationship("CartItem", back_populates="cart")
 
   def to_dict(self):

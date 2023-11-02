@@ -28,3 +28,9 @@ class Product(db.Model):
       'price': self.price,
       'previewImage': self.previewImage,
     }
+
+  def get_images(self):
+    return [image.to_dict() for image in self.images]
+
+  def get_stock(self):
+    return [stock.to_dict() for stock in self.stock]
