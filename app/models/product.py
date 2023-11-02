@@ -15,9 +15,9 @@ class Product(db.Model):
   previewImage = db.Column(db.String(), nullable=False)
 
   page = db.relationship("Page", back_populates="products")
-  images = db.relationship("ProductImage", back_populates="product")
-  stock = db.relationship("ProductStock", back_populates="product")
-  cartItems = db.relationship("CartItem", back_populates="product")
+  images = db.relationship("ProductImage", back_populates="product", cascade="all, delete-orphan")
+  stock = db.relationship("ProductStock", back_populates="product", cascade="all, delete-orphan")
+  cartItems = db.relationship("CartItem", back_populates="product", cascade="all, delete-orphan")
 
   def to_dict(self):
     return {

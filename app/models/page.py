@@ -28,9 +28,9 @@ class Page(db.Model):
   shopSection = db.Column(db.Boolean(), nullable=False)
 
   user = db.relationship("User", back_populates="page")
-  products = db.relationship("Product", back_populates="page")
-  videos = db.relationship("Video", back_populates="page")
-  cart = db.relationship("Cart", back_populates="page")
+  products = db.relationship("Product", back_populates="page", cascade="all, delete-orphan")
+  videos = db.relationship("Video", back_populates="page", cascade="all, delete-orphan")
+  cart = db.relationship("Cart", back_populates="page", cascade="all, delete-orphan")
 
   def to_dict(self):
     return {

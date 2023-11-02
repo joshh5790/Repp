@@ -15,7 +15,7 @@ class Cart(db.Model):
 
   page = db.relationship("Page", back_populates="cart")
   user = db.relationship("User", back_populates="carts")
-  cartItems = db.relationship("CartItem", back_populates="cart")
+  cartItems = db.relationship("CartItem", back_populates="cart", cascade="all, delete-orphan")
 
   def to_dict(self):
     return {

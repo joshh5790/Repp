@@ -21,8 +21,8 @@ class User(db.Model, UserMixin):
 	hashed_password = db.Column(db.String(255), nullable=False)
 	profileImage = db.Column(db.String())
 
-	page = db.relationship("Page", back_populates="user")
-	carts = db.relationship("Cart", back_populates="user")
+	page = db.relationship("Page", back_populates="user", cascade="all, delete-orphan")
+	carts = db.relationship("Cart", back_populates="user", cascade="all, delete-orphan")
 
 	@property
 	def password(self):

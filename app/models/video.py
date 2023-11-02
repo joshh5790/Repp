@@ -21,3 +21,6 @@ class Video(db.Model):
       'name': self.name,
       'video': self.video,
     }
+
+  def get_pageOwnerId(self):
+    return self.page.to_dict()['userId']
