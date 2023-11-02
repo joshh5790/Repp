@@ -22,5 +22,6 @@ class Cart(db.Model):
       'id': self.id,
       'pageId': self.pageId,
       'userId': self.userId,
-      'subtotal': self.subtotal
+      'subtotal': self.subtotal,
+      'cartItems': [cartItem.to_dict() for cartItem in self.cartItems]
     }

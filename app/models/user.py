@@ -52,7 +52,7 @@ class User(db.Model, UserMixin):
 	def get_page(self):
 		return self.page[0].to_dict() if self.page else {}
 
-	def get_cart(self):
+	def get_carts(self):
 		return [cart.to_dict() for cart in self.carts]
 
 	def get_one_cart(self, pageId):

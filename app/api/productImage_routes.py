@@ -14,6 +14,8 @@ def update_product_image(productImageId):
   """
   Updates a product image
   """
+  if not current_user:
+    return {'error': 'Unauthorized'}, 401
   productImage = ProductImage.query.get(productImageId)
   if not productImage:
     return { 'error': 'Product image not found' }, 404
@@ -32,6 +34,8 @@ def update_product_image(productImageId):
 @productImage_routes.route('/<int:productImageId>', methods=['DELETE'])
 @login_required
 def delete_product_image(productImageId):
+  if not current_user:
+    return {'error': 'Unauthorized'}, 401
   productImage = ProductImage.query.get(productImageId)
   if not productImage:
     return { 'error': 'Product image not found' }, 404

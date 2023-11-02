@@ -14,6 +14,8 @@ def update_video(videoId):
   """
   Updates a video's url
   """
+  if not current_user:
+    return {'error': 'Unauthorized'}, 401
   video = Video.query.get(videoId)
   if not video:
     return { 'error': 'Video not found' }, 404
@@ -33,6 +35,8 @@ def update_video(videoId):
 @video_routes.route('/<int:videoId>', methods=['DELETE'])
 @login_required
 def delete_video(videoId):
+  if not current_user:
+    return {'error': 'Unauthorized'}, 401
   video = Video.query.get(videoId)
   if not video:
     return { 'error': 'Video not found' }, 404
