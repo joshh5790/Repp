@@ -16,9 +16,7 @@ const removeUser = () => ({
 // thunks
 
 export const authenticate = () => async (dispatch) => {
-	const response = await csrfFetch("/api/auth/", {
-		headers: { "Content-Type": "application/json" },
-	})
+	const response = await csrfFetch("/api/auth/")
 	if (response.ok) {
 		const data = await response.json()
 		if (data.errors) return data.errors
@@ -48,11 +46,10 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 export const logout = () => async (dispatch) => {
-	const response = await csrfFetch("/api/auth/logout", {
-		headers: { "Content-Type": "application/json" },
-	})
+	const response = await csrfFetch("/api/auth/logout")
 
 	if (response.ok) dispatch(removeUser())
+	else return ['Failed to logout.']
 }
 
 export const signUp = (
@@ -123,6 +120,7 @@ export const deleteUser = () => async (dispatch) => {
 	})
 
 	if (response.ok) dispatch(removeUser())
+	else return ['Failed to delete user.']
 }
 
 const initialState = { user: null }
