@@ -34,3 +34,6 @@ class Product(db.Model):
 
   def get_stock(self):
     return [stock.to_dict() for stock in self.stock]
+
+  def get_pageOwnerId(self):
+    return self.page.to_dict()['userId']

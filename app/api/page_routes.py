@@ -163,7 +163,7 @@ def create_product(pageId):
   if form.validate_on_submit():
     data = form.data
     product = Product(
-      pageId=id,
+      pageId=pageId,
       name=data['name'],
       price=data['price'],
       description=data['description'],
@@ -192,7 +192,7 @@ def create_video(pageId):
   if form.validate_on_submit():
     data = form.data
     video = Video(
-      pageId=id,
+      pageId=pageId,
       name=data['name'],
       video=data['video']
     )
@@ -213,7 +213,7 @@ def create_cart(pageId):
   if not page:
     return { 'error': 'Page not found' }, 404
   cart = Cart(
-    pageId=id,
+    pageId=pageId,
     userId=current_user.id,
     subtotal=0
   )

@@ -19,3 +19,6 @@ class ProductImage(db.Model):
       'productId': self.productId,
       'image': self.image,
     }
+
+  def get_pageOwnerId(self):
+    return self.product.get_pageOwnerId()
