@@ -15,6 +15,7 @@ const removeUser = () => ({
 
 // thunks
 
+// GET /auth/
 export const authenticate = () => async (dispatch) => {
 	const response = await csrfFetch("/api/auth/")
 	if (response.ok) {
@@ -22,9 +23,10 @@ export const authenticate = () => async (dispatch) => {
 		if (data.errors) return data.errors
 
 		dispatch(setUser(data))
-	}
+	} else return ["Failed to authenticate."]
 }
 
+// POST /auth/login
 export const login = (email, password) => async (dispatch) => {
 	const response = await csrfFetch("/api/auth/login", {
 		method: "POST",
@@ -42,9 +44,10 @@ export const login = (email, password) => async (dispatch) => {
 	} else if (response.status < 500) {
 		const data = await response.json()
 		if (data.errors) return data.errors
-	} else return ["An error occurred. Please try again."]
+	} else return ["Failed to login."]
 }
 
+// GET /auth/logout
 export const logout = () => async (dispatch) => {
 	const response = await csrfFetch("/api/auth/logout")
 
@@ -52,6 +55,7 @@ export const logout = () => async (dispatch) => {
 	else return ['Failed to logout.']
 }
 
+// POST /auth/signup
 export const signUp = (
 		firstName, lastName, username, email, gender,
 		address, city, state, password, profileImage
@@ -60,16 +64,8 @@ export const signUp = (
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
-			firstName,
-			lastName,
-			username,
-			email,
-			gender,
-			address,
-			city,
-			state,
-			password,
-			profileImage
+			firstName, lastName, username, email, gender,
+			address, city, state, password, profileImage
 		}),
 	})
 
@@ -80,9 +76,10 @@ export const signUp = (
 	} else if (response.status < 500) {
 		const data = await response.json()
 		if (data.errors) return data.errors
-	} else return ["An error occurred. Please try again."]
+	} else return ["Failed to sign up."]
 }
 
+// PUT /session/account
 export const updateUser = (
 		firstName, lastName, username, email, gender,
 		address, city, state, password, profileImage
@@ -91,16 +88,8 @@ export const updateUser = (
 		method: "PUT",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
-			firstName,
-			lastName,
-			username,
-			email,
-			gender,
-			address,
-			city,
-			state,
-			password,
-			profileImage
+			firstName, lastName, username, email, gender,
+			address, city, state, password, profileImage
 		}),
 	})
 
@@ -111,9 +100,10 @@ export const updateUser = (
 	} else if (response.status < 500) {
 		const data = await response.json()
 		if (data.errors) return data.errors
-	} else return ["An error occurred. Please try again."]
+	} else return ["Failed to update user."]
 }
 
+// DELETE /session/account
 export const deleteUser = () => async (dispatch) => {
 	const response = await csrfFetch("/api/session/account", {
 		method: "DELETE",
