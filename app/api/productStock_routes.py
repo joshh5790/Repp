@@ -67,15 +67,22 @@ def create_cart_item(productStockId):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
       data = form.data
-      cartItem = CartItem(
-        cartId=cart.id,
-        productId=product['id'],
-        quantity=data['quantity'],
-        size=productStock.size
-      )
+      cartItem = None
+      for item in cart_dict['cartItems']:
+        if item['productId'] == product['id'] and item['size'] == productStock.size:
+          cartItem = CartItem.query.get(item['id'])
+          cartItem.quantity += data['quantity']
+          break
+      if cartItem is None:
+        cartItem = CartItem(
+          cartId=cart.id,
+          productId=product['id'],
+          quantity=data['quantity'],
+          size=productStock.size
+        )
+        db.session.add(cartItem)
 
       cart.subtotal += data['quantity'] * product['price']
-      db.session.add(cartItem)
       db.session.commit()
       return cartItem.to_dict()
     else:
