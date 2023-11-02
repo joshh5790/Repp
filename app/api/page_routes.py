@@ -212,6 +212,9 @@ def create_cart(pageId):
   page = Page.query.get(pageId)
   if not page:
     return { 'error': 'Page not found' }, 404
+  existing_cart = current_user.get_one_cart(page.id)
+  if existing_cart:
+    return { 'error': 'User already has a cart for this page'}
   cart = Cart(
     pageId=pageId,
     userId=current_user.id,

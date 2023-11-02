@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
-from app.models import ProductStock, Product, CartItem, db
+from app.models import ProductStock, Cart, CartItem, db
 from app.forms import ProductStockForm, CartItemForm
 from .auth_routes import validation_errors_to_error_messages
 from flask import request
@@ -58,8 +58,9 @@ def create_cart_item(productStockId):
     productStock = ProductStock.query.get(productStockId)
     if not productStock:
       return { 'error': 'Product not found or not in stock' }, 404
-    product = Product.query.get(productStock.productId)
-    cart = current_user.get_one_cart(product.pageId)
+    product = productStock.get_product()
+    cart_dict = current_user.get_one_cart(product['pageId'])
+    cart = Cart.query.get(cart_dict['id'])
     if not cart:
       return { 'error': 'Cart not found' }, 404
     form = CartItemForm()
@@ -67,11 +68,13 @@ def create_cart_item(productStockId):
     if form.validate_on_submit():
       data = form.data
       cartItem = CartItem(
-        cartId=cart['id'],
-        productId=product.id,
+        cartId=cart.id,
+        productId=product['id'],
         quantity=data['quantity'],
         size=productStock.size
       )
+
+      cart.subtotal += data['quantity'] * product['price']
       db.session.add(cartItem)
       db.session.commit()
       return cartItem.to_dict()

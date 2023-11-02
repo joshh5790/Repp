@@ -22,7 +22,8 @@ class ProductStock(db.Model):
       'stock': self.stock,
     }
 
+  def get_product(self):
+    return self.product.to_dict()
+
   def get_pageOwnerId(self):
     return self.product.get_pageOwnerId()
-
-  
