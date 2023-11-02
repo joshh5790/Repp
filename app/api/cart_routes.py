@@ -18,3 +18,16 @@ def delete_cart(cartId):
   db.session.delete(cart)
   db.session.commit()
   return { 'message': 'Cart deleted' }
+
+# GET /carts/:cartId/cartItems
+@cart_routes.route('/<int:cartId>/cartItems')
+@login_required
+def get_cart_items(cartId):
+  if not current_user:
+    return {'error': 'Unauthorized'}, 401
+  cart = Cart.query.get(cartId)
+  if not cart:
+    return { 'error': 'Cart not found' }, 404
+  if current_user.id != cart.userId:
+    return { 'Unauthorized': 'User does not have permission to view this cart' }, 401
+  return cart.get_items()

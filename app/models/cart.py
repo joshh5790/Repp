@@ -22,6 +22,8 @@ class Cart(db.Model):
       'id': self.id,
       'pageId': self.pageId,
       'userId': self.userId,
-      'subtotal': self.subtotal,
-      'cartItems': [cartItem.to_dict() for cartItem in self.cartItems]
+      'subtotal': self.subtotal
     }
+
+  def get_items(self):
+    return [cartItem.to_dict() for cartItem in self.cartItems]

@@ -59,8 +59,9 @@ def create_cart_item(productStockId):
     if not productStock:
       return { 'error': 'Product not found or not in stock' }, 404
     product = productStock.get_product()
-    cart_dict = current_user.get_one_cart(product['pageId'])
-    cart = Cart.query.get(cart_dict['id'])
+    curr_cart = current_user.get_one_cart(product['pageId'])
+    cart = Cart.query.get(curr_cart['id'])
+    cartItems = curr_cart.get_items()
     if not cart:
       return { 'error': 'Cart not found' }, 404
     form = CartItemForm()
@@ -68,7 +69,7 @@ def create_cart_item(productStockId):
     if form.validate_on_submit():
       data = form.data
       cartItem = None
-      for item in cart_dict['cartItems']:
+      for item in cartItems['cartItems']:
         if item['productId'] == product['id'] and item['size'] == productStock.size:
           cartItem = CartItem.query.get(item['id'])
           cartItem.quantity += data['quantity']

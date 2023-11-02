@@ -32,10 +32,26 @@ class Page(db.Model):
   videos = db.relationship("Video", back_populates="page", cascade="all, delete-orphan")
   cart = db.relationship("Cart", back_populates="page", cascade="all, delete-orphan")
 
+  def repp_info(self):
+    return {
+      'id': self.id,
+      'displayName': self.displayName,
+      'linkName': self.linkName,
+      'tiktok': self.tiktok,
+      'youtube': self.youtube,
+      'instagram': self.instagram,
+      'applemusic': self.applemusic,
+      'spotify': self.spotify,
+      'twitter': self.twitter,
+      'external': self.external,
+      'mainImage': self.mainImage,
+      'bio': self.bio,
+      'profileImage': self.user.profileImage,
+    }
+
   def to_dict(self):
     return {
       'id': self.id,
-      'userId': self.userId,
       'displayName': self.displayName,
       'linkName': self.linkName,
       'tiktok': self.tiktok,
@@ -53,6 +69,7 @@ class Page(db.Model):
       'businessInquiries': self.businessInquiries,
       'videoSection': self.videoSection,
       'shopSection': self.shopSection,
+      'profileImage': self.user.profileImage,
     }
 
   def get_products(self):
