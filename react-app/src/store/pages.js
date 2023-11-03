@@ -1,5 +1,3 @@
-import { csrfFetch } from "./csrf"
-
 // constants
 
 const SET_RPAGE = "pages/SET_RPAGE"
@@ -15,7 +13,7 @@ const setRPage = (rpage) => ({
 
 // GET /session/page
 export const getSessionPageThunk = () => async (dispatch) => {
-  const response = await csrfFetch("/api/session/page")
+  const response = await fetch("/api/session/page")
 	if (response.ok) {
 		const data = await response.json()
 		dispatch(setRPage({ [data.id]: data }))
@@ -28,7 +26,7 @@ export const getSessionPageThunk = () => async (dispatch) => {
 
 // GET /pages/
 export const getRPagesThunk = () => async (dispatch) => {
-  const response = await csrfFetch("/api/pages/")
+  const response = await fetch("/api/pages/")
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -45,7 +43,7 @@ export const getRPagesThunk = () => async (dispatch) => {
 
 // GET /pages/:pageId
 export const getOneRPageThunk = (pageId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/pages/${pageId}`)
+  const response = await fetch(`/api/pages/${pageId}`)
 	if (response.ok) {
 		const data = await response.json()
 		dispatch(setRPage({ [data.id]: data }))
@@ -63,7 +61,7 @@ export const createRPageThunk = (
     external, mainImage, isBanner, mainVideo, bio,
     newsletter, businessInquiries, videoSection, shopSection
 	) => async (dispatch) => {
-	const response = await csrfFetch("/api/pages/", {
+	const response = await fetch("/api/pages/", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -91,7 +89,7 @@ export const updateRPageThunk = (
     external, mainImage, isBanner, mainVideo, bio,
     newsletter, businessInquiries, videoSection, shopSection
 	) => async (dispatch) => {
-	const response = await csrfFetch(`/api/pages/${pageId}`, {
+	const response = await fetch(`/api/pages/${pageId}`, {
 		method: "PUT",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -114,7 +112,7 @@ export const updateRPageThunk = (
 
 // DELETE /pages/:pageId
 export const deleteRPageThunk = (pageId) => async (dispatch) => {
-	const response = await csrfFetch(`/api/pages/${pageId}`, {
+	const response = await fetch(`/api/pages/${pageId}`, {
 		method: "DELETE",
 	})
 

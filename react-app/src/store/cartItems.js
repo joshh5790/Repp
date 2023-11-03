@@ -1,5 +1,3 @@
-import { csrfFetch } from "./csrf"
-
 // constants
 
 const SET_CARTITEMS = 'cartItems/SET_CARTITEMS'
@@ -27,7 +25,7 @@ const removeCartItem = (cartItemId) => ({
 
 // GET /carts/:cartId/cartItems/
 export const getCartItemsThunk = (cartId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/carts/${cartId}/cartItems/`)
+  const response = await fetch(`/api/carts/${cartId}/cartItems/`)
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -46,7 +44,7 @@ export const getCartItemsThunk = (cartId) => async (dispatch) => {
 export const createCartItemThunk = (
     productStockId, quantity
   ) => async (dispatch) => {
-  const response = await csrfFetch(`/api/productStocks/${productStockId}/cartItems/`, {
+  const response = await fetch(`/api/productStocks/${productStockId}/cartItems/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -68,7 +66,7 @@ export const createCartItemThunk = (
 export const updateCartItemThunk = (
 		cartItemId, quantity
 	) => async (dispatch) => {
-	const response = await csrfFetch(`/api/cartItems/${cartItemId}`, {
+	const response = await fetch(`/api/cartItems/${cartItemId}`, {
 		method: "PUT",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -88,7 +86,7 @@ export const updateCartItemThunk = (
 
 // DELETE /cartItems/:cartItemId
 export const deleteCartItemThunk = (cartItemId) => async (dispatch) => {
-	const response = await csrfFetch(`/api/cartItems/${cartItemId}`, {
+	const response = await fetch(`/api/cartItems/${cartItemId}`, {
 		method: "DELETE",
 	})
 

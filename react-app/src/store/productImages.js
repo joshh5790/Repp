@@ -1,5 +1,3 @@
-import { csrfFetch } from "./csrf"
-
 // constants
 
 const SET_PRODUCTIMAGES = 'productImages/SET_PRODUCTIMAGES'
@@ -27,7 +25,7 @@ const removeProductImage = (productImageId) => ({
 
 // GET /products/:productId/productImages/
 export const getProductImagesThunk = (productId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/products/${productId}/productImages/`)
+  const response = await fetch(`/api/products/${productId}/productImages/`)
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -46,7 +44,7 @@ export const getProductImagesThunk = (productId) => async (dispatch) => {
 export const createProductImageThunk = (
     productId, image
   ) => async (dispatch) => {
-  const response = await csrfFetch(`/api/products/${productId}/productImages/`, {
+  const response = await fetch(`/api/products/${productId}/productImages/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -68,7 +66,7 @@ export const createProductImageThunk = (
 export const updateProductImageThunk = (
 		productImageId, image
 	) => async (dispatch) => {
-	const response = await csrfFetch(`/api/productImages/${productImageId}`, {
+	const response = await fetch(`/api/productImages/${productImageId}`, {
 		method: "PUT",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -88,7 +86,7 @@ export const updateProductImageThunk = (
 
 // DELETE /productImages/:productImageId
 export const deleteProductImageThunk = (productImageId) => async (dispatch) => {
-	const response = await csrfFetch(`/api/productImages/${productImageId}`, {
+	const response = await fetch(`/api/productImages/${productImageId}`, {
 		method: "DELETE",
 	})
 

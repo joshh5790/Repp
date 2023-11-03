@@ -1,5 +1,3 @@
-import { csrfFetch } from "./csrf"
-
 // constants
 
 const SET_VIDEOS = 'videos/SET_VIDEOS'
@@ -27,7 +25,7 @@ const removeVideo = (videoId) => ({
 
 // GET /pages/:pageId/videos/
 export const getVideosThunk = (pageId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/pages/${pageId}/videos/`)
+  const response = await fetch(`/api/pages/${pageId}/videos/`)
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -46,7 +44,7 @@ export const getVideosThunk = (pageId) => async (dispatch) => {
 export const createVideoThunk = (
     pageId, name, description, price, previewImage
   ) => async (dispatch) => {
-  const response = await csrfFetch(`/api/pages/${pageId}/videos/`, {
+  const response = await fetch(`/api/pages/${pageId}/videos/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -68,7 +66,7 @@ export const createVideoThunk = (
 export const updateVideoThunk = (
 		videoId, name, description, price, previewImage
 	) => async (dispatch) => {
-	const response = await csrfFetch(`/api/videos/${videoId}`, {
+	const response = await fetch(`/api/videos/${videoId}`, {
 		method: "PUT",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -88,7 +86,7 @@ export const updateVideoThunk = (
 
 // DELETE /videos/:videoId
 export const deleteVideoThunk = (videoId) => async (dispatch) => {
-	const response = await csrfFetch(`/api/videos/${videoId}`, {
+	const response = await fetch(`/api/videos/${videoId}`, {
 		method: "DELETE",
 	})
 

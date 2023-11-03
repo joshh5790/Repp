@@ -1,5 +1,3 @@
-import { csrfFetch } from "./csrf"
-
 // constants
 
 const SET_PRODUCTS = 'products/SET_PRODUCTS'
@@ -27,7 +25,7 @@ const removeProduct = (productId) => ({
 
 // GET /pages/:pageId/products/
 export const getProductsThunk = (pageId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/pages/${pageId}/products/`)
+  const response = await fetch(`/api/pages/${pageId}/products/`)
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -46,7 +44,7 @@ export const getProductsThunk = (pageId) => async (dispatch) => {
 export const createProductThunk = (
     pageId, name, description, price, previewImage
   ) => async (dispatch) => {
-  const response = await csrfFetch(`/api/pages/${pageId}/products/`, {
+  const response = await fetch(`/api/pages/${pageId}/products/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -66,7 +64,7 @@ export const createProductThunk = (
 
 // GET /products/:productId
 export const getOneProductThunk = (productId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/products/${productId}`)
+  const response = await fetch(`/api/products/${productId}`)
 	if (response.ok) {
 		const data = await response.json()
 		dispatch(addProduct({ [data.id]: data }))
@@ -81,7 +79,7 @@ export const getOneProductThunk = (productId) => async (dispatch) => {
 export const updateProductThunk = (
 		productId, name, description, price, previewImage
 	) => async (dispatch) => {
-	const response = await csrfFetch(`/api/products/${productId}`, {
+	const response = await fetch(`/api/products/${productId}`, {
 		method: "PUT",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -101,7 +99,7 @@ export const updateProductThunk = (
 
 // DELETE /products/:productId
 export const deleteProductThunk = (productId) => async (dispatch) => {
-	const response = await csrfFetch(`/api/products/${productId}`, {
+	const response = await fetch(`/api/products/${productId}`, {
 		method: "DELETE",
 	})
 

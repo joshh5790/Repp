@@ -8,6 +8,7 @@ import productStock from './productStock'
 import videos from './videos'
 import carts from './carts'
 import cartItems from './cartItems'
+import visibility from './navigation'
 
 const rootReducer = combineReducers({
   session,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   videos,
   carts,
   cartItems,
+  visibility,
 })
 
 

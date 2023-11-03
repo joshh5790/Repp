@@ -1,5 +1,3 @@
-import { csrfFetch } from "./csrf"
-
 // constants
 
 const SET_PRODUCTSTOCKS = 'productStock/SET_PRODUCTSTOCKS'
@@ -27,7 +25,7 @@ const removeProductStock = (productStockId) => ({
 
 // GET /products/:productId/productStocks/
 export const getProductStocksThunk = (productId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/products/${productId}/productStocks/`)
+  const response = await fetch(`/api/products/${productId}/productStocks/`)
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -46,7 +44,7 @@ export const getProductStocksThunk = (productId) => async (dispatch) => {
 export const createProductStockThunk = (
     productId, size, stock
   ) => async (dispatch) => {
-  const response = await csrfFetch(`/api/products/${productId}/productStocks/`, {
+  const response = await fetch(`/api/products/${productId}/productStocks/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -68,7 +66,7 @@ export const createProductStockThunk = (
 export const updateProductStockThunk = (
 		productStockId, size, stock
 	) => async (dispatch) => {
-	const response = await csrfFetch(`/api/productStocks/${productStockId}`, {
+	const response = await fetch(`/api/productStocks/${productStockId}`, {
 		method: "PUT",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -88,7 +86,7 @@ export const updateProductStockThunk = (
 
 // DELETE /productStocks/:productStockId
 export const deleteProductStockThunk = (productStockId) => async (dispatch) => {
-	const response = await csrfFetch(`/api/productStocks/${productStockId}`, {
+	const response = await fetch(`/api/productStocks/${productStockId}`, {
 		method: "DELETE",
 	})
 

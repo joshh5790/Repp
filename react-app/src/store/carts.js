@@ -1,5 +1,3 @@
-import { csrfFetch } from "./csrf"
-
 // constants
 
 const SET_CARTS = 'session/SET_CARTS'
@@ -27,7 +25,7 @@ const removeCart = (cartId) => ({
 
 // GET /session/carts/
 export const getCartsThunk = () => async (dispatch) => {
-  const response = await csrfFetch(`/api/session/carts/`)
+  const response = await fetch(`/api/session/carts/`)
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -44,7 +42,7 @@ export const getCartsThunk = () => async (dispatch) => {
 
 // POST /pages/:pageId/carts/
 export const createCartThunk = (pageId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/pages/${pageId}/carts/`, {
+  const response = await fetch(`/api/pages/${pageId}/carts/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" }
   })
@@ -61,7 +59,7 @@ export const createCartThunk = (pageId) => async (dispatch) => {
 
 // DELETE /carts/:cartId
 export const deleteCartThunk = (cartId) => async (dispatch) => {
-	const response = await csrfFetch(`/api/carts/${cartId}`, {
+	const response = await fetch(`/api/carts/${cartId}`, {
 		method: "DELETE",
 	})
 

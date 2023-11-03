@@ -1,5 +1,3 @@
-import { csrfFetch } from "./csrf"
-
 // constants
 const SET_USER = "session/SET_USER"
 const REMOVE_USER = "session/REMOVE_USER"
@@ -17,7 +15,7 @@ const removeUser = () => ({
 
 // GET /auth/
 export const authenticate = () => async (dispatch) => {
-	const response = await csrfFetch("/api/auth/")
+	const response = await fetch("/api/auth/")
 	if (response.ok) {
 		const data = await response.json()
 		if (data.errors) return data.errors
@@ -28,7 +26,7 @@ export const authenticate = () => async (dispatch) => {
 
 // POST /auth/login
 export const login = (email, password) => async (dispatch) => {
-	const response = await csrfFetch("/api/auth/login", {
+	const response = await fetch("/api/auth/login", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -49,7 +47,7 @@ export const login = (email, password) => async (dispatch) => {
 
 // GET /auth/logout
 export const logout = () => async (dispatch) => {
-	const response = await csrfFetch("/api/auth/logout")
+	const response = await fetch("/api/auth/logout")
 
 	if (response.ok) dispatch(removeUser())
 	else return ['Failed to logout.']
@@ -60,7 +58,7 @@ export const signUp = (
 		firstName, lastName, username, email, gender,
 		address, city, state, password, profileImage
 	) => async (dispatch) => {
-	const response = await csrfFetch("/api/auth/signup", {
+	const response = await fetch("/api/auth/signup", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -84,7 +82,7 @@ export const updateUser = (
 		firstName, lastName, username, email, gender,
 		address, city, state, password, profileImage
 	) => async (dispatch) => {
-	const response = await csrfFetch("/api/session/account", {
+	const response = await fetch("/api/session/account", {
 		method: "PUT",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -105,7 +103,7 @@ export const updateUser = (
 
 // DELETE /session/account
 export const deleteUser = () => async (dispatch) => {
-	const response = await csrfFetch("/api/session/account", {
+	const response = await fetch("/api/session/account", {
 		method: "DELETE",
 	})
 

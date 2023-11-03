@@ -1,1 +1,128 @@
-/* TODO Add site wide styles */
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  background-color: #16161d;
+  height: 100%;
+}
+
+img {
+  user-select: none;
+}
+
+#page-container {
+  position: relative;
+  top: 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease-in-out, padding-top 0.3s ease-in-out;
+}
+
+#page-container.offset-top {
+  padding-top: 3rem;
+}
+
+@media (min-width: 700px) {
+  #page-container.offset-left {
+      margin-left: 5rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  #page-container.offset-left {
+      margin-left: 14rem;
+  }
+}
+
+h1 {
+  font-family: "Ramabhadra", sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+p,
+li,
+div {
+  font-family: "Ramabhadra", sans-serif;
+  /* color: rgb(200, 200, 200); */
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.error-msg {
+  color: #FF5A5F;
+  font-size: 12px;
+  margin: 0 0 5px 0;
+}
+
+button:hover:enabled {
+  cursor: pointer;
+}
+
+.red-button:enabled {
+  background-color: #FF5A5F;
+  color: white;
+  filter: drop-shadow(0 0 1px black)
+}
+
+.hidden {
+  display: none;
+}
+
+.gray-color-button {
+  background-color: #999999;
+  color: white;
+  font-weight: bold;
+  height: 1.5rem;
+  width: 9rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.gray-color-button:hover,
+.delete-modal-button:hover,
+.delete-account-button:hover,
+.delete-acc-cancel:hover,
+.confirm-delete-acc-button:enabled:hover {
+  box-shadow: 0 0 0.5rem #999999;
+}
+
+.delete-modal-button {
+  width: 100%;
+  /* color: white; */
+  font-size: 16px;
+  font-weight: bold;
+  height: 3rem;
+  border-radius: 5px;
+}
+
+.gray {
+  color: #CCCCCC;
+}
+
+.skeleton {
+  background-color: #EEEEEE;
+  border-radius: 1rem;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+      background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+      background-color: hsl(200, 20%, 95%);
+  }
+}
