@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
-import OpenModalButton from "../OpenModalButton";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -35,20 +32,26 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  const closeMenu = () => setShowMenu(false);
+  // const closeMenu = () => setShowMenu(false);
 
   return (
     <>
       <button className="profile-button" onClick={openMenu}>
         {user?.profileImage
-        ? <img src={user?.profileImage} className='profile-button-img'/>
+        ? <img
+            alt='profile'
+            src={user?.profileImage}
+            className='profile-button-img'/>
         : <i className="fas fa-user-circle" />
         }
       </button>
       <ul className={ulClassName} ref={ulRef}>
         <li className="dropdown-info-container">
           {user?.profileImage
-          ? <img src={user?.profileImage} className='profile-button-img'/>
+          ? <img
+              alt='profile'
+              src={user?.profileImage}
+              className='profile-button-img'/>
           : <i className="fas fa-user-circle profile-button-img" />
           }
           <div className="dropdown-info">

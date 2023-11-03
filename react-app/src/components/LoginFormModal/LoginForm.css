@@ -1,0 +1,41 @@
+.login-modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  margin-top: 0;
+}
+
+.login-input {
+  margin-top: 0.5rem;
+}
+
+.submit-login-button {
+  margin-top: 1rem;
+}
+
+.demo-user-button {
+  margin-top: 1rem;
+}
+
+.signup-redirect-button {
+  all: unset;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.signup-redirect-button:hover {
+  background-color: #EEEEEE;
+  color: #4444FF;
+}
