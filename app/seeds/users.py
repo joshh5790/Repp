@@ -5,38 +5,41 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     tiff = User(
-        firstName='Tiffany',
-        lastName='Day',
-        username='tiffanyday',
-        email='demo@aa.io',
-        gender='Female',
-        address='123 Main St',
-        city='Los Angeles',
-        state='CA',
-        password='password',
-        profileImage='https://thehiddenhits.files.wordpress.com/2021/01/tiffany-day-the-hidden-hits.jpg')
+        firstName="Tiffany",
+        lastName="Day",
+        username="tiffanyday",
+        email="demo@aa.io",
+        gender="Female",
+        address="123 Main St",
+        city="Los Angeles",
+        state="CA",
+        password="password",
+        profileImage="https://thehiddenhits.files.wordpress.com/2021/01/tiffany-day-the-hidden-hits.jpg",
+    )
     josiah = User(
-        firstName='Josiah',
-        lastName='Won',
-        username='josiahwon',
-        email='josiah@aa.io',
-        gender='Male',
-        address='122 Second St',
-        city='Los Angeles',
-        state='CA',
-        password='password',
-        profileImage='https://images.genius.com/e9a779c23099a34081cdd35250f273cc.539x539x1.jpg')
+        firstName="Josiah",
+        lastName="Won",
+        username="josiahwon",
+        email="josiah@aa.io",
+        gender="Male",
+        address="122 Second St",
+        city="Los Angeles",
+        state="CA",
+        password="password",
+        profileImage="https://images.genius.com/e9a779c23099a34081cdd35250f273cc.539x539x1.jpg",
+    )
     eric = User(
-        firstName='Eric',
-        lastName='Nam',
-        username='ericnam',
-        email='ericnam@aa.io',
-        gender='Male',
-        address='121 Third St',
-        city='Los Angeles',
-        state='CA',
-        password='password',
-        profileImage='https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg')
+        firstName="Eric",
+        lastName="Nam",
+        username="ericnam",
+        email="ericnam@aa.io",
+        gender="Male",
+        address="121 Third St",
+        city="Los Angeles",
+        state="CA",
+        password="password",
+        profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
+    )
 
     db.session.add(tiff)
     db.session.add(josiah)
