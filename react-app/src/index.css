@@ -64,7 +64,7 @@ a {
 .error-msg {
   color: #FF5A5F;
   font-size: 12px;
-  margin: 0 0 5px 0;
+  margin-bottom: 0 0 4px 0;
 }
 
 button:hover:enabled {

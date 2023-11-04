@@ -28,7 +28,7 @@ def update_product_image(productImageId):
     db.session.commit()
     return productImage.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # DELETE /productImages/:productImageId
 @productImage_routes.route('/<int:productImageId>', methods=['DELETE'])

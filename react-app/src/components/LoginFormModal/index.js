@@ -45,11 +45,11 @@ function LoginFormModal() {
         Login to <img src={logo} className='logo'/>
       </h1>
       {error && <p className='error-msg'>{error}</p>}
-      <form onSubmit={onSubmit}>
+      <form className='login-form' onSubmit={onSubmit}>
         <input
           className='login-input'
           name='credential'
-          placeholder='Username or Email'
+          placeholder='Email address'
           type='text'
           value={credential}
           onChange={e => {

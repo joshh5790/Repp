@@ -25,7 +25,7 @@ def update_cartItem(cartItemId):
     db.session.commit()
     return cartItem.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # DELETE /cartItems/:cartItemId
 @cartItem_routes.route('/<int:cartItemId>', methods=['DELETE'])

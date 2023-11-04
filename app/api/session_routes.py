@@ -47,7 +47,7 @@ def update_user():
     db.session.commit()
     return user.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # DELETE /session/account
 @session_routes.route('/account', methods=['DELETE'])

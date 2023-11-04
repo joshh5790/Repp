@@ -69,7 +69,7 @@ def create_page():
     db.session.commit()
     return new_page.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # PUT /pages/:pageId
 @page_routes.route('/<int:pageId>', methods=['PUT'])
@@ -110,7 +110,7 @@ def update_page(pageId):
     db.session.commit()
     return page.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # DELETE /pages/:pageId
 @page_routes.route('/<int:pageId>', methods=['DELETE'])
@@ -174,7 +174,7 @@ def create_product(pageId):
     db.session.commit()
     return product.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # POST /pages/:pageId/videos
 @page_routes.route('/<int:pageId>/videos', methods=['POST'])
@@ -201,7 +201,7 @@ def create_video(pageId):
     db.session.commit()
     return video.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # POST /pages/:pageId/cart
 @page_routes.route('/<int:pageId>/cart', methods=['POST'])

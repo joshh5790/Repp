@@ -8,80 +8,80 @@ from app.models import User
 def user_exists(form, field):
 	# Checking if user exists
 	email = field.data
-	if current_user.is_authenticated and current_user.email == email:
-		user = User.query.filter(User.email == email).all()
-		if len(user) > 1:
-			raise ValidationError('Email address is already in use.')
-	else:
-		user = User.query.filter(User.email == email).first()
-		if user:
-			raise ValidationError('Email address is already in use.')
+	# if current_user.is_authenticated and current_user.email == email:
+	# 	user = User.query.filter(User.email == email).all()
+	# 	if len(user) > 1:
+	# 		raise ValidationError('Email address is already in use.')
+	# else:
+	user = User.query.filter(User.email == email).first()
+	if user:
+		raise ValidationError('Email address is already in use.')
 
 
 def username_exists(form, field):
 	# Checking if username is already in use
 	username = field.data
-	if current_user.is_authenticated and current_user.username == username:
-		user = User.query.filter(User.username == username).all()
-		if len(user) > 1:
-			raise ValidationError('Username is already in use.')
-	else:
-		user = User.query.filter(User.username == username).first()
-		if user:
-			raise ValidationError('Username is already in use.')
+	# if current_user.is_authenticated and current_user.username == username:
+	# 	user = User.query.filter(User.username == username).all()
+	# 	if len(user) > 1:
+	# 		raise ValidationError('Username is already in use.')
+	# else:
+	user = User.query.filter(User.username == username).first()
+	if user:
+		raise ValidationError('Username is already in use.')
 
 def firstName_data(form, field):
 	firstName = field.data
 	if not firstName:
-		raise ValidationError('First name is required.')
+		raise ValidationError('Required')
 	if not firstName.isalpha():
-		raise ValidationError('First name must be alphabetic.')
+		raise ValidationError('Must be alphabetic')
 
 def lastName_data(form, field):
 	lastName = field.data
 	if not lastName:
-		raise ValidationError('Last name is required.')
+		raise ValidationError('Required')
 	if not all(char.isalpha() or char.isspace() for char in lastName):
-		raise ValidationError('Last name must be alphabetic.')
+		raise ValidationError('Must be alphabetic')
 
 def gender_data(form, field):
 	gender = field.data
 	if not gender:
-		raise ValidationError('Gender is required.')
+		raise ValidationError('Required')
 
 def address_data(form, field):
 	address = field.data
 	if not address:
-		raise ValidationError('Address is required.')
+		raise ValidationError('Required')
 	if len(address) < 6:
-		raise ValidationError('Address must be at least 6 characters long.')
+		raise ValidationError('Must be at least 6 characters')
 	if len(address) > 255:
-		raise ValidationError('Address must be less than 255 characters long.')
+		raise ValidationError('Must be less than 255 characters')
 	if not all(char.isalnum() or char.isspace() for char in address):
-		raise ValidationError('Address must be alphanumeric.')
+		raise ValidationError('Invalid address')
 
 def city_data(form, field):
 	city = field.data
 	if not city:
-		raise ValidationError('City is required.')
+		raise ValidationError('Required')
 	if len(city) < 3:
-		raise ValidationError('City must be at least 3 characters long.')
+		raise ValidationError('Must be at least 3 characters')
 	if len(city) > 255:
-		raise ValidationError('City must be less than 255 characters long.')
+		raise ValidationError('Must be less than 255 characters')
 	if not all(char.isalpha() or char.isspace() for char in city):
-		raise ValidationError('City must be alphabetic.')
+		raise ValidationError('Must be alphabetic')
 
 def state_data(form, field):
 	state = field.data
 	if not state:
-		raise ValidationError('State is required.')
+		raise ValidationError('Required')
 
 def password_data(form, field):
 	password = field.data
 	if not password:
-		raise ValidationError('Password is required.')
+		raise ValidationError('Required')
 	if len(password) < 6:
-		raise ValidationError('Password must be at least 6 characters long.')
+		raise ValidationError('Must be at least 6 characters')
 
 
 

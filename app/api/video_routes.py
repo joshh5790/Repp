@@ -29,7 +29,7 @@ def update_video(videoId):
     db.session.commit()
     return video.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # DELETE /videos/:videoId
 @video_routes.route('/<int:videoId>', methods=['DELETE'])

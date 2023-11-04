@@ -29,7 +29,7 @@ def update_product_stock(productStockId):
     db.session.commit()
     return productStock.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # DELETE /productStock/:productStockId
 @productStock_routes.route('/<int:productStockId>', methods=['DELETE'])
@@ -87,4 +87,4 @@ def create_cart_item(productStockId):
       db.session.commit()
       return cartItem.to_dict()
     else:
-      return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+      return { 'errors': form.errors }, 401

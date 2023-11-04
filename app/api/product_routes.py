@@ -43,7 +43,7 @@ def update_product(productId):
     db.session.commit()
     return product.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # DELETE /products/:productId
 @product_routes.route('/<int:productId>', methods=['DELETE'])
@@ -112,7 +112,7 @@ def create_product_image(productId):
     db.session.commit()
     return productImage.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # POST /products/:productId/productStocks
 @product_routes.route('/<int:productId>/productStocks', methods=['POST'])
@@ -141,6 +141,6 @@ def create_product_stock(productId):
     db.session.commit()
     return productStock.to_dict()
   else:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return { 'errors': form.errors }, 401
 
 # move to productStock
