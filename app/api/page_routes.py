@@ -11,14 +11,18 @@ page_routes = Blueprint("pages", __name__)
 
 # GET /pages/
 @page_routes.route("/")
-@login_required
 def get_pages():
     """
     Query for all pages and returns them in a list of page dictionaries
     """
     pages = Page.query.all()
-    return {"pages": [page.to_dict() for page in pages]}
+    return [page.to_dict() for page in pages]
 
+# GET /pages/home
+@page_routes.route('/home')
+def get_pages_home():
+    pages = Page.query.all()
+    return [page.home_page_info() for page in pages]
 
 # GET /pages/:pageId
 @page_routes.route("/<int:pageId>")

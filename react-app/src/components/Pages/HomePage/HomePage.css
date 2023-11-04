@@ -5,6 +5,16 @@
   transition: background-image 1s ease-in-out;
 }
 
+.home-page-text {
+  position: absolute;
+  left: 10rem;
+  bottom: 10rem;
+}
+
+.home-page-text > * {
+  color: white;
+}
+
 .home-prev-button {
   position: absolute;
   color: white;

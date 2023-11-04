@@ -1,29 +1,37 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getRPagesHomeThunk } from "../../../store/pages";
+import { NavLink } from "react-router-dom";
 import "./HomePage.css";
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = [
-    "https://images.squarespace-cdn.com/content/v1/63eae897c2c95606c0640635/56a21110-9888-4b55-be84-8caf529f9453/Website+Banner+-+HOAH.png",
-    "https://images.squarespace-cdn.com/content/v1/637d57dd5eff390eb0e98337/5c9a89cf-68a5-4cd7-8f3f-a28d6207cb69/image00002.jpeg",
-  ];
+  const repps = useSelector((state) => Object.values(state.pages));
+
+  useEffect(() => {
+    dispatch(getRPagesHomeThunk());
+  }, [dispatch]);
 
   const handleNextImage = () => {
     setCurrentIndex((prevIndex) => {
-      return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
+      console.log(repps.length, prevIndex + 1)
+      return prevIndex === repps.length - 1 ? 0 : prevIndex + 1;
     });
   };
 
   const handlePreviousImage = () => {
     setCurrentIndex((prevIndex) => {
-      return prevIndex === 0 ? images.length - 1 : prevIndex - 1;
+      return prevIndex === 0 ? repps.length - 1 : prevIndex - 1;
     });
   };
 
   return (
     <div
-      className={`home-page page-container ${'in'}`}
-      style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${images[currentIndex]})` }}
+      className={`home-page page-container ${"in"}`}
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${repps[currentIndex]?.mainImage})`,
+      }}
     >
       <i
         onClick={handlePreviousImage}
@@ -33,16 +41,12 @@ const HomePage = () => {
         onClick={handleNextImage}
         className="fa-solid fa-chevron-right home-next-button"
       />
-      {/* <div
-        className={`bg-div ${cycleBg % 2 === 0 ? 'in' : 'out'}`}
-        style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bg[Math.floor(cycleBg / 2)][0]})` }}>
-            <h1 className={`home-page-repp-name ${cycleBg % 2 === 0 ? 'in' : 'out'}`}>
-                {bg[Math.floor(cycleBg / 2)][1]}
-            </h1>
-            <NavLink to={`/${bg[Math.floor(cycleBg / 2)][2]}`} className='home-page-visit-repp'>
-                Visit Page {'>'}
-            </NavLink>
-        </div> */}
+      <div className="home-page-text">
+        <h1>{repps[currentIndex]?.displayName}</h1>
+        <NavLink to={`/${repps[currentIndex]?.linkName}`}>
+          Visit Page {'>'}
+        </NavLink>
+      </div>
     </div>
   );
 };

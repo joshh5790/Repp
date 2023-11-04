@@ -58,6 +58,14 @@ class Page(db.Model):
             "profileImage": self.user.profileImage,
         }
 
+    def home_page_info(self):
+        return {
+            "id": self.id,
+            "displayName": self.displayName,
+            "linkName": self.linkName,
+            "mainImage": self.mainImage
+        }
+
     def to_dict(self):
         return {
             "id": self.id,

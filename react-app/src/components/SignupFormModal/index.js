@@ -25,7 +25,7 @@ function SignupFormModal() {
     if (password.length > 5 && confirmPassword.length > 5) {
       setDisableButton(false)
     } else setDisableButton(true)
-  }, [password])
+  }, [password, confirmPassword])
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
