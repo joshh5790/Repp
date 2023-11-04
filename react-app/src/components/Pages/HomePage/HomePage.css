@@ -7,12 +7,54 @@
 
 .home-prev-button {
   position: absolute;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
   top: 45vh;
   left: 10px;
+  opacity: 0.5;
 }
 
 .home-next-button {
   position: absolute;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
   top: 45vh;
   right: 10px;
+  opacity: 0.7;
+}
+
+.in {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-duration: 1s;
+  animation-name: faderIn;
+  display:block;
+}
+
+.out {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-duration: 1s;
+  animation-name: faderOut;
+  display: block;
+}
+
+@keyframes faderIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes faderOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
 }
