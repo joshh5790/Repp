@@ -1,0 +1,18 @@
+.home-page {
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  transition: background-image 1s ease-in-out;
+}
+
+.home-prev-button {
+  position: absolute;
+  top: 45vh;
+  left: 10px;
+}
+
+.home-next-button {
+  position: absolute;
+  top: 45vh;
+  right: 10px;
+}

@@ -14,7 +14,7 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  background: white;
+  background-image: linear-gradient(0.25turn, #4444FF 5%, #BEE8FF 40%, #FFFF44 70%);
   transition: top 0.3s ease-in-out;
 }
 

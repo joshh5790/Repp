@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { Route, Switch } from "react-router-dom"
 import { authenticate } from "./store/session"
 import Navigation from "./components/Navigation"
+import HomePage from "./components/Pages/HomePage"
 
 function App() {
   const dispatch = useDispatch()
@@ -16,7 +17,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/" >
-
+            <HomePage />
           </Route>
         </Switch>
       )}
