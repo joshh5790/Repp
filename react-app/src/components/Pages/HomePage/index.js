@@ -40,6 +40,7 @@ const HomePage = () => {
             <img
               key={repp?.mainImage}
               src={repp?.mainImage}
+              alt={repp?.displayName}
               className="img-slider-img"
               style={{ translate: `${-100 * imageIndex}%` }}
             />
@@ -78,6 +79,7 @@ const HomePage = () => {
       >
         {repps.map((_, index) => (
           <button
+            key={index}
             className="img-slider-dot-btn"
             onClick={() => setImageIndex(index)}
           >

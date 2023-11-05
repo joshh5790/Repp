@@ -3,16 +3,15 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneRPageThunk } from "../../../store/pages";
-import { getProductsThunk } from "../../../store/products";
 import { setNavVisibility } from "../../../store/navigation";
 import ReppNav from "./ReppNav";
-import Products from "./Products";
+import ProductSection from "./ProductSection";
+import VideoSection from "./VideoSection";
 
 const ReppPage = () => {
   const dispatch = useDispatch();
   const { linkName } = useParams();
   const repp = useSelector((state) => state.pages[linkName]);
-  const products = useSelector((state) => Object.values(state.products));
   const navVisible = useSelector((state) => state.visibility.nav);
   const [sectionHeaders, setSectionHeaders] = useState([]);
 
@@ -28,7 +27,7 @@ const ReppPage = () => {
       );
       dispatch(setNavVisibility(false));
     });
-  }, [dispatch]);
+  }, [dispatch, linkName]);
 
   return (
     <div className="repp-page">
@@ -45,21 +44,21 @@ const ReppPage = () => {
       {repp?.mainVideo && (
         <div id="watch" className="main-video-section repp-page-section">
           <iframe
+            title="Main Video"
             src={repp?.mainVideo}
             className="repp-main-video"
-            scrolling="no"
-            frameborder="0"
-            allowfullscreen=""
-          ></iframe>
+          />
         </div>
       )}
       {repp?.shopSection && (
         <div id="merch" className="shop-section repp-page-section">
-          <Products pageId={repp?.id} />
+          <ProductSection pageId={repp?.id} />
         </div>
       )}
       {repp?.videoSection && (
-        <div id="videos" className="video-section repp-page-section"></div>
+        <div id="videos" className="video-section repp-page-section">
+          <VideoSection pageId={repp?.id} />
+        </div>
       )}
       {repp?.bio && (
         <div id="about" className="bio-section repp-page-section">

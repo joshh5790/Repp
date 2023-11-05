@@ -13,9 +13,10 @@ def seed_pages():
         spotify="https://open.spotify.com/artist/5D5Qbe1lf3aMnLsPSzXItu",
         external="https://www.tiffdidwhat.com/",
         mainImage="https://images.squarespace-cdn.com/content/v1/637d57dd5eff390eb0e98337/5c9a89cf-68a5-4cd7-8f3f-a28d6207cb69/image00002.jpeg",
+        mainVideo="https://www.youtube.com/embed/MzkQVaiAlrE",
         isBanner=False,
         bio="my name is tiff. im 23 years old and i make music. um. that’s pretty much most of my life. um. i live in los angeles and um. it’s great here. um. i enjoy um rice. and um pasta. and i really like pickles but i have a health condition that um uh doesn’t um really let me eat them properly. um. anyways. the goal is the be um. a really big pop star. um. maybe you can help wid that. um. thanks. >.<",
-        videoSection=False,
+        videoSection=True,
         shopSection=False,
     )
     josiah = Page(
@@ -26,7 +27,8 @@ def seed_pages():
         youtube="https://www.youtube.com/channel/UCWlhD5_iISfDwsjZ7x3eOuQ",
         instagram="https://www.instagram.com/highvyn",
         spotify="https://open.spotify.com/artist/1HlyA7Fg1HymDUmG0xaB13",
-        mainImage="https://yt3.googleusercontent.com/zhl6DOxlSDilSJWsCG_BUIgciPfSZu4OSTITWCp7OOTl6JrdxROhxZF97ia_bfISW5hYVSwQwQ=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+        mainImage="https://i.ytimg.com/vi/X2UINYpMOOw/hq720.jpg",
+        mainVideo="https://www.youtube.com/embed/zkZJ6J2M5GA",
         isBanner=True,
         bio="Sailing precariously between the borders of alternative rnb, indie pop, and electronic dance genres, Highvyn searches for an identity that blends sounds and emotions into a beautifully curated mess. Self-produced, written, and recorded in his DIY home studio in the dmv, Highvyn has carved out a space for himself as an artist that has no true equivalents. \nHighvyn balances his ever-changing sound with lyrics from the heart, with an intimate writing style that explores themes of self-discovery and the struggles of young love. In 2024, Highvyn hopes to expand the full potential of his artistry to create music that transcends time, space, and mediums.",
         videoSection=False,
@@ -47,7 +49,7 @@ def seed_pages():
         isBanner=False,
         bio="Named GQ Korea’s Man of the Year and Forbes 30 Under 30 Asia, the multifaceted musician, actor and television personality Eric Nam is one of the most successful Korean-American figures of recent times, having built what GQ calls “one of the most varied and entrepreneurial legacies in the K-Pop scene.” With 3.5M+ monthly listeners and 4.6M+ followers on Instagram, Eric has amassed over 1B streams on Spotify and most recently headlined a sold-out world tour playing 59 headline shows across 54 cities including Los Angeles, New York, Paris, London and Melbourne. In addition to music, Eric is a co-founder and creative director at DIVE Studios, the world’s leading AAPI and K-pop focused media company with multiple award-winning podcasts, and Mindset, a mental health and wellness platform for Gen Z audiences.",
         businessInquiries="info@enmgmt.com",
-        videoSection=False,
+        videoSection=True,
         shopSection=True,
     )
 

@@ -37,7 +37,7 @@ function LoginForm() {
   return (
     <div className="login-modal-container">
       <h1 className="modal-header">
-        Login to <img src={logo} className="logo" />
+        Login to <img src={logo} alt="logo" className="logo" />
       </h1>
       {error && <p className="error-msg">{error}</p>}
       <form className="login-form" onSubmit={onSubmit}>

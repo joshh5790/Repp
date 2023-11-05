@@ -25,7 +25,7 @@ const removeVideo = (videoId) => ({
 
 // GET /pages/:pageId/videos/
 export const getVideosThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}/videos/`)
+  const response = await fetch(`/api/pages/${pageId}/videos`)
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -44,7 +44,7 @@ export const getVideosThunk = (pageId) => async (dispatch) => {
 export const createVideoThunk = (
     pageId, name, description, price, previewImage
   ) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}/videos/`, {
+  const response = await fetch(`/api/pages/${pageId}/videos`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

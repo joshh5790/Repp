@@ -3,15 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProductsThunk } from "../../../store/products";
 import OpenModalButton from "../../OpenModalButton";
 import ProductDetails from "../../Modals/ProductDetails";
-import "./Products.css";
+import "./ProductSection.css";
 
-const Products = ({ pageId }) => {
+const ProductSection = ({ pageId }) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => Object.values(state.products));
 
   useEffect(() => {
     dispatch(getProductsThunk(pageId));
-  }, [dispatch]);
+  }, [dispatch, pageId]);
 
   return (
     <>
@@ -45,4 +45,4 @@ const Products = ({ pageId }) => {
   );
 };
 
-export default Products;
+export default ProductSection;

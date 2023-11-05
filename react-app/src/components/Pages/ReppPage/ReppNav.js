@@ -26,7 +26,7 @@ const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [window.scrollY]);
+  }, []);
 
   const scrollToId = (id) => {
     const element = document.getElementById(id.toLowerCase());
@@ -59,37 +59,37 @@ const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
       </div>
       <div className="repp-nav-right">
         {repp?.spotify && (
-          <a target="_blank" href={repp.spotify}>
+          <a target="_blank" rel="noreferrer" href={repp.spotify}>
             <i className="fa-brands fa-spotify repp-socials" />
           </a>
         )}
         {repp?.tiktok && (
-          <a target="_blank" href={repp.tiktok}>
+          <a target="_blank" rel="noreferrer" href={repp.tiktok}>
             <i className="fa-brands fa-tiktok repp-socials" />
           </a>
         )}
         {repp?.youtube && (
-          <a target="_blank" href={repp.youtube}>
+          <a target="_blank" rel="noreferrer" href={repp.youtube}>
             <i className="fa-brands fa-youtube repp-socials" />
           </a>
         )}
         {repp?.instagram && (
-          <a target="_blank" href={repp.instagram}>
+          <a target="_blank" rel="noreferrer" href={repp.instagram}>
             <i className="fa-brands fa-instagram repp-socials" />
           </a>
         )}
         {repp?.applemusic && (
-          <a target="_blank" href={repp.applemusic}>
+          <a target="_blank" rel="noreferrer" href={repp.applemusic}>
             <i className="fa-solid fa-music repp-socials" />
           </a>
         )}
         {repp?.twitter && (
-          <a target="_blank" href={repp.twitter}>
+          <a target="_blank" rel="noreferrer" href={repp.twitter}>
             <i className="fa-brands fa-twitter repp-socials" />
           </a>
         )}
         {repp?.external && (
-          <a target="_blank" href={repp.external}>
+          <a target="_blank" rel="noreferrer" href={repp.external}>
             <i className="fa-solid fa-square-up-right repp-socials" />
           </a>
         )}
