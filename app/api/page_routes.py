@@ -231,7 +231,6 @@ def create_cart(pageId):
 
 # GET /pages/:linkName
 @page_routes.route("/<linkName>")
-@login_required
 def get_page(linkName):
     """
     Query for a page by id and returns that page in a dictionary

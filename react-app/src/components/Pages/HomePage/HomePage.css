@@ -2,8 +2,8 @@
   background-size: cover;
   background-position: center;
   object-fit: cover;
-  transition: background-image 1s ease-in-out;
-}
+  height: calc(100vh - 3rem)
+;}
 
 .home-page-text {
   position: absolute;
@@ -15,56 +15,56 @@
   color: white;
 }
 
-.home-prev-button {
+.img-slider-img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  flex-grow: 0;
+  transition: translate 300ms ease-in-out;
+}
+
+.img-slider-btn {
+  all: unset;
+  display: block;
+  margin: auto 0;
+  padding: 1rem;
+  top: 0;
+  bottom: 0;
+  text-align: center;
   position: absolute;
   color: white;
   font-size: 2rem;
   cursor: pointer;
-  top: 45vh;
-  left: 10px;
   opacity: 0.5;
 }
 
-.home-next-button {
-  position: absolute;
+.img-slider-btn.btn-left:hover,
+.img-slider-btn.btn-left:focus-visible {
+  background-image: linear-gradient(0.25turn, rgb(255, 255, 255, 0.05), rgb(255, 255, 255, 0.3) );
+  opacity: 1;
+}
+
+.img-slider-btn.btn-right:hover,
+.img-slider-btn.btn-right:focus-visible {
+  background-image: linear-gradient(0.75turn, rgb(255, 255, 255, 0.05), rgb(255, 255, 255, 0.3) );
+  opacity: 1;
+}
+
+.img-slider-dot-btn {
+  all: unset;
   color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  top: 45vh;
-  right: 10px;
-  opacity: 0.7;
+  font-size: 0.7rem;
 }
 
-.in {
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
-  animation-duration: 1s;
-  animation-name: faderIn;
-  display:block;
+.img-slider-dot-btn:hover,
+.img-slider-dot-btn:focus-visible {
+  scale: 1.2;
+  transition: scale 100ms ease-in-out;
 }
 
-.out {
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
-  animation-duration: 1s;
-  animation-name: faderOut;
-  display: block;
-}
-
-@keyframes faderIn {
-  from {
-      opacity: 0;
-  }
-  to {
-      opacity: 1;
-  }
-}
-
-@keyframes faderOut {
-  from {
-      opacity: 1;
-  }
-  to {
-      opacity: 0;
-  }
+.img-slider-btn:focus-visible,
+.img-slider-dot-btn:focus-visible {
+  outline: auto;
 }

@@ -6,7 +6,7 @@ import "./HomePage.css";
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(0);
   const repps = useSelector((state) => Object.values(state.pages));
 
   useEffect(() => {
@@ -14,38 +14,80 @@ const HomePage = () => {
   }, [dispatch]);
 
   const handleNextImage = () => {
-    setCurrentIndex((prevIndex) => {
-      console.log(repps.length, prevIndex + 1)
+    setImageIndex((prevIndex) => {
       return prevIndex === repps.length - 1 ? 0 : prevIndex + 1;
     });
   };
 
   const handlePreviousImage = () => {
-    setCurrentIndex((prevIndex) => {
+    setImageIndex((prevIndex) => {
       return prevIndex === 0 ? repps.length - 1 : prevIndex - 1;
     });
   };
 
   return (
-    <div
-      className={`home-page page-container ${"in"}`}
-      style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${repps[currentIndex]?.mainImage})`,
-      }}
-    >
-      <i
+    <div className="home-page page-container">
+      <div style={{ width: "100%", height: "100%", position: "relative" }}>
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            overflow: "hidden",
+            display: "flex",
+          }}
+        >
+          {repps.map((repp) => (
+            <img
+              key={repp?.mainImage}
+              src={repp?.mainImage}
+              className="img-slider-img"
+              style={{ translate: `${-100 * imageIndex}%` }}
+            />
+          ))}
+        </div>
+      </div>
+      <button
+        className="img-slider-btn btn-left"
         onClick={handlePreviousImage}
-        className="fa-solid fa-chevron-left home-prev-button"
-      />
-      <i
+        style={{ left: "0" }}
+      >
+        <i className="fa-solid fa-chevron-left" />
+      </button>
+      <button
+        className="img-slider-btn btn-right"
         onClick={handleNextImage}
-        className="fa-solid fa-chevron-right home-next-button"
-      />
+        style={{ right: "0" }}
+      >
+        <i className="fa-solid fa-chevron-right" />
+      </button>
       <div className="home-page-text">
-        <h1>{repps[currentIndex]?.displayName}</h1>
-        <NavLink to={`/${repps[currentIndex]?.linkName}`}>
-          Visit Page {'>'}
+        <h1>{repps[imageIndex]?.displayName}</h1>
+        <NavLink to={`/${repps[imageIndex]?.linkName}`}>
+          Visit Page {">"}
         </NavLink>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: ".5rem",
+          left: "50%",
+          translate: "-50%",
+          display: "flex",
+          gap: "1rem",
+        }}
+      >
+        {repps.map((_, index) => (
+          <button
+            className="img-slider-dot-btn"
+            onClick={() => setImageIndex(index)}
+          >
+            {index === imageIndex ? (
+              <i className="fa-solid fa-circle" />
+            ) : (
+              <i className="fa-regular fa-circle" />
+            )}
+          </button>
+        ))}
       </div>
     </div>
   );

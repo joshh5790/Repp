@@ -14,7 +14,7 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  background-image: linear-gradient(0.25turn, #4444FF 5%, #BEE8FF 40%, #FFFF44 70%);
+  background-image: linear-gradient(0.25turn, rgb(66, 66, 255) 5%, rgb(189, 232, 255) 40%, rgb(255, 255, 69) 70%);
   transition: top 0.3s ease-in-out;
 }
 
@@ -56,7 +56,6 @@
   justify-content: center;
   width: fit-content;
   height: 100%;
-  margin-right: 1rem;
   min-width: 6rem;
 }
 
