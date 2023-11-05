@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask_login import login_required, current_user
 from app.models import Video, db
 from app.forms import VideoForm
-from .auth_routes import validation_errors_to_error_messages
+from .page_routes import embed_video
 from flask import request
 
 video_routes = Blueprint("videos", __name__)
@@ -28,7 +28,7 @@ def update_video(videoId):
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         video.name = form.data["name"]
-        video.video = form.data["video"]
+        video.video = embed_video(form.data["video"])
         db.session.commit()
         return video.to_dict()
     else:

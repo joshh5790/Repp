@@ -1,9 +1,12 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint
 from flask_login import login_required, current_user
 from app.models import Page, Product, Video, Cart, db
 from app.forms import PageForm, ProductForm, VideoForm
-from .auth_routes import validation_errors_to_error_messages
 from flask import request
+import re
+
+def embed_video(url):
+    return re.sub(r"watch\?v=", "embed/", url)
 
 
 page_routes = Blueprint("pages", __name__)
@@ -50,7 +53,7 @@ def create_page():
             external=data["external"],
             mainImage=data["mainImage"],
             isBanner=data["isBanner"],
-            mainVideo=data["mainVideo"],
+            mainVideo=embed_video(data["mainVideo"]),
             bio=data["bio"],
             newsletter=data["newsletter"],
             businessInquiries=data["businessInquiries"],
@@ -96,7 +99,7 @@ def update_page(pageId):
         page.external = data["external"]
         page.mainImage = data["mainImage"]
         page.isBanner = data["isBanner"]
-        page.mainVideo = data["mainVideo"]
+        page.mainVideo = embed_video(data["mainVideo"])
         page.bio = data["bio"]
         page.newsletter = data["newsletter"]
         page.businessInquiries = data["businessInquiries"]
@@ -198,7 +201,7 @@ def create_video(pageId):
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         data = form.data
-        video = Video(pageId=pageId, name=data["name"], video=data["video"])
+        video = Video(pageId=pageId, name=data["name"], video=embed_video(data["video"]))
 
         db.session.add(video)
         db.session.commit()

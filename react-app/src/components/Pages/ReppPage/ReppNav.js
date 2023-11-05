@@ -32,7 +32,7 @@ const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
     const element = document.getElementById(id.toLowerCase());
     const elementPosition =
       element.getBoundingClientRect().top + window.scrollY;
-    const headerOffset = navVisible ? 150 : 100;
+    const headerOffset = navVisible ? 127 : 79;
     const offsetPosition = elementPosition - headerOffset;
     window.scrollTo({
       top: offsetPosition,
@@ -93,6 +93,7 @@ const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
             <i className="fa-solid fa-square-up-right repp-socials" />
           </a>
         )}
+        <i onClick={setNavVisible} className="fa-solid fa-ellipsis" />
       </div>
     </div>
   );

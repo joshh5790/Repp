@@ -43,6 +43,7 @@ def seed_pages():
         twitter="https://twitter.com/ericnamofficial",
         external="https://www.ericnam.com/",
         mainImage="https://images.squarespace-cdn.com/content/v1/63eae897c2c95606c0640635/56a21110-9888-4b55-be84-8caf529f9453/Website+Banner+-+HOAH.png",
+        mainVideo="https://www.youtube.com/embed/Se6KGVNZDvw",
         isBanner=False,
         bio="Named GQ Korea’s Man of the Year and Forbes 30 Under 30 Asia, the multifaceted musician, actor and television personality Eric Nam is one of the most successful Korean-American figures of recent times, having built what GQ calls “one of the most varied and entrepreneurial legacies in the K-Pop scene.” With 3.5M+ monthly listeners and 4.6M+ followers on Instagram, Eric has amassed over 1B streams on Spotify and most recently headlined a sold-out world tour playing 59 headline shows across 54 cities including Los Angeles, New York, Paris, London and Melbourne. In addition to music, Eric is a co-founder and creative director at DIVE Studios, the world’s leading AAPI and K-pop focused media company with multiple award-winning podcasts, and Mindset, a mental health and wellness platform for Gen Z audiences.",
         businessInquiries="info@enmgmt.com",

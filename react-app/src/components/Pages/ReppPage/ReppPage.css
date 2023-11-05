@@ -3,7 +3,7 @@
 }
 
 .repp-page-section {
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .repp-page-home-img {
@@ -13,10 +13,21 @@
     filter: brightness(70%);
 }
 
+.repp-main-video {
+    width: 100%;
+    height: 100vh;
+}
+
 #about,
 #merch,
 #videos {
-    margin: 0 5vw;
+    margin: 0rem 5vw;
+    padding-top: 0.1rem;
+}
+
+#merch,
+#watch {
+    height: fit-content;
 }
 
 #about * {

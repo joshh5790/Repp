@@ -20,8 +20,8 @@ const ReppPage = () => {
     dispatch(getOneRPageThunk(linkName)).then((reppPage) => {
       setSectionHeaders(
         [
-          reppPage.shopSection && "MERCH",
           reppPage.mainVideo && "WATCH",
+          reppPage.shopSection && "MERCH",
           reppPage.videoSection && "VIDEOS",
           reppPage.bio && "ABOUT",
         ].filter((value) => value)
@@ -42,13 +42,21 @@ const ReppPage = () => {
           <h1>{repp?.displayName}</h1>
         </div>
       </div>
+      {repp?.mainVideo && (
+        <div id="watch" className="main-video-section repp-page-section">
+          <iframe
+            src={repp?.mainVideo}
+            className="repp-main-video"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen=""
+          ></iframe>
+        </div>
+      )}
       {repp?.shopSection && (
         <div id="merch" className="shop-section repp-page-section">
           <Products pageId={repp?.id} />
         </div>
-      )}
-      {repp?.mainVideo && (
-        <div id="watch" className="main-video-section repp-page-section"></div>
       )}
       {repp?.videoSection && (
         <div id="videos" className="video-section repp-page-section"></div>
