@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom"
 import { authenticate } from "./store/session"
 import Navigation from "./components/Navigation"
 import HomePage from "./components/Pages/HomePage"
+import ReppPage from "./components/Pages/ReppPage"
 
 function App() {
   const dispatch = useDispatch()
@@ -18,6 +19,9 @@ function App() {
         <Switch>
           <Route exact path="/" >
             <HomePage />
+          </Route>
+          <Route exact path='/:linkName'>
+            <ReppPage />
           </Route>
         </Switch>
       )}

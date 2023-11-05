@@ -16,7 +16,7 @@ export const getSessionPageThunk = () => async (dispatch) => {
   const response = await fetch("/api/session/page");
   if (response.ok) {
     const data = await response.json();
-    dispatch(setRPage({ [data.id]: data }));
+    dispatch(setRPage({ [data.linkName]: data }));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -48,7 +48,7 @@ export const getRPagesHomeThunk = () => async (dispatch) => {
     const data = await response.json();
     const formattedData = {};
     for (const page of data) {
-      formattedData[page.id] = page;
+      formattedData[page.linkName] = page;
     }
     dispatch(setRPage(formattedData));
     return data;
@@ -58,12 +58,12 @@ export const getRPagesHomeThunk = () => async (dispatch) => {
   } else return ["Failed to retrieve home page information."];
 };
 
-// GET /pages/:pageId
-export const getOneRPageThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}`);
+// GET /pages/:linkName
+export const getOneRPageThunk = (linkName) => async (dispatch) => {
+  const response = await fetch(`/api/pages/${linkName}`);
   if (response.ok) {
     const data = await response.json();
-    dispatch(setRPage({ [data.id]: data }));
+    dispatch(setRPage({ [data.linkName]: data }));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -119,7 +119,7 @@ export const createRPageThunk =
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(setRPage({ [data.id]: data }));
+      dispatch(setRPage({ [data.linkName]: data }));
       return data;
     } else if (response.status < 500) {
       const data = await response.json();
@@ -176,7 +176,7 @@ export const updateRPageThunk =
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(setRPage({ [data.id]: data }));
+      dispatch(setRPage({ [data.linkName]: data }));
       return data;
     } else if (response.status < 500) {
       const data = await response.json();

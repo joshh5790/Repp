@@ -1,0 +1,18 @@
+.repp-page {
+    min-width: 100vh;
+}
+
+.repp-page-section {
+    min-height: 100vh;
+}
+
+.repp-page-home-img {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+#about {
+    margin: 0 5rem;
+}

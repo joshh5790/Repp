@@ -25,7 +25,7 @@ const removeProduct = (productId) => ({
 
 // GET /pages/:pageId/products/
 export const getProductsThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}/products/`)
+  const response = await fetch(`/api/pages/${pageId}/products`)
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -44,7 +44,7 @@ export const getProductsThunk = (pageId) => async (dispatch) => {
 export const createProductThunk = (
     pageId, name, description, price, previewImage
   ) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}/products/`, {
+  const response = await fetch(`/api/pages/${pageId}/products`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

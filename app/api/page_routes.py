@@ -24,19 +24,6 @@ def get_pages_home():
     pages = Page.query.all()
     return [page.home_page_info() for page in pages]
 
-# GET /pages/:pageId
-@page_routes.route("/<int:pageId>")
-@login_required
-def get_page(pageId):
-    """
-    Query for a page by id and returns that page in a dictionary
-    """
-    page = Page.query.get(pageId)
-    if not page:
-        return {"error": "Page not found"}, 404
-    return page.to_dict()
-
-
 # POST /pages/
 @page_routes.route("/", methods=["POST"])
 @login_required
@@ -237,3 +224,16 @@ def create_cart(pageId):
     db.session.add(cart)
     db.session.commit()
     return cart.to_dict()
+
+
+# GET /pages/:linkName
+@page_routes.route("/<linkName>")
+@login_required
+def get_page(linkName):
+    """
+    Query for a page by id and returns that page in a dictionary
+    """
+    page = Page.query.filter(Page.linkName == linkName).first()
+    if not page:
+        return {"error": "Page not found"}, 404
+    return page.to_dict()
