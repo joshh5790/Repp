@@ -1,0 +1,24 @@
+.product-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+}
+
+.product-container {
+    width: 100%;
+}
+
+.product-card-button {
+    all: unset;
+}
+
+.product-preview {
+    width: 100%;
+}
+
+.product-card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

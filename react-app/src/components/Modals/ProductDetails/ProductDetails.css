@@ -1,0 +1,142 @@
+.product-modal {
+  display: flex;
+  width: 70vw;
+  max-width: 50rem;
+  height: 30rem;
+  align-items: top;
+  padding-top: 1rem;
+  overflow-y: auto;
+}
+
+.fa-x.modal {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+}
+
+.fa-x.modal:hover {
+  cursor: pointer;
+}
+
+.product-carousel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.product-img-carousel {
+  height: 3rem;
+  width: 3rem;
+  /* border: 1px solid #777777; */
+  filter: opacity(50%);
+  cursor: pointer;
+}
+
+.product-img-carousel.focus {
+  filter: none;
+}
+
+.product-img-container {
+  width: 30rem;
+  display: flex;
+  align-items: center;
+}
+
+.product-modal-img {
+  width: 90%;
+}
+
+.product-modal-details {
+  justify-self: center;
+  margin-left: 2rem;
+}
+
+.product-modal-name {
+  width: fit-content;
+  margin-bottom: 0;
+}
+
+.product-modal-price {
+  color: #999999;
+  font-size: 1.2rem;
+  width: fit-content;
+}
+
+/* .in-stock {
+  height: fit-content;
+  width: fit-content;
+}
+
+.product-sizes-div {
+  display: flex;
+}
+
+.product-size-button {
+  min-width: 2rem;
+  height: 2rem;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 0.7rem;
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+.product-size-button:not(.disabled, .focus):hover {
+  cursor: pointer;
+  background-color: #EEEEEE;
+} */
+
+.product-modal-quantity-label {
+  margin: 2rem 0 0.5rem 0;
+}
+
+.product-modal-quantity-select {
+  min-width: 3rem;
+  min-height: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.product-size-button.focus {
+  background-color: black;
+  color: white;
+}
+
+.product-size-button.disabled {
+  color: #CCCCCC;
+  border: 1px solid #CCCCCC;
+}
+
+.out-of-stock {
+  margin-top: 2rem;
+  color: #CCCCCC;
+}
+
+.product-modal-button {
+  all: unset;
+  background-color: black;
+  color: white;
+  padding: 1rem 0.1rem 1rem 1rem;
+  width: 6rem;
+}
+
+@media (max-width: 900px) {
+  .product-img-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .product-carousel-container {
+    order: 1;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 700px) {
+  .product-modal {
+    flex-direction: column;
+  }
+  .product-img-container {
+    width: 100%;
+  }
+}

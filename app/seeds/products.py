@@ -7,7 +7,7 @@ def seed_products():
         pageId=3,
         name="World Tour Hoodie",
         price=65,
-        previewImage='"https://cdn.shopify.com/s/files/1/0091/7454/8577/files/hoodiefront_550x825.png"',
+        previewImage="https://cdn.shopify.com/s/files/1/0091/7454/8577/files/hoodiefront_550x825.png",
     )
     product2 = Product(
         pageId=3,
