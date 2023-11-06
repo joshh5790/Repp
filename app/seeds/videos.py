@@ -70,9 +70,9 @@ def seed_videos():
 def undo_videos():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.productvideos RESTART IDENTITY CASCADE;"
+            f"TRUNCATE table {SCHEMA}.videos RESTART IDENTITY CASCADE;"
         )
     else:
-        db.session.execute(text("DELETE FROM productvideos"))
+        db.session.execute(text("DELETE FROM videos"))
 
     db.session.commit()

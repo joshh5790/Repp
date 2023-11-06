@@ -4,6 +4,9 @@ from .pages import seed_pages, undo_pages
 from .products import seed_products, undo_products
 from .productImages import seed_productImages, undo_productImages
 from .productStocks import seed_productStocks, undo_productStocks
+from .videos import seed_videos, undo_videos
+
+
 
 from app.models.db import db, environment, SCHEMA
 
@@ -25,12 +28,13 @@ def seed():
         undo_products()
         undo_productImages()
         undo_productStocks()
+        undo_videos()
     seed_users()
     seed_pages()
     seed_products()
     seed_productImages()
     seed_productStocks()
-    # Add other seed functions here
+    seed_videos()
 
 
 # Creates the `flask seed undo` command
@@ -41,4 +45,4 @@ def undo():
     undo_products()
     undo_productImages()
     undo_productStocks()
-    # Add other undo functions here
+    undo_videos()

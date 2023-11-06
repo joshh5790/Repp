@@ -11,20 +11,23 @@ const VideoSection = ({ pageId }) => {
     dispatch(getVideosThunk(pageId))
   }, [dispatch, pageId])
   return (
-    <div>
+    <>
       <h1>VIDEOS</h1>
-      {videos.map(video => (
-        <div
-        key={video?.id}
-        className='video-container'>
-          {/* <iframe
-            src={video?.video}
-            className="video-list-video"
-          /> */}
-          <div>{video?.name}</div>
-        </div>
-      ))}
-    </div>
+      <div className='videos-list'>
+        {videos.map(video => (
+          <div
+          key={video?.id}
+          className='video-container'>
+            <iframe
+              title={video?.name}
+              src={video?.video}
+              className="video-list-video"
+            />
+            <div>{video?.name}</div>
+          </div>
+        ))}
+      </div>
+    </>
   )
 }
 

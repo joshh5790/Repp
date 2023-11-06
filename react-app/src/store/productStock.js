@@ -25,7 +25,7 @@ const removeProductStock = (productStockId) => ({
 
 // GET /products/:productId/productStocks/
 export const getProductStocksThunk = (productId) => async (dispatch) => {
-  const response = await fetch(`/api/products/${productId}/productStocks/`)
+  const response = await fetch(`/api/products/${productId}/productStocks`)
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -33,7 +33,7 @@ export const getProductStocksThunk = (productId) => async (dispatch) => {
       formattedData[productStock.id] = productStock
     }
 		dispatch(setProductStocks(formattedData))
-    return formattedData
+    return data
 	} else if (response.status < 500) {
 		const data = await response.json()
 		if (data.errors) return data.errors
@@ -44,7 +44,7 @@ export const getProductStocksThunk = (productId) => async (dispatch) => {
 export const createProductStockThunk = (
     productId, size, stock
   ) => async (dispatch) => {
-  const response = await fetch(`/api/products/${productId}/productStocks/`, {
+  const response = await fetch(`/api/products/${productId}/productStocks`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

@@ -19,6 +19,8 @@
 }
 
 .product-carousel-container {
+  min-width: 3rem;
+  min-height: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,7 +46,8 @@
 }
 
 .product-modal-img {
-  width: 90%;
+  min-width: 90%;
+  aspect-ratio: 1 / 1;
 }
 
 .product-modal-details {
@@ -53,18 +56,17 @@
 }
 
 .product-modal-name {
+  min-width: 15rem;
+  min-height: 2rem;
   width: fit-content;
   margin-bottom: 0;
 }
 
 .product-modal-price {
+  min-width: 5rem;
+  min-height: 1.2rem;
   color: #999999;
   font-size: 1.2rem;
-  width: fit-content;
-}
-
-/* .in-stock {
-  height: fit-content;
   width: fit-content;
 }
 
@@ -86,16 +88,20 @@
 .product-size-button:not(.disabled, .focus):hover {
   cursor: pointer;
   background-color: #EEEEEE;
-} */
+}
 
 .product-modal-quantity-label {
   margin: 2rem 0 0.5rem 0;
 }
 
 .product-modal-quantity-select {
-  min-width: 3rem;
-  min-height: 2.5rem;
+  /* all: unset; */
+  min-width: 6rem;
+  min-height: 2rem;
   margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  padding-top: 0.3rem;
 }
 
 .product-size-button.focus {

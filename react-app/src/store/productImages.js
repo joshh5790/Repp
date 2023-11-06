@@ -4,6 +4,12 @@ const SET_PRODUCTIMAGES = 'productImages/SET_PRODUCTIMAGES'
 const ADD_PRODUCTIMAGE = 'productImages/ADD_PRODUCTIMAGE'
 const REMOVE_PRODUCTIMAGE = 'productImages/REMOVE_PRODUCTIMAGE'
 
+// selectors
+export const productImagesSelector = (state) => {
+	const imageObj = Object.values(state.productImages)
+	return imageObj.map(image => image.image)
+}
+
 // action creators
 
 const setProductImages = (productImages) => ({
@@ -25,7 +31,7 @@ const removeProductImage = (productImageId) => ({
 
 // GET /products/:productId/productImages/
 export const getProductImagesThunk = (productId) => async (dispatch) => {
-  const response = await fetch(`/api/products/${productId}/productImages/`)
+  const response = await fetch(`/api/products/${productId}/productImages`)
 	if (response.ok) {
 		const data = await response.json()
     const formattedData = {}
@@ -44,7 +50,7 @@ export const getProductImagesThunk = (productId) => async (dispatch) => {
 export const createProductImageThunk = (
     productId, image
   ) => async (dispatch) => {
-  const response = await fetch(`/api/products/${productId}/productImages/`, {
+  const response = await fetch(`/api/products/${productId}/productImages`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

@@ -30,6 +30,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    transition: margin-left 100ms ease-in-out;
 }
 
 .repp-nav-left * {
@@ -62,8 +63,19 @@
     margin-right: 2rem;
     display: flex;
     gap: 2rem;
+    transition: gap 100ms ease-in-out, margin-right 100ms ease-in-out;
 }
 
 .repp-nav-right * {
     cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .repp-nav-right {
+        gap: 1rem;
+        margin-right: 1rem;
+    }
+    .repp-nav-left {
+        margin-left: 1rem;
+    }
 }
