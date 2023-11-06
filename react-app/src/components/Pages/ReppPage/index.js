@@ -7,6 +7,7 @@ import { setNavVisibility } from "../../../store/navigation";
 import ReppNav from "./ReppNav";
 import ProductSection from "./ProductSection";
 import VideoSection from "./VideoSection";
+import Footer from "./Footer";
 
 const ReppPage = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const ReppPage = () => {
           reppPage.mainVideo && "WATCH",
           reppPage.shopSection && "MERCH",
           reppPage.videoSection && "VIDEOS",
-          reppPage.bio && "ABOUT",
+          // reppPage.bio && "ABOUT",
         ].filter((value) => value)
       );
       dispatch(setNavVisibility(false));
@@ -31,7 +32,7 @@ const ReppPage = () => {
 
   return (
     <div className="repp-page">
-      <div id={linkName} className="home-section repp-page-section">
+      <div id={linkName} style={{ height: "100vh" }}>
         <img
           className="repp-page-home-img"
           src={repp?.mainImage}
@@ -42,7 +43,7 @@ const ReppPage = () => {
         </div>
       </div>
       {repp?.mainVideo && (
-        <div id="watch" className="main-video-section repp-page-section">
+        <div id="watch" className="repp-page-section">
           <iframe
             title="Main Video"
             src={repp?.mainVideo}
@@ -51,22 +52,22 @@ const ReppPage = () => {
         </div>
       )}
       {repp?.shopSection && (
-        <div id="merch" className="shop-section repp-page-section">
+        <div id="merch" className="repp-page-section">
           <ProductSection pageId={repp?.id} />
         </div>
       )}
       {repp?.videoSection && (
-        <div id="videos" className="video-section repp-page-section">
+        <div id="videos" className="repp-page-section">
           <VideoSection pageId={repp?.id} />
         </div>
       )}
       {repp?.bio && (
-        <div id="about" className="bio-section repp-page-section">
+        <div id="about">
           <h2>ABOUT</h2>
           <div>{repp?.bio}</div>
         </div>
       )}
-      {repp?.newsletter && <div className="newsletter"></div>}
+      {repp?.newsletter && <Footer />}
       <ReppNav
         sectionHeaders={sectionHeaders}
         repp={repp}

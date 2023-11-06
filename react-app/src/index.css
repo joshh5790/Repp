@@ -17,6 +17,7 @@ img {
 }
 
 .page-container {
+  display: block;
   position: relative;
   top: 3rem;
   display: flex;
@@ -24,7 +25,6 @@ img {
   align-items: center;
   width: 100%;
   min-height: calc(100vh - 3rem);
-  box-sizing: border-box;
   transition: margin-left 0.3s ease-in-out, padding-top 0.3s ease-in-out;
 }
 

@@ -1,0 +1,27 @@
+.repp-page-footer {
+  width: 100%;
+  height: 15rem;
+  background-color: black;
+  /* bottom: 0;
+  position: absolute; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.subscribe-button {
+  all: unset;
+  color: white;
+  border: 1px solid white;
+  padding: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.subscribe-button:hover {
+  background-color: white;
+  color: black;
+  transition: background-color 100ms ease-in-out, color 100ms ease-in-out;
+  cursor: pointer;
+}
