@@ -8,6 +8,7 @@ import ReppNav from "./ReppNav";
 import ProductSection from "./ProductSection";
 import VideoSection from "./VideoSection";
 import Footer from "./Footer";
+import Cart from "./Cart";
 
 const ReppPage = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const ReppPage = () => {
   const repp = useSelector((state) => state.pages[linkName]);
   const navVisible = useSelector((state) => state.visibility.nav);
   const [sectionHeaders, setSectionHeaders] = useState([]);
+  const [numCartItems, setNumCartItems] = useState(0);
 
   useEffect(() => {
     dispatch(getOneRPageThunk(linkName)).then((reppPage) => {
@@ -23,7 +25,6 @@ const ReppPage = () => {
           reppPage.mainVideo && "WATCH",
           reppPage.shopSection && "MERCH",
           reppPage.videoSection && "VIDEOS",
-          // reppPage.bio && "ABOUT",
         ].filter((value) => value)
       );
       dispatch(setNavVisibility(false));
@@ -72,6 +73,11 @@ const ReppPage = () => {
         sectionHeaders={sectionHeaders}
         repp={repp}
         navVisible={navVisible}
+      />
+      <Cart
+        pageId={repp?.id}
+        numCartItems={numCartItems}
+        setNumCartItems={setNumCartItems}
       />
     </div>
   );

@@ -7,14 +7,17 @@ import {
   getProductImagesThunk,
   productImagesSelector,
 } from "../../../store/productImages";
+import { setCartVisibility } from "../../../store/navigation";
+import { createCartItemThunk } from "../../../store/cartItems";
+import { createCartThunk, getCartsThunk } from "../../../store/carts";
 import { formatCurrency } from "../../../utilities";
 
 const ProductDetailsModal = ({ product }) => {
   const dispatch = useDispatch();
   const sizes = useSelector((state) => Object.values(state.productStock));
   const images = [product.previewImage, ...useSelector(productImagesSelector)];
-  const [currSize, setCurrSize] = useState("");
-  const [currStock, setCurrStock] = useState("");
+  const carts = useSelector((state) => Object.values(state.carts));
+  const [currStock, setCurrStock] = useState({});
   const [outOfStock, setOutOfStock] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [focusImage, setFocusImage] = useState(0);
@@ -28,8 +31,7 @@ const ProductDetailsModal = ({ product }) => {
       .then((sizes) => {
         for (const size of sizes) {
           if (size.stock > 0) {
-            setCurrStock(size.stock);
-            setCurrSize(size.size);
+            setCurrStock(size);
             return;
           }
         }
@@ -38,16 +40,31 @@ const ProductDetailsModal = ({ product }) => {
       .then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  const setSizeStock = (size, stock) => {
-    if (stock !== 0) {
-      setCurrStock(stock);
-      setCurrSize(size);
+  const setSizeStock = (size) => {
+    if (size.stock !== 0) {
+      setCurrStock(size);
       setQuantity(1)
     }
   };
 
   const addToCart = () => {
-    // add to cart
+    let existingCart
+    for (const cart of carts) {
+      if (cart.pageId === product.pageId) {
+        existingCart = true
+        break
+      }
+    }
+    if (existingCart) {
+      dispatch(createCartItemThunk(currStock.id, quantity))
+      .then(() => dispatch(getCartsThunk()))
+    }
+    else {
+      dispatch(createCartThunk(product.pageId))
+      .then(() => dispatch(createCartItemThunk(currStock.id, quantity)))
+      .then(() => dispatch(getCartsThunk()))
+      .then(() => dispatch(setCartVisibility(true)))
+    }
     closeModal();
   };
 
@@ -84,9 +101,9 @@ const ProductDetailsModal = ({ product }) => {
                   {sizes.length > 1 &&
                     sizes.map((size) => (
                       <div
-                        onClick={() => setSizeStock(size.size, size.stock)}
+                        onClick={() => setSizeStock(size)}
                         className={`product-size-button
-                              ${currSize === size.size ? "focus" : ""}
+                              ${currStock.size === size.size ? "focus" : ""}
                               ${size.stock === 0 ? "disabled" : ""}`}
                         key={size.id}
                       >
@@ -101,15 +118,15 @@ const ProductDetailsModal = ({ product }) => {
                     className="product-modal-quantity-select"
                     value={quantity}
                   >
-                    {currStock > 0 &&
-                      Array.from(Array(currStock).keys()).map((el) => (
+                    {currStock.stock > 0 &&
+                      Array.from(Array(currStock.stock).keys()).map((el) => (
                         <option value={el + 1} key={el + 1}>
                           {el + 1}
                         </option>
                       ))}
                   </select>
                 </div>
-                <button className="product-modal-button" onClick={addToCart}>
+                <button className="add-to-cart-button" onClick={addToCart}>
                   Add to Cart
                 </button>
               </div>

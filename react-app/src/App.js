@@ -5,7 +5,6 @@ import { authenticate } from "./store/session"
 import Navigation from "./components/Navigation"
 import HomePage from "./components/Pages/HomePage"
 import ReppPage from "./components/Pages/ReppPage"
-// import Cart from "./components/Cart"
 
 function App() {
   const dispatch = useDispatch()
@@ -27,7 +26,6 @@ function App() {
         </Switch>
       )}
       <Navigation isLoaded={isLoaded} />
-      {/* <Cart /> */}
     </>
   )
 }

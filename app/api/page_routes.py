@@ -209,6 +209,14 @@ def create_video(pageId):
     else:
         return {"errors": form.errors}, 401
 
+# GET /pages/:pageId/cart
+@page_routes.route("/<int:pageId>/cart", methods=["GET"])
+@login_required
+def get_cart(pageId):
+    if not current_user:
+        return {"error": "Unauthorized"}, 401
+    return current_user.get_one_cart(pageId)
+
 
 # POST /pages/:pageId/cart
 @page_routes.route("/<int:pageId>/cart", methods=["POST"])
@@ -219,9 +227,9 @@ def create_cart(pageId):
     page = Page.query.get(pageId)
     if not page:
         return {"error": "Page not found"}, 404
-    existing_cart = current_user.get_one_cart(page.id)
+    existing_cart = current_user.get_one_cart(pageId)
     if existing_cart:
-        return {"error": "User already has a cart for this page"}
+        return {"error": "User already has a cart for this page"}, 401
     cart = Cart(pageId=pageId, userId=current_user.id, subtotal=0)
 
     db.session.add(cart)

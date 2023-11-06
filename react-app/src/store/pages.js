@@ -26,7 +26,7 @@ export const getSessionPageThunk = () => async (dispatch) => {
 
 // GET /pages/
 export const getRPagesThunk = () => async (dispatch) => {
-  const response = await fetch("/api/pages/");
+  const response = await fetch("/api/pages");
   if (response.ok) {
     const data = await response.json();
     const formattedData = {};
@@ -93,7 +93,7 @@ export const createRPageThunk =
     shopSection
   ) =>
   async (dispatch) => {
-    const response = await fetch("/api/pages/", {
+    const response = await fetch("/api/pages", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

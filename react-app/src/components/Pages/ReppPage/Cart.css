@@ -1,0 +1,237 @@
+.open-cart-button {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: fixed;
+  right: 0;
+  top: 30%;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+}
+
+#cart-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.cart-sidebar {
+  position: fixed;
+  align-self: flex-start;
+  top: 0;
+  padding-top: 1.5rem;
+  right: 0;
+  width: 28rem;
+  padding-right: 1rem;
+  height: 100vh;
+  transition: right 0.3s ease-in-out;
+  background-color: white;
+  z-index: 1;
+}
+
+.cart-sidebar.hide-cart {
+  padding-left: 1rem;
+  right: -29rem;
+}
+
+.fa-x.modal {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.switch-carts-button {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  cursor: pointer;
+  min-height: 20px;
+}
+
+.switch-carts-button:hover {
+  font-weight: bold;
+}
+
+.fa-chevron-down.carts {
+  font-size: 0.8rem;
+  margin-left: 0.2rem;
+}
+
+.carts-dropdown {
+  position: absolute;
+  background-color: white;
+  width: 15rem;
+  right: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1px black;
+}
+
+.carts-dropdown-button {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1rem;
+  cursor: pointer;
+}
+
+.cart-main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cart-restaurant-details {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  align-self: flex-start;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-restaurant-name {
+  margin-bottom: 0;
+}
+
+.cart-user-address {
+  margin-top: 0.5rem;
+  color: #999999;
+}
+
+.fa-ellipsis.cart {
+  padding: 0.5rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  background-color: #EEEEEE;
+}
+
+.fa-ellipsis.cart:hover {
+  cursor: pointer;
+  background-color: #CCCCCC;
+}
+
+.options-dropdown {
+  position: absolute;
+  background-color: white;
+  width: 15rem;
+  right: 1rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1px black;
+}
+
+.cart-options-button {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1rem;
+}
+
+.cart-options-button:hover {
+  background-color: #EEEEEE;
+  cursor: pointer;
+}
+
+.cart-options-button-icon {
+  padding-right: 1rem;
+}
+
+.cart-options-button.delete {
+  border-top: 1px solid #DDDDDD;
+  color: red;
+}
+
+.fa-trash.cart-options-button-icon {
+  border-top: 1px solid white;
+}
+
+.cart-item-list {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+
+.top-subtotal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 1rem;
+}
+
+.bottom-subtotal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-top: 1px solid #DDDDDD;
+  padding-top: 1rem;
+}
+
+.cart-main.center {
+  justify-content: center;
+}
+
+.cart-buttons {
+  position: absolute;
+  bottom: 0;
+  padding: 1.5rem 0 3rem 0;
+  background-color: white;
+  box-shadow: 0 -5px 5px -5px #CCCCCC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.cart-sidebar-button {
+  display: block;
+  text-align: center;
+  padding: 1.2rem 0;
+  width: 25rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cart-sidebar-button.add-items {
+  color: black;
+  font-weight: bold;
+  background-color: #EEEEEE;
+}
+
+.cart-sidebar-button.checkout {
+  color: white;
+  font-weight: bold;
+  background-color: black;
+}
+
+.cart-start-shopping {
+  color: white;
+  font-size: 0.9rem;
+  background-color: black;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.empty-cart-text {
+  text-align: center;
+  color: #999999;
+  width: 80%;
+  margin: 0 0 2rem 0;
+}

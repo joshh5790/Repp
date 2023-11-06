@@ -1,115 +1,116 @@
 // constants
 
-const SET_CARTITEMS = 'cartItems/SET_CARTITEMS'
-const ADD_CARTITEM = 'cartItems/ADD_CARTITEM'
-const REMOVE_CARTITEM = 'cartItems/REMOVE_CARTITEM'
+const SET_CARTITEMS = "cartItems/SET_CARTITEMS";
+const ADD_CARTITEM = "cartItems/ADD_CARTITEM";
+const REMOVE_CARTITEM = "cartItems/REMOVE_CARTITEM";
 
 // action creators
 
 const setCartItems = (cartItems) => ({
-	type: SET_CARTITEMS,
-	payload: cartItems
-})
+  type: SET_CARTITEMS,
+  payload: cartItems,
+});
 
 const addCartItem = (cartItem) => ({
   type: ADD_CARTITEM,
-  payload: cartItem
-})
+  payload: cartItem,
+});
 
 const removeCartItem = (cartItemId) => ({
   type: REMOVE_CARTITEM,
-  payload: cartItemId
-})
+  payload: cartItemId,
+});
 
 // thunks
 
 // GET /carts/:cartId/cartItems/
 export const getCartItemsThunk = (cartId) => async (dispatch) => {
-  const response = await fetch(`/api/carts/${cartId}/cartItems/`)
-	if (response.ok) {
-		const data = await response.json()
-    const formattedData = {}
+  const response = await fetch(`/api/carts/${cartId}/cartItems`);
+  if (response.ok) {
+    const data = await response.json();
+    const formattedData = {};
     for (const cartItem of data) {
-      formattedData[cartItem.id] = cartItem
+      formattedData[cartItem.id] = cartItem;
     }
-		dispatch(setCartItems(formattedData))
-    return formattedData
-	} else if (response.status < 500) {
-		const data = await response.json()
-		if (data.errors) return data.errors
-	} else return ["Failed to retrieve cartItems."]
-}
+    dispatch(setCartItems(formattedData));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) return data.errors;
+  } else return ["Failed to retrieve cartItems."];
+};
 
 // POST /productStocks/:productStockId/cartItems/
-export const createCartItemThunk = (
-    productStockId, quantity
-  ) => async (dispatch) => {
-  const response = await fetch(`/api/productStocks/${productStockId}/cartItems/`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      quantity
-    }),
-  })
+export const createCartItemThunk =
+  (productStockId, quantity) => async (dispatch) => {
+    const response = await fetch(
+      `/api/productStock/${productStockId}/cartItems`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          quantity,
+        }),
+      }
+    );
 
-  if (response.ok) {
-    const data = await response.json()
-    dispatch(addCartItem({ [data.id]: data }))
-    return data
-  } else if (response.status < 500) {
-    const data = await response.json()
-    if (data.errors) return data.errors
-  } else return ["Failed to create cartItem."]
-}
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(addCartItem({ [data.id]: data }));
+      return data;
+    } else if (response.status < 500) {
+      const data = await response.json();
+      if (data.errors) return data.errors;
+    } else return ["Failed to create cartItem."];
+  };
 
 // PUT /cartItems/:cartItemId
-export const updateCartItemThunk = (
-		cartItemId, quantity
-	) => async (dispatch) => {
-	const response = await fetch(`/api/cartItems/${cartItemId}`, {
-		method: "PUT",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({
-			quantity
-		}),
-	})
+export const updateCartItemThunk =
+  (cartItemId, quantity) => async (dispatch) => {
+    const response = await fetch(`/api/cartItems/${cartItemId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        quantity,
+      }),
+    });
 
-	if (response.ok) {
-		const data = await response.json()
-		dispatch(addCartItem({ [data.id]: data }))
-		return data
-	} else if (response.status < 500) {
-		const data = await response.json()
-    if (data.errors) return data.errors
-	} else return ["Failed to update cartItem."]
-}
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(addCartItem({ [data.id]: data }));
+      return data;
+    } else if (response.status < 500) {
+      const data = await response.json();
+      if (data.errors) return data.errors;
+    } else return ["Failed to update cartItem."];
+  };
 
 // DELETE /cartItems/:cartItemId
 export const deleteCartItemThunk = (cartItemId) => async (dispatch) => {
-	const response = await fetch(`/api/cartItems/${cartItemId}`, {
-		method: "DELETE",
-	})
+  const response = await fetch(`/api/cartItems/${cartItemId}`, {
+    method: "DELETE",
+  });
 
-	if (response.ok) dispatch(removeCartItem(cartItemId))
+  if (response.ok) dispatch(removeCartItem(cartItemId));
   else if (response.status < 500) {
-		const data = await response.json()
-    if (data.errors) return data.errors
-	} else return ["Failed to delete cartItem."]
-}
+    const data = await response.json();
+    if (data.errors) return data.errors;
+  } else return ["Failed to delete cartItem."];
+};
 
-const initialState = {}
+const initialState = {};
 
 export default function reducer(state = initialState, action) {
-	switch (action.type) {
-		case SET_CARTITEMS:
-			return { ...action.payload }
+  switch (action.type) {
+    case SET_CARTITEMS:
+      return { ...action.payload };
     case ADD_CARTITEM:
-      return { ...state, ...action.payload }
+      return { ...state, ...action.payload };
     case REMOVE_CARTITEM:
-      const newState = { ...state }
-      delete newState[action.payload]
-      return newState
-		default:
-			return state
-	}
+      const newState = { ...state };
+      delete newState[action.payload];
+      return newState;
+    default:
+      return state;
+  }
 }

@@ -154,4 +154,3 @@ def create_product_stock(productId):
         return {"errors": form.errors}, 401
 
 
-# move to productStock
