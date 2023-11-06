@@ -48,11 +48,11 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
             />
             <div className="cart-sidebar-content">
               <div>Cart</div>
-              {/* <div className="cart-items-list">
-                {cartItems.map(item => (
+              <div className="cart-items-list">
+                {Object.values(cartItems).map(item => (
                   <div>{item.name}</div>
                 ))}
-              </div> */}
+              </div>
             </div>
           </div>
         </>
