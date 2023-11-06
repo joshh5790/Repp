@@ -12,10 +12,8 @@ import Footer from "./Footer";
 const ReppPage = () => {
   const dispatch = useDispatch();
   const { linkName } = useParams();
-  const { repp, navVisible } = useSelector((state) => {
-    state.pages[linkName],
-    state.visibility.nav
-  });
+  const repp = useSelector((state) => state.pages[linkName]);
+  const navVisible = useSelector((state) => state.visibility.nav);
   const [sectionHeaders, setSectionHeaders] = useState([]);
 
   useEffect(() => {
