@@ -33,7 +33,7 @@ export const getCartsThunk = () => async (dispatch) => {
       formattedData[cart.id] = cart
     }
 		dispatch(setCarts(formattedData))
-    return formattedData
+    return data
 	} else if (response.status < 500) {
 		const data = await response.json()
 		if (data.errors) return data.errors

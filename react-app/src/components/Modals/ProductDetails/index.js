@@ -7,6 +7,7 @@ import {
   getProductImagesThunk,
   productImagesSelector,
 } from "../../../store/productImages";
+import { formatCurrency } from "../../../utilities";
 
 const ProductDetailsModal = ({ product }) => {
   const dispatch = useDispatch();
@@ -76,10 +77,10 @@ const ProductDetailsModal = ({ product }) => {
           </div>
           <div className="product-modal-details">
             <h1 className="product-modal-name">{product?.name}</h1>
-            <p className="product-modal-price">${product?.price}</p>
+            <p className="product-modal-price">{formatCurrency(product?.price)}</p>
             {!outOfStock ? (
               <div>
-                <div className="product-sizes-div">
+                <div className="flex">
                   {sizes.length > 1 &&
                     sizes.map((size) => (
                       <div

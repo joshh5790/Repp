@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+p,
+li,
+span,
+div,
+h1,
+h2,
+h3 {
+  font-family: "Ramabhadra", sans-serif;
+}
+
 #root {
   height: 100%;
 }
@@ -12,7 +22,8 @@ body {
   margin: 0;
 }
 
-img {
+img,
+i {
   user-select: none;
 }
 
@@ -28,10 +39,6 @@ img {
   transition: margin-left 0.3s ease-in-out, padding-top 0.3s ease-in-out;
 }
 
-.page-container.no-top-offset {
-  top: 0;
-}
-
 @media (min-width: 700px) {
   .page-container.offset-left {
       margin-left: 5rem;
@@ -44,22 +51,8 @@ img {
   }
 }
 
-h1 {
-  font-family: "Ramabhadra", sans-serif;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-p,
-li,
-div {
-  font-family: "Ramabhadra", sans-serif;
-  /* color: rgb(200, 200, 200); */
-}
-
-a {
-  text-decoration: none;
-  color: black;
+.flex {
+  display: flex;
 }
 
 .error-msg {
@@ -68,31 +61,11 @@ a {
   margin-bottom: 0 0 4px 0;
 }
 
-button:hover:enabled {
-  cursor: pointer;
-}
-
-.red-button:enabled {
-  background-color: #FF5A5F;
-  color: white;
-  filter: drop-shadow(0 0 1px black)
-}
-
 .hidden {
   display: none;
 }
 
-.gray-color-button {
-  background-color: #999999;
-  color: white;
-  font-weight: bold;
-  height: 1.5rem;
-  width: 9rem;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-}
-
-.gray-color-button:hover,
+/* .gray-color-button:hover,
 .delete-modal-button:hover,
 .delete-account-button:hover,
 .delete-acc-cancel:hover,
@@ -102,16 +75,12 @@ button:hover:enabled {
 
 .delete-modal-button {
   width: 100%;
-  /* color: white; */
+  color: white;
   font-size: 16px;
   font-weight: bold;
   height: 3rem;
   border-radius: 5px;
-}
-
-.gray {
-  color: #CCCCCC;
-}
+} */
 
 .skeleton {
   background-color: #EEEEEE;

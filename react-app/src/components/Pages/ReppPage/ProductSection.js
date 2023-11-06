@@ -4,6 +4,7 @@ import { getProductsThunk } from "../../../store/products";
 import OpenModalButton from "../../OpenModalButton";
 import ProductDetails from "../../Modals/ProductDetails";
 import "./ProductSection.css";
+import { formatCurrency } from "../../../utilities";
 
 const ProductSection = ({ pageId }) => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const ProductSection = ({ pageId }) => {
                   </div>
                   <div className="product-card-info">
                     <h3 className="product-card-name">{product?.name}</h3>
-                    <p className="product-card-price">${product?.price}</p>
+                    <p className="product-card-price">{formatCurrency(product?.price)}</p>
                   </div>
                 </div>
               }

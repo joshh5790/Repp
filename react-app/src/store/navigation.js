@@ -10,15 +10,15 @@ export const setSidebarVisibility = (visible) => ({
 	payload: visible
 })
 
-export const setCartVisibility = (visible) => ({
-	type: 'SET_CART_VISIBILITY',
-	payload: visible
-})
+// export const setCartVisibility = (visible) => ({
+// 	type: 'SET_CART_VISIBILITY',
+// 	payload: visible
+// })
 
 const initialState = {
   nav: true,
   sidebar: true,
-  cart: false
+  // cart: false
 }
 
 export default function reducer(state = initialState, action) {
@@ -27,8 +27,8 @@ export default function reducer(state = initialState, action) {
 			return { ...state, nav: action.payload }
 		case 'SET_SIDEBAR_VISIBILITY':
 			return { ...state, sidebar: action.payload }
-		case 'SET_CART_VISIBILITY':
-			return { ...state, cart: action.payload }
+		// case 'SET_CART_VISIBILITY':
+		// 	return { ...state, cart: action.payload }
 		default:
 			return state
 	}

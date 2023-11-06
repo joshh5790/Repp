@@ -11,8 +11,10 @@ import "./Navigation.css";
 
 function Navigation() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  const navVisible = useSelector((state) => state.visibility.nav);
+  const { sessionUser, navVisible } = useSelector((state) => {
+    state.session.user,
+    state.visibility.nav
+  });
   const location = useLocation();
 
   useEffect(() => {}, [sessionUser, dispatch]);

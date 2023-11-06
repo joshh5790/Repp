@@ -70,10 +70,6 @@
   width: fit-content;
 }
 
-.product-sizes-div {
-  display: flex;
-}
-
 .product-size-button {
   min-width: 2rem;
   height: 2rem;

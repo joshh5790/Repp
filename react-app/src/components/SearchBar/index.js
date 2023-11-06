@@ -37,10 +37,10 @@ function SearchBar() {
               onChange={handleChange}
               className="search-input"
           />
-          <div className="buttons-div">
+          <div className="flex">
             <button
               onClick={clearSearch}
-              className={`clear-search ${term.length === 0 ? 'hide' : ''}`}>
+              className={`clear-search ${term.length === 0 ? 'hidden' : ''}`}>
               <i className="fa-solid fa-x" />
             </button>
             <button

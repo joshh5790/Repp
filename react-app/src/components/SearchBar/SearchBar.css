@@ -35,19 +35,11 @@
   outline: none;
 }
 
-.buttons-div {
-  display: flex;
-}
-
 .clear-search {
   all: unset;
   margin-right: 0.5rem;
   padding-right: 0.5rem;
   border-right: 1px solid #CCCCCC;
-}
-
-.clear-search.hide {
-  display: none;
 }
 
 .search-button {
