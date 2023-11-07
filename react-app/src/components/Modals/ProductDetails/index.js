@@ -12,7 +12,7 @@ import { createCartItemThunk } from "../../../store/cartItems";
 import { createCartThunk, getCartsThunk } from "../../../store/carts";
 import { formatCurrency } from "../../../utilities";
 
-const ProductDetailsModal = ({ product }) => {
+const ProductDetailsModal = ({ product, setNumCartItems }) => {
   const dispatch = useDispatch();
   const sizes = useSelector((state) => Object.values(state.productStock));
   const images = [product.previewImage, ...useSelector(productImagesSelector)];
@@ -58,12 +58,14 @@ const ProductDetailsModal = ({ product }) => {
     if (existingCart) {
       dispatch(createCartItemThunk(currStock.id, quantity))
       .then(() => dispatch(getCartsThunk()))
+      setNumCartItems(prev => prev + 1)
     }
     else {
       dispatch(createCartThunk(product.pageId))
       .then(() => dispatch(createCartItemThunk(currStock.id, quantity)))
       .then(() => dispatch(getCartsThunk()))
       .then(() => dispatch(setCartVisibility(true)))
+      setNumCartItems(prev => prev + 1)
     }
     closeModal();
   };

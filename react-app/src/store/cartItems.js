@@ -98,6 +98,11 @@ export const deleteCartItemThunk = (cartItemId) => async (dispatch) => {
   } else return ["Failed to delete cartItem."];
 };
 
+// clear cartItems
+export const clearCartItemsThunk = () => async (dispatch) => {
+  dispatch(setCartItems({}));
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {

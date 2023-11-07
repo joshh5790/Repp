@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
-// import CartItemCard from '../CartItems/CartItemCard'
+import CartItemCard from "./CartItemCard";
 import { deleteCartThunk, getPageCartThunk } from "../../../store/carts";
 import { setCartVisibility } from "../../../store/navigation";
 import { formatCurrency } from "../../../utilities";
 import "./Cart.css";
-import { getCartItemsThunk } from "../../../store/cartItems";
+import {
+  clearCartItemsThunk,
+  getCartItemsThunk,
+} from "../../../store/cartItems";
 
 const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
   const dispatch = useDispatch();
@@ -24,72 +27,70 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
       .then((data) => setNumCartItems(data.length));
   }, [dispatch, pageId]);
 
-  const updateCartItem = (quantity) => {
+  const handleCheckout = () => {
+    dispatch(setCartVisibility(false));
+    history.push("/checkout");
+  };
 
-  }
+  const handleDeleteCart = () => {
+    dispatch(setCartVisibility(false));
+    dispatch(deleteCartThunk(cart.id));
+    dispatch(clearCartItemsThunk());
+    setNumCartItems(0);
+  };
 
   return (
     <>
-      {cart && (
-        <>
-          <div
-            onClick={() => dispatch(setCartVisibility((prev) => !prev))}
-            className={`open-cart-button ${numCartItems ? "" : "hidden"}`}
-          >
-            <div>{numCartItems}</div>
-            <i className="fa-solid fa-cart-shopping" />
-          </div>
-          <div
-            id="cart-background"
-            className={cartVisible ? "" : "hidden"}
-            onClick={() => dispatch(setCartVisibility(false))}
-          >
-            &nbsp;
-          </div>
-          <div className={`cart-sidebar ${cartVisible ? "" : "hide-cart"}`}>
-            <i
-              onClick={() => dispatch(setCartVisibility(false))}
-              className="fa-solid fa-x modal"
-            />
-            <div className="cart-sidebar-content">
-              <h2 style={{ marginTop: "0" }}>Cart</h2>
-              <div className="cart-items-list">
-                {Object.values(cartItems).map((item) => (
-                  <div key={item.id} className="cart-item-card">
-                    <div className="flex" style={{ gap: "1rem" }}>
-                      <img className="cart-item-img" src={item?.image} />
-                      <div>
-                        <div style={{ marginBottom: "0.5rem" }}>
-                          {item?.name}
-                        </div>
-                        <div style={{ color: "#999999", fontSize: "0.9rem" }}>
-                          {item?.size}
-                        </div>
-                        <input />
-                      </div>
-                    </div>
-                    <div style={{ marginBottom: "0.5rem" }}>
-                      {formatCurrency(item?.price * item?.quantity)}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div style={{position: "absolute", bottom: "0"}}>
-                <div className="subtotal">
-                  <span>Subtotal:</span>
-                  <span>{formatCurrency(cart?.subtotal)}</span>
-                </div>
-                <NavLink
-                to='/checkout'
-                onClick={() => dispatch(setCartVisibility(false))}
-                className='cart-checkout-button'>
-                Go to checkout
-              </NavLink>
-              </div>
-            </div>
-          </div>
-        </>
+      {numCartItems && (
+        <div
+          onClick={() => dispatch(setCartVisibility((prev) => !prev))}
+          className={`open-cart-button ${numCartItems ? "" : "hidden"}`}
+        >
+          <div>{numCartItems}</div>
+          <i className="fa-solid fa-cart-shopping" />
+        </div>
       )}
+      <div
+        id="cart-background"
+        className={cartVisible && cart ? "" : "hidden"}
+        onClick={() => dispatch(setCartVisibility(false))}
+      >
+        &nbsp;
+      </div>
+      <div className={`cart-sidebar ${cartVisible ? "" : "hide-cart"}`}>
+        <i
+          onClick={() => dispatch(setCartVisibility(false))}
+          className="fa-solid fa-x modal"
+        />
+        <h2 style={{ margin: "1.5rem 0 1.5rem 1.5rem" }}>Cart</h2>
+        <div className="cart-items-list">
+          {Object.values(cartItems).map((item) => (
+            <CartItemCard
+              item={item}
+              key={item.id}
+              numCartItems={numCartItems}
+              setNumCartItems={setNumCartItems}
+            />
+          ))}
+        </div>
+        <div className="cart-bottom">
+          <div onClick={handleDeleteCart} className="delete-cart-button">
+            <i className="fa-solid fa-trash" />
+            <span style={{ marginLeft: "0.5rem" }}>Clear Cart</span>
+          </div>
+          <div className="subtotal">
+            <span>Subtotal:</span>
+            <span>{formatCurrency(cart?.subtotal)}</span>
+          </div>
+          <NavLink
+            to="/checkout"
+            onClick={handleCheckout}
+            className="cart-checkout-button"
+          >
+            Go to checkout
+          </NavLink>
+        </div>
+      </div>
     </>
   );
 };

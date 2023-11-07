@@ -54,7 +54,7 @@ const ReppPage = () => {
       )}
       {repp?.shopSection && (
         <div id="merch" className="repp-page-section">
-          <ProductSection pageId={repp?.id} />
+          <ProductSection pageId={repp?.id} setNumCartItems={setNumCartItems} />
         </div>
       )}
       {repp?.videoSection && (

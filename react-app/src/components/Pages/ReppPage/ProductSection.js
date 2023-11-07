@@ -6,7 +6,7 @@ import ProductDetails from "../../Modals/ProductDetails";
 import "./ProductSection.css";
 import { formatCurrency } from "../../../utilities";
 
-const ProductSection = ({ pageId }) => {
+const ProductSection = ({ pageId, setNumCartItems }) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => Object.values(state.products));
 
@@ -21,7 +21,7 @@ const ProductSection = ({ pageId }) => {
         {products.map((product) => (
           <li className="product-container" key={product?.id}>
             <OpenModalButton
-              modalComponent={() => <ProductDetails product={product} />}
+              modalComponent={() => <ProductDetails product={product} setNumCartItems={setNumCartItems} />}
               className="product-card-button"
               buttonText={
                 <div className="product-card">
