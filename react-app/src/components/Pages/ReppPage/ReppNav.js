@@ -16,7 +16,8 @@ const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
       const scrollPosition =
         window.scrollY || document.documentElement.scrollTop;
 
-      const threshold = 30; // 30 pixels from the top
+
+      const threshold = 300; // 300 pixels from the top
 
       setScrollTop(scrollPosition <= threshold);
     }

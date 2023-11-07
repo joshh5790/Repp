@@ -80,7 +80,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
           ))}
         </div>
         <div className="cart-bottom">
-          <div onClick={handleDeleteCart} className="delete-cart-button">
+          <div onClick={handleDeleteCart} className="clear-cart-button button-hover">
             <i className="fa-solid fa-trash" />
             <span style={{ marginLeft: "0.5rem" }}>Clear Cart</span>
           </div>
@@ -91,7 +91,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
           <NavLink
             to="/checkout"
             onClick={handleCheckout}
-            className="cart-checkout-button"
+            className="cart-checkout-button button-hover"
           >
             Go to checkout
           </NavLink>

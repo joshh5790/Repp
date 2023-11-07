@@ -39,6 +39,11 @@ i {
   transition: margin-left 0.3s ease-in-out, padding-top 0.3s ease-in-out;
 }
 
+.button-hover {
+  cursor: pointer;
+  transition: background-color 100ms ease-in-out, color 100ms ease-in-out;
+}
+
 @media (min-width: 700px) {
   .page-container.offset-left {
       margin-left: 5rem;

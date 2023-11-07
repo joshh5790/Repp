@@ -20,6 +20,15 @@ function App() {
           <Route exact path="/" >
             <HomePage />
           </Route>
+          <Route exact path='/account'>
+
+          </Route>
+          <Route exact path='/profile/edit'>
+
+          </Route>
+          <Route exact path='/profile/new'>
+
+          </Route>
           <Route exact path='/:linkName'>
             <ReppPage />
           </Route>

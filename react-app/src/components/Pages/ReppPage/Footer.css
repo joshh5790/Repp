@@ -22,6 +22,4 @@
 .subscribe-button:hover {
   background-color: white;
   color: black;
-  transition: background-color 100ms ease-in-out, color 100ms ease-in-out;
-  cursor: pointer;
 }

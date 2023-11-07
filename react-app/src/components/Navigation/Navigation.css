@@ -108,15 +108,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
   list-style: none;
   padding: 0.5rem 0;
   margin: 0.5rem 0;
   right: 1rem;
-  width: 15rem;
+  width: 20rem;
   border-radius: 10px;
   top: 3.2rem;
-  box-shadow: 0 0 1rem #DDDDDD;
+  box-shadow: 0 0 1rem #999999;
   background-color: white;
   color: black;
 }
@@ -124,6 +123,8 @@
 .dropdown-info-container {
   display: flex;
   margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #999999;
 }
 
 .dropdown-info {
@@ -137,24 +138,19 @@
   text-overflow: ellipsis;
 }
 
-.logout-button-div {
+.dropdown-button {
+  text-decoration: none;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logout-button {
-  font: 1.2em "Fira Sans", sans-serif;
-  padding: 0.5rem 1rem;
-  margin-top: 0.5rem;
-  border-radius: 30px;
-  border: none;
-  font-size: 1rem;
+  padding: 1rem;
   cursor: pointer;
+  color: black;
+  display: flex;
+  justify-content: space-between;
 }
 
-
+.dropdown-button:hover {
+  background-color: #EEEEEE;
+}
 
 .fa-solid.fa-info {
   border: 3px solid #999999;

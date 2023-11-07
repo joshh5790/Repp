@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import { NavLink } from "react-router-dom";
+import { getSessionPageThunk } from "../../store/pages";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -31,43 +33,90 @@ function ProfileButton({ user }) {
     dispatch(logout());
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   // const closeMenu = () => setShowMenu(false);
 
   return (
     <>
       <button className="profile-button" onClick={openMenu}>
-        {user?.profileImage
-        ? <img
-            alt='profile'
+        {user?.profileImage ? (
+          <img
+            alt="profile"
             src={user?.profileImage}
-            className='profile-button-img'/>
-        : <i className="fas fa-user-circle" />
-        }
+            className="profile-button-img"
+          />
+        ) : (
+          <i className="fas fa-user-circle" />
+        )}
       </button>
-      <ul className={ulClassName} ref={ulRef}>
-        <li className="dropdown-info-container">
-          {user?.profileImage
-          ? <img
-              alt='profile'
+      <div
+        className={"profile-dropdown" + (showMenu ? "" : " hidden")}
+        ref={ulRef}
+      >
+        <div className="dropdown-info-container">
+          {user?.profileImage ? (
+            <img
+              alt="profile"
               src={user?.profileImage}
-              className='profile-button-img'/>
-          : <i className="fas fa-user-circle profile-button-img" />
-          }
+              className="profile-button-img"
+            />
+          ) : (
+            <i className="fas fa-user-circle profile-button-img" />
+          )}
           <div className="dropdown-info">
-            <div> {user?.firstName} {user?.lastName} </div>
+            <div>
+              {" "}
+              {user?.firstName} {user?.lastName}{" "}
+            </div>
             <div> {user?.email} </div>
-            <div></div>
           </div>
-        </li>
-        <li className="logout-button-div">
-          <button
-            className='logout-button'
-            onClick={handleLogout}>
+        </div>
+        <NavLink className="dropdown-button" to="/account">
+          <span>
+            <i className="fa-solid fa-gear" style={{ color: "#7777FF", width: "2rem" }} />
+            Account Settings
+          </span>
+          <i
+            className="fa-solid fa-chevron-right"
+            style={{ color: "#999999", fontSize: "1.2rem" }}
+          />
+        </NavLink>
+        {user?.isRepp ? (
+          <NavLink className="dropdown-button" to="/profile/edit">
+            <span>
+              <i className="fa-solid fa-book-open" style={{ color: "#7777FF", width: "2rem" }} />
+              Edit Your Profile Page
+            </span>
+            <i
+              className="fa-solid fa-chevron-right"
+              style={{ color: "#999999", fontSize: "1.2rem" }}
+            />
+          </NavLink>
+        ) : (
+          <NavLink className="dropdown-button" to="/profile/new">
+            <span>
+              <i className="fa-solid fa-book-open" style={{ color: "#7777FF", width: "2rem" }} />
+              Create Your Profile Page
+            </span>
+            <i
+              className="fa-solid fa-chevron-right"
+              style={{ color: "#999999", fontSize: "1.2rem" }}
+            />
+          </NavLink>
+        )}
+        <div className="dropdown-button" onClick={handleLogout}>
+          <span>
+            <i
+              className="fa-solid fa-arrow-right-from-bracket"
+              style={{ color: "#FF7777", width: "2rem" }}
+            />
             Log Out
-          </button>
-        </li>
-      </ul>
+          </span>
+          <i
+            className="fa-solid fa-chevron-right"
+            style={{ color: "#999999", fontSize: "1.2rem" }}
+          />
+        </div>
+      </div>
     </>
   );
 }

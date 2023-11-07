@@ -92,14 +92,18 @@
   box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.delete-cart-button {
+.clear-cart-button {
   color: red;
   padding: 1rem;
   border: 1px solid red;
   border-radius: 10px;
   right: 0;
   width: 9rem;
-  cursor: pointer;
+}
+
+.clear-cart-button:hover {
+  background-color: red;
+  color: white;
 }
 
 .subtotal {
@@ -120,12 +124,10 @@
   border-radius: 10px;
   margin-top: 2rem;
   text-decoration: none;
-  cursor: pointer;
   color: white;
   font-weight: bold;
   background-color: black;
   border: 1px solid white;
-  transition: background-color 100ms ease-in-out, color 100ms ease-in-out;
 }
 
 .cart-checkout-button:hover {
