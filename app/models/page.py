@@ -16,15 +16,17 @@ class Page(db.Model):
     )
     displayName = db.Column(db.String(40), nullable=False)
     linkName = db.Column(db.String(40), nullable=False, unique=True)
+    statusText = db.Column(db.String())
     tiktok = db.Column(db.String())
     youtube = db.Column(db.String())
     instagram = db.Column(db.String())
     applemusic = db.Column(db.String())
     spotify = db.Column(db.String())
+    facebook = db.Column(db.String())
+    discord = db.Column(db.String())
     twitter = db.Column(db.String())
     external = db.Column(db.String())
     mainImage = db.Column(db.String(), nullable=False)
-    isBanner = db.Column(db.Boolean, nullable=False)
     mainVideo = db.Column(db.String())
     bio = db.Column(db.String())
     newsletter = db.Column(db.String())
@@ -51,6 +53,8 @@ class Page(db.Model):
             "instagram": self.instagram,
             "applemusic": self.applemusic,
             "spotify": self.spotify,
+            "facebook": self.facebook,
+            "discord": self.discord,
             "twitter": self.twitter,
             "external": self.external,
             "mainImage": self.mainImage,
@@ -71,15 +75,17 @@ class Page(db.Model):
             "id": self.id,
             "displayName": self.displayName,
             "linkName": self.linkName,
+            "statusText": self.statusText,
             "tiktok": self.tiktok,
             "youtube": self.youtube,
             "instagram": self.instagram,
             "applemusic": self.applemusic,
             "spotify": self.spotify,
+            "facebook": self.facebook,
+            "discord": self.discord,
             "twitter": self.twitter,
             "external": self.external,
             "mainImage": self.mainImage,
-            "isBanner": self.isBanner,
             "mainVideo": self.mainVideo,
             "bio": self.bio,
             "newsletter": self.newsletter,

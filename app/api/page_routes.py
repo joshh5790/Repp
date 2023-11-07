@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
-from app.models import Page, Product, Video, Cart, db
+from app.models import Page, Product, Video, Cart, User, db
 from app.forms import PageForm, ProductForm, VideoForm
 from flask import request
 import re
@@ -49,10 +49,11 @@ def create_page():
             instagram=data["instagram"],
             applemusic=data["applemusic"],
             spotify=data["spotify"],
+            facebook=data["facebook"],
+            discord=data["discord"],
             twitter=data["twitter"],
             external=data["external"],
             mainImage=data["mainImage"],
-            isBanner=data["isBanner"],
             mainVideo=embed_video(data["mainVideo"]),
             bio=data["bio"],
             newsletter=data["newsletter"],
@@ -60,6 +61,8 @@ def create_page():
             videoSection=data["videoSection"],
             shopSection=data["shopSection"],
         )
+        user = User.query.get(current_user.id)
+        user.isRepp = True
 
         db.session.add(new_page)
         db.session.commit()
@@ -95,10 +98,11 @@ def update_page(pageId):
         page.instagram = data["instagram"]
         page.applemusic = data["applemusic"]
         page.spotify = data["spotify"]
+        page.facebook = data["facebook"]
+        page.discord = data["discord"]
         page.twitter = data["twitter"]
         page.external = data["external"]
         page.mainImage = data["mainImage"]
-        page.isBanner = data["isBanner"]
         page.mainVideo = embed_video(data["mainVideo"])
         page.bio = data["bio"]
         page.newsletter = data["newsletter"]

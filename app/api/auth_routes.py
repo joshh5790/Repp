@@ -72,6 +72,7 @@ def sign_up():
             city=form.data["city"],
             state=form.data["state"],
             password=form.data["password"],
+            isRepp=False,
             profileImage=form.data["profileImage"],
         )
         db.session.add(user)

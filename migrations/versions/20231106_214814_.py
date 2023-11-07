@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: a849eb307215
+Revision ID: dfa2a5aea956
 Revises:
-Create Date: 2023-11-01 18:32:02.543251
+Create Date: 2023-11-06 21:48:14.488422
 
 """
 from alembic import op
@@ -11,7 +11,7 @@ from app.models import environment, SCHEMA
 
 
 # revision identifiers, used by Alembic.
-revision = 'a849eb307215'
+revision = 'dfa2a5aea956'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,6 +30,7 @@ def upgrade():
     sa.Column('city', sa.String(length=255), nullable=False),
     sa.Column('state', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('isRepp', sa.Boolean(), nullable=False),
     sa.Column('profileImage', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
@@ -40,15 +41,17 @@ def upgrade():
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('displayName', sa.String(length=40), nullable=False),
     sa.Column('linkName', sa.String(length=40), nullable=False),
+    sa.Column('statusText', sa.String(), nullable=True),
     sa.Column('tiktok', sa.String(), nullable=True),
     sa.Column('youtube', sa.String(), nullable=True),
     sa.Column('instagram', sa.String(), nullable=True),
     sa.Column('applemusic', sa.String(), nullable=True),
     sa.Column('spotify', sa.String(), nullable=True),
+    sa.Column('facebook', sa.String(), nullable=True),
+    sa.Column('discord', sa.String(), nullable=True),
     sa.Column('twitter', sa.String(), nullable=True),
     sa.Column('external', sa.String(), nullable=True),
     sa.Column('mainImage', sa.String(), nullable=False),
-    sa.Column('isBanner', sa.Boolean(), nullable=False),
     sa.Column('mainVideo', sa.String(), nullable=True),
     sa.Column('bio', sa.String(), nullable=True),
     sa.Column('newsletter', sa.String(), nullable=True),

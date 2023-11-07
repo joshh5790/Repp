@@ -14,6 +14,7 @@ def seed_users():
         city="Los Angeles",
         state="CA",
         password="password",
+        isRepp=True,
         profileImage="https://thehiddenhits.files.wordpress.com/2021/01/tiffany-day-the-hidden-hits.jpg",
     )
     josiah = User(
@@ -26,6 +27,7 @@ def seed_users():
         city="Los Angeles",
         state="CA",
         password="password",
+        isRepp=True,
         profileImage="https://images.genius.com/e9a779c23099a34081cdd35250f273cc.539x539x1.jpg",
     )
     eric = User(
@@ -38,6 +40,7 @@ def seed_users():
         city="Los Angeles",
         state="CA",
         password="password",
+        isRepp=True,
         profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
     )
 

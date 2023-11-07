@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+    isRepp = db.Column(db.Boolean(), nullable=False)
     profileImage = db.Column(db.String())
 
     page = db.relationship("Page", back_populates="user", cascade="all, delete-orphan")
@@ -46,6 +47,7 @@ class User(db.Model, UserMixin):
             "address": self.address,
             "city": self.city,
             "state": self.state,
+            "isRepp": self.isRepp,
             "profileImage": self.profileImage,
         }
 

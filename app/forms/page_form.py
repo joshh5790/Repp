@@ -46,14 +46,6 @@ def mainImage_data(form, field):
         raise ValidationError("Main image field is required.")
 
 
-def isBanner_data(form, field):
-    isBanner = field.data
-    if not isBanner:
-        raise ValidationError(
-            "Please indicate if the main image is a banner or a full size image."
-        )
-
-
 def videoSection_data(form, field):
     videoSection = field.data
     if not videoSection:
@@ -76,10 +68,11 @@ class PageForm(FlaskForm):
     instagram = URLField("Instagram")
     applemusic = URLField("Apple Music")
     spotify = URLField("Spotify")
+    facebook = URLField("Facebook")
+    discord = URLField("Discord")
     twitter = URLField("Twitter")
     external = URLField("External Link")
     mainImage = URLField("Main Image", [DataRequired()])
-    isBanner = BooleanField("isBanner", [DataRequired()])
     mainVideo = URLField("Main Video")
     bio = StringField("Bio")
     newsletter = StringField("Newsletter")
