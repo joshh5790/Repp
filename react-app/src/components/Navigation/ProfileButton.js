@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import { NavLink } from "react-router-dom";
-import { getSessionPageThunk } from "../../store/pages";
+import { clearCartThunk } from "../../store/carts";
+import { clearCartItemsThunk } from "../../store/cartItems";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function ProfileButton({ user }) {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(logout());
+    dispatch(logout()).then(() => window.location.reload());
   };
 
   // const closeMenu = () => setShowMenu(false);
@@ -70,9 +71,16 @@ function ProfileButton({ user }) {
             <div> {user?.email} </div>
           </div>
         </div>
-        <NavLink className="dropdown-button" to="/account">
+        <NavLink
+          onClick={() => setShowMenu(false)}
+          className="dropdown-button"
+          to="/account"
+        >
           <span>
-            <i className="fa-solid fa-gear" style={{ color: "#7777FF", width: "2rem" }} />
+            <i
+              className="fa-solid fa-gear"
+              style={{ color: "#7777FF", width: "2rem" }}
+            />
             Account Settings
           </span>
           <i
@@ -81,9 +89,16 @@ function ProfileButton({ user }) {
           />
         </NavLink>
         {user?.isRepp ? (
-          <NavLink className="dropdown-button" to="/profile/edit">
+          <NavLink
+            onClick={() => setShowMenu(false)}
+            className="dropdown-button"
+            to="/profile/edit"
+          >
             <span>
-              <i className="fa-solid fa-book-open" style={{ color: "#7777FF", width: "2rem" }} />
+              <i
+                className="fa-solid fa-book-open"
+                style={{ color: "#7777FF", width: "2rem" }}
+              />
               Edit Your Profile Page
             </span>
             <i
@@ -92,9 +107,16 @@ function ProfileButton({ user }) {
             />
           </NavLink>
         ) : (
-          <NavLink className="dropdown-button" to="/profile/new">
+          <NavLink
+            onClick={() => setShowMenu(false)}
+            className="dropdown-button"
+            to="/profile/new"
+          >
             <span>
-              <i className="fa-solid fa-book-open" style={{ color: "#7777FF", width: "2rem" }} />
+              <i
+                className="fa-solid fa-book-open"
+                style={{ color: "#7777FF", width: "2rem" }}
+              />
               Create Your Profile Page
             </span>
             <i

@@ -24,14 +24,17 @@ function LoginForm() {
   const onSubmit = (e) => {
     setError("");
     e.preventDefault();
-    dispatch(login(credential, password)).then(async (data) => {
-      if (data) setError(data[0]);
-      else closeModal();
+    dispatch(login(credential, password)).then(data => {
+      if (data) return setError(data[0]);
+      closeModal();
+      window.location.reload();
     });
   };
 
   const handleDemo = () => {
-    dispatch(login("ericnam@aa.io", "password")).then(closeModal);
+    dispatch(login("ericnam@aa.io", "password"))
+      .then(closeModal)
+      .then(() => window.location.reload());
   };
 
   return (

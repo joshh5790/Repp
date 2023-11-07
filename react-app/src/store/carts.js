@@ -77,6 +77,12 @@ export const deleteCartThunk = (cartId) => async (dispatch) => {
   } else dispatch(setCart({}));
 };
 
+// clear cart
+export const clearCartThunk = () => async (dispatch) => {
+  dispatch(setCart({}));
+
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {

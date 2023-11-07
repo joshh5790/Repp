@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRPagesHomeThunk } from "../../../store/pages";
 import { NavLink } from "react-router-dom";
-import "./HomePage.css";
+import "./Home.css";
 
-const HomePage = () => {
+const Home = () => {
   const dispatch = useDispatch();
   const [imageIndex, setImageIndex] = useState(0);
   const repps = useSelector((state) => Object.values(state.pages));
@@ -95,4 +95,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

@@ -65,10 +65,7 @@ export const getOneRPageThunk = (linkName) => async (dispatch) => {
     const data = await response.json();
     dispatch(setRPage({ [data.linkName]: data }));
     return data;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) return data.errors;
-  } else return ["Failed to retrieve page."];
+  } else return
 };
 
 // POST /pages/

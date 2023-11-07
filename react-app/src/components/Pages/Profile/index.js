@@ -1,4 +1,4 @@
-import "./ReppPage.css";
+import "./Profile.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,28 +10,30 @@ import VideoSection from "./VideoSection";
 import Footer from "./Footer";
 import Cart from "./Cart";
 
-const ReppPage = () => {
+const Profile = () => {
   const dispatch = useDispatch();
   const { linkName } = useParams();
   const repp = useSelector((state) => state.pages[linkName]);
   const navVisible = useSelector((state) => state.visibility.nav);
   const [sectionHeaders, setSectionHeaders] = useState([]);
   const [numCartItems, setNumCartItems] = useState(0);
+  const [invalidPage, setInvalidPage] = useState(false);
 
   useEffect(() => {
-    dispatch(getOneRPageThunk(linkName)).then((reppPage) => {
+    dispatch(getOneRPageThunk(linkName)).then((profile) => {
+      if (!profile) return setInvalidPage(true)
       setSectionHeaders(
         [
-          reppPage.mainVideo && "WATCH",
-          reppPage.shopSection && "MERCH",
-          reppPage.videoSection && "VIDEOS",
+          profile.mainVideo && "WATCH",
+          profile.shopSection && "MERCH",
+          profile.videoSection && "VIDEOS",
         ].filter((value) => value)
       );
       dispatch(setNavVisibility(false));
     });
   }, [dispatch, linkName]);
 
-  return (
+  if (!invalidPage) return (
     <div className="repp-page">
       <div id={linkName} style={{ height: "100vh" }}>
         <img
@@ -81,6 +83,13 @@ const ReppPage = () => {
       />
     </div>
   );
+
+  else return (
+		<div className='unavailable page-container'>
+			<h1>Sorry, this page isn't available.</h1>
+			<p>The link you followed may be broken, or the page may have been removed.</p>
+		</div>
+	)
 };
 
-export default ReppPage;
+export default Profile;
