@@ -88,7 +88,7 @@
   position: fixed;
   background-color: white;
   bottom: 0;
-  padding: 2rem;
+  padding: 1rem 2rem;
   box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.2);
 }
 

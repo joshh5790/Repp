@@ -22,9 +22,15 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
 
   // on page load
   useEffect(() => {
-    dispatch(getPageCartThunk(pageId))
-      .then((data) => dispatch(getCartItemsThunk(data.id)))
-      .then((data) => setNumCartItems(data.length));
+    if (pageId) {
+      dispatch(getPageCartThunk(pageId))
+        .then((data) =>{
+          if (data.id) {
+            dispatch(getCartItemsThunk(data.id))
+            .then((data) => setNumCartItems(data.length));
+          }
+        })
+    }
   }, [dispatch, pageId]);
 
   const handleCheckout = () => {

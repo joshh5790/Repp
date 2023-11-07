@@ -1,19 +1,13 @@
 // constants
 
-const SET_CARTS = "session/SET_CARTS";
-const ADD_CART = "carts/ADD_CART";
+const SET_CART = "session/SET_CART";
 const REMOVE_CART = "carts/REMOVE_CART";
 
 // action creators
 
-const setCarts = (carts) => ({
-  type: SET_CARTS,
+const setCart = (carts) => ({
+  type: SET_CART,
   payload: carts,
-});
-
-const addCart = (cart) => ({
-  type: ADD_CART,
-  payload: cart,
 });
 
 const removeCart = (cartId) => ({
@@ -32,12 +26,12 @@ export const getCartsThunk = () => async (dispatch) => {
     for (const cart of data) {
       formattedData[cart.id] = cart;
     }
-    dispatch(setCarts(formattedData));
+    dispatch(setCart(formattedData));
     return formattedData;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to retrieve carts."];
+  } else dispatch(setCart({}));
 };
 
 // GET /pages/:pageId/carts
@@ -45,12 +39,12 @@ export const getPageCartThunk = (pageId) => async (dispatch) => {
   const response = await fetch(`/api/pages/${pageId}/cart`);
   if (response.ok) {
     const data = await response.json();
-    dispatch(addCart({ [data.id]: data }));
+    dispatch(setCart({ [data.id]: data }));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to retrieve cart."];
+  } else dispatch(setCart({}));
 }
 
 // POST /pages/:pageId/carts
@@ -62,12 +56,12 @@ export const createCartThunk = (pageId) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(addCart({ [data.id]: data }));
+    dispatch(setCart({ [data.id]: data }));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to create cart."];
+  } else dispatch(setCart({}));
 };
 
 // DELETE /carts/:cartId
@@ -80,17 +74,15 @@ export const deleteCartThunk = (cartId) => async (dispatch) => {
   else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to delete cart."];
+  } else dispatch(setCart({}));
 };
 
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case SET_CARTS:
+    case SET_CART:
       return { ...action.payload };
-    case ADD_CART:
-      return { ...state, ...action.payload };
     case REMOVE_CART:
       const newState = { ...state };
       delete newState[action.payload];
