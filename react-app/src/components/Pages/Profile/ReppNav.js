@@ -59,11 +59,6 @@ const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
         ))}
       </div>
       <div className="repp-nav-right">
-        {repp?.spotify && (
-          <a target="_blank" rel="noreferrer" href={repp.spotify}>
-            <i className="fa-brands fa-spotify repp-socials" />
-          </a>
-        )}
         {repp?.tiktok && (
           <a target="_blank" rel="noreferrer" href={repp.tiktok}>
             <i className="fa-brands fa-tiktok repp-socials" />
@@ -71,22 +66,37 @@ const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
         )}
         {repp?.youtube && (
           <a target="_blank" rel="noreferrer" href={repp.youtube}>
-            <i className="fa-brands fa-youtube repp-socials" />
+            <i className="fa-brands fa-youtube repp-socials" style={{color: "white"}}/>
           </a>
         )}
-        {repp?.instagram && (
-          <a target="_blank" rel="noreferrer" href={repp.instagram}>
-            <i className="fa-brands fa-instagram repp-socials" />
+            {repp?.instagram && (
+              <a target="_blank" rel="noreferrer" href={repp.instagram}>
+                <i className="fa-brands fa-instagram repp-socials" style={{color: "white"}} />
+              </a>
+            )}
+            {repp?.applemusic && (
+              <a target="_blank" rel="noreferrer" href={repp.applemusic}>
+                <i className="fa-brands fa-apple repp-socials" />
+              </a>
+            )}
+        {repp?.spotify && (
+          <a target="_blank" rel="noreferrer" href={repp.spotify}>
+            <i className="fa-brands fa-spotify repp-socials" style={{color: "white"}} />
           </a>
         )}
-        {repp?.applemusic && (
-          <a target="_blank" rel="noreferrer" href={repp.applemusic}>
-            <i className="fa-solid fa-music repp-socials" />
+        {repp?.facebook && (
+          <a target="_blank" rel="noreferrer" href={repp.facebook}>
+            <i className="fa-brands fa-facebook repp-socials" style={{color: "white"}} />
+          </a>
+        )}
+        {repp?.discord && (
+          <a target="_blank" rel="noreferrer" href={repp.discord}>
+            <i className="fa-brands fa-discord repp-socials" style={{color: "white"}} />
           </a>
         )}
         {repp?.twitter && (
           <a target="_blank" rel="noreferrer" href={repp.twitter}>
-            <i className="fa-brands fa-twitter repp-socials" />
+            <i className="fa-brands fa-twitter repp-socials" style={{color: "white"}} />
           </a>
         )}
         {repp?.external && (

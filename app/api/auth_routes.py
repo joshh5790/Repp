@@ -1,8 +1,9 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, request
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from app.utils import ensure_https
 
 auth_routes = Blueprint("auth", __name__)
 
@@ -73,7 +74,7 @@ def sign_up():
             state=form.data["state"],
             password=form.data["password"],
             isRepp=False,
-            profileImage=form.data["profileImage"],
+            profileImage=ensure_https(form.data["profileImage"]),
         )
         db.session.add(user)
         db.session.commit()

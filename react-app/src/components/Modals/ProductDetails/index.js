@@ -43,29 +43,29 @@ const ProductDetailsModal = ({ product, setNumCartItems }) => {
   const setSizeStock = (size) => {
     if (size.stock !== 0) {
       setCurrStock(size);
-      setQuantity(1)
+      setQuantity(1);
     }
   };
 
   const addToCart = () => {
-    let existingCart
+    let existingCart;
     for (const cart of carts) {
       if (cart.pageId === product.pageId) {
-        existingCart = true
-        break
+        existingCart = true;
+        break;
       }
     }
     if (existingCart) {
-      dispatch(createCartItemThunk(currStock.id, quantity))
-      .then(() => dispatch(getCartsThunk()))
-      setNumCartItems(prev => prev + 1)
-    }
-    else {
+      dispatch(createCartItemThunk(currStock.id, quantity)).then(() =>
+        dispatch(getCartsThunk())
+      );
+      setNumCartItems((prev) => prev + 1);
+    } else {
       dispatch(createCartThunk(product.pageId))
-      .then(() => dispatch(createCartItemThunk(currStock.id, quantity)))
-      .then(() => dispatch(getCartsThunk()))
-      .then(() => dispatch(setCartVisibility(true)))
-      setNumCartItems(prev => prev + 1)
+        .then(() => dispatch(createCartItemThunk(currStock.id, quantity)))
+        .then(() => dispatch(getCartsThunk()))
+        .then(() => dispatch(setCartVisibility(true)));
+      setNumCartItems((prev) => prev + 1);
     }
     closeModal();
   };
@@ -85,18 +85,28 @@ const ProductDetailsModal = ({ product, setNumCartItems }) => {
                   }`}
                   key={idx}
                   src={img}
+                  onError={({ target }) => {
+                    target.onerror = null;
+                    target.src =
+                      "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+                  }}
                 />
               ))}
             </div>
             <img
               className="product-modal-img"
               src={images[focusImage]}
-              alt={product?.name}
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null
+                currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'
+              }}
             />
           </div>
           <div className="product-modal-details">
             <h1 className="product-modal-name">{product?.name}</h1>
-            <p className="product-modal-price">{formatCurrency(product?.price)}</p>
+            <p className="product-modal-price">
+              {formatCurrency(product?.price)}
+            </p>
             {!outOfStock ? (
               <div>
                 <div className="flex">

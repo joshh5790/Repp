@@ -34,16 +34,20 @@ function ProfileButton({ user }) {
     dispatch(logout()).then(() => window.location.reload());
   };
 
-  // const closeMenu = () => setShowMenu(false);
+  const closeMenu = () => setShowMenu(false);
 
   return (
     <>
       <button className="profile-button" onClick={openMenu}>
         {user?.profileImage ? (
           <img
-            alt="profile"
             src={user?.profileImage}
             className="profile-button-img"
+            onError={({ target }) => {
+              target.onerror = null;
+              target.src =
+                "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+            }}
           />
         ) : (
           <i className="fas fa-user-circle" />
@@ -56,9 +60,13 @@ function ProfileButton({ user }) {
         <div className="dropdown-info-container">
           {user?.profileImage ? (
             <img
-              alt="profile"
               src={user?.profileImage}
               className="profile-button-img"
+              onError={({ target }) => {
+                target.onerror = null;
+                target.src =
+                  "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+              }}
             />
           ) : (
             <i className="fas fa-user-circle profile-button-img" />
@@ -71,11 +79,7 @@ function ProfileButton({ user }) {
             <div> {user?.email} </div>
           </div>
         </div>
-        <NavLink
-          onClick={() => setShowMenu(false)}
-          className="dropdown-button"
-          to="/account"
-        >
+        <NavLink onClick={closeMenu} className="dropdown-button" to="/account">
           <span>
             <i
               className="fa-solid fa-gear"
@@ -90,7 +94,7 @@ function ProfileButton({ user }) {
         </NavLink>
         {user?.isRepp ? (
           <NavLink
-            onClick={() => setShowMenu(false)}
+            onClick={closeMenu}
             className="dropdown-button"
             to="/profile/edit"
           >
@@ -108,7 +112,7 @@ function ProfileButton({ user }) {
           </NavLink>
         ) : (
           <NavLink
-            onClick={() => setShowMenu(false)}
+            onClick={closeMenu}
             className="dropdown-button"
             to="/profile/new"
           >

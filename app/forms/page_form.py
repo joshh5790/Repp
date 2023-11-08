@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
-from wtforms import StringField, URLField, BooleanField
+from wtforms import StringField, URLField, EmailField
 from wtforms.validators import DataRequired, ValidationError
 from app.models import Page
 
@@ -45,19 +45,6 @@ def mainImage_data(form, field):
     if not mainImage:
         raise ValidationError("Main image field is required.")
 
-
-def videoSection_data(form, field):
-    videoSection = field.data
-    if not videoSection:
-        raise ValidationError("Please indicate if the video section is enabled or not.")
-
-
-def shopSection_data(form, field):
-    shopSection = field.data
-    if not shopSection:
-        raise ValidationError("Please indicate if the shop section is enabled or not.")
-
-
 class PageForm(FlaskForm):
     displayName = StringField(
         "Display Name", validators=[DataRequired(), displayname_exists]
@@ -76,6 +63,4 @@ class PageForm(FlaskForm):
     mainVideo = URLField("Main Video")
     bio = StringField("Bio")
     newsletter = StringField("Newsletter")
-    businessInquiries = StringField("Business Inquiries")
-    videoSection = BooleanField("videoSection", [DataRequired()])
-    shopSection = BooleanField("shopSection", [DataRequired()])
+    businessInquiries = EmailField("Business Inquiries")

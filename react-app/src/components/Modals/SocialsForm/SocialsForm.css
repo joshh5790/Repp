@@ -1,0 +1,38 @@
+.socials-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 25rem;
+}
+
+.socials-label {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.close-socials-button {
+  all: unset;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid black;
+  margin-top: 1rem;
+  text-align: center;
+  width: 10rem;
+}
+
+.close-socials-button:hover {
+  background-color: black;
+  color: white
+}
+
+.socials-input {
+  width: 15rem;
+}
+
+.socials-input::placeholder {
+  font-size: 0.7rem;
+  color: #999999;
+}

@@ -5,6 +5,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Pages/Home";
 import Profile from "./components/Pages/Profile";
+import CreateProfile from "./components/Pages/CreateProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +23,9 @@ function App() {
           </Route>
           <Route exact path="/account"></Route>
           <Route exact path="/profile/edit"></Route>
-          <Route exact path="/profile/new"></Route>
+          <Route exact path="/profile/new">
+            <CreateProfile />
+          </Route>
           <Route exact path="/checkout"></Route>
           <Route exact path="/search"></Route>
           <Route exact path="/:linkName">

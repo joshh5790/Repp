@@ -65,7 +65,7 @@ export const getOneRPageThunk = (linkName) => async (dispatch) => {
     const data = await response.json();
     dispatch(setRPage({ [data.linkName]: data }));
     return data;
-  } else return
+  } else return;
 };
 
 // POST /pages/
@@ -73,15 +73,8 @@ export const createRPageThunk =
   (
     displayName,
     linkName,
-    tiktok,
-    youtube,
-    instagram,
-    applemusic,
-    spotify,
-    twitter,
-    external,
+    socials,
     mainImage,
-    isBanner,
     mainVideo,
     bio,
     newsletter,
@@ -90,21 +83,14 @@ export const createRPageThunk =
     shopSection
   ) =>
   async (dispatch) => {
-    const response = await fetch("/api/pages", {
+    const response = await fetch("/api/pages/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         displayName,
         linkName,
-        tiktok,
-        youtube,
-        instagram,
-        applemusic,
-        spotify,
-        twitter,
-        external,
+        ...socials,
         mainImage,
-        isBanner,
         mainVideo,
         bio,
         newsletter,
@@ -117,7 +103,7 @@ export const createRPageThunk =
     if (response.ok) {
       const data = await response.json();
       dispatch(setRPage({ [data.linkName]: data }));
-      return data;
+      return null;
     } else if (response.status < 500) {
       const data = await response.json();
       if (data.errors) return data.errors;
@@ -130,15 +116,8 @@ export const updateRPageThunk =
     pageId,
     displayName,
     linkName,
-    tiktok,
-    youtube,
-    instagram,
-    applemusic,
-    spotify,
-    twitter,
-    external,
+    socials,
     mainImage,
-    isBanner,
     mainVideo,
     bio,
     newsletter,
@@ -153,15 +132,8 @@ export const updateRPageThunk =
       body: JSON.stringify({
         displayName,
         linkName,
-        tiktok,
-        youtube,
-        instagram,
-        applemusic,
-        spotify,
-        twitter,
-        external,
+        ...socials,
         mainImage,
-        isBanner,
         mainVideo,
         bio,
         newsletter,

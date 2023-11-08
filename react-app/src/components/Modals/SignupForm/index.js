@@ -31,7 +31,7 @@ function SignupForm() {
     e.preventDefault();
     setErrors({});
     if (password === confirmPassword) {
-      const errors = await dispatch(
+      const currErrors = dispatch(
         signUp(
           firstName,
           lastName,
@@ -45,7 +45,7 @@ function SignupForm() {
           profileImage
         )
       );
-      if (errors) setErrors(errors);
+      if (currErrors) return setErrors(currErrors);
       else closeModal();
     } else {
       setErrors((prev) => {

@@ -57,8 +57,8 @@ def address_data(form, field):
     address = field.data
     if not address:
         raise ValidationError("Required")
-    if len(address) < 6:
-        raise ValidationError("Must be at least 6 characters")
+    if len(address) < 4:
+        raise ValidationError("Must be at least 4 characters")
     if len(address) > 255:
         raise ValidationError("Must be less than 255 characters")
     if not all(char.isalnum() or char.isspace() for char in address):

@@ -1,0 +1,81 @@
+.create-profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 35rem;
+}
+
+.new-profile-input {
+  width: 25rem;
+}
+
+.socials-button-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socials-form-button {
+  all: unset;
+  padding: 1rem;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.socials-form-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.fa-tiktok,
+.fa-apple,
+.fa-square-up-right {
+  color: black;
+}
+
+.fa-youtube {
+  color: #ff0000;
+}
+
+.fa-instagram {
+  background-image: linear-gradient(45deg, #feda75 20%, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background-clip: text;
+  color: transparent;
+}
+
+.fa-spotify {
+  color: #1ed760;
+}
+
+.fa-facebook {
+  color: #0866ff;
+}
+
+.fa-discord {
+  color: #5562ea;
+}
+
+.fa-twitter {
+  color: #1d9bf0;
+}
+
+.submit-profile-button {
+  all: unset;
+  align-self: center;
+  width: 10rem;
+  border: 1px solid #4444FF;
+  background-color: #4444FF;
+  color: white;
+  padding: 1rem 3rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.submit-profile-button:hover {
+  color: #4444FF;
+  background-color: white;
+}

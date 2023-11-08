@@ -3,11 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Page, Product, Video, Cart, User, db
 from app.forms import PageForm, ProductForm, VideoForm
 from flask import request
-import re
-
-def embed_video(url):
-    return re.sub(r"watch\?v=", "embed/", url)
-
+from app.utils import embed_video, ensure_https
 
 page_routes = Blueprint("pages", __name__)
 
@@ -43,23 +39,23 @@ def create_page():
         new_page = Page(
             userId=current_user.id,
             displayName=data["displayName"],
-            linkName=data["linkName"],
-            tiktok=data["tiktok"],
-            youtube=data["youtube"],
-            instagram=data["instagram"],
-            applemusic=data["applemusic"],
-            spotify=data["spotify"],
-            facebook=data["facebook"],
-            discord=data["discord"],
-            twitter=data["twitter"],
-            external=data["external"],
-            mainImage=data["mainImage"],
-            mainVideo=embed_video(data["mainVideo"]),
+            linkName=ensure_https(data["linkName"]),
+            tiktok=ensure_https(data["tiktok"]),
+            youtube=ensure_https(data["youtube"]),
+            instagram=ensure_https(data["instagram"]),
+            applemusic=ensure_https(data["applemusic"]),
+            spotify=ensure_https(data["spotify"]),
+            facebook=ensure_https(data["facebook"]),
+            discord=ensure_https(data["discord"]),
+            twitter=ensure_https(data["twitter"]),
+            external=ensure_https(data["external"]),
+            mainImage=ensure_https(data["mainImage"]),
+            mainVideo=ensure_https(embed_video(data["mainVideo"])),
             bio=data["bio"],
             newsletter=data["newsletter"],
             businessInquiries=data["businessInquiries"],
-            videoSection=data["videoSection"],
-            shopSection=data["shopSection"],
+            videoSection=False,
+            shopSection=False,
         )
         user = User.query.get(current_user.id)
         user.isRepp = True
@@ -93,17 +89,17 @@ def update_page(pageId):
         data = form.data
         page.displayName = data["displayName"]
         page.linkName = data["linkName"]
-        page.tiktok = data["tiktok"]
-        page.youtube = data["youtube"]
-        page.instagram = data["instagram"]
-        page.applemusic = data["applemusic"]
-        page.spotify = data["spotify"]
-        page.facebook = data["facebook"]
-        page.discord = data["discord"]
-        page.twitter = data["twitter"]
-        page.external = data["external"]
-        page.mainImage = data["mainImage"]
-        page.mainVideo = embed_video(data["mainVideo"])
+        page.tiktok = ensure_https(data["tiktok"])
+        page.youtube = ensure_https(data["youtube"])
+        page.instagram = ensure_https(data["instagram"])
+        page.applemusic = ensure_https(data["applemusic"])
+        page.spotify = ensure_https(data["spotify"])
+        page.facebook = ensure_https(data["facebook"])
+        page.discord = ensure_https(data["discord"])
+        page.twitter = ensure_https(data["twitter"])
+        page.external = ensure_https(data["external"])
+        page.mainImage = ensure_https(data["mainImage"])
+        page.mainVideo = ensure_https(embed_video(data["mainVideo"]))
         page.bio = data["bio"]
         page.newsletter = data["newsletter"]
         page.businessInquiries = data["businessInquiries"]
