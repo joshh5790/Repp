@@ -1,0 +1,32 @@
+.manage-profile-page {
+  padding: 1rem 0 0 2rem;
+}
+
+.manage-profile-content-container {
+  height: 100%;
+}
+
+.manage-profile-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 10rem;
+  border-right: 2px solid #EEEEEE;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.manage-profile-tabs span {
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 10px 0 0 10px;
+}
+
+.manage-profile-tabs span:hover {
+  background-color: #EEEEEE;
+  font-weight: bold;
+}
+
+.focus-tab {
+  background-color: #EEEEEE;
+  font-weight: bold;
+}

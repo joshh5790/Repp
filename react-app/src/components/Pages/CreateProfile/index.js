@@ -42,7 +42,10 @@ const CreateProfile = () => {
     if (!isObjectEmpty(currErrors)) return setErrors(currErrors);
     else {
       dispatch(authenticate());
-      history.push(`/${linkName}`);
+      history.push({
+        pathname: '/profile/edit',
+        state: 'products'
+      });
     }
   };
 
@@ -66,7 +69,7 @@ const CreateProfile = () => {
     );
   }
   return (
-    <div className="page-container">
+    <div className="page-container" style={{alignItems: "center"}}>
       {mainImage && (
         <img
           className="main-img-preview"

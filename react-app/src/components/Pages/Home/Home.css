@@ -65,6 +65,7 @@
 .img-slider-dot-btn:focus-visible {
   scale: 1.2;
   transition: scale 100ms ease-in-out;
+  cursor: pointer;
 }
 
 .img-slider-btn:focus-visible,
