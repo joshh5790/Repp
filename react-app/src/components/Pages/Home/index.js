@@ -39,6 +39,7 @@ const Home = () => {
           >
             {repps.map((repp) => (
               <img
+                alt=""
                 key={repp?.mainImage}
                 src={repp?.mainImage}
                 className="img-slider-img"

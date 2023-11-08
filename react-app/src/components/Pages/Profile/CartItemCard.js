@@ -18,20 +18,29 @@ const CartItemCard = ({ item, numCartItems, setNumCartItems }) => {
         setNumCartItems(0);
         dispatch(deleteCartThunk(item.cartId));
         dispatch(clearCartItemsThunk());
-        dispatch(setCartVisibility(false))
+        dispatch(setCartVisibility(false));
       } else {
         setNumCartItems((prev) => prev - 1);
         dispatch(deleteCartItemThunk(item.id));
       }
-      return
+      return;
     }
     setQuantity(newQuantity);
-    dispatch(updateCartItemThunk(item.id, newQuantity))
+    dispatch(updateCartItemThunk(item.id, newQuantity));
   };
   return (
     <div key={item.id} className="cart-item-card">
       <div className="flex" style={{ gap: "1rem" }}>
-        <img className="cart-item-img" src={item?.image} />
+        <img
+          alt=""
+          className="cart-item-img"
+          src={item?.image}
+          onError={({ target }) => {
+            target.onerror = null;
+            target.src =
+              "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+          }}
+        />
         <div>
           <div style={{ marginBottom: "0.5rem" }}>{item?.name}</div>
           <div style={{ color: "#999999", fontSize: "0.9rem" }}>

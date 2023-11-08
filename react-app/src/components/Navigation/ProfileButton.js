@@ -32,7 +32,7 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout()).then(() => window.location.reload());
-    history.push('/')
+    history.push("/");
   };
 
   const closeMenu = () => setShowMenu(false);
@@ -48,6 +48,7 @@ function ProfileButton({ user }) {
       <button className="profile-button" onClick={openMenu}>
         {user?.profileImage ? (
           <img
+            alt=""
             src={user?.profileImage}
             className="profile-button-img"
             onError={({ target }) => {
@@ -68,13 +69,14 @@ function ProfileButton({ user }) {
           onClick={() => {
             if (user.isRepp) handleRedirect();
           }}
-          style={{ paddingLeft: '0' }}
+          style={{ paddingLeft: "0" }}
           className={`dropdown-info-container ${
             user.isRepp && "dropdown-button"
           }`}
         >
           {user?.profileImage ? (
             <img
+              alt=""
               src={user?.profileImage}
               className="profile-dropdown-img"
               onError={({ target }) => {
@@ -97,7 +99,9 @@ function ProfileButton({ user }) {
               className="fa-solid fa-chevron-right"
               style={{ color: "#999999", fontSize: "1.2rem" }}
             />
-          ) : <div>&nbsp;</div>}
+          ) : (
+            <div>&nbsp;</div>
+          )}
         </div>
         <NavLink onClick={closeMenu} className="dropdown-button" to="/account">
           <span>

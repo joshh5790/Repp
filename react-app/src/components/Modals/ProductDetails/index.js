@@ -38,7 +38,7 @@ const ProductDetailsModal = ({ product, setNumCartItems }) => {
         setOutOfStock(true);
       })
       .then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, product.id]);
 
   const setSizeStock = (size) => {
     if (size.stock !== 0) {
@@ -79,6 +79,7 @@ const ProductDetailsModal = ({ product, setNumCartItems }) => {
             <div className="product-carousel-container">
               {images.map((img, idx) => (
                 <img
+                  alt=""
                   onClick={() => setFocusImage(idx)}
                   className={`product-img-carousel ${
                     focusImage === idx ? "focus" : ""
@@ -94,11 +95,13 @@ const ProductDetailsModal = ({ product, setNumCartItems }) => {
               ))}
             </div>
             <img
+              alt=""
               className="product-modal-img"
               src={images[focusImage]}
               onError={({ currentTarget }) => {
-                currentTarget.onerror = null
-                currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'
+                currentTarget.onerror = null;
+                currentTarget.src =
+                  "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
               }}
             />
           </div>
@@ -157,7 +160,7 @@ const ProductDetailsModal = ({ product, setNumCartItems }) => {
             <div className="product-modal-img skeleton" />
           </div>
           <div className="product-modal-details">
-            <h1 className="product-modal-name skeleton" />
+            <h1 className="product-modal-name skeleton">&nbsp;</h1>
             <p className="product-modal-price skeleton" />
           </div>
         </div>

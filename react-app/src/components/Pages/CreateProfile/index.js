@@ -43,8 +43,8 @@ const CreateProfile = () => {
     else {
       dispatch(authenticate());
       history.push({
-        pathname: '/profile/edit',
-        state: 'products'
+        pathname: "/profile/edit",
+        state: "products",
       });
     }
   };
@@ -69,9 +69,10 @@ const CreateProfile = () => {
     );
   }
   return (
-    <div className="page-container" style={{alignItems: "center"}}>
+    <div className="page-container" style={{ alignItems: "center" }}>
       {mainImage && (
         <img
+          alt=""
           className="main-img-preview"
           src={mainImage}
           onError={({ target }) => {

@@ -8,7 +8,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (location.state) setCurrentTab(location.state);
-  }, []);
+  }, [location.state]);
   return (
     <div className="manage-profile-page page-container">
       <h1 style={{marginBottom: "2rem"}}>Manage Profile</h1>

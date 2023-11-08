@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import CartItemCard from "./CartItemCard";
@@ -31,7 +31,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
           }
         })
     }
-  }, [dispatch, pageId]);
+  }, [dispatch, pageId, setNumCartItems]);
 
   const handleCheckout = () => {
     dispatch(setCartVisibility(false));
