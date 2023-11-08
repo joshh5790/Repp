@@ -1,16 +1,17 @@
 import { useState } from "react";
-import "./CreateProfile.css";
+import { useHistory, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { isObjectEmpty } from "../../../utilities";
+import { createRPageThunk } from "../../../store/pages";
+import { authenticate } from "../../../store/session";
 import OpenModalButton from "../../OpenModalButton";
 import SocialsForm from "../../Modals/SocialsForm";
-import { useDispatch } from "react-redux";
-import { createRPageThunk } from "../../../store/pages";
-import { isObjectEmpty } from "../../../utilities";
-import { authenticate } from "../../../store/session";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import "./CreateProfile.css";
 
 const CreateProfile = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector((state) => state.session.user);
   const [displayName, setDisplayName] = useState("");
   const [linkName, setLinkName] = useState("");
   const [socials, setSocials] = useState({});
@@ -52,6 +53,18 @@ const CreateProfile = () => {
     }
   };
 
+  if (!user || user.isRepp) {
+    return (
+      <div className="unavailable page-container">
+        <h1>Sorry, this page isn't available.</h1>
+        <p>
+          The link you followed may be broken, or the page may have been
+          removed.
+        </p>
+        <NavLink to="/">Click here to return to the home page.</NavLink>
+      </div>
+    );
+  }
   return (
     <div className="page-container">
       {mainImage && (
@@ -104,7 +117,7 @@ const CreateProfile = () => {
                 delete prev.linkName;
                 return prev;
               });
-              setLinkName(e.target.value);
+              checkLinkName(e.target.value);
             }}
             required
           />
@@ -133,7 +146,11 @@ const CreateProfile = () => {
             {errors.mainImage && errors.mainImage[0]}&nbsp;
           </div>
         </label>
-        <label name="main-video" className="new-profile-label" style={{marginBottom: '1rem'}}>
+        <label
+          name="main-video"
+          className="new-profile-label"
+          style={{ marginBottom: "1rem" }}
+        >
           <div>Main Video Link</div>
           <input
             className="new-profile-input"
@@ -144,7 +161,11 @@ const CreateProfile = () => {
             onChange={(e) => setMainVideo(e.target.value)}
           />
         </label>
-        <label name="bio" className="new-profile-label" style={{marginBottom: '1rem'}}>
+        <label
+          name="bio"
+          className="new-profile-label"
+          style={{ marginBottom: "1rem" }}
+        >
           <div>Bio</div>
           <textarea
             className="new-profile-input"
@@ -154,7 +175,11 @@ const CreateProfile = () => {
             onChange={(e) => setBio(e.target.value)}
           />
         </label>
-        <label name="newsletter" className="new-profile-label" style={{marginBottom: '1rem'}}>
+        <label
+          name="newsletter"
+          className="new-profile-label"
+          style={{ marginBottom: "1rem" }}
+        >
           <div>Newsletter Link</div>
           <input
             className="new-profile-input"
@@ -165,7 +190,11 @@ const CreateProfile = () => {
             onChange={(e) => setNewsletter(e.target.value)}
           />
         </label>
-        <label name="business-inquiries" className="new-profile-label" style={{marginBottom: '1rem'}}>
+        <label
+          name="business-inquiries"
+          className="new-profile-label"
+          style={{ marginBottom: "1rem" }}
+        >
           <div>Business Inquiries Email</div>
           <input
             className="new-profile-input"

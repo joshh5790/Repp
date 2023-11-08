@@ -1,5 +1,5 @@
 import "./Profile.css";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneRPageThunk } from "../../../store/pages";
@@ -106,6 +106,9 @@ const Profile = () => {
             The link you followed may be broken, or the page may have been
             removed.
           </p>
+          <NavLink to="/">
+            Click here to return to the home page.
+          </NavLink>
         </div>
       );
   } else
