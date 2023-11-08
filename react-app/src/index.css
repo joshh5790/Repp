@@ -16,6 +16,10 @@ textarea {
   font-family: "Ramabhadra", sans-serif;
 }
 
+textarea {
+  font-size: 0.8rem;
+}
+
 input::placeholder,
 textarea::placeholder {
   font-size: 0.8rem;

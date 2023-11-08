@@ -70,7 +70,7 @@ export const getOneRPageThunk = (linkName) => async (dispatch) => {
 
 // POST /pages/
 export const createRPageThunk =
-  (
+  ({
     displayName,
     linkName,
     socials,
@@ -80,8 +80,8 @@ export const createRPageThunk =
     newsletter,
     businessInquiries,
     videoSection,
-    shopSection
-  ) =>
+    shopSection,
+  }) =>
   async (dispatch) => {
     const response = await fetch("/api/pages/", {
       method: "POST",
@@ -112,7 +112,7 @@ export const createRPageThunk =
 
 // PUT /pages/:pageId
 export const updateRPageThunk =
-  (
+  ({
     pageId,
     displayName,
     linkName,
@@ -123,8 +123,8 @@ export const updateRPageThunk =
     newsletter,
     businessInquiries,
     videoSection,
-    shopSection
-  ) =>
+    shopSection,
+  }) =>
   async (dispatch) => {
     const response = await fetch(`/api/pages/${pageId}`, {
       method: "PUT",
@@ -146,7 +146,7 @@ export const updateRPageThunk =
     if (response.ok) {
       const data = await response.json();
       dispatch(setRPage({ [data.linkName]: data }));
-      return data;
+      return null;
     } else if (response.status < 500) {
       const data = await response.json();
       if (data.errors) return data.errors;

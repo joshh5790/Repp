@@ -83,7 +83,7 @@ def update_page(pageId):
         return {
             "Unauthorized": "User does not have permission to update this page"
         }, 401
-    form = PageForm()
+    form = PageForm(obj=page)
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         data = form.data

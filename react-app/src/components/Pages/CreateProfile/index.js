@@ -26,7 +26,7 @@ const CreateProfile = () => {
     setErrors({});
 
     const currErrors = await dispatch(
-      createRPageThunk(
+      createRPageThunk({
         displayName,
         linkName,
         socials,
@@ -35,9 +35,9 @@ const CreateProfile = () => {
         bio,
         newsletter,
         businessInquiries,
-        false,
-        false
-      )
+        videoSection: false,
+        shopSection: false,
+      })
     );
     if (!isObjectEmpty(currErrors)) return setErrors(currErrors);
     else {

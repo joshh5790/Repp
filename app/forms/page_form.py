@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
-from wtforms import StringField, URLField, EmailField
+from wtforms import StringField, URLField, EmailField, BooleanField
 from wtforms.validators import DataRequired, ValidationError
 from app.models import Page
 
@@ -64,3 +64,5 @@ class PageForm(FlaskForm):
     bio = StringField("Bio")
     newsletter = StringField("Newsletter")
     businessInquiries = EmailField("Business Inquiries")
+    videoSection = BooleanField("Video Section")
+    shopSection = BooleanField("Shop Section")
