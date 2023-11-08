@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
-import { NavLink } from "react-router-dom";
-import { clearCartThunk } from "../../store/carts";
-import { clearCartItemsThunk } from "../../store/cartItems";
+import { NavLink, useHistory } from "react-router-dom";
+import { getSessionPageThunk } from "../../store/pages";
 
 function ProfileButton({ user }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -36,6 +36,12 @@ function ProfileButton({ user }) {
 
   const closeMenu = () => setShowMenu(false);
 
+  const handleRedirect = () => {
+    dispatch(getSessionPageThunk())
+      .then((data) => history.push(`/${data.linkName}`))
+      .then(closeMenu);
+  };
+
   return (
     <>
       <button className="profile-button" onClick={openMenu}>
@@ -57,11 +63,19 @@ function ProfileButton({ user }) {
         className={"profile-dropdown" + (showMenu ? "" : " hidden")}
         ref={ulRef}
       >
-        <div className="dropdown-info-container">
+        <div
+          onClick={() => {
+            if (user.isRepp) handleRedirect();
+          }}
+          style={{ paddingLeft: '0' }}
+          className={`dropdown-info-container ${
+            user.isRepp && "dropdown-button"
+          }`}
+        >
           {user?.profileImage ? (
             <img
               src={user?.profileImage}
-              className="profile-button-img"
+              className="profile-dropdown-img"
               onError={({ target }) => {
                 target.onerror = null;
                 target.src =
@@ -73,11 +87,16 @@ function ProfileButton({ user }) {
           )}
           <div className="dropdown-info">
             <div>
-              {" "}
-              {user?.firstName} {user?.lastName}{" "}
+              {user?.firstName} {user?.lastName}
             </div>
             <div> {user?.email} </div>
           </div>
+          {user.isRepp ? (
+            <i
+              className="fa-solid fa-chevron-right"
+              style={{ color: "#999999", fontSize: "1.2rem" }}
+            />
+          ) : <div>&nbsp;</div>}
         </div>
         <NavLink onClick={closeMenu} className="dropdown-button" to="/account">
           <span>

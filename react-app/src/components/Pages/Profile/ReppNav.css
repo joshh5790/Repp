@@ -70,6 +70,12 @@
     cursor: pointer;
 }
 
+.repp-socials.fa-tiktok,
+.repp-socials.fa-apple,
+.repp-socials.fa-square-up-right {
+    color: white;
+}
+
 @media (max-width: 1000px) {
     .repp-nav-right {
         gap: 1rem;

@@ -115,16 +115,26 @@
   width: 20rem;
   border-radius: 10px;
   top: 3.2rem;
-  box-shadow: 0 0 1rem #999999;
+  box-shadow: 0 0 1rem #555555;
   background-color: white;
   color: black;
+  background-color: rgb(255, 255, 150, 0.9);
 }
 
 .dropdown-info-container {
   display: flex;
-  margin: 1rem;
-  padding-bottom: 1rem;
+  justify-content: space-between;
+  padding: 1rem;
   border-bottom: 1px solid #999999;
+  align-items: center;
+  height: 5rem;
+  background-color: white;
+}
+
+.profile-dropdown-img {
+  height: calc(100% + 2rem);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
 .dropdown-info {
@@ -146,6 +156,7 @@
   color: black;
   display: flex;
   justify-content: space-between;
+  background-color: white;
 }
 
 .dropdown-button:hover {
