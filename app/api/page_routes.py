@@ -39,7 +39,7 @@ def create_page():
         new_page = Page(
             userId=current_user.id,
             displayName=data["displayName"],
-            linkName=ensure_https(data["linkName"]),
+            linkName=data["linkName"],
             tiktok=ensure_https(data["tiktok"]),
             youtube=ensure_https(data["youtube"]),
             instagram=ensure_https(data["instagram"]),

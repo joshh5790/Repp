@@ -18,6 +18,16 @@
     filter: brightness(70%);
 }
 
+.repp-home-text {
+    position: absolute;
+    left: 10rem;
+    bottom: 10rem;
+}
+
+.repp-home-text * {
+    color: white
+}
+
 .repp-main-video {
     width: 100%;
     height: 100vh;

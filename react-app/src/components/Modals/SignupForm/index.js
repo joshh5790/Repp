@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { signUp } from "../../../store/session";
 import "./SignupForm.css";
+import { isObjectEmpty } from "../../../utilities";
 
 function SignupForm() {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ function SignupForm() {
     e.preventDefault();
     setErrors({});
     if (password === confirmPassword) {
-      const currErrors = dispatch(
+      const currErrors = await dispatch(
         signUp(
           firstName,
           lastName,
@@ -45,7 +46,7 @@ function SignupForm() {
           profileImage
         )
       );
-      if (currErrors) return setErrors(currErrors);
+      if (!isObjectEmpty(currErrors)) return setErrors(currErrors);
       else closeModal();
     } else {
       setErrors((prev) => {

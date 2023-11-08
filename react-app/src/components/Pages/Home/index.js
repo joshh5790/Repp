@@ -41,9 +41,13 @@ const Home = () => {
               <img
                 key={repp?.mainImage}
                 src={repp?.mainImage}
-                alt={repp?.displayName}
                 className="img-slider-img"
                 style={{ translate: `${-100 * imageIndex}%` }}
+                onError={({ target }) => {
+                  target.onerror = null;
+                  target.src =
+                    "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+                }}
               />
             ))}
           </div>

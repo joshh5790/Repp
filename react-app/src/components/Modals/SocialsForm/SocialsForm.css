@@ -31,8 +31,3 @@
 .socials-input {
   width: 15rem;
 }
-
-.socials-input::placeholder {
-  font-size: 0.7rem;
-  color: #999999;
-}

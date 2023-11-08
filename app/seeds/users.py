@@ -43,10 +43,24 @@ def seed_users():
         isRepp=True,
         profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
     )
+    josh = User(
+        firstName="Josh",
+        lastName="Ho",
+        username="joshho",
+        email="a@a.a",
+        gender="Male",
+        address="121 Third St",
+        city="Los Angeles",
+        state="CA",
+        password="password",
+        isRepp=False,
+        profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
+    )
 
     db.session.add(tiff)
     db.session.add(josiah)
     db.session.add(eric)
+    db.session.add(josh)
     db.session.commit()
 
 

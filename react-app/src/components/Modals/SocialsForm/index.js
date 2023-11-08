@@ -92,7 +92,7 @@ const SocialsForm = ({ socials, setSocials }) => {
           name="applemusic"
           type="text"
           value={applemusic}
-          placeholder="https://music.apple.com/us/artist/username/id"
+          placeholder="you get the gist"
           onChange={(e) => setApplemusic(e.target.value)}
         />
       </label>
@@ -109,7 +109,6 @@ const SocialsForm = ({ socials, setSocials }) => {
           name="spotify"
           type="text"
           value={spotify}
-          placeholder="https://open.spotify.com/artist/username"
           onChange={(e) => setSpotify(e.target.value)}
         />
       </label>
@@ -126,7 +125,6 @@ const SocialsForm = ({ socials, setSocials }) => {
           name="facebook"
           type="text"
           value={facebook}
-          placeholder="https://www.facebook.com/username"
           onChange={(e) => setFacebook(e.target.value)}
         />
       </label>
@@ -143,7 +141,6 @@ const SocialsForm = ({ socials, setSocials }) => {
           name="discord"
           type="text"
           value={discord}
-          placeholder="https://discord.gg/username"
           onChange={(e) => setDiscord(e.target.value)}
         />
       </label>
@@ -160,7 +157,6 @@ const SocialsForm = ({ socials, setSocials }) => {
           name="twitter"
           type="text"
           value={twitter}
-          placeholder="https://twitter.com/username"
           onChange={(e) => setTwitter(e.target.value)}
         />
       </label>

@@ -7,12 +7,15 @@
 
 .home-page-text {
   position: absolute;
-  left: 10rem;
-  bottom: 10rem;
+  left: 8rem;
+  bottom: 8rem;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: rgb(200, 200, 200, 0.5)
 }
 
 .home-page-text > * {
-  color: white;
+  color: black;
 }
 
 .img-slider-img {

@@ -5,9 +5,12 @@ import SocialsForm from "../../Modals/SocialsForm";
 import { useDispatch } from "react-redux";
 import { createRPageThunk } from "../../../store/pages";
 import { isObjectEmpty } from "../../../utilities";
+import { authenticate } from "../../../store/session";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const CreateProfile = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [displayName, setDisplayName] = useState("");
   const [linkName, setLinkName] = useState("");
   const [socials, setSocials] = useState({});
@@ -18,26 +21,27 @@ const CreateProfile = () => {
   const [businessInquiries, setBusinessInquiries] = useState("");
   const [errors, setErrors] = useState({});
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setErrors({});
 
-    if (isObjectEmpty(errors)) {
-      const currErrors = dispatch(
-        createRPageThunk(
-          displayName,
-          linkName,
-          socials,
-          mainImage,
-          mainVideo,
-          bio,
-          newsletter,
-          businessInquiries,
-          false,
-          false
-        )
-      );
-      console.log(currErrors)
-      if (currErrors) return setErrors(currErrors)
+    const currErrors = await dispatch(
+      createRPageThunk(
+        displayName,
+        linkName,
+        socials,
+        mainImage,
+        mainVideo,
+        bio,
+        newsletter,
+        businessInquiries,
+        false,
+        false
+      )
+    );
+    if (!isObjectEmpty(currErrors)) return setErrors(currErrors);
+    else {
+      dispatch(authenticate());
+      history.push(`/${linkName}`);
     }
   };
 
@@ -49,9 +53,23 @@ const CreateProfile = () => {
   };
 
   return (
-    <div className="page-container" style={{ paddingTop: "1rem" }}>
-      <h1>Design Your Profile Page</h1>
+    <div className="page-container">
+      {mainImage && (
+        <img
+          className="main-img-preview"
+          src={mainImage}
+          onError={({ target }) => {
+            setErrors((prev) => {
+              return { ...prev, mainImage: ["Invalid image url"] };
+            });
+            target.onerror = null;
+            target.src =
+              "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+          }}
+        />
+      )}
       <div className="create-profile-form">
+        <h1>Design Your Profile Page</h1>
         <label name="display-name" className="new-profile-label">
           <div>Display Name *</div>
           <input
@@ -60,9 +78,18 @@ const CreateProfile = () => {
             type="text"
             value={displayName}
             placeholder="Rad Mango"
-            onChange={(e) => setDisplayName(e.target.value)}
+            onChange={(e) => {
+              setErrors((prev) => {
+                delete prev.displayName;
+                return prev;
+              });
+              setDisplayName(e.target.value);
+            }}
             required
           />
+          <div className="error-msg">
+            {errors.displayName && errors.displayName[0]}&nbsp;
+          </div>
         </label>
         <label name="link-name" className="new-profile-label">
           <div>Link Name *</div>
@@ -72,9 +99,18 @@ const CreateProfile = () => {
             type="text"
             value={linkName}
             placeholder="rad-mango"
-            onChange={(e) => checkLinkName(e.target.value)}
+            onChange={(e) => {
+              setErrors((prev) => {
+                delete prev.linkName;
+                return prev;
+              });
+              setLinkName(e.target.value);
+            }}
             required
           />
+          <div className="error-msg">
+            {errors.linkName && errors.linkName[0]}&nbsp;
+          </div>
         </label>
         <label name="main-image" className="new-profile-label">
           <div>Main Image Link *</div>
@@ -84,45 +120,58 @@ const CreateProfile = () => {
             type="text"
             value={mainImage}
             placeholder="https://radmango.com/images/radmango.png"
-            onChange={(e) => setMainImage(e.target.value)}
+            onChange={(e) => {
+              setErrors((prev) => {
+                delete prev.mainImage;
+                return prev;
+              });
+              setMainImage(e.target.value);
+            }}
             required
           />
+          <div className="error-msg">
+            {errors.mainImage && errors.mainImage[0]}&nbsp;
+          </div>
         </label>
-        <label name="main-video" className="new-profile-label">
+        <label name="main-video" className="new-profile-label" style={{marginBottom: '1rem'}}>
           <div>Main Video Link</div>
           <input
             className="new-profile-input"
             name="main-video"
             type="text"
             value={mainVideo}
+            placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             onChange={(e) => setMainVideo(e.target.value)}
           />
         </label>
-        <label name="bio" className="new-profile-label">
+        <label name="bio" className="new-profile-label" style={{marginBottom: '1rem'}}>
           <div>Bio</div>
           <textarea
             className="new-profile-input"
             name="bio"
             value={bio}
+            placeholder="Raddest of mangoes"
             onChange={(e) => setBio(e.target.value)}
           />
         </label>
-        <label name="newsletter" className="new-profile-label">
+        <label name="newsletter" className="new-profile-label" style={{marginBottom: '1rem'}}>
           <div>Newsletter Link</div>
           <input
             className="new-profile-input"
             name="newsletter"
             type="text"
             value={newsletter}
+            placeholder="https://radmango.com/newsletter"
             onChange={(e) => setNewsletter(e.target.value)}
           />
         </label>
-        <label name="business-inquiries" className="new-profile-label">
+        <label name="business-inquiries" className="new-profile-label" style={{marginBottom: '1rem'}}>
           <div>Business Inquiries Email</div>
           <input
             className="new-profile-input"
             name="business-inquiries"
             type="text"
+            placeholder="mangomanager@mgmt.com"
             value={businessInquiries}
             onChange={(e) => setBusinessInquiries(e.target.value)}
           />

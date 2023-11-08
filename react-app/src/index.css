@@ -10,8 +10,16 @@ span,
 div,
 h1,
 h2,
-h3 {
+h3,
+input,
+textarea {
   font-family: "Ramabhadra", sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 0.8rem;
+  color: #555555;
 }
 
 #root {

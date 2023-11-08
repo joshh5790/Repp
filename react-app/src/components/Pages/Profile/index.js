@@ -53,7 +53,7 @@ const Profile = () => {
                   "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
               }}
             />
-            <div className="home-page-text">
+            <div className="repp-home-text">
               <h1>{repp?.displayName}</h1>
             </div>
           </div>
