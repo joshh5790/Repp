@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { isObjectEmpty } from "../../../utilities";
 import { updateRPageThunk } from "../../../store/pages";
 
-const General = ({ page }) => {
+const EditGeneral = ({ page }) => {
   const dispatch = useDispatch();
   const [displayName, setDisplayName] = useState("");
   const [linkName, setLinkName] = useState("");
@@ -205,4 +205,4 @@ const General = ({ page }) => {
   );
 };
 
-export default General;
+export default EditGeneral;

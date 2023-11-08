@@ -54,6 +54,34 @@
   margin-bottom: 1rem;
 }
 
+.manage-products-list {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  width: 30rem;
+}
+
+.manage-product-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #EEEEEE;
+  border-radius: 10px;
+}
+
+.open-edit-product {
+  all: unset;
+  cursor: pointer;
+}
+
+.open-delete-product {
+  all: unset;
+  color: red;
+  cursor: pointer;
+}
+
 .update-main-img-container {
   flex-grow: 1;
 }

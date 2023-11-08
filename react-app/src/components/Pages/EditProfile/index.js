@@ -3,8 +3,9 @@ import { useLocation, NavLink } from "react-router-dom";
 import "./EditProfile.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getSessionPageThunk } from "../../../store/pages";
-import General from "./General";
-import Socials from "./Socials";
+import EditGeneral from "./EditGeneral";
+import EditSocials from "./EditSocials";
+import EditProducts from "./EditProducts";
 
 const EditProfile = () => {
   const location = useLocation();
@@ -65,8 +66,9 @@ const EditProfile = () => {
           </span>
         </div>
         <div className="manage-profile-section">
-          {currentTab === "General" && <General page={page} />}
-          {currentTab === "Socials" && <Socials page={page} />}
+          {currentTab === "General" && <EditGeneral page={page} />}
+          {currentTab === "Socials" && <EditSocials page={page} />}
+          {currentTab === "Products" && <EditProducts page={page} />}
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateRPageThunk } from "../../../store/pages";
 
-const Socials = ({ page }) => {
+const EditSocials = ({ page }) => {
   const dispatch = useDispatch();
   const [tiktok, setTiktok] = useState("");
   const [youtube, setYoutube] = useState("");
@@ -198,4 +198,4 @@ const Socials = ({ page }) => {
   );
 };
 
-export default Socials;
+export default EditSocials;
