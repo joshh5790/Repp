@@ -14,7 +14,7 @@ const DeleteProduct = ({ product, setReload }) => {
   };
 
   return (
-    <div className="delete-product-modal">
+    <div className="flex-col" style={{width: "25rem"}}>
       {product && (
         <>
           <h2>Are you sure you want to delete {product.name}?</h2>

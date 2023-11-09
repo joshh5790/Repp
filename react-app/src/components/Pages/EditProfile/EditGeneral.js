@@ -52,9 +52,8 @@ const EditGeneral = ({ page }) => {
 
   return (
     <>
-      <div className="update-profile-form">
         <label name="display-name" className="new-profile-label">
-          <div>Display Name</div>
+          <div>Display Name *</div>
           <input
             className="new-profile-input"
             name="display-name"
@@ -75,7 +74,7 @@ const EditGeneral = ({ page }) => {
           </div>
         </label>
         <label name="link-name" className="new-profile-label">
-          <div>Link Name</div>
+          <div>Link Name *</div>
           <input
             className="new-profile-input"
             name="link-name"
@@ -96,7 +95,7 @@ const EditGeneral = ({ page }) => {
           </div>
         </label>
         <label name="main-image" className="new-profile-label">
-          <div>Main Image Link</div>
+          <div>Main Image URL *</div>
           <input
             className="new-profile-input"
             name="main-image"
@@ -182,8 +181,7 @@ const EditGeneral = ({ page }) => {
         >
           Save
         </button>
-      </div>
-      {mainImage && (
+      {/* {mainImage && (
         <div className="update-main-img-container">
 
           <img
@@ -200,7 +198,7 @@ const EditGeneral = ({ page }) => {
             }}
           />
         </div>
-      )}
+      )} */}
     </>
   );
 };

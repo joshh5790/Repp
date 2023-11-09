@@ -6,6 +6,7 @@ import { getSessionPageThunk } from "../../../store/pages";
 import EditGeneral from "./EditGeneral";
 import EditSocials from "./EditSocials";
 import EditProducts from "./EditProducts";
+import EditVideos from "./EditVideos";
 
 const EditProfile = () => {
   const location = useLocation();
@@ -39,8 +40,8 @@ const EditProfile = () => {
     <div className="manage-profile-page page-container">
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
 
-        <h1 style={{ marginBottom: "2rem" }}>Manage Profile</h1>
-        <h1 style={{ marginRight: "2rem" }}>Preview</h1>
+
+
         {/* add these two to the respective containers instead */}
       </div>
       <div className="manage-profile-content-container">
@@ -70,10 +71,15 @@ const EditProfile = () => {
             Videos
           </span>
         </div>
-        <div className="manage-profile-section">
+        <div className="manage-profile-section flex-col-center">
+        <h1 className="manage-profile-section-header">Manage Profile</h1>
           {currentTab === "General" && <EditGeneral page={page} />}
           {currentTab === "Socials" && <EditSocials page={page} />}
           {currentTab === "Products" && <EditProducts page={page} />}
+          {currentTab === "Videos" && <EditVideos page={page} />}
+        </div>
+        <div className="preview-profile-section">
+        <h1 className="manage-profile-section-header">Preview</h1>
         </div>
       </div>
     </div>

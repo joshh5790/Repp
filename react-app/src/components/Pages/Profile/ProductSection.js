@@ -32,7 +32,7 @@ const ProductSection = ({ pageId, setNumCartItems }) => {
                       className="product-preview"
                     />
                   </div>
-                  <div className="product-card-info">
+                  <div className="flex-col-center">
                     <h3 className="product-card-name">{product?.name}</h3>
                     <p className="product-card-price">{formatCurrency(product?.price)}</p>
                   </div>

@@ -37,7 +37,7 @@ function SearchBar() {
               onChange={handleChange}
               className="search-input"
           />
-          <div className="flex">
+          <div style={{display: 'flex'}}>
             <button
               onClick={clearSearch}
               className={`clear-search ${term.length === 0 ? 'hidden' : ''}`}>

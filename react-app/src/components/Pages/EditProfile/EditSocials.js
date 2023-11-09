@@ -44,7 +44,7 @@ const EditSocials = ({ page }) => {
   };
 
   return (
-    <div className="update-profile-form">
+    <>
       <label name="tiktok" className="update-socials-label">
         <div>
           <i
@@ -194,7 +194,7 @@ const EditSocials = ({ page }) => {
       <button className="close-socials-button button-hover" onClick={onSubmit}>
         Save
       </button>
-    </div>
+    </>
   );
 };
 

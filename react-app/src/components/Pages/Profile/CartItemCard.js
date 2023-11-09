@@ -30,7 +30,7 @@ const CartItemCard = ({ item, numCartItems, setNumCartItems }) => {
   };
   return (
     <div key={item.id} className="cart-item-card">
-      <div className="flex" style={{ gap: "1rem" }}>
+      <div style={{ display: 'flex', gap: "1rem" }}>
         <img
           alt=""
           className="cart-item-img"

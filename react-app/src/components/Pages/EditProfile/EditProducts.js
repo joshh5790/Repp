@@ -26,17 +26,19 @@ const EditProducts = ({ page }) => {
   }, []);
 
   return (
-    <div className="manage-products-list">
+    <>
       <OpenModalButton
-        className="new-product-button"
+        className="new-card-button"
         modalComponent={<ManageProduct pageId={page.id} />}
-        buttonText="+ New Product"
+        buttonText={<b>+ New Product</b>}
       />
       {products.map((product) => (
         <OpenModalButton
-          className="manage-product-card"
+          className="manage-cards"
           key={product.id}
-          modalComponent={<ProductDetails product={product} isDisabled={true}/>}
+          modalComponent={
+            <ProductDetails product={product} isDisabled={true} />
+          }
           buttonText={
             <>
               <div style={{ display: "flex", gap: "1rem" }}>
@@ -71,12 +73,12 @@ const EditProducts = ({ page }) => {
               </div>
               <div style={{ display: "flex", gap: "1.5rem" }}>
                 <OpenModalButton
-                  className={"open-edit-product"}
+                  className={"edit-card"}
                   buttonText={<i className="fa-regular fa-pen-to-square" />}
                   modalComponent={<ManageProduct product={product} />}
                 />
                 <OpenModalButton
-                  className={"open-delete-product"}
+                  className={"delete-card"}
                   buttonText={<i className="fa-solid fa-x" />}
                   modalComponent={
                     <DeleteProduct product={product} setReload={setReload} />
@@ -87,7 +89,7 @@ const EditProducts = ({ page }) => {
           }
         />
       ))}
-    </div>
+    </>
   );
 };
 

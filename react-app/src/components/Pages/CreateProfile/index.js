@@ -85,7 +85,7 @@ const CreateProfile = () => {
           }}
         />
       )}
-      <div className="create-profile-form">
+      <div className="create-profile-form flex-col-center">
         <h1>Design Your Profile Page</h1>
         <label name="display-name" className="new-profile-label">
           <div>Display Name *</div>
@@ -130,7 +130,7 @@ const CreateProfile = () => {
           </div>
         </label>
         <label name="main-image" className="new-profile-label">
-          <div>Main Image Link *</div>
+          <div>Main Image URL *</div>
           <input
             className="new-profile-input"
             name="main-image"
@@ -209,13 +209,13 @@ const CreateProfile = () => {
             onChange={(e) => setBusinessInquiries(e.target.value)}
           />
         </label>
-        <div className="socials-button-div">
+        <div className="flex-col-center" style={{gap: '1rem'}}>
           <OpenModalButton
             buttonText="Link Socials"
             modalComponent={
               <SocialsForm socials={socials} setSocials={setSocials} />
             }
-            className="socials-form-button button-hover"
+            className="socials-form-button flex-col-center button-hover"
           />
           <div>
             {socials?.tiktok && (

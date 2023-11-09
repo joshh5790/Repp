@@ -38,12 +38,12 @@ function LoginForm() {
   };
 
   return (
-    <div className="login-modal-container">
+    <div className="flex-col-center">
       <h1 className="modal-header">
         Login to <img src={logo} alt="logo" className="logo" />
       </h1>
       {error && <p className="error-msg">{error}</p>}
-      <form className="login-form" onSubmit={onSubmit}>
+      <form className="flex-col" style={{width: "100%"}} onSubmit={onSubmit}>
         <input
           className="login-input"
           name="credential"

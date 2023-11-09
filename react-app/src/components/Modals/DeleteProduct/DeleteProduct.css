@@ -1,9 +1,3 @@
-.delete-product-modal {
-  display: flex;
-  flex-direction: column;
-  width: 25rem;
-}
-
 .cancel-delete-button {
   width: 9rem;
   padding: 1rem;

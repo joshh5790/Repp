@@ -1,15 +1,3 @@
-.login-modal-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.login-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 .modal-header {
   margin-top: 0;
 }

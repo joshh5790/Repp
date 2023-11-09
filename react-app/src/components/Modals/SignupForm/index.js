@@ -56,7 +56,7 @@ function SignupForm() {
   };
 
   return (
-    <div className="signup-modal-container">
+    <div className="flex-col-center">
       <h1 className="modal-header">Sign Up</h1>
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="signup-col">

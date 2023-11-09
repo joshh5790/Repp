@@ -71,7 +71,7 @@ const ManageImages = ({ productId, showImage, setShowImage, setShowStock }) => {
           ref={imageRef}
         >
           <label className="product-input-label">
-            Image url:
+            Image URL:
             <input
               value={editImageUrl}
               onChange={(e) => {

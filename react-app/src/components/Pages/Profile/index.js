@@ -80,7 +80,7 @@ const Profile = () => {
             </div>
           )}
           {repp?.bio && (
-            <div id="about">
+            <div id="about" className="flex-col-center">
               <h2>ABOUT</h2>
               <div>{repp?.bio}</div>
             </div>

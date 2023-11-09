@@ -9,6 +9,7 @@ import {
   updateProductThunk,
 } from "../../../store/products";
 import "./ManageProduct.css";
+import { DebounceInput } from "react-debounce-input";
 
 const ManageProduct = ({ product, pageId }) => {
   const dispatch = useDispatch();
@@ -82,9 +83,14 @@ const ManageProduct = ({ product, pageId }) => {
           alt=""
           className="product-modal-img"
           src={previewImage}
-          onError={({ currentTarget }) => {
-            currentTarget.onerror = null;
-            currentTarget.src =
+          onError={({ target }) => {
+            if (previewImage.length) {
+              setErrors((prev) => {
+                return { ...prev, previewImage: ["Invalid image url"] };
+              });
+            }
+            target.onerror = null;
+            target.src =
               "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
           }}
         />
@@ -104,7 +110,7 @@ const ManageProduct = ({ product, pageId }) => {
             }}
           />
         </label>
-        <div className="error-msg">{errors.price && errors.price[0]}&nbsp;</div>
+        <div className="error-msg">{errors.name && errors.name[0]}&nbsp;</div>
         <label className="product-input-label">
           Price (USD) *
           <input
@@ -124,8 +130,9 @@ const ManageProduct = ({ product, pageId }) => {
         <div className="error-msg">{errors.price && errors.price[0]}&nbsp;</div>
         <label className="product-input-label">
           Preview Image *
-          <input
+          <DebounceInput
             className="product-input"
+            debounceTimeout={500}
             value={previewImage}
             onChange={(e) => {
               setErrors((prev) => {

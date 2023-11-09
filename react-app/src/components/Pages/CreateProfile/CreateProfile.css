@@ -8,9 +8,6 @@
 }
 
 .create-profile-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 1rem;
   min-width: 35rem;
   background-color: rgb(255, 255, 255, 0.9);
@@ -19,13 +16,6 @@
 
 .new-profile-input {
   width: 25rem;
-}
-
-.socials-button-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
 }
 
 .socials-form-button {

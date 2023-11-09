@@ -23,13 +23,13 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
   // on page load
   useEffect(() => {
     if (pageId) {
-      dispatch(getPageCartThunk(pageId))
-        .then((data) =>{
-          if (data.id) {
-            dispatch(getCartItemsThunk(data.id))
-            .then((data) => setNumCartItems(data.length));
-          }
-        })
+      dispatch(getPageCartThunk(pageId)).then((data) => {
+        if (data.id) {
+          dispatch(getCartItemsThunk(data.id)).then((data) =>
+            setNumCartItems(data.length)
+          );
+        }
+      });
     }
   }, [dispatch, pageId, setNumCartItems]);
 
@@ -50,7 +50,9 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
       {numCartItems && (
         <div
           onClick={() => dispatch(setCartVisibility((prev) => !prev))}
-          className={`open-cart-button ${numCartItems ? "" : "hidden"}`}
+          className={`open-cart-button flex-col-center ${
+            numCartItems ? "" : "hidden"
+          }`}
         >
           <div>{numCartItems}</div>
           <i className="fa-solid fa-cart-shopping" />
@@ -80,7 +82,10 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
           ))}
         </div>
         <div className="cart-bottom">
-          <div onClick={handleDeleteCart} className="clear-cart-button button-hover">
+          <div
+            onClick={handleDeleteCart}
+            className="clear-cart-button button-hover"
+          >
             <i className="fa-solid fa-trash" />
             <span style={{ marginLeft: "0.5rem" }}>Clear Cart</span>
           </div>

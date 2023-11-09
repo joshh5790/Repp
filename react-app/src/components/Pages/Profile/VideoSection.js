@@ -17,7 +17,7 @@ const VideoSection = ({ pageId }) => {
         {videos.map(video => (
           <div
           key={video?.id}
-          className='video-container'>
+          className='video-container flex-col-center'>
             <iframe
               title={video?.name}
               src={video?.video}

@@ -114,7 +114,7 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
             </p>
             {!outOfStock ? (
               <div>
-                <div className="flex">
+                <div style={{display: 'flex'}}>
                   {sizes.length > 1 &&
                     sizes.map((size) => (
                       <div
