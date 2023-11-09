@@ -42,7 +42,7 @@ const EditProduct = ({ product }) => {
 
     const closeStock = (e) => {
       if (!stockRef.current.contains(e.target)) {
-        console.log(stockRef.current, e.target, "THIS IS CURRENT")
+        console.log(stockRef.current.contains(e.target), "THIS IS CURRENT")
         setShowStock(false);
       }
     };
@@ -54,8 +54,7 @@ const EditProduct = ({ product }) => {
 
   const handleUpdateProduct = () => {};
 
-  const openStock = (e) => {
-    e.preventDefault()
+  const openStock = () => {
     if (showStock) return;
     setShowStock(true);
   };
@@ -113,11 +112,11 @@ const EditProduct = ({ product }) => {
             <div>
               <div className="add-sizes-container">
                 <b>Sizes</b>{" "}
-                <button className="add-size-button" onClick={(e) => openStock(e)}>
+                <button className="add-size-button" onClick={() => openStock()}>
                   + Add size/stock
                 </button>
                 <div
-                  className={"stock-dropdown" + (showStock ? "" : " hidden")}
+                  className={"adding-stock" + (showStock ? "" : " hidden")}
                   ref={stockRef}
                 >
                   <p style={{ fontSize: "0.7rem", marginTop: "0" }}>
@@ -150,7 +149,7 @@ const EditProduct = ({ product }) => {
                   + Add image
                 </button>
                 <div
-                  className={"stock-dropdown" + (showStock ? "" : " hidden")}
+                  className={"adding-stock" + (showStock ? "" : " hidden")}
                   ref={stockRef}
                 >
                   <label className="product-input-label">
