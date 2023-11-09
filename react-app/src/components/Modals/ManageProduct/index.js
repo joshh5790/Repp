@@ -9,7 +9,6 @@ import {
   updateProductThunk,
 } from "../../../store/products";
 import "./ManageProduct.css";
-// import OpenModalButton from "../../OpenModalButton";
 
 const ManageProduct = ({ product, pageId }) => {
   const dispatch = useDispatch();
@@ -164,12 +163,6 @@ const ManageProduct = ({ product, pageId }) => {
             />
           </>
         )}
-
-        {/* <OpenModalButton
-          onClick={handleUpdateProduct}
-          className="update-product-button button-hover"
-          buttonText={product ? "Update Item" : "Create Item"}
-        /> */}
 
         <button
           className="update-product-button button-hover"
