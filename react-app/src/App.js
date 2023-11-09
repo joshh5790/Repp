@@ -7,6 +7,7 @@ import Home from "./components/Pages/Home";
 import Profile from "./components/Pages/Profile";
 import CreateProfile from "./components/Pages/CreateProfile";
 import EditProfile from "./components/Pages/EditProfile";
+import EditProduct from "./components/Modals/EditProduct";
 
 function App() {
   const dispatch = useDispatch();

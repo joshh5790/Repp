@@ -15,7 +15,10 @@ import { formatCurrency } from "../../../utilities";
 const ProductDetailsModal = ({ product, setNumCartItems }) => {
   const dispatch = useDispatch();
   const sizes = useSelector((state) => Object.values(state.productStock));
-  const images = [product.previewImage, ...useSelector(productImagesSelector)];
+  const images = [
+    product.previewImage,
+    ...useSelector((state) => Object.values(state.productImages)),
+  ];
   const carts = useSelector((state) => Object.values(state.carts));
   const [currStock, setCurrStock] = useState({});
   const [outOfStock, setOutOfStock] = useState(false);

@@ -1,29 +1,21 @@
 import { useModal } from "../../../context/Modal";
-import { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getProductStocksThunk } from "../../../store/productStock";
-import {
-  getProductImagesThunk,
-  productImagesSelector,
-} from "../../../store/productImages";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import ManageStock from "./ManageStock";
+import ManageImages from "./ManageImages";
 import "./EditProduct.css";
 
 const EditProduct = ({ product }) => {
   const dispatch = useDispatch();
-  const sizes = useSelector((state) => Object.values(state.productStock));
-  const productImages = useSelector(productImagesSelector);
-  const [focusImage, setFocusImage] = useState(0);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [previewImage, setPreviewImage] = useState("");
   const [description, setDescription] = useState("");
-  const [images, setImages] = useState([]);
-  const [editSize, setEditSize] = useState("");
-  const [editStock, setEditStock] = useState("");
   const [showStock, setShowStock] = useState(false);
+  const [showImage, setShowImage] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
-  const stockRef = useRef();
 
   useEffect(() => {
     if (product) {
@@ -31,38 +23,16 @@ const EditProduct = ({ product }) => {
       setPrice(product.price || "");
       setPreviewImage(product.previewImage || "");
       setDescription(product.description || "");
-      dispatch(getProductImagesThunk(product.id))
-        .then(() => dispatch(getProductStocksThunk(product.id)))
-        .then(() => setIsLoaded(true));
+      setIsLoaded(true);
     }
   }, [dispatch, product]);
 
-  useEffect(() => {
-    if (!showStock) return;
-
-    const closeStock = (e) => {
-      if (!stockRef.current.contains(e.target)) {
-        console.log(stockRef.current.contains(e.target), "THIS IS CURRENT")
-        setShowStock(false);
-      }
-    };
-
-    document.addEventListener("click", closeStock);
-
-    return () => document.removeEventListener("click", closeStock);
-  }, [showStock]);
-
   const handleUpdateProduct = () => {};
-
-  const openStock = () => {
-    if (showStock) return;
-    setShowStock(true);
-  };
 
   return (
     <>
       {isLoaded ? (
-        <div className="product-modal">
+        <div className="edit-product-modal">
           <i onClick={closeModal} className="fa-solid fa-x modal" />
           <div className="product-img-container">
             <img
@@ -109,71 +79,31 @@ const EditProduct = ({ product }) => {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </label>
-            <div>
-              <div className="add-sizes-container">
-                <b>Sizes</b>{" "}
-                <button className="add-size-button" onClick={() => openStock()}>
-                  + Add size/stock
-                </button>
-                <div
-                  className={"adding-stock" + (showStock ? "" : " hidden")}
-                  ref={stockRef}
-                >
-                  <p style={{ fontSize: "0.7rem", marginTop: "0" }}>
-                    Leave size blank if product only has one size
-                  </p>
-                  <label className="product-input-label">
-                    Size:
-                    <input type="text" />
-                  </label>
-                  <label className="product-input-label">
-                    Stock:
-                    <input type="text" />
-                  </label>
-                  <button>Add</button>
-                </div>
-              </div>
-              {sizes.length > 1 && (
-                <div className="flex">
-                  {sizes.map((size) => (
-                    <div className="product-size-button" key={size.id}>
-                      <b>{size.size || "Single Size"}</b>
-                    </div>
-                  ))}
-                </div>
-              )}
+            <ManageStock
+              productId={product.id}
+              showStock={showStock}
+              setShowStock={setShowStock}
+              setShowImage={setShowImage}
+            />
+            <ManageImages
+              productId={product.id}
+              showImage={showImage}
+              setShowImage={setShowImage}
+              setShowStock={setShowStock}
+            />
 
-              {/* <div className="add-images-container">
-              <b>Images</b>{" "}
-                <button className="add-size-button" onClick={() => openStock()}>
-                  + Add image
-                </button>
-                <div
-                  className={"adding-stock" + (showStock ? "" : " hidden")}
-                  ref={stockRef}
-                >
-                  <label className="product-input-label">
-                    Image url:
-                    <input type="text" />
-                  </label>
-                  <button>Add</button>
-                </div>
-              </div> */}
-
-              <button
-                className="add-to-cart-button"
-                onClick={handleUpdateProduct}
-              >
-                Update Item
-              </button>
-            </div>
+            <button
+              className="update-product-button button-hover"
+              onClick={handleUpdateProduct}
+            >
+              Update Item
+            </button>
           </div>
         </div>
       ) : (
-        <div className="product-modal">
+        <div className="edit-product-modal">
           <i onClick={closeModal} className="fa-solid fa-x modal" />
           <div className="product-img-container">
-            <div className="product-carousel-container" />
             <div className="product-modal-img skeleton" />
           </div>
           <div className="product-modal-details">

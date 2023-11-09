@@ -42,7 +42,8 @@ export const getProductStocksThunk = (productId) => async (dispatch) => {
 
 // POST /products/:productId/productStocks/
 export const createProductStockThunk =
-  (productId, size, stock) => async (dispatch) => {
+  ({ productId, size, stock }) =>
+  async (dispatch) => {
     const response = await fetch(`/api/products/${productId}/productStocks`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -64,7 +65,8 @@ export const createProductStockThunk =
 
 // PUT /productStocks/:productStockId
 export const updateProductStockThunk =
-  (productStockId, size, stock) => async (dispatch) => {
+  ({ productStockId, size, stock }) =>
+  async (dispatch) => {
     const response = await fetch(`/api/productStocks/${productStockId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

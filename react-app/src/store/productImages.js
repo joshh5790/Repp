@@ -4,12 +4,6 @@ const SET_PRODUCTIMAGES = "productImages/SET_PRODUCTIMAGES";
 const ADD_PRODUCTIMAGE = "productImages/ADD_PRODUCTIMAGE";
 const REMOVE_PRODUCTIMAGE = "productImages/REMOVE_PRODUCTIMAGE";
 
-// selectors
-export const productImagesSelector = (state) => {
-  const imageObj = Object.values(state.productImages);
-  return imageObj.map((image) => image.image);
-};
-
 // action creators
 
 const setProductImages = (productImages) => ({

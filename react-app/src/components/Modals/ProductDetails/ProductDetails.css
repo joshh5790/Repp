@@ -6,6 +6,7 @@
   align-items: top;
   padding-top: 1rem;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .fa-x.modal {

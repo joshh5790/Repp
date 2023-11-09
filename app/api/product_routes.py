@@ -152,5 +152,3 @@ def create_product_stock(productId):
         return productStock.to_dict()
     else:
         return {"errors": form.errors}, 401
-
-

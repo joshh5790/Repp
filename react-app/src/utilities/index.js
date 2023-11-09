@@ -16,3 +16,7 @@ export function isObjectEmpty(obj) {
 
   return true;
 }
+
+export function checkNumeric(input) {
+  return /^\d+$/.test(input)
+}

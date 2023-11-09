@@ -10,13 +10,14 @@ function OpenModalButton({
 }) {
   const { setModalContent, setOnModalClose } = useModal();
 
-  const onClick = () => {
+  const onClick = (e) => {
+    e.stopPropagation()
     if (typeof onButtonClick === "function") onButtonClick();
     if (typeof onModalClose === "function") setOnModalClose(onModalClose);
     setModalContent(modalComponent);
   };
 
-  return <button onClick={onClick} className={className}>{buttonText}</button>;
+  return <button onClick={e => onClick(e)} className={className}>{buttonText}</button>;
 }
 
 export default OpenModalButton;
