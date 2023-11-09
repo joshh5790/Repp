@@ -1,6 +1,6 @@
 .stock-dropdown {
-  bottom: 7rem;
-  right: 1rem;
+  top: 3rem;
+  right: 0;
   position: absolute;
   background-color: white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -8,16 +8,33 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
 .list-size {
+  position: relative;
   min-width: fit-content;
   padding: 0 0.5rem;
-  height: 2rem;
+  height: 2.5rem;
   border: 1px solid black;
   text-align: center;
-  line-height: 2rem;
+  line-height: 3.5rem;
   font-size: 0.7rem;
   margin-right: 0.5rem;
   user-select: none;
+}
+
+.del-size-x {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 0.5rem;
+  padding: 0.3rem 0.38rem;
+  background-color: #BBBBBB;
+}
+
+.del-size-x:hover {
+  background-color: #999999;
 }

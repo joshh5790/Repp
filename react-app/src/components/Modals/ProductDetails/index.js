@@ -5,14 +5,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProductStocksThunk } from "../../../store/productStock";
 import {
   getProductImagesThunk,
-  productImagesSelector,
 } from "../../../store/productImages";
 import { setCartVisibility } from "../../../store/navigation";
 import { createCartItemThunk } from "../../../store/cartItems";
 import { createCartThunk, getCartsThunk } from "../../../store/carts";
 import { formatCurrency } from "../../../utilities";
 
-const ProductDetailsModal = ({ product, setNumCartItems }) => {
+const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
   const dispatch = useDispatch();
   const sizes = useSelector((state) => Object.values(state.productStock));
   const images = [
@@ -144,7 +143,7 @@ const ProductDetailsModal = ({ product, setNumCartItems }) => {
                       ))}
                   </select>
                 </div>
-                <button className="add-to-cart-button" onClick={addToCart}>
+                <button className="add-to-cart-button" onClick={addToCart} disabled={isDisabled}>
                   Add to Cart
                 </button>
               </div>
@@ -172,4 +171,4 @@ const ProductDetailsModal = ({ product, setNumCartItems }) => {
   );
 };
 
-export default ProductDetailsModal;
+export default ProductDetails;

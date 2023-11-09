@@ -4,8 +4,9 @@ import { formatCurrency, isObjectEmpty } from "../../../utilities";
 import OpenModalButton from "../../OpenModalButton";
 import { getProductsThunk } from "../../../store/products";
 import { updateRPageThunk } from "../../../store/pages";
+import ProductDetails from "../../Modals/ProductDetails";
 import DeleteProduct from "../../Modals/DeleteProduct";
-import EditProduct from "../../Modals/EditProduct";
+import ManageProduct from "../../Modals/ManageProduct";
 
 const EditProducts = ({ page }) => {
   const dispatch = useDispatch();
@@ -26,47 +27,65 @@ const EditProducts = ({ page }) => {
 
   return (
     <div className="manage-products-list">
+      <OpenModalButton
+        className="new-product-button"
+        modalComponent={<ManageProduct pageId={page.id} />}
+        buttonText="+ New Product"
+      />
       {products.map((product) => (
-        <div className="manage-product-card" key={product.id}>
-          <div style={{ display: "flex", gap: "1rem" }}>
-            <img
-              alt=""
-              className="cart-item-img"
-              src={product?.previewImage}
-              onError={({ target }) => {
-                target.onerror = null;
-                target.src =
-                  "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-              }}
-            />
-            <div>
-              <div
-                style={{
-                  textOverflow: "ellipsis",
-                  fontWeight: "bold",
-                  marginBottom: "1rem",
-                }}
-              >
-                {product?.name}
+        <OpenModalButton
+          className="manage-product-card"
+          key={product.id}
+          modalComponent={<ProductDetails product={product} isDisabled={true}/>}
+          buttonText={
+            <>
+              <div style={{ display: "flex", gap: "1rem" }}>
+                <img
+                  alt=""
+                  className="cart-item-img"
+                  src={product?.previewImage}
+                  onError={({ target }) => {
+                    target.onerror = null;
+                    target.src =
+                      "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+                  }}
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <div
+                    style={{
+                      textOverflow: "ellipsis",
+                      fontWeight: "bold",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    {product?.name}
+                  </div>
+                  <div>{formatCurrency(product?.price)}</div>
+                </div>
               </div>
-              <div>{formatCurrency(product?.price)}</div>
-            </div>
-          </div>
-          <div style={{ display: "flex", gap: "1.5rem" }}>
-            <OpenModalButton
-              className={"open-edit-product"}
-              buttonText={<i className="fa-regular fa-pen-to-square" />}
-              modalComponent={<EditProduct product={product} />}
-            />
-            <OpenModalButton
-              className={"open-delete-product"}
-              buttonText={<i className="fa-solid fa-x" />}
-              modalComponent={
-                <DeleteProduct product={product} setReload={setReload} />
-              }
-            />
-          </div>
-        </div>
+              <div style={{ display: "flex", gap: "1.5rem" }}>
+                <OpenModalButton
+                  className={"open-edit-product"}
+                  buttonText={<i className="fa-regular fa-pen-to-square" />}
+                  modalComponent={<ManageProduct product={product} />}
+                />
+                <OpenModalButton
+                  className={"open-delete-product"}
+                  buttonText={<i className="fa-solid fa-x" />}
+                  modalComponent={
+                    <DeleteProduct product={product} setReload={setReload} />
+                  }
+                />
+              </div>
+            </>
+          }
+        />
       ))}
     </div>
   );

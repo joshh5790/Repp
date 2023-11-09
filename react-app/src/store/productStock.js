@@ -67,7 +67,7 @@ export const createProductStockThunk =
 export const updateProductStockThunk =
   ({ productStockId, size, stock }) =>
   async (dispatch) => {
-    const response = await fetch(`/api/productStocks/${productStockId}`, {
+    const response = await fetch(`/api/productStock/${productStockId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -88,7 +88,7 @@ export const updateProductStockThunk =
 
 // DELETE /productStocks/:productStockId
 export const deleteProductStockThunk = (productStockId) => async (dispatch) => {
-  const response = await fetch(`/api/productStocks/${productStockId}`, {
+  const response = await fetch(`/api/productStock/${productStockId}`, {
     method: "DELETE",
   });
 

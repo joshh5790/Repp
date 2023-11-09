@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getProductImagesThunk,
   createProductImageThunk,
+  deleteProductImageThunk,
 } from "../../../store/productImages";
 import "./ManageImages.css";
 
@@ -53,6 +54,11 @@ const ManageImages = ({ productId, showImage, setShowImage, setShowStock }) => {
     }
   };
 
+  const handleDeleteImage = (imageId) => {
+    dispatch(deleteProductImageThunk(imageId));
+    setReload((prev) => !prev);
+  };
+
   return (
     <>
       <div className="add-images-container">
@@ -92,17 +98,22 @@ const ManageImages = ({ productId, showImage, setShowImage, setShowStock }) => {
       {productImages.length > 0 && (
         <div style={{ display: "flex", overflow: "auto", overflowY: "hidden" }}>
           {productImages.map((image) => (
-            <img
-              alt=""
-              src={image?.image}
-              className="list-image"
-              key={image.id}
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null;
-                currentTarget.src =
-                  "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-              }}
-            />
+            <div key={image.id} style={{ position: "relative" }}>
+              <img
+                alt=""
+                src={image.image}
+                className="list-image"
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null;
+                  currentTarget.src =
+                    "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
+                }}
+              />
+              <i
+                onClick={() => handleDeleteImage(image.id)}
+                className="fa-solid fa-x del-img-x"
+              />
+            </div>
           ))}
         </div>
       )}

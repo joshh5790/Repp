@@ -1,6 +1,6 @@
 .edit-product-modal {
   display: flex;
-  height: 32rem;
+  height: 36rem;
   width: 60rem;
   padding: 1rem;
 }
@@ -13,11 +13,12 @@
 }
 
 .product-input {
-  width: 15rem;
+  width: 20rem;
 }
 
 .add-sizes-container,
 .add-images-container {
+  position: relative;
   display: flex;
   align-items: center;
   margin: 1rem 0;
@@ -29,6 +30,7 @@
   padding: 0.5rem;
   border: 2px dashed #999999;
   margin-left: 2rem;
+  color: #999999;
 }
 
 .modal-add-button:hover {

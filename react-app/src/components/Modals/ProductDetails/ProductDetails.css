@@ -54,6 +54,7 @@
 .product-modal-details {
   justify-self: center;
   margin-left: 2rem;
+  flex-grow: 1;
 }
 
 .product-modal-name {
@@ -124,6 +125,11 @@
   padding: 1rem 0.1rem 1rem 1rem;
   width: 6rem;
   cursor: pointer;
+}
+
+.add-to-cart-button:disabled {
+  background-color: #999999;
+  cursor: auto;
 }
 
 @media (max-width: 900px) {

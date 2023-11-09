@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getProductStocksThunk,
   createProductStockThunk,
+  deleteProductStockThunk
 } from "../../../store/productStock";
 import { checkNumeric } from "../../../utilities";
 import "./ManageStock.css";
@@ -70,6 +71,11 @@ const ManageStock = ({ productId, showStock, setShowStock, setShowImage }) => {
     }
   };
 
+  const handleDeleteSize = (sizeId) => {
+    dispatch(deleteProductStockThunk(sizeId));
+    setReload((prev) => !prev);
+  }
+
   return (
     <>
       <div className="add-sizes-container">
@@ -136,6 +142,7 @@ const ManageStock = ({ productId, showStock, setShowStock, setShowImage }) => {
               <b>
                 {size.size || "Single Size"}-{size.stock}
               </b>
+              <i onClick={() => handleDeleteSize(size.id)} className="fa-solid fa-x del-size-x" />
             </div>
           ))}
         </div>

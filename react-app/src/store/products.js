@@ -42,7 +42,7 @@ export const getProductsThunk = (pageId) => async (dispatch) => {
 
 // POST /pages/:pageId/products/
 export const createProductThunk =
-  (pageId, name, description, price, previewImage) => async (dispatch) => {
+  ({pageId, name, description, price, previewImage}) => async (dispatch) => {
     const response = await fetch(`/api/pages/${pageId}/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -79,22 +79,22 @@ export const getOneProductThunk = (productId) => async (dispatch) => {
 
 // PUT /products/:productId
 export const updateProductThunk =
-  (productId, name, description, price, previewImage) => async (dispatch) => {
+  ({productId, name, price, previewImage, description}) => async (dispatch) => {
     const response = await fetch(`/api/products/${productId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
-        description,
         price,
         previewImage,
+        description,
       }),
     });
 
     if (response.ok) {
       const data = await response.json();
       dispatch(addProduct({ [data.id]: data }));
-      return data;
+      return null;
     } else if (response.status < 500) {
       const data = await response.json();
       if (data.errors) return data.errors;

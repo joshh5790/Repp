@@ -54,6 +54,24 @@
   margin-bottom: 1rem;
 }
 
+.new-product-button {
+ width: 28rem;
+ height: 7.2rem;
+ padding: 1rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ border: 2px dashed #999999;
+ border-radius: 10px;
+ font-size: 20px;
+ font-weight: bold;
+}
+
+.new-product-button:hover {
+  background-color: #DDDDDD;
+  cursor: pointer;
+}
+
 .manage-products-list {
   display: flex;
   flex-direction: column;
@@ -69,17 +87,31 @@
   padding: 1rem;
   background-color: #EEEEEE;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.manage-product-card:hover {
+  background-color: #DDDDDD;
 }
 
 .open-edit-product {
   all: unset;
   cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 50%;
 }
 
 .open-delete-product {
   all: unset;
   color: red;
   cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 50%;
+}
+
+.open-delete-product:hover,
+.open-edit-product:hover {
+  background-color: #999999;
 }
 
 .update-main-img-container {
