@@ -37,7 +37,12 @@ const EditProfile = () => {
 
   return (
     <div className="manage-profile-page page-container">
-      <h1 style={{ marginBottom: "2rem" }}>Manage Profile</h1>
+      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+
+        <h1 style={{ marginBottom: "2rem" }}>Manage Profile</h1>
+        <h1 style={{ marginRight: "2rem" }}>Preview</h1>
+        {/* add these two to the respective containers instead */}
+      </div>
       <div className="manage-profile-content-container">
         <div className="manage-profile-tabs">
           <span
