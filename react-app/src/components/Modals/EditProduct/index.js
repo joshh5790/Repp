@@ -144,7 +144,7 @@ const EditProduct = ({ product }) => {
                 </div>
               )}
 
-              <div className="add-images-container">
+              {/* <div className="add-images-container">
               <b>Images</b>{" "}
                 <button className="add-size-button" onClick={() => openStock()}>
                   + Add image
@@ -159,7 +159,7 @@ const EditProduct = ({ product }) => {
                   </label>
                   <button>Add</button>
                 </div>
-              </div>
+              </div> */}
 
               <button
                 className="add-to-cart-button"
