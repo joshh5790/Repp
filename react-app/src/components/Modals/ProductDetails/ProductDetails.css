@@ -1,7 +1,7 @@
 .product-modal {
   display: flex;
   width: 70vw;
-  max-width: 50rem;
+  max-width: 55rem;
   height: 30rem;
   align-items: top;
   padding-top: 1rem;
@@ -40,13 +40,13 @@
 }
 
 .product-img-container {
-  width: 30rem;
+  width: 25rem;
   display: flex;
   align-items: center;
 }
 
 .product-modal-img {
-  min-width: 90%;
+  min-width: 80%;
   aspect-ratio: 1 / 1;
 }
 

@@ -19,6 +19,7 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
+      console.log(ulRef.current, e.target, "THIS IS PROFILEBUTTON")
       if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
