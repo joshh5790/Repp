@@ -1,17 +1,17 @@
 .cancel-delete-button {
   width: 9rem;
   padding: 1rem;
-  background-color: black;
-  border: 1px solid black;
-  color: white;
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE;
+  color: black;
   cursor: pointer;
   border-radius: 10px;
   text-align: center;
 }
 
 .cancel-delete-button:hover {
-  background-color: white;
-  color: black;
+  background-color: #999999;
+  color: white;
 }
 
 .confirm-delete-product {

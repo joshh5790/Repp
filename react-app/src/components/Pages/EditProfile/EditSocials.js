@@ -56,7 +56,6 @@ const EditSocials = ({ page }) => {
         <input
           className="socials-input"
           name="tiktok"
-          type="text"
           value={tiktok}
           placeholder="https://www.tiktok.com/@username"
           onChange={(e) => setTiktok(e.target.value)}
@@ -73,7 +72,6 @@ const EditSocials = ({ page }) => {
         <input
           className="socials-input"
           name="youtube"
-          type="text"
           value={youtube}
           placeholder="https://www.youtube.com/@username"
           onChange={(e) => setYoutube(e.target.value)}
@@ -90,7 +88,6 @@ const EditSocials = ({ page }) => {
         <input
           className="socials-input"
           name="instagram"
-          type="text"
           value={instagram}
           placeholder="https://www.instagram.com/@username"
           onChange={(e) => setInstagram(e.target.value)}
@@ -104,7 +101,6 @@ const EditSocials = ({ page }) => {
         <input
           className="socials-input"
           name="applemusic"
-          type="text"
           value={applemusic}
           placeholder="you get the gist"
           onChange={(e) => setApplemusic(e.target.value)}
@@ -121,7 +117,6 @@ const EditSocials = ({ page }) => {
         <input
           className="socials-input"
           name="spotify"
-          type="text"
           value={spotify}
           onChange={(e) => setSpotify(e.target.value)}
         />
@@ -137,7 +132,6 @@ const EditSocials = ({ page }) => {
         <input
           className="socials-input"
           name="facebook"
-          type="text"
           value={facebook}
           onChange={(e) => setFacebook(e.target.value)}
         />
@@ -153,7 +147,6 @@ const EditSocials = ({ page }) => {
         <input
           className="socials-input"
           name="discord"
-          type="text"
           value={discord}
           onChange={(e) => setDiscord(e.target.value)}
         />
@@ -169,7 +162,6 @@ const EditSocials = ({ page }) => {
         <input
           className="socials-input"
           name="twitter"
-          type="text"
           value={twitter}
           onChange={(e) => setTwitter(e.target.value)}
         />
@@ -185,7 +177,6 @@ const EditSocials = ({ page }) => {
         <input
           className="socials-input"
           name="external"
-          type="text"
           value={external}
           placeholder="https://www.website.com"
           onChange={(e) => setExternal(e.target.value)}

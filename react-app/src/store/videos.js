@@ -42,15 +42,13 @@ export const getVideosThunk = (pageId) => async (dispatch) => {
 
 // POST /pages/:pageId/videos/
 export const createVideoThunk =
-  (pageId, name, description, price, previewImage) => async (dispatch) => {
+  ({pageId, name, video}) => async (dispatch) => {
     const response = await fetch(`/api/pages/${pageId}/videos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
-        description,
-        price,
-        previewImage,
+        video
       }),
     });
 

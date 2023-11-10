@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteVideoThunk, getVideosThunk } from "../../../store/videos";
+import {
+  createVideoThunk,
+  deleteVideoThunk,
+  getVideosThunk,
+} from "../../../store/videos";
 
 const EditVideos = ({ page }) => {
   const dispatch = useDispatch();
@@ -16,6 +20,10 @@ const EditVideos = ({ page }) => {
   }, [dispatch, page]);
 
   const handleAddVideo = () => {
+    if (!video) {
+      console.log("ERGGG");
+      return setErrors({ video: ["URL is required."] });
+    } else dispatch(createVideoThunk({ pageId: page.id, name, video }));
     setName("");
     setVideo("");
     setEditMode(false);
@@ -29,7 +37,10 @@ const EditVideos = ({ page }) => {
   return (
     <>
       {!editMode ? (
-        <div onClick={() => setEditMode(true)} className="new-card-button">
+        <div
+          onClick={() => setEditMode(true)}
+          className="new-card-button button-hover"
+        >
           <b>+ Add Video</b>
         </div>
       ) : (
@@ -42,31 +53,42 @@ const EditVideos = ({ page }) => {
           }}
         >
           <div
+            className="flex-col"
             style={{
-              display: "flex",
-              flexDirection: "column",
+              marginTop: "1rem",
               gap: "0.5rem",
               width: "18rem",
             }}
           >
             <label
               className="update-socials-label"
-              style={{ fontSize: "1rem" }}
+              style={{ marginBottom: "0" }}
             >
               Video Title
-              <input />
+              <input value={name} onChange={(e) => setName(e.target.value)} />
             </label>
             <label
               className="update-socials-label"
-              style={{ fontSize: "1rem" }}
+              style={{ marginBottom: "0" }}
             >
               Video URL
-              <input />
+              <input value={video} onChange={(e) => setVideo(e.target.value)} />
             </label>
+            <div className="error-msg">
+              {errors.video && errors.video[0]}&nbsp;
+            </div>
           </div>
-          <div style={{display: 'flex', flexDirection: 'column', gap: "1rem"}}>
-            <button onClick={handleAddVideo}>Add</button>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+          >
             <button
+              className="add-video-button button-hover"
+              onClick={handleAddVideo}
+            >
+              Add
+            </button>
+            <button
+              className="cancel-video-button button-hover"
               onClick={() => {
                 setName("");
                 setVideo("");
@@ -79,7 +101,7 @@ const EditVideos = ({ page }) => {
         </div>
       )}
       {videos.map((video) => (
-        <div className="manage-cards">
+        <div key={video.id} className="manage-cards button-hover">
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <iframe
               title={video?.name}

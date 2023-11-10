@@ -13,16 +13,17 @@
   all: unset;
   padding: 0.5rem;
   border-radius: 10px;
-  background-color: white;
-  border: 1px solid black;
+  background-color: #4444FF;
+  border: 1px solid #4444FF;
+  color: white;
   margin-top: 1rem;
   text-align: center;
   width: 10rem;
 }
 
 .close-socials-button:hover {
-  background-color: black;
-  color: white
+  background-color: white;
+  color: #4444FF;
 }
 
 .socials-input {
