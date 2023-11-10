@@ -36,14 +36,12 @@ function Navigation() {
             <div className="page-info">
               <h4>Home Page/Navbar</h4>
               <ul>
-                <li>Left and right arrows to look through artists</li>
-                <li>Click visit page to visit artist page</li>
                 <li>Visiting artist page will cause navbar to disappear, clicking side ellipsis will make it show up</li>
-                <li>circles on bottom allow user to know which artist they are on</li>
                 <li>Click logo to return to home page</li>
                 <li>Right side of navbar has login button/user settings</li>
                 <li>Account settings not working yet, rest are good</li>
                 <li>logins for Highvyn and tiffany are josiah@aa.io and demo@aa.io, password is password</li>
+                <li>Site not mobile friendly yet</li>
               </ul>
             </div>
           )}
