@@ -4,37 +4,37 @@ from sqlalchemy.sql import text
 
 def seed_products():
     product1 = Product(
-        pageId=3,
+        pageId=1,
         name="World Tour Hoodie",
         price=65,
         previewImage="https://cdn.shopify.com/s/files/1/0091/7454/8577/files/hoodiefront_550x825.png",
     )
     product2 = Product(
-        pageId=3,
+        pageId=1,
         name="World Tour Long Sleeve",
         price=50,
         previewImage="https://cdn.shopify.com/s/files/1/0091/7454/8577/files/redhousefront_550x825.png",
     )
     product3 = Product(
-        pageId=3,
+        pageId=1,
         name="World Tour Tee",
         price=35,
         previewImage="https://cdn.shopify.com/s/files/1/0091/7454/8577/files/gardentee_550x825.png",
     )
     product4 = Product(
-        pageId=3,
+        pageId=1,
         name="House on a Hill Tee",
         price=35,
         previewImage="https://cdn.shopify.com/s/files/1/0091/7454/8577/files/tourteefront_550x825.png",
     )
     product5 = Product(
-        pageId=3,
+        pageId=1,
         name="Eric Nam Dad Hat",
         price=30,
         previewImage="https://cdn.shopify.com/s/files/1/0091/7454/8577/files/2023hat_550x825.png",
     )
     product6 = Product(
-        pageId=3,
+        pageId=1,
         name="House on a Hill Tote",
         price=25,
         previewImage="https://cdn.shopify.com/s/files/1/0091/7454/8577/files/tote_550x825.png",

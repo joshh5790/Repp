@@ -4,6 +4,19 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+    eric = User(
+        firstName="Eric",
+        lastName="Nam",
+        username="ericnam",
+        email="ericnam@aa.io",
+        gender="Male",
+        address="121 Third St",
+        city="Los Angeles",
+        state="CA",
+        password="password",
+        isRepp=True,
+        profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
+    )
     tiff = User(
         firstName="Tiffany",
         lastName="Day",
@@ -30,19 +43,6 @@ def seed_users():
         isRepp=True,
         profileImage="https://images.genius.com/e9a779c23099a34081cdd35250f273cc.539x539x1.jpg",
     )
-    eric = User(
-        firstName="Eric",
-        lastName="Nam",
-        username="ericnam",
-        email="ericnam@aa.io",
-        gender="Male",
-        address="121 Third St",
-        city="Los Angeles",
-        state="CA",
-        password="password",
-        isRepp=True,
-        profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
-    )
     josh = User(
         firstName="Josh",
         lastName="Ho",
@@ -57,9 +57,9 @@ def seed_users():
         profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
     )
 
+    db.session.add(eric)
     db.session.add(tiff)
     db.session.add(josiah)
-    db.session.add(eric)
     db.session.add(josh)
     db.session.commit()
 

@@ -9,10 +9,10 @@ import {
 import { deleteCartThunk } from "../../../store/carts";
 import { setCartVisibility } from "../../../store/navigation";
 
-const CartItemCard = ({ item, numCartItems, setNumCartItems }) => {
+const CartItemCard = ({ item, numCartItems, setNumCartItems, setReload }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(item.quantity);
-  const updateCartItem = (newQuantity) => {
+  const updateCartItem = async (newQuantity) => {
     if (newQuantity === "remove") {
       if (numCartItems === 1) {
         setNumCartItems(0);
@@ -21,12 +21,15 @@ const CartItemCard = ({ item, numCartItems, setNumCartItems }) => {
         dispatch(setCartVisibility(false));
       } else {
         setNumCartItems((prev) => prev - 1);
-        dispatch(deleteCartItemThunk(item.id));
+        await dispatch(deleteCartItemThunk(item.id))
+        .then(() => setReload(prev => !prev));
       }
+      setReload(prev => !prev)
       return;
     }
     setQuantity(newQuantity);
-    dispatch(updateCartItemThunk(item.id, newQuantity));
+    await dispatch(updateCartItemThunk(item.id, newQuantity))
+    .then(() => setReload(prev => !prev));
   };
   return (
     <div key={item.id} className="cart-item-card">

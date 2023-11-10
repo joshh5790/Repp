@@ -4,49 +4,64 @@ from sqlalchemy.sql import text
 
 def seed_videos():
     video1 = Video(
-        pageId=1,
+        pageId=2,
         name="Calone",
         video="https://www.youtube.com/embed/gB9NxOmwPjI",
     )
     video2 = Video(
-        pageId=1,
+        pageId=2,
         name="IF I DON'T TEXT YOU FIRST",
         video="https://www.youtube.com/embed/Jr2R5My0Bnc",
     )
     video3 = Video(
-        pageId=1,
+        pageId=2,
         name="APESHIT",
         video="https://www.youtube.com/embed/Ck92vi2VWuU",
     )
     video4 = Video(
-        pageId=1,
+        pageId=2,
         name="PARTY W OUT ME",
         video="https://www.youtube.com/embed/DXNFBM7CRko",
     )
     video5 = Video(
-        pageId=1,
+        pageId=2,
         name="SPOILED BITCH",
         video="https://www.youtube.com/embed/hD16PbFfEnA",
     )
     video6 = Video(
-        pageId=3,
+        pageId=1,
         name="Exist",
         video="https://www.youtube.com/embed/rxdjL1nx_eY",
     )
     video7 = Video(
-        pageId=3,
+        pageId=1,
         name="House on a Hill",
         video="https://www.youtube.com/embed/MUMFc7Wt5G4",
     )
     video8 = Video(
-        pageId=3,
+        pageId=1,
         name="Any Other Way",
         video="https://www.youtube.com/embed/oril2uJAiJY",
     )
     video9 = Video(
-        pageId=3,
+        pageId=1,
         name="I Don't Know You Anymore",
         video="https://www.youtube.com/embed/GHJyfokY5Dw",
+    )
+    video10 = Video(
+        pageId=3,
+        name="need u the most",
+        video="https://www.youtube.com/watch?v=yElzEgf6lAg",
+    )
+    video11 = Video(
+        pageId=3,
+        name="Pretty Girl",
+        video="https://www.youtube.com/watch?v=wyOIYOXswcI",
+    )
+    video12 = Video(
+        pageId=3,
+        name="Ghosts",
+        video="https://www.youtube.com/watch?v=bUsw-Tk8edc",
     )
 
     db.session.add(video1)
@@ -58,6 +73,9 @@ def seed_videos():
     db.session.add(video7)
     db.session.add(video8)
     db.session.add(video9)
+    db.session.add(video10)
+    db.session.add(video11)
+    db.session.add(video12)
     db.session.commit()
 
 

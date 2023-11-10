@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import CartItemCard from "./CartItemCard";
@@ -17,8 +17,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
   const cart = useSelector((state) => Object.values(state.carts)[0]);
   const cartItems = useSelector((state) => state.cartItems);
   const cartVisible = useSelector((state) => state.visibility.cart);
-  // const [showOptions, setShowOptions] = useState(false);
-  // const optionsRef = useRef();
+  const [reload, setReload] = useState(false)
 
   // on page load
   useEffect(() => {
@@ -31,7 +30,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
         }
       });
     }
-  }, [dispatch, pageId, setNumCartItems]);
+  }, [dispatch, pageId, setNumCartItems, reload]);
 
   const handleCheckout = () => {
     dispatch(setCartVisibility(false));
@@ -78,6 +77,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
               key={item.id}
               numCartItems={numCartItems}
               setNumCartItems={setNumCartItems}
+              setReload={setReload}
             />
           ))}
         </div>

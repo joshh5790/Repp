@@ -17,7 +17,7 @@ const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
         window.scrollY || document.documentElement.scrollTop;
 
 
-      const threshold = window.innerHeight - 82; // nav bar becomes black at the bottom of home element
+      const threshold = window.innerHeight - 85; // nav bar becomes black at the bottom of home element
 
       setScrollTop(scrollPosition <= threshold);
     }
