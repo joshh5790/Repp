@@ -42,6 +42,7 @@ function Navigation() {
                 <li>Click logo to return to home page</li>
                 <li>Right side of navbar has login button/user settings</li>
                 <li>Account settings not working yet, rest are good</li>
+                <li>logins for Highvyn and tiffany are josiah@aa.io and demo@aa.io, password is password</li>
               </ul>
             </div>
           )}
@@ -50,6 +51,7 @@ function Navigation() {
             <h4>Edit Profile Page</h4>
             <ul>
               <li>4 tabs, general, socials, products, and videos</li>
+              <li>Feel free to play around, I reset the database somewhat regularly</li>
               <li>fully functional</li>
               <li>right half is reserved for a profile preview</li>
             </ul>
@@ -62,6 +64,7 @@ function Navigation() {
               <li>navbar is hidden, clicking side ellipsis will make it show up</li>
               <li>clicking on artist name in profile navbar brings user to top</li>
               <li>Eric's page has a merch section that has items that can be added to cart</li>
+              <li>Cart is profile page specific, carts will only show for the respective artist's page</li>
               <li>Checkout functionality not working yet</li>
               <li>Newsletter functionality not working yet</li>
             </ul>
