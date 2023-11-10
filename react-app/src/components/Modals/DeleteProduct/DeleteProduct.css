@@ -11,10 +11,10 @@
 }
 
 .confirm-delete-product {
-  width: 9rem;
   background-color: red;
   border: 1px solid red;
   color: white;
+  width: 10rem;
 }
 
 .confirm-delete-product:hover {

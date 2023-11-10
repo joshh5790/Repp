@@ -126,13 +126,14 @@
   width: 6rem;
 }
 
-.add-to-cart-button:hover {
+.add-to-cart-button:enabled:hover {
   color: black;
   background-color: white;
 }
 
 .add-to-cart-button:disabled {
   background-color: #999999;
+  border: 1px solid #999999;
   cursor: auto;
 }
 
