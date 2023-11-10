@@ -47,25 +47,25 @@ const EditProfile = () => {
       <div className="manage-profile-content-container">
         <div className="manage-profile-tabs">
           <span
-            className={'ease-bg' + (currentTab === "General" ? "focus-tab" : " ")}
+            className={currentTab === "General" ? "focus-tab" : " "}
             onClick={() => setCurrentTab("General")}
           >
             General
           </span>
           <span
-            className={'ease-bg' + (currentTab === "Socials" ? "focus-tab" : " ")}
+            className={currentTab === "Socials" ? "focus-tab" : " "}
             onClick={() => setCurrentTab("Socials")}
           >
             Socials
           </span>
           <span
-            className={'ease-bg' + (currentTab === "Products" ? "focus-tab" : " ")}
+            className={currentTab === "Products" ? "focus-tab" : " "}
             onClick={() => setCurrentTab("Products")}
           >
             Products
           </span>
           <span
-            className={'ease-bg' + (currentTab === "Videos" ? "focus-tab" : " ")}
+            className={currentTab === "Videos" ? "focus-tab" : " "}
             onClick={() => setCurrentTab("Videos")}
           >
             Videos

@@ -31,14 +31,43 @@ function Navigation() {
         <NavLink exact to="/" className="logo-link">
           <img src={logo} alt="repp" className="logo" />
         </NavLink>
-        {/* <i className="fa-solid fa-info">
+        <i className="fa-solid fa-info">
           {location.pathname === "/" && (
             <div className="page-info">
-              <h4>Home Page Functionalities</h4>
-              <ul></ul>
+              <h4>Home Page/Navbar</h4>
+              <ul>
+                <li>Left and right arrows to look through artists</li>
+                <li>Click visit page to visit artist page</li>
+                <li>circles on bottom allow user to know which artist they are on</li>
+                <li>Click logo to return to home page</li>
+                <li>Right side of navbar has login button/user settings</li>
+                <li>Account settings not working yet, rest are good</li>
+              </ul>
             </div>
           )}
-        </i> */}
+          {location.pathname === '/profile/edit' && (
+            <div className="page-info">
+            <h4>Edit Profile Page</h4>
+            <ul>
+              <li>4 tabs, general, socials, products, and videos</li>
+              <li>fully functional</li>
+              <li>right half is reserved for a profile preview</li>
+            </ul>
+            </div>
+          )}
+          {(location.pathname === '/tiffany-day' || location.pathname === '/highvyn' || location.pathname === '/eric-nam') && (
+            <div className="page-info">
+            <h4>Profile Page</h4>
+            <ul>
+              <li>navbar is hidden, clicking side ellipsis will make it show up</li>
+              <li>clicking on artist name in profile navbar brings user to top</li>
+              <li>Eric's page has a merch section that has items that can be added to cart</li>
+              <li>Checkout functionality not working yet</li>
+              <li>Newsletter functionality not working yet</li>
+            </ul>
+            </div>
+          )}
+        </i>
       </li>
       {/* <li className="search-bar-container">
         <SearchBar />
