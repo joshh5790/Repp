@@ -12,6 +12,11 @@
   cursor: pointer;
 }
 
+.open-cart-button:hover {
+  background-color: white;
+  color: black;
+}
+
 #cart-background {
   position: fixed;
   top: 0;

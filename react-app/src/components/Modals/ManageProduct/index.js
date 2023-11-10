@@ -8,10 +8,13 @@ import {
   createProductThunk,
   updateProductThunk,
 } from "../../../store/products";
+import { updateRPageThunk } from "../../../store/pages";
 import "./ManageProduct.css";
 import { DebounceInput } from "react-debounce-input";
 
-const ManageProduct = ({ product, pageId }) => {
+const ManageProduct = ({ product, pageId, numProducts, videoSection }) => {
+  // need numProducts and videoSection to update page's shopSection to true
+  // if the created product is the first product
   const dispatch = useDispatch();
   const [currProduct, setCurrProduct] = useState({});
   const [name, setName] = useState("");
@@ -53,6 +56,7 @@ const ManageProduct = ({ product, pageId }) => {
       } else {
         closeModal();
         if (!product)
+          // make the most recently created products appear on top later and remove this
           window.scrollTo({
             top: document.body.scrollHeight,
             behavior: "smooth",
@@ -69,8 +73,14 @@ const ManageProduct = ({ product, pageId }) => {
           description,
         })
       ).then((data) => {
-        if (data.id) setCurrProduct(data);
-        else setErrors(data);
+        if (data.id) {
+          setCurrProduct(data);
+          if (numProducts === 0) {
+            dispatch(
+              updateRPageThunk({ pageId, shopSection: true, videoSection })
+            );
+          }
+        } else setErrors(data);
       });
     }
   };

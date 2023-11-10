@@ -50,7 +50,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
       {numCartItems && (
         <div
           onClick={() => dispatch(setCartVisibility((prev) => !prev))}
-          className={`open-cart-button flex-col-center ${
+          className={`open-cart-button button-hover flex-col-center ${
             numCartItems ? "" : "hidden"
           }`}
         >

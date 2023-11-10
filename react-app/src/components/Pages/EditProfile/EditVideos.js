@@ -5,6 +5,7 @@ import {
   deleteVideoThunk,
   getVideosThunk,
 } from "../../../store/videos";
+import { updateRPageThunk } from "../../../store/pages";
 
 const EditVideos = ({ page }) => {
   const dispatch = useDispatch();
@@ -16,20 +17,39 @@ const EditVideos = ({ page }) => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    if (page) dispatch(getVideosThunk(page.id));
+    if (page) {
+      dispatch(getVideosThunk(page.id));
+    }
   }, [dispatch, page]);
 
   const handleAddVideo = () => {
-    if (!video) {
-      console.log("ERGGG");
-      return setErrors({ video: ["URL is required."] });
-    } else dispatch(createVideoThunk({ pageId: page.id, name, video }));
-    setName("");
-    setVideo("");
-    setEditMode(false);
+    if (!video) return setErrors({ video: ["URL is required."] });
+    else {
+      dispatch(createVideoThunk({ pageId: page.id, name, video }));
+      if (!page.videoSection)
+        dispatch(
+          updateRPageThunk({
+            pageId: page.id,
+            shopSection: page.shopSection,
+            videoSection: true,
+          })
+        );
+      setName("");
+      setVideo("");
+      setEditMode(false);
+    }
   };
 
   const handleDeleteVideo = (videoId) => {
+    if (videos.length === 1) {
+      dispatch(
+        updateRPageThunk({
+          pageId: page.id,
+          shopSection: page.shopSection,
+          videoSection: false,
+        })
+      );
+    }
     dispatch(deleteVideoThunk(videoId));
     setReload((prev) => !prev);
   };

@@ -17,9 +17,21 @@ const EditProducts = ({ page }) => {
     if (page) {
       dispatch(getProductsThunk(page.id)).then((data) => {
         if (isObjectEmpty(data) && page.shopSection) {
-          dispatch(updateRPageThunk({ pageId: page.id, shopSection: false }));
+          dispatch(
+            updateRPageThunk({
+              pageId: page.id,
+              videoSection: page.videoSection,
+              shopSection: false,
+            })
+          );
         } else if (!isObjectEmpty(data) && !page.shopSection) {
-          dispatch(updateRPageThunk({ pageId: page.id, shopSection: true }));
+          dispatch(
+            updateRPageThunk({
+              pageId: page.id,
+              videoSection: page.videoSection,
+              shopSection: true,
+            })
+          );
         }
       });
     }
@@ -28,13 +40,19 @@ const EditProducts = ({ page }) => {
   return (
     <>
       <OpenModalButton
-        className="new-card-button"
-        modalComponent={<ManageProduct pageId={page.id} />}
+        className="new-card-button button-hover"
+        modalComponent={
+          <ManageProduct
+            pageId={page.id}
+            numProducts={products.length}
+            videoSection={page.videoSection}
+          />
+        }
         buttonText={<b>+ New Product</b>}
       />
       {products.map((product) => (
         <OpenModalButton
-          className="manage-cards"
+          className="manage-cards button-hover"
           key={product.id}
           modalComponent={
             <ProductDetails product={product} isDisabled={true} />
@@ -73,15 +91,15 @@ const EditProducts = ({ page }) => {
               </div>
               <div style={{ display: "flex", gap: "1.5rem" }}>
                 <OpenModalButton
-                  className={"edit-card"}
+                  className={"edit-card button-hover"}
                   buttonText={<i className="fa-regular fa-pen-to-square" />}
                   modalComponent={<ManageProduct product={product} />}
                 />
                 <OpenModalButton
-                  className={"delete-card"}
+                  className={"delete-card button-hover"}
                   buttonText={<i className="fa-solid fa-x" />}
                   modalComponent={
-                    <DeleteProduct product={product} setReload={setReload} />
+                    <DeleteProduct product={product} setReload={setReload} numProducts={products.length} videoSection={page.videoSection} />
                   }
                 />
               </div>

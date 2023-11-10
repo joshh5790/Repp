@@ -30,6 +30,8 @@ const EditSocials = ({ page }) => {
     await dispatch(
       updateRPageThunk({
         pageId: page.id,
+        shopSection: page.shopSection,
+        videoSection: page.videoSection,
         tiktok,
         youtube,
         instagram,
@@ -38,7 +40,7 @@ const EditSocials = ({ page }) => {
         facebook,
         discord,
         twitter,
-        external,
+        external
       })
     );
   };

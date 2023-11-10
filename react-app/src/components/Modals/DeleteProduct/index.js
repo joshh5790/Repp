@@ -2,19 +2,29 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { deleteProductThunk } from "../../../store/products";
 import "./DeleteProduct.css";
+import { updateRPageThunk } from "../../../store/pages";
 
-const DeleteProduct = ({ product, setReload }) => {
+const DeleteProduct = ({ product, setReload, numProducts, videoSection }) => {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
   const handleDeleteProduct = () => {
     dispatch(deleteProductThunk(product.id));
-    setReload(prev => !prev)
+    if (numProducts === 1) {
+      dispatch(
+        updateRPageThunk({
+          pageId: product.pageId,
+          shopSection: false,
+          videoSection,
+        })
+      );
+    }
+    setReload((prev) => !prev);
     closeModal();
   };
 
   return (
-    <div className="flex-col" style={{width: "25rem"}}>
+    <div className="flex-col" style={{ width: "25rem" }}>
       {product && (
         <>
           <h2>Are you sure you want to delete {product.name}?</h2>

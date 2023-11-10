@@ -19,7 +19,6 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      console.log(ulRef.current, e.target, "THIS IS PROFILEBUTTON")
       if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
@@ -46,7 +45,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button className="profile-button" onClick={openMenu}>
+      <button className="profile-button button-hover" onClick={openMenu}>
         {user?.profileImage ? (
           <img
             alt=""
@@ -72,7 +71,7 @@ function ProfileButton({ user }) {
           }}
           style={{ paddingLeft: "0" }}
           className={`dropdown-info-container ${
-            user.isRepp && "dropdown-button"
+            user.isRepp && "dropdown-button button-hover"
           }`}
         >
           {user?.profileImage ? (
@@ -104,7 +103,7 @@ function ProfileButton({ user }) {
             <div>&nbsp;</div>
           )}
         </div>
-        <NavLink onClick={closeMenu} className="dropdown-button" to="/account">
+        <NavLink onClick={closeMenu} className="dropdown-button button-hover" to="/account">
           <span>
             <i
               className="fa-solid fa-gear"
@@ -120,7 +119,7 @@ function ProfileButton({ user }) {
         {user?.isRepp ? (
           <NavLink
             onClick={closeMenu}
-            className="dropdown-button"
+            className="dropdown-button button-hover"
             to="/profile/edit"
           >
             <span>
@@ -138,7 +137,7 @@ function ProfileButton({ user }) {
         ) : (
           <NavLink
             onClick={closeMenu}
-            className="dropdown-button"
+            className="dropdown-button button-hover"
             to="/profile/new"
           >
             <span>

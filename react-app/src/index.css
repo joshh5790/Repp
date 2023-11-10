@@ -56,7 +56,7 @@ i {
 
 .button-hover {
   cursor: pointer;
-  transition: background-color 100ms ease-in-out, color 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out, color 100ms ease-in-out, font-weight 100ms ease-in-out;
 }
 
 @media (min-width: 700px) {

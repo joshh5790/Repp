@@ -30,6 +30,8 @@ const EditGeneral = ({ page }) => {
     const currErrors = await dispatch(
       updateRPageThunk({
         pageId: page.id,
+        shopSection: page.shopSection,
+        videoSection: page.videoSection,
         displayName,
         linkName,
         mainImage,
@@ -37,8 +39,6 @@ const EditGeneral = ({ page }) => {
         bio,
         newsletter,
         businessInquiries,
-        videoSection: page.videoSection,
-        shopSection: page.shopSection,
       })
     );
     if (!isObjectEmpty(currErrors)) return setErrors(currErrors);
