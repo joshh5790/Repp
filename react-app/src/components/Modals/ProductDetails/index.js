@@ -143,7 +143,7 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
                       ))}
                   </select>
                 </div>
-                <button className="add-to-cart-button" onClick={addToCart} disabled={isDisabled}>
+                <button className="add-to-cart-button button-hover" onClick={addToCart} disabled={isDisabled}>
                   Add to Cart
                 </button>
               </div>

@@ -121,10 +121,14 @@
 .add-to-cart-button {
   all: unset;
   background-color: black;
+  border: 1px solid black;
   color: white;
-  padding: 1rem 0.1rem 1rem 1rem;
   width: 6rem;
-  cursor: pointer;
+}
+
+.add-to-cart-button:hover {
+  color: black;
+  background-color: white;
 }
 
 .add-to-cart-button:disabled {

@@ -7,11 +7,35 @@
 }
 
 .submit-login-button {
+  all: unset;
+  background-color: #4444FF;
+  border: 1px solid #4444FF;
+  color: white;
   margin-top: 1rem;
 }
 
+.submit-login-button:disabled {
+  background-color: #7777FF;
+  cursor: auto;
+}
+
+.submit-login-button:enabled:hover,
+.demo-user-button:hover {
+  color: #4444FF;
+  background-color: white;
+}
+
 .demo-user-button {
+  all: unset;
+  background-color: #4444FF;
+  border: 1px solid #4444FF;
+  color: white;
   margin-top: 1rem;
+}
+
+.submit-login-button.button-hover,
+.demo-user-button.button-hover {
+  padding: 0.7rem;
 }
 
 .signup-redirect-button {
@@ -24,6 +48,6 @@
 }
 
 .signup-redirect-button:hover {
-  background-color: #EEEEEE;
+  background-color: #CCCCCC;
   color: #4444FF;
 }

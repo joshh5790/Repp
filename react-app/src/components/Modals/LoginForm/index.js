@@ -68,18 +68,18 @@ function LoginForm() {
           }}
           required
         />
-        <button className="submit-login-button" disabled={disableButton}>
+        <button className="submit-login-button button-hover" disabled={disableButton}>
           Log In
         </button>
       </form>
-      <button className="demo-user-button" onClick={handleDemo}>
+      <button className="demo-user-button button-hover" onClick={handleDemo}>
         Demo User
       </button>
       <OpenModalButton
         buttonText="Don't have an account? Sign up"
         modalComponent={<SignupForm />}
         onButtonClick={closeModal}
-        className="signup-redirect-button"
+        className="signup-redirect-button button-hover"
       />
     </div>
   );

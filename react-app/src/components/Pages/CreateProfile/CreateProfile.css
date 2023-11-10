@@ -62,16 +62,18 @@
   color: #1d9bf0;
 }
 
-.submit-profile-button.button-hover {
+.submit-profile-button {
   all: unset;
   width: 10rem;
-  cursor: pointer;
   border: 1px solid #4444FF;
   background-color: #4444FF;
   color: white;
-  padding: 1rem 3rem;
   text-align: center;
-  border-radius: 10px;
+}
+
+.submit-profile-button.button-hover {
+  padding: 1rem 3rem;
+
 }
 
 .submit-profile-button:hover {

@@ -251,7 +251,7 @@ function SignupForm() {
               <div className="error-msg">{errors.confirmPassword[0]}</div>
             )}
           </label>
-          <button type="submit" disabled={disableButton}>
+          <button className="signup-button button-hover" type="submit" disabled={disableButton}>
             Sign Up
           </button>
         </div>

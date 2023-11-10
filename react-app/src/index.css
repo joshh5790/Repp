@@ -55,6 +55,7 @@ i {
 }
 
 .button-hover {
+  font-weight: bold;
   text-align: center;
   padding: 1rem;
   border-radius: 10px;
