@@ -59,7 +59,7 @@ const EditVideos = ({ page }) => {
       {!editMode ? (
         <div
           onClick={() => setEditMode(true)}
-          className="new-card-button button-hover"
+          className="new-card-button ease-bg"
         >
           <b>+ Add Video</b>
         </div>
@@ -121,7 +121,7 @@ const EditVideos = ({ page }) => {
         </div>
       )}
       {videos.map((video) => (
-        <div key={video.id} className="manage-cards button-hover">
+        <div key={video.id} className="manage-cards ease-bg">
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <iframe
               title={video?.name}

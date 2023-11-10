@@ -40,7 +40,7 @@ const EditProducts = ({ page }) => {
   return (
     <>
       <OpenModalButton
-        className="new-card-button button-hover"
+        className="new-card-button ease-bg"
         modalComponent={
           <ManageProduct
             pageId={page.id}
@@ -52,7 +52,7 @@ const EditProducts = ({ page }) => {
       />
       {products.map((product) => (
         <OpenModalButton
-          className="manage-cards button-hover"
+          className="manage-cards ease-bg"
           key={product.id}
           modalComponent={
             <ProductDetails product={product} isDisabled={true} />
@@ -91,12 +91,12 @@ const EditProducts = ({ page }) => {
               </div>
               <div style={{ display: "flex", gap: "1.5rem" }}>
                 <OpenModalButton
-                  className={"edit-card button-hover"}
+                  className={"edit-card ease-bg"}
                   buttonText={<i className="fa-regular fa-pen-to-square" />}
                   modalComponent={<ManageProduct product={product} />}
                 />
                 <OpenModalButton
-                  className={"delete-card button-hover"}
+                  className={"delete-card ease-bg"}
                   buttonText={<i className="fa-solid fa-x" />}
                   modalComponent={
                     <DeleteProduct product={product} setReload={setReload} numProducts={products.length} videoSection={page.videoSection} />

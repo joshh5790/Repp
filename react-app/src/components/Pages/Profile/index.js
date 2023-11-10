@@ -58,7 +58,7 @@ const Profile = () => {
             </div>
           </div>
           {repp?.mainVideo && (
-            <div id="watch" className="repp-page-section">
+            <div id="watch" className="repp-page-section" style={{padding: '0', margin: '0', border: 'none'}}>
               <iframe
                 title="Main Video"
                 src={repp?.mainVideo}

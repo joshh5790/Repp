@@ -55,8 +55,15 @@ i {
 }
 
 .button-hover {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 100ms ease-in-out, color 100ms ease-in-out, font-weight 100ms ease-in-out;
+}
+
+.ease-bg {
+  transition: background-color 100ms ease-in-out;
 }
 
 @media (min-width: 700px) {

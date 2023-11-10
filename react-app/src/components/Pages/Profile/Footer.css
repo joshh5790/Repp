@@ -14,8 +14,6 @@
   all: unset;
   color: white;
   border: 1px solid white;
-  padding: 1rem;
-  border-radius: 5px;
   font-weight: bold;
 }
 

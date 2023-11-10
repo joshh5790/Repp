@@ -40,6 +40,7 @@ const ManageProduct = ({ product, pageId, numProducts, videoSection }) => {
   }, [currProduct]);
 
   const handleUpdateProduct = async () => {
+    if (!isObjectEmpty(errors)) return
     if (!isObjectEmpty(currProduct)) {
       const currErrors = await dispatch(
         updateProductThunk({

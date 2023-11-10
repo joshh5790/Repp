@@ -108,8 +108,8 @@
   aspect-ratio: 16 / 9;
 }
 
-.add-video-button,
-.cancel-video-button {
+.add-video-button.button-hover,
+.cancel-video-button.button-hover {
   all: unset;
   padding: 0.4rem;
   border: 1px solid #EEEEEE;
@@ -120,7 +120,7 @@
   cursor: pointer;
 }
 
-.add-video-button {
+.add-video-button.button-hover {
   background-color: #4444FF;
   border: 1px solid #4444FF;
   color: white;

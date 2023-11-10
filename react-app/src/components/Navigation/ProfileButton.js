@@ -45,7 +45,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button className="profile-button button-hover" onClick={openMenu}>
+      <button className="profile-button ease-bg" onClick={openMenu}>
         {user?.profileImage ? (
           <img
             alt=""
@@ -153,7 +153,7 @@ function ProfileButton({ user }) {
             />
           </NavLink>
         )}
-        <div className="dropdown-button" onClick={handleLogout}>
+        <div className="dropdown-button button-hover" onClick={handleLogout}>
           <span>
             <i
               className="fa-solid fa-arrow-right-from-bracket"

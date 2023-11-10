@@ -24,25 +24,25 @@ function Navigation() {
   return (
     <ul className={`nav ${navVisible ? "" : "nav-hidden"}`}>
       <li className="nav-left">
-        <i
+        {/* <i
           onClick={() => setSidebarVisible(true)}
           className={`fa-solid fa-bars toggle-sidebar`}
-        />
+        /> */}
         <NavLink exact to="/" className="logo-link">
           <img src={logo} alt="repp" className="logo" />
         </NavLink>
-        <i className="fa-solid fa-info">
+        {/* <i className="fa-solid fa-info">
           {location.pathname === "/" && (
             <div className="page-info">
               <h4>Home Page Functionalities</h4>
               <ul></ul>
             </div>
           )}
-        </i>
+        </i> */}
       </li>
-      <li className="search-bar-container">
+      {/* <li className="search-bar-container">
         <SearchBar />
-      </li>
+      </li> */}
 
       <li className="nav-right">
         {sessionUser ? (

@@ -148,13 +148,12 @@
   text-overflow: ellipsis;
 }
 
-.dropdown-button {
+.dropdown-button.button-hover {
   text-decoration: none;
   width: 100%;
-  padding: 1rem;
-  cursor: pointer;
   color: black;
   display: flex;
+  border-radius: 0;
   justify-content: space-between;
   background-color: white;
 }

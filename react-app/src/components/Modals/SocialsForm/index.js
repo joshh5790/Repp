@@ -30,7 +30,7 @@ const SocialsForm = ({ socials, setSocials }) => {
   };
 
   return (
-    <div className="socials-form">
+    <div className="socials-form flex-col-center">
       <label name="tiktok" className="socials-label">
         <div>
           <i
