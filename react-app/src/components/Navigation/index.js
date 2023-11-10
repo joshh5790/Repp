@@ -38,6 +38,7 @@ function Navigation() {
               <ul>
                 <li>Left and right arrows to look through artists</li>
                 <li>Click visit page to visit artist page</li>
+                <li>Visiting artist page will cause navbar to disappear, clicking side ellipsis will make it show up</li>
                 <li>circles on bottom allow user to know which artist they are on</li>
                 <li>Click logo to return to home page</li>
                 <li>Right side of navbar has login button/user settings</li>
@@ -61,7 +62,6 @@ function Navigation() {
             <div className="page-info">
             <h4>Profile Page</h4>
             <ul>
-              <li>navbar is hidden, clicking side ellipsis will make it show up</li>
               <li>clicking on artist name in profile navbar brings user to top</li>
               <li>Eric's page has a merch section that has items that can be added to cart</li>
               <li>Cart is profile page specific, carts will only show for the respective artist's page</li>
