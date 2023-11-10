@@ -51,17 +51,17 @@ def seed_videos():
     video10 = Video(
         pageId=3,
         name="need u the most",
-        video="https://www.youtube.com/watch?v=yElzEgf6lAg",
+        video="https://www.youtube.com/embed/yElzEgf6lAg",
     )
     video11 = Video(
         pageId=3,
         name="Pretty Girl",
-        video="https://www.youtube.com/watch?v=wyOIYOXswcI",
+        video="https://www.youtube.com/embed/wyOIYOXswcI",
     )
     video12 = Video(
         pageId=3,
         name="Ghosts",
-        video="https://www.youtube.com/watch?v=bUsw-Tk8edc",
+        video="https://www.youtube.com/embed/bUsw-Tk8edc",
     )
 
     db.session.add(video1)

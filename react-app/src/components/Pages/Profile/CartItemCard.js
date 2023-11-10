@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formatCurrency } from "../../../utilities";
 import { useDispatch } from "react-redux";
 import {
@@ -12,6 +12,10 @@ import { setCartVisibility } from "../../../store/navigation";
 const CartItemCard = ({ item, numCartItems, setNumCartItems, setReload }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(item.quantity);
+
+  useEffect(() => {
+    setQuantity(item.quantity)
+  }, [item.quantity])
   const updateCartItem = async (newQuantity) => {
     if (newQuantity === "remove") {
       if (numCartItems === 1) {

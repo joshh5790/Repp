@@ -3,12 +3,13 @@ import { useModal } from "../../../context/Modal";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductStocksThunk } from "../../../store/productStock";
-import {
-  getProductImagesThunk,
-} from "../../../store/productImages";
+import { getProductImagesThunk } from "../../../store/productImages";
 import { setCartVisibility } from "../../../store/navigation";
-import { createCartItemThunk, getCartItemsThunk } from "../../../store/cartItems";
-import { createCartThunk, getCartsThunk } from "../../../store/carts";
+import {
+  createCartItemThunk,
+  getCartItemsThunk,
+} from "../../../store/cartItems";
+import { createCartThunk, getCartThunk } from "../../../store/carts";
 import { formatCurrency } from "../../../utilities";
 
 const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
@@ -50,6 +51,7 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
   };
 
   const addToCart = async () => {
+    isDisabled = true
     let existingCart;
     for (const cart of carts) {
       if (cart.pageId === product.pageId) {
@@ -58,16 +60,17 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
       }
     }
     if (existingCart) {
-      await dispatch(getCartItemsThunk(existingCart))
-      .then(data => {})
       await dispatch(createCartItemThunk(currStock.id, quantity)).then(() =>
-        dispatch(getCartsThunk())
+        dispatch(getCartThunk()).then((data) =>
+          dispatch(getCartItemsThunk(Object.keys(data)[0])).then((data) => {
+            setNumCartItems(Object.keys(data).length);
+          })
+        )
       );
-      setNumCartItems((prev) => prev + 1);
     } else {
       await dispatch(createCartThunk(product.pageId))
         .then(() => dispatch(createCartItemThunk(currStock.id, quantity)))
-        .then(() => dispatch(getCartsThunk()))
+        .then(() => dispatch(getCartThunk()))
         .then(() => dispatch(setCartVisibility(true)));
       setNumCartItems((prev) => prev + 1);
     }
@@ -116,7 +119,7 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
             </p>
             {!outOfStock ? (
               <div>
-                <div style={{display: 'flex'}}>
+                <div style={{ display: "flex" }}>
                   {sizes.length > 1 &&
                     sizes.map((size) => (
                       <div
@@ -145,7 +148,11 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
                       ))}
                   </select>
                 </div>
-                <button className="add-to-cart-button button-hover" onClick={addToCart} disabled={isDisabled}>
+                <button
+                  className="add-to-cart-button button-hover"
+                  onClick={addToCart}
+                  disabled={isDisabled}
+                >
                   Add to Cart
                 </button>
               </div>

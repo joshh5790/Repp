@@ -50,7 +50,7 @@ def seed_pages():
         mainVideo="https://www.youtube.com/embed/zkZJ6J2M5GA",
         bio="Sailing precariously between the borders of alternative rnb, indie pop, and electronic dance genres, Highvyn searches for an identity that blends sounds and emotions into a beautifully curated mess. Self-produced, written, and recorded in his DIY home studio in the dmv, Highvyn has carved out a space for himself as an artist that has no true equivalents. \nHighvyn balances his ever-changing sound with lyrics from the heart, with an intimate writing style that explores themes of self-discovery and the struggles of young love. In 2024, Highvyn hopes to expand the full potential of his artistry to create music that transcends time, space, and mediums.",
         newsletter="highvynnewsletter@gmail.com",
-        videoSection=False,
+        videoSection=True,
         shopSection=False,
     )
 

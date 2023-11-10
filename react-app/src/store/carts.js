@@ -18,7 +18,7 @@ const removeCart = (cartId) => ({
 // thunks
 
 // GET /session/carts/
-export const getCartsThunk = () => async (dispatch) => {
+export const getCartThunk = () => async (dispatch) => {
   const response = await fetch(`/api/session/carts`);
   if (response.ok) {
     const data = await response.json();
@@ -45,7 +45,7 @@ export const getPageCartThunk = (pageId) => async (dispatch) => {
     const data = await response.json();
     if (data.errors) return data.errors;
   } else dispatch(setCart({}));
-}
+};
 
 // POST /pages/:pageId/carts
 export const createCartThunk = (pageId) => async (dispatch) => {
@@ -80,8 +80,7 @@ export const deleteCartThunk = (cartId) => async (dispatch) => {
 // clear cart
 export const clearCartThunk = () => async (dispatch) => {
   dispatch(setCart({}));
-
-}
+};
 
 const initialState = {};
 
