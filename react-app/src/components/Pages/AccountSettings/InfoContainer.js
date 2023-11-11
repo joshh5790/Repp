@@ -88,6 +88,7 @@ function InfoContainer({
         address: userInfo['Address'],
         city: userInfo['City'],
         state: userInfo['State'],
+        isRepp: currUser.isRepp,
         profileImage: userInfo['Image URL'],
         password: userInfo['New Password'],
     }))

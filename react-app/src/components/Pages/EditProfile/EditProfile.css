@@ -5,7 +5,7 @@
 .manage-profile-content-container {
   position: relative;
   display: flex;
-  width: fit-content;
+  width: 100%;
   margin-top: 4rem;
 }
 
@@ -41,6 +41,7 @@
   padding: 1rem;
   width: 30rem;
   height: fit-content;
+  min-height: calc(100vh - 8rem);
 }
 
 .update-socials-label {
@@ -157,6 +158,7 @@
   border-top: 2px solid #EEEEEE;
   flex: 1;
   position: relative;
+  min-height: calc(100vh - 8rem);
 }
 
 .manage-profile-nav {

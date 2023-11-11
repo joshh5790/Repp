@@ -5,7 +5,7 @@ import DeletePage from "../../Modals/DeletePage";
 
 const Other = ({ page }) => {
   return (
-    <div style={{height: "70vh"}}>
+    <div>
       {page && <OpenModalButton
         buttonText="Delete Page"
         className="delete-page-button button-hover"

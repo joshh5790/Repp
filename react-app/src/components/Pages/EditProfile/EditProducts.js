@@ -39,7 +39,7 @@ const EditProducts = ({ page }) => {
 
   return (
     <>
-      <OpenModalButton
+      {page && <OpenModalButton
         className="new-card-button ease-bg"
         modalComponent={
           <ManageProduct
@@ -49,7 +49,7 @@ const EditProducts = ({ page }) => {
           />
         }
         buttonText={<b>+ New Product</b>}
-      />
+      />}
       {products.map((product) => (
         <OpenModalButton
           className="manage-cards ease-bg"

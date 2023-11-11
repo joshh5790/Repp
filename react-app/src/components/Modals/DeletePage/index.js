@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { useHistory } from "react-router-dom";
 import { deleteRPageThunk } from "../../../store/pages";
+import { updateUser } from "../../../store/session";
 import "./DeletePage.css";
 
 function DeletePage({ page }) {
@@ -13,6 +14,8 @@ function DeletePage({ page }) {
   const { closeModal } = useModal();
 
   useEffect(() => {
+    console.log(confirmation);
+    console.log(`delete page ${page.displayName}` === confirmation);
     if (confirmation === `delete page ${page.displayName}`) {
       setDisableButton(false);
     } else setDisableButton(true);
@@ -20,6 +23,7 @@ function DeletePage({ page }) {
 
   const handleDelete = () => {
     dispatch(deleteRPageThunk(page.id)).then(() => {
+      dispatch(updateUser({isRepp: false}))
       closeModal();
       history.push("/");
     });

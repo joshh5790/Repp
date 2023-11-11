@@ -107,6 +107,7 @@ export const updateUser =
     city,
     state,
     password,
+    isRepp,
     profileImage,
   }) =>
   async (dispatch) => {
@@ -123,6 +124,7 @@ export const updateUser =
         city,
         state,
         password,
+        isRepp,
         profileImage,
       }),
     });

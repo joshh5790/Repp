@@ -3,7 +3,7 @@ import { useHistory, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isObjectEmpty } from "../../../utilities";
 import { createRPageThunk } from "../../../store/pages";
-import { authenticate } from "../../../store/session";
+import { updateUser } from "../../../store/session";
 import OpenModalButton from "../../OpenModalButton";
 import SocialsForm from "../../Modals/SocialsForm";
 import "./CreateProfile.css";
@@ -49,10 +49,10 @@ const CreateProfile = () => {
     );
     if (!isObjectEmpty(currErrors)) return setErrors(currErrors);
     else {
-      dispatch(authenticate());
+      dispatch(updateUser({isRepp: true}));
       history.push({
         pathname: "/profile/edit",
-        state: "products",
+        state: "Products",
       });
     }
   };

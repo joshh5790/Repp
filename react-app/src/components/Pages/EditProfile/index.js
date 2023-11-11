@@ -12,20 +12,18 @@ import Other from "./Other";
 
 const EditProfile = () => {
   const location = useLocation();
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.session.user)
-  const page = useSelector(state => Object.values(state.pages)[0])
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.session.user);
+  const page = useSelector((state) => Object.values(state.pages)[0]);
   const [currentTab, setCurrentTab] = useState("General");
-  const [height, setHeight] = useState(0)
-  const heightRef = useRef()
+  const [height, setHeight] = useState(0);
+  const heightRef = useRef();
 
   useEffect(async () => {
-    await dispatch(getSessionPageThunk()).then(data => {
-      if (data) setHeight(heightRef.current.clientHeight)
-    }
-
-    )
-  }, [dispatch])
+    await dispatch(getSessionPageThunk()).then((data) => {
+      if (data && heightRef?.current) setHeight(heightRef.current.clientHeight);
+    });
+  }, [dispatch]);
 
   useEffect(() => {
     if (location.state) setCurrentTab(location.state);
@@ -46,80 +44,87 @@ const EditProfile = () => {
 
   return (
     <>
-
-    <div className="manage-profile-page page-container">
-      <div style={{display: 'flex', justifyContent: 'space-between'}}>
-
-
-
-        {/* add these two to the respective containers instead */}
-      </div>
-      <div className="manage-profile-content-container">
-        <div className="manage-profile-tabs">
-          <span
-            className={currentTab === "General" ? "focus-tab" : " "}
-            onClick={async () => {
-              await setCurrentTab("General")
-              await setHeight(heightRef.current.clientHeight)
-            }}
-          >
-            General
-          </span>
-          <span
-            className={currentTab === "Socials" ? "focus-tab" : " "}
-            onClick={async () => {
-              await setCurrentTab("Socials")
-              await setHeight(heightRef.current.clientHeight)
-            }}
-          >
-            Socials
-          </span>
-          <span
-            className={currentTab === "Products" ? "focus-tab" : " "}
-            onClick={async () => {
-              await setCurrentTab("Products")
-              await setHeight(heightRef.current.clientHeight)
-            }}
-          >
-            Products
-          </span>
-          <span
-            className={currentTab === "Videos" ? "focus-tab" : " "}
-            onClick={async () => {
-              await setCurrentTab("Videos")
-              await setHeight(heightRef.current.clientHeight)
-            }}
-          >
-            Videos
-          </span>
-          <span
-            className={currentTab === "Other" ? "focus-tab" : " "}
-            onClick={async () => {
-              await setCurrentTab("Other")
-              await setHeight(heightRef.current.clientHeight)
-            }}
-          >
-            Other
-          </span>
+      <div className="manage-profile-page page-container">
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          {/* add these two to the respective containers instead */}
         </div>
-        <div className="manage-profile-section flex-col-center" ref={heightRef}>
-
-          {currentTab === "General" && <EditGeneral page={page} />}
-          {currentTab === "Socials" && <EditSocials page={page} />}
-          {currentTab === "Products" && <EditProducts page={page} />}
-          {currentTab === "Videos" && <EditVideos page={page} />}
-          {currentTab === "Other" && <Other page={page} />}
+        <div className="manage-profile-content-container">
+          <div className="manage-profile-tabs">
+            <span
+              className={currentTab === "General" ? "focus-tab" : " "}
+              onClick={async () => {
+                await setCurrentTab("General");
+                await setHeight(heightRef.current.clientHeight);
+              }}
+            >
+              General
+            </span>
+            <span
+              className={currentTab === "Socials" ? "focus-tab" : " "}
+              onClick={async () => {
+                await setCurrentTab("Socials");
+                await setHeight(heightRef.current.clientHeight);
+              }}
+            >
+              Socials
+            </span>
+            <span
+              className={currentTab === "Products" ? "focus-tab" : " "}
+              onClick={async () => {
+                await setCurrentTab("Products");
+                await setHeight(heightRef.current.clientHeight);
+              }}
+            >
+              Products
+            </span>
+            <span
+              className={currentTab === "Videos" ? "focus-tab" : " "}
+              onClick={async () => {
+                await setCurrentTab("Videos");
+                await setHeight(heightRef.current.clientHeight);
+              }}
+            >
+              Videos
+            </span>
+            <span
+              className={currentTab === "Other" ? "focus-tab" : " "}
+              onClick={async () => {
+                await setCurrentTab("Other");
+                await setHeight(heightRef.current.clientHeight);
+              }}
+            >
+              Other
+            </span>
+          </div>
+          <div
+            className="manage-profile-section flex-col-center"
+            ref={heightRef}
+          >
+            {currentTab === "General" && <EditGeneral page={page} />}
+            {currentTab === "Socials" && <EditSocials page={page} />}
+            {currentTab === "Products" && <EditProducts page={page} />}
+            {currentTab === "Videos" && <EditVideos page={page} />}
+            {currentTab === "Other" && <Other page={page} />}
+          </div>
+          <div className="preview-profile-section flex-col" style={{ height }}>
+            <ProfilePreview page={page} />
+          </div>
         </div>
-        <div className="preview-profile-section flex-col-center" style={{height}}>
-
-        <ProfilePreview page={page} />
+        <div className="manage-profile-nav">
+          <h1
+            className="manage-profile-section-header"
+            style={{ marginLeft: "12rem" }}
+          >
+            Manage Profile
+          </h1>
+          <h1
+            className="manage-profile-section-header"
+            style={{ marginLeft: "15.8rem" }}
+          >
+            Preview
+          </h1>
         </div>
       </div>
-      <div className="manage-profile-nav">
-        <h1 className="manage-profile-section-header" style={{marginLeft: "12rem"}}>Manage Profile</h1>
-        <h1 className="manage-profile-section-header" style={{marginLeft: "15.8rem"}}>Preview</h1>
-      </div>
-    </div>
     </>
   );
 };
