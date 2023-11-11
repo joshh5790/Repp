@@ -8,12 +8,13 @@ import "./ProfilePreview.css";
 const ProfilePreview = ({ page }) => {
   const [scale, setScale] = useState(0);
   const widthRef = useRef();
+  const [sectionHeaders, setSectionHeaders] = useState([]);
 
   useEffect(async () => {
     await setScale(widthRef.current.clientWidth / window.innerWidth);
+    
   });
 
-  const [sectionHeaders, setSectionHeaders] = useState([]);
   return (
     <div
       ref={widthRef}

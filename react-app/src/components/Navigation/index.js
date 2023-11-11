@@ -39,7 +39,7 @@ function Navigation() {
                 <li>Visiting artist page will cause navbar to disappear, clicking side ellipsis will make it show up</li>
                 <li>Click logo to return to home page</li>
                 <li>Right side of navbar has login button/user settings</li>
-                <li>Account settings not working yet, rest are good</li>
+                <li>Links should all be fully functional</li>
                 <li>logins for Highvyn and tiffany are josiah@aa.io and demo@aa.io, password is password</li>
                 <li>Site not mobile friendly yet</li>
               </ul>

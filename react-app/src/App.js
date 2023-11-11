@@ -7,6 +7,7 @@ import Home from "./components/Pages/Home";
 import Profile from "./components/Pages/Profile";
 import CreateProfile from "./components/Pages/CreateProfile";
 import EditProfile from "./components/Pages/EditProfile";
+import AccountSettings from "./components/Pages/AccountSettings";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +23,9 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/account"></Route>
+          <Route exact path="/account">
+            <AccountSettings />
+          </Route>
           <Route exact path="/profile/edit">
             <EditProfile />
           </Route>

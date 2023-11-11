@@ -18,9 +18,12 @@ const EditProfile = () => {
   const [height, setHeight] = useState(0)
   const heightRef = useRef()
 
-  useEffect(() => {
-    dispatch(getSessionPageThunk())
-    setHeight(heightRef.current.clientHeight)
+  useEffect(async () => {
+    await dispatch(getSessionPageThunk()).then(data => {
+      if (data) setHeight(heightRef.current.clientHeight)
+    }
+
+    )
   }, [dispatch])
 
   useEffect(() => {
@@ -90,16 +93,20 @@ const EditProfile = () => {
           </span>
         </div>
         <div className="manage-profile-section flex-col-center" ref={heightRef}>
-        <h1 className="manage-profile-section-header">Manage Profile</h1>
+
           {currentTab === "General" && <EditGeneral page={page} />}
           {currentTab === "Socials" && <EditSocials page={page} />}
           {currentTab === "Products" && <EditProducts page={page} />}
           {currentTab === "Videos" && <EditVideos page={page} />}
         </div>
         <div className="preview-profile-section flex-col-center" style={{height}}>
-        <h1 className="manage-profile-section-header">Preview</h1>
+
         <ProfilePreview page={page} />
         </div>
+      </div>
+      <div className="manage-profile-nav">
+        <h1 className="manage-profile-section-header" style={{marginLeft: "12rem"}}>Manage Profile</h1>
+        <h1 className="manage-profile-section-header" style={{marginLeft: "15.8rem"}}>Preview</h1>
       </div>
     </div>
     </>

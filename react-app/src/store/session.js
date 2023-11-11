@@ -97,7 +97,7 @@ export const signUp =
 
 // PUT /session/account
 export const updateUser =
-  (
+  ({
     firstName,
     lastName,
     username,
@@ -107,8 +107,8 @@ export const updateUser =
     city,
     state,
     password,
-    profileImage
-  ) =>
+    profileImage,
+  }) =>
   async (dispatch) => {
     const response = await fetch("/api/session/account", {
       method: "PUT",

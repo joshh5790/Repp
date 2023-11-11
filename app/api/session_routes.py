@@ -35,6 +35,12 @@ def update_user():
     user = User.query.get(current_user.id)
     form = SignUpForm(obj=user)
     form["csrf_token"].data = request.cookies["csrf_token"]
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    print(form.data)
+    print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+    print(form.validate_on_submit())
+    print(form.errors)
+    print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
     if form.validate_on_submit():
         data = form.data
         user.firstName = data["firstName"]

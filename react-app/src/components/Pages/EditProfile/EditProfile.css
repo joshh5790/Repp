@@ -1,10 +1,9 @@
 .manage-profile-page {
-  padding: 1rem 0 0 2rem;
+  padding-top: 1rem;
 }
 
 .manage-profile-content-container {
   position: relative;
-  top: 3rem;
   display: flex;
   width: fit-content;
   margin-top: 4rem;
@@ -13,10 +12,14 @@
 .manage-profile-tabs {
   display: flex;
   flex-direction: column;
-  width: 10rem;
-  min-width: 10rem;
-  border-right: 2px solid #EEEEEE;
+  width: 12rem;
+  min-width: 12rem;
+  padding-left: 2rem;
   min-height: 100%;
+  border-top: 2px solid #EEEEEE;
+  position: sticky;
+  top: 8rem;
+  height: fit-content;
 }
 
 .manage-profile-tabs span {
@@ -34,16 +37,10 @@
 .manage-profile-section {
   position: relative;
   gap: 1rem;
-  border-top: 2px solid #EEEEEE;
-  border-RIGHT: 2px solid #EEEEEE;
+  border: 2px solid #EEEEEE;
   padding: 1rem;
   width: 30rem;
   height: fit-content;
-}
-
-.manage-profile-section-header {
-  position: absolute;
-  top: -5rem;
 }
 
 .update-socials-label {
@@ -157,6 +154,15 @@
 }
 
 .preview-profile-section {
-  /* flex: 1; */
+  border-top: 2px solid #EEEEEE;
+  flex: 1;
   position: relative;
+}
+
+.manage-profile-nav {
+  position: fixed;
+  display: flex;
+  top: 3rem;
+  width: 100%;
+  background-color: white;
 }
