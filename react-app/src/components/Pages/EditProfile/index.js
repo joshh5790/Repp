@@ -8,6 +8,7 @@ import EditSocials from "./EditSocials";
 import EditProducts from "./EditProducts";
 import EditVideos from "./EditVideos";
 import ProfilePreview from "./ProfilePreview";
+import Other from "./Other";
 
 const EditProfile = () => {
   const location = useLocation();
@@ -91,6 +92,15 @@ const EditProfile = () => {
           >
             Videos
           </span>
+          <span
+            className={currentTab === "Other" ? "focus-tab" : " "}
+            onClick={async () => {
+              await setCurrentTab("Other")
+              await setHeight(heightRef.current.clientHeight)
+            }}
+          >
+            Other
+          </span>
         </div>
         <div className="manage-profile-section flex-col-center" ref={heightRef}>
 
@@ -98,6 +108,7 @@ const EditProfile = () => {
           {currentTab === "Socials" && <EditSocials page={page} />}
           {currentTab === "Products" && <EditProducts page={page} />}
           {currentTab === "Videos" && <EditVideos page={page} />}
+          {currentTab === "Other" && <Other page={page} />}
         </div>
         <div className="preview-profile-section flex-col-center" style={{height}}>
 

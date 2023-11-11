@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
-import { deleteUser } from "../../../store/session";
 import { useHistory } from "react-router-dom";
-import "./DeleteAccount.css";
+import { deleteRPageThunk } from "../../../store/pages";
+import "./DeletePage.css";
 
-function DeleteAccount({ user }) {
+function DeletePage({ page }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [confirmation, setConfirmation] = useState("");
@@ -13,28 +13,28 @@ function DeleteAccount({ user }) {
   const { closeModal } = useModal();
 
   useEffect(() => {
-    if (confirmation === `delete account ${user.username}`) {
+    if (confirmation === `delete page ${page.displayName}`) {
       setDisableButton(false);
     } else setDisableButton(true);
   }, [confirmation]);
 
   const handleDelete = () => {
-    dispatch(deleteUser(user.id)).then(() => {
+    dispatch(deleteRPageThunk(page.id)).then(() => {
       closeModal();
       history.push("/");
     });
   };
 
   return (
-    <div className="delete-account-container">
-      <h2>Delete Your Account?</h2>
+    <div>
+      <h2>Delete Your Profile?</h2>
       <p>
         This action <b>cannot</b> be undone.
       </p>
-      <p> All information associated with your account will be deleted.</p>
-      <p>Are you sure you want to delete your account?</p>
+      <p> All information associated with your page will be deleted.</p>
+      <p>Are you sure you want to delete your page?</p>
       <p>
-        Type <span className="red-text">delete account {user.username}</span>{" "}
+        Type <span className="red-text">delete page {page.displayName}</span>{" "}
         below to confirm.
       </p>
       <input
@@ -51,11 +51,11 @@ function DeleteAccount({ user }) {
           className="confirm-delete-acc-button button-hover"
           onClick={handleDelete}
         >
-          Delete Account
+          Delete Page
         </button>
       </div>
     </div>
   );
 }
 
-export default DeleteAccount;
+export default DeletePage;

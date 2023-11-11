@@ -166,3 +166,14 @@
   width: 100%;
   background-color: white;
 }
+
+.delete-page-button {
+  background-color: red;
+  border: 1px solid red;
+  color: white;
+}
+
+.delete-page-button:hover {
+  background-color: white;
+  color: red;
+}

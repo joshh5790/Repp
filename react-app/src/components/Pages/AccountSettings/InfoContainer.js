@@ -196,7 +196,7 @@ function InfoContainer({
                 </span>
               ))}
             </div>
-            <button disabled={disableButton} className="save-personal">
+            <button disabled={disableButton} className="save-personal button-hover">
               Save
             </button>
           </form>

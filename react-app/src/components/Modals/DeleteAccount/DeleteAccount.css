@@ -13,7 +13,7 @@
   box-shadow: 0 0 10px #CCCCCC;
 }
 
-.delete-acc-button-div {
+.delete-button-div {
   margin-top: 1rem;
   display: flex;
   justify-content: flex-end;
