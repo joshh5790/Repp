@@ -24,7 +24,7 @@ def update_video(videoId):
         return {
             "Unauthorized": "User does not have permission to update this video"
         }, 401
-    form = VideoForm()
+    form = VideoForm(obj=video)
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         video.name = form.data["name"]

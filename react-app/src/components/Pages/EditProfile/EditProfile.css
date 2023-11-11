@@ -3,8 +3,10 @@
 }
 
 .manage-profile-content-container {
+  position: relative;
+  top: 3rem;
   display: flex;
-  flex-grow: 1;
+  width: fit-content;
   margin-top: 4rem;
 }
 
@@ -31,10 +33,12 @@
 
 .manage-profile-section {
   position: relative;
-  border-top: 2px solid #EEEEEE;
   gap: 1rem;
+  border-top: 2px solid #EEEEEE;
+  border-RIGHT: 2px solid #EEEEEE;
   padding: 1rem;
   width: 30rem;
+  height: fit-content;
 }
 
 .manage-profile-section-header {
@@ -112,12 +116,14 @@
 .cancel-video-button.button-hover {
   all: unset;
   padding: 0.4rem;
-  border: 1px solid #EEEEEE;
+  width: 3rem;
+  border: 1px solid #999999;
   background-color: #EEEEEE;
   text-align: center;
   font-size: 0.8rem;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .add-video-button.button-hover {
@@ -135,12 +141,22 @@
   background-color: #999999;
   color: white;
 }
-/*
-.update-main-img-container {
-  flex-grow: 1;
+
+.update-video-input {
+  all: unset;
+  background-color: white;
+  padding: 0.5rem;
+  width: 10rem;
+  margin-top: 0.5rem;
+  border-radius: 10px;
 }
 
-.update-main-img-preview {
-  object-fit: cover;
-  width: 100%;
-} */
+.no-video-hover:hover {
+  background-color: #EEEEEE;
+  cursor: auto;
+}
+
+.preview-profile-section {
+  /* flex: 1; */
+  position: relative;
+}

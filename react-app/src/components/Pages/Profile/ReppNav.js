@@ -3,7 +3,7 @@ import { setNavVisibility } from "../../../store/navigation";
 import { useDispatch } from "react-redux";
 import "./ReppNav.css";
 
-const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
+const ReppNav = ({ sectionHeaders, page, navVisible }) => {
   const dispatch = useDispatch();
   const [scrollTop, setScrollTop] = useState(true);
 
@@ -49,7 +49,7 @@ const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
     >
       <div className="repp-nav-left">
         <i onClick={setNavVisible} className="fa-solid fa-ellipsis" />
-        <h2 onClick={() => scrollToId(repp.linkName)}>{repp?.displayName}</h2>
+        <h2 onClick={() => scrollToId(page.linkName)}>{page?.displayName}</h2>
       </div>
       <div className="repp-nav-links">
         {sectionHeaders.map((header) => (
@@ -59,48 +59,48 @@ const ReppNav = ({ sectionHeaders, repp, navVisible }) => {
         ))}
       </div>
       <div className="repp-nav-right">
-        {repp?.tiktok && (
-          <a target="_blank" rel="noreferrer" href={repp.tiktok}>
+        {page?.tiktok && (
+          <a target="_blank" rel="noreferrer" href={page.tiktok}>
             <i className="fa-brands fa-tiktok repp-socials" />
           </a>
         )}
-        {repp?.youtube && (
-          <a target="_blank" rel="noreferrer" href={repp.youtube}>
+        {page?.youtube && (
+          <a target="_blank" rel="noreferrer" href={page.youtube}>
             <i className="fa-brands fa-youtube repp-socials" style={{color: "white"}}/>
           </a>
         )}
-            {repp?.instagram && (
-              <a target="_blank" rel="noreferrer" href={repp.instagram}>
+            {page?.instagram && (
+              <a target="_blank" rel="noreferrer" href={page.instagram}>
                 <i className="fa-brands fa-instagram repp-socials" style={{color: "white"}} />
               </a>
             )}
-            {repp?.applemusic && (
-              <a target="_blank" rel="noreferrer" href={repp.applemusic}>
+            {page?.applemusic && (
+              <a target="_blank" rel="noreferrer" href={page.applemusic}>
                 <i className="fa-brands fa-apple repp-socials" />
               </a>
             )}
-        {repp?.spotify && (
-          <a target="_blank" rel="noreferrer" href={repp.spotify}>
+        {page?.spotify && (
+          <a target="_blank" rel="noreferrer" href={page.spotify}>
             <i className="fa-brands fa-spotify repp-socials" style={{color: "white"}} />
           </a>
         )}
-        {repp?.facebook && (
-          <a target="_blank" rel="noreferrer" href={repp.facebook}>
+        {page?.facebook && (
+          <a target="_blank" rel="noreferrer" href={page.facebook}>
             <i className="fa-brands fa-facebook repp-socials" style={{color: "white"}} />
           </a>
         )}
-        {repp?.discord && (
-          <a target="_blank" rel="noreferrer" href={repp.discord}>
+        {page?.discord && (
+          <a target="_blank" rel="noreferrer" href={page.discord}>
             <i className="fa-brands fa-discord repp-socials" style={{color: "white"}} />
           </a>
         )}
-        {repp?.twitter && (
-          <a target="_blank" rel="noreferrer" href={repp.twitter}>
+        {page?.twitter && (
+          <a target="_blank" rel="noreferrer" href={page.twitter}>
             <i className="fa-brands fa-twitter repp-socials" style={{color: "white"}} />
           </a>
         )}
-        {repp?.external && (
-          <a target="_blank" rel="noreferrer" href={repp.external}>
+        {page?.external && (
+          <a target="_blank" rel="noreferrer" href={page.external}>
             <i className="fa-solid fa-square-up-right repp-socials" />
           </a>
         )}

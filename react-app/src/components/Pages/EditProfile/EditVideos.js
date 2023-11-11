@@ -4,6 +4,7 @@ import {
   createVideoThunk,
   deleteVideoThunk,
   getVideosThunk,
+  updateVideoThunk,
 } from "../../../store/videos";
 import { updateRPageThunk } from "../../../store/pages";
 
@@ -13,7 +14,9 @@ const EditVideos = ({ page }) => {
   const [name, setName] = useState("");
   const [video, setVideo] = useState("");
   const [errors, setErrors] = useState({});
-  const [editMode, setEditMode] = useState(false);
+  const [addMode, setAddMode] = useState(false);
+  const [editName, setEditName] = useState("");
+  const [editInput, setEditInput] = useState("");
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
@@ -36,13 +39,13 @@ const EditVideos = ({ page }) => {
         );
       setName("");
       setVideo("");
-      setEditMode(false);
+      setAddMode(false);
     }
   };
 
-  const handleDeleteVideo = (videoId) => {
+  const handleDeleteVideo = async (videoId) => {
     if (videos.length === 1) {
-      dispatch(
+      await dispatch(
         updateRPageThunk({
           pageId: page.id,
           shopSection: page.shopSection,
@@ -50,15 +53,21 @@ const EditVideos = ({ page }) => {
         })
       );
     }
-    dispatch(deleteVideoThunk(videoId));
+    await dispatch(deleteVideoThunk(videoId));
     setReload((prev) => !prev);
+  };
+
+  const handleUpdateVideo = async (videoId) => {
+    await dispatch(updateVideoThunk({ videoId, name: editName }));
+    setEditInput("");
+    setEditName("");
   };
 
   return (
     <>
-      {!editMode ? (
+      {!addMode ? (
         <div
-          onClick={() => setEditMode(true)}
+          onClick={() => setAddMode(true)}
           className="new-card-button ease-bg"
         >
           <b>+ Add Video</b>
@@ -112,7 +121,7 @@ const EditVideos = ({ page }) => {
               onClick={() => {
                 setName("");
                 setVideo("");
-                setEditMode(false);
+                setAddMode(false);
               }}
             >
               Cancel
@@ -121,14 +130,61 @@ const EditVideos = ({ page }) => {
         </div>
       )}
       {videos.map((video) => (
-        <div key={video.id} className="manage-cards ease-bg">
-          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        <div
+          key={video.id}
+          className={`manage-cards ease-bg ${
+            (editInput.length || addMode) ? "no-video-hover" : ""
+          }`}
+        >
+          <div
+            style={{ display: "flex", gap: "1rem" }}
+            onClick={() => {
+              if (!editInput.length && !addMode) {
+                setEditInput(video.name);
+                setEditName(video.name);
+              }
+            }}
+          >
             <iframe
               title={video?.name}
               src={video?.video}
               className="edit-list-video"
             />
-            <div>{video.name}</div>
+            <div className="flex-col" style={{ gap: "1rem" }}>
+              <input
+                className="update-video-input"
+                onFocus={() => {
+                  if (!editInput.length && !addMode) {
+                    setEditInput(video.name);
+                    setEditName(video.name);
+                  }
+                }}
+                onChange={(e) => setEditName(e.target.value)}
+                value={editInput !== video.name ? video.name : editName}
+                disabled={editInput !== video.name && editName.length > 0}
+              />
+              {editInput === video?.name && (
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <button
+                    className="add-video-button button-hover"
+                    onClick={() => handleUpdateVideo(video.id)}
+                  >
+                    Save
+                  </button>
+                  <button
+                    className="cancel-video-button button-hover"
+                    onClick={() => {
+                      setEditInput("");
+                      setEditName("");
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
           <button
             className="delete-card"

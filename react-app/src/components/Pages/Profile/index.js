@@ -13,7 +13,7 @@ import Cart from "./Cart";
 const Profile = () => {
   const dispatch = useDispatch();
   const { linkName } = useParams();
-  const repp = useSelector((state) => state.pages[linkName]);
+  const page = useSelector((state) => state.pages[linkName]);
   const navVisible = useSelector((state) => state.visibility.nav);
   const [sectionHeaders, setSectionHeaders] = useState([]);
   const [numCartItems, setNumCartItems] = useState(0);
@@ -46,7 +46,7 @@ const Profile = () => {
             <img
               className="repp-page-home-img"
               src={mainImage}
-              alt={repp?.displayName}
+              alt={page?.displayName}
               onError={({ target }) => {
                 target.onerror = null;
                 target.src =
@@ -54,45 +54,45 @@ const Profile = () => {
               }}
             />
             <div className="repp-home-text">
-              <h1>{repp?.displayName}</h1>
+              <h1>{page?.displayName}</h1>
             </div>
           </div>
-          {repp?.mainVideo && (
+          {page?.mainVideo && (
             <div id="watch" className="repp-page-section" style={{padding: '0', margin: '0', border: 'none'}}>
               <iframe
                 title="Main Video"
-                src={repp?.mainVideo}
+                src={page?.mainVideo}
                 className="repp-main-video"
               />
             </div>
           )}
-          {repp?.shopSection && (
+          {page?.shopSection && (
             <div id="merch" className="repp-page-section">
               <ProductSection
-                pageId={repp?.id}
+                pageId={page?.id}
                 setNumCartItems={setNumCartItems}
               />
             </div>
           )}
-          {repp?.videoSection && (
+          {page?.videoSection && (
             <div id="videos" className="repp-page-section">
-              <VideoSection pageId={repp?.id} />
+              <VideoSection pageId={page?.id} />
             </div>
           )}
-          {repp?.bio && (
+          {page?.bio && (
             <div id="about" className="flex-col-center">
               <h2>ABOUT</h2>
-              <div>{repp?.bio}</div>
+              <div>{page?.bio}</div>
             </div>
           )}
-          {repp?.newsletter && <Footer />}
+          {page?.newsletter && <Footer />}
           <ReppNav
             sectionHeaders={sectionHeaders}
-            repp={repp}
+            page={page}
             navVisible={navVisible}
           />
           <Cart
-            pageId={repp?.id}
+            pageId={page?.id}
             numCartItems={numCartItems}
             setNumCartItems={setNumCartItems}
           />

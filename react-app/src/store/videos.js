@@ -42,13 +42,14 @@ export const getVideosThunk = (pageId) => async (dispatch) => {
 
 // POST /pages/:pageId/videos/
 export const createVideoThunk =
-  ({pageId, name, video}) => async (dispatch) => {
+  ({ pageId, name, video }) =>
+  async (dispatch) => {
     const response = await fetch(`/api/pages/${pageId}/videos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
-        video
+        video,
       }),
     });
 
@@ -64,15 +65,13 @@ export const createVideoThunk =
 
 // PUT /videos/:videoId
 export const updateVideoThunk =
-  (videoId, name, description, price, previewImage) => async (dispatch) => {
+  ({ videoId, name }) =>
+  async (dispatch) => {
     const response = await fetch(`/api/videos/${videoId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
-        description,
-        price,
-        previewImage,
       }),
     });
 
