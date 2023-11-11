@@ -52,17 +52,23 @@
 
 .save-personal {
   background-color: black;
+  border: 1px solid black;
   margin-top: 1rem;
-  border: none;
   color: white;
   font-size: 14px;
-  font-weight: bold;
-  height: 2rem;
-  width: 4rem;
-  cursor: pointer;
+}
+
+.save-personal.button-hover {
+  padding: 0.5rem 1rem;
 }
 
 .save-personal:disabled {
   background-color: #999999;
+  border: 1px solid #999999;
   cursor: initial;
+}
+
+.save-personal:enabled:hover {
+  background-color: white;
+  color: black;
 }

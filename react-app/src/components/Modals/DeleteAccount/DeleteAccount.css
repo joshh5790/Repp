@@ -4,7 +4,7 @@
 
 .red-text {
   font-weight: bold;
-  color: #e41d56;
+  color: red;
 }
 
 .delete-confirmation {
@@ -21,20 +21,30 @@
 
 .delete-acc-cancel {
   margin-right: 1rem;
-  padding: 0.5rem;
-  border-radius: 10px;
-  background-color: white;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #999999;
+  background-color: #EEEEEE;
+}
+
+.delete-acc-cancel:hover {
+  background-color: #999999;
+  color: white;
 }
 
 .confirm-delete-acc-button {
   padding: 0.5rem;
   border-radius: 10px;
-  background-color: #ffadc3;
+  background-color: #ff8888;
+  border: 1px solid #fa8888;
   color: white;
   border: none;
 }
 
 .confirm-delete-acc-button:enabled {
-  background-color: #e41d56;
+  background-color: red;
+  border: 1px solid red;
+}
+
+.confirm-delete-acc-button:enabled:hover {
+  background-color: white;
+  color: red;
 }

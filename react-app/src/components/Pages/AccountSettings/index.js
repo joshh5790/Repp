@@ -84,7 +84,7 @@ function AccountSettings() {
             <OpenModalButton
                 buttonText='Delete Account'
                 modalComponent={<DeleteAccount user={user}/>}
-                className='delete-account-button'
+                className='delete-account-button button-hover'
             />}
         </div>
         }</>

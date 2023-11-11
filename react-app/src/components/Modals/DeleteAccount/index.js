@@ -39,13 +39,13 @@ function DeleteAccount({ user }) {
                 className='delete-confirmation'/>
             <div className='delete-acc-button-div'>
                 <button
-                    className='delete-acc-cancel'
+                    className='delete-acc-cancel button-hover'
                     onClick={closeModal}>
                         Cancel
                 </button>
                 <button
                     disabled={disableButton}
-                    className='confirm-delete-acc-button'
+                    className='confirm-delete-acc-button button-hover'
                     onClick={handleDelete}>
                     Delete Account
                 </button>
