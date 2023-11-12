@@ -1,5 +1,6 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .genres import seed_genres, undo_genres
 from .pages import seed_pages, undo_pages
 from .products import seed_products, undo_products
 from .productImages import seed_productImages, undo_productImages
@@ -24,12 +25,14 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_users()
+        undo_genres()
         undo_pages()
         undo_products()
         undo_productImages()
         undo_productStocks()
         undo_videos()
     seed_users()
+    seed_genres()
     seed_pages()
     seed_products()
     seed_productImages()
@@ -41,6 +44,7 @@ def seed():
 @seed_commands.command("undo")
 def undo():
     undo_users()
+    undo_genres()
     undo_pages()
     undo_products()
     undo_productImages()
