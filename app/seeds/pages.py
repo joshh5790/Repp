@@ -5,6 +5,7 @@ from sqlalchemy.sql import text
 def seed_pages():
     eric = Page(
         userId=1,
+        genreId=1,
         displayName="Eric Nam",
         linkName="eric-nam",
         tiktok="https://www.tiktok.com/@ericnam",
@@ -23,6 +24,7 @@ def seed_pages():
     )
     tiff = Page(
         userId=2,
+        genreId=1,
         displayName="Tiffany Day",
         linkName="tiffany-day",
         tiktok="https://www.tiktok.com/@tiffdidwhat",
@@ -40,6 +42,7 @@ def seed_pages():
     )
     josiah = Page(
         userId=3,
+        genreId=1,
         displayName="Highvyn",
         linkName="highvyn",
         tiktok="https://www.tiktok.com/@highvyn",

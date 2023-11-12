@@ -13,9 +13,10 @@ def seed_users():
         address="121 Third St",
         city="Los Angeles",
         state="CA",
-        password="password",
-        isRepp=True,
         profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
+        premiumPepps=0,
+        isRepp=True,
+        password="password",
     )
     tiff = User(
         firstName="Tiffany",
@@ -26,9 +27,10 @@ def seed_users():
         address="123 Main St",
         city="Los Angeles",
         state="CA",
-        password="password",
-        isRepp=True,
         profileImage="https://thehiddenhits.files.wordpress.com/2021/01/tiffany-day-the-hidden-hits.jpg",
+        premiumPepps=0,
+        isRepp=True,
+        password="password",
     )
     josiah = User(
         firstName="Josiah",
@@ -39,9 +41,10 @@ def seed_users():
         address="122 Second St",
         city="Los Angeles",
         state="CA",
-        password="password",
-        isRepp=True,
         profileImage="https://images.genius.com/e9a779c23099a34081cdd35250f273cc.539x539x1.jpg",
+        premiumPepps=0,
+        isRepp=True,
+        password="password",
     )
     josh = User(
         firstName="Josh",
@@ -52,9 +55,10 @@ def seed_users():
         address="121 Third St",
         city="Los Angeles",
         state="CA",
-        password="password",
-        isRepp=False,
         profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
+        premiumPepps=0,
+        isRepp=False,
+        password="password",
     )
 
     db.session.add(eric)

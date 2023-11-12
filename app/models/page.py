@@ -14,6 +14,9 @@ class Page(db.Model):
         nullable=False,
         unique=True,
     )
+    genreId = db.Column(
+        db.Integer, db.ForeignKey(add_prefix_for_prod("genres.id")), nullable=False
+    )
     displayName = db.Column(db.String(40), nullable=False)
     linkName = db.Column(db.String(40), nullable=False, unique=True)
     statusText = db.Column(db.String())
@@ -35,6 +38,7 @@ class Page(db.Model):
     shopSection = db.Column(db.Boolean(), nullable=False)
 
     user = db.relationship("User", back_populates="page")
+    genre = db.relationship("Genre", back_populates="pages")
     products = db.relationship(
         "Product", back_populates="page", cascade="all, delete-orphan"
     )
@@ -67,7 +71,7 @@ class Page(db.Model):
             "id": self.id,
             "displayName": self.displayName,
             "linkName": self.linkName,
-            "mainImage": self.mainImage
+            "mainImage": self.mainImage,
         }
 
     def to_dict(self):

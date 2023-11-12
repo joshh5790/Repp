@@ -1,5 +1,6 @@
 from .db import db
 from .user import User
+from .genre import Genre
 from .page import Page
 from .product import Product
 from .productImage import ProductImage

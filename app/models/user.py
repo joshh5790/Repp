@@ -15,12 +15,14 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     gender = db.Column(db.String(10), nullable=False)
-    address = db.Column(db.String(255), nullable=False)
-    city = db.Column(db.String(255), nullable=False)
-    state = db.Column(db.String(255), nullable=False)
-    hashed_password = db.Column(db.String(255), nullable=False)
-    isRepp = db.Column(db.Boolean(), nullable=False)
+    address = db.Column(db.String(255))
+    city = db.Column(db.String(255))
+    state = db.Column(db.String(255))
+    country = db.Column(db.String(255))
     profileImage = db.Column(db.String())
+    premiumPepps = db.Column(db.Integer, nullable=False)
+    isRepp = db.Column(db.Boolean())
+    hashed_password = db.Column(db.String(255), nullable=False)
 
     page = db.relationship("Page", back_populates="user", cascade="all, delete-orphan")
     carts = db.relationship("Cart", back_populates="user", cascade="all, delete-orphan")
@@ -47,8 +49,10 @@ class User(db.Model, UserMixin):
             "address": self.address,
             "city": self.city,
             "state": self.state,
-            "isRepp": self.isRepp,
+            "country": self.country,
             "profileImage": self.profileImage,
+            "premiumPepps": self.premiumPepps,
+            "isRepp": self.isRepp,
         }
 
     def get_page(self):
