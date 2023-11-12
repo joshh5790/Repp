@@ -6,3 +6,4 @@ from .productImage_form import ProductImageForm
 from .productStock_form import ProductStockForm
 from .cartItem_form import CartItemForm
 from .video_form import VideoForm
+from .tour_form import TourForm

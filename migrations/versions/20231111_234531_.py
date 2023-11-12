@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: aa3165315fa8
+Revision ID: 9cccb811c202
 Revises:
-Create Date: 2023-11-11 23:18:19.155460
+Create Date: 2023-11-11 23:45:31.691591
 
 """
 from alembic import op
@@ -11,7 +11,7 @@ from app.models import environment, SCHEMA
 
 
 # revision identifiers, used by Alembic.
-revision = 'aa3165315fa8'
+revision = '9cccb811c202'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -166,7 +166,6 @@ def upgrade():
     op.create_table('tourlocations',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('tourId', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=40), nullable=False),
     sa.Column('venue', sa.String(length=40), nullable=False),
     sa.Column('location', sa.String(length=40), nullable=False),
     sa.Column('tourDate', sa.String(), nullable=False),
