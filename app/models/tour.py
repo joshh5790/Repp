@@ -27,3 +27,6 @@ class Tour(db.Model):
 
     def get_page(self):
         return self.page[0].to_dict() if self.page else {}
+
+    def get_locations(self):
+        return [location.to_dict() for location in self.tourLocations]
