@@ -8,5 +8,12 @@ from .productStock import ProductStock
 from .cart import Cart
 from .cartItem import CartItem
 from .video import Video
+from .order import Order
+from .orderItem import OrderItem
+from .follow import Follow
+from .tour import Tour
+from .pepp import Pepp
+
+
 
 from .db import environment, SCHEMA

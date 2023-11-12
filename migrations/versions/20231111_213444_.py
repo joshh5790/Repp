@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 70c211831c7e
+Revision ID: 84f1ce7532c4
 Revises:
-Create Date: 2023-11-11 18:14:32.736625
+Create Date: 2023-11-11 21:34:44.993391
 
 """
 from alembic import op
@@ -10,9 +10,8 @@ import sqlalchemy as sa
 from app.models import environment, SCHEMA
 
 
-
 # revision identifiers, used by Alembic.
-revision = '70c211831c7e'
+revision = '84f1ce7532c4'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -50,6 +49,7 @@ def upgrade():
     sa.Column('genreId', sa.Integer(), nullable=False),
     sa.Column('displayName', sa.String(length=40), nullable=False),
     sa.Column('linkName', sa.String(length=40), nullable=False),
+    sa.Column('personalLogo', sa.String(), nullable=True),
     sa.Column('statusText', sa.String(), nullable=True),
     sa.Column('tiktok', sa.String(), nullable=True),
     sa.Column('youtube', sa.String(), nullable=True),
@@ -65,8 +65,9 @@ def upgrade():
     sa.Column('bio', sa.String(), nullable=True),
     sa.Column('newsletter', sa.String(), nullable=True),
     sa.Column('businessInquiries', sa.String(), nullable=True),
-    sa.Column('videoSection', sa.Boolean(), nullable=False),
-    sa.Column('shopSection', sa.Boolean(), nullable=False),
+    sa.Column('shopSection', sa.Boolean(), nullable=True),
+    sa.Column('videoSection', sa.Boolean(), nullable=True),
+    sa.Column('tourSection', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['genreId'], ['genres.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
@@ -75,9 +76,36 @@ def upgrade():
     )
     op.create_table('carts',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('pageId', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('pageId', sa.Integer(), nullable=False),
     sa.Column('subtotal', sa.Float(), nullable=False),
+    sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
+    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('follows',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('pageId', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
+    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('orders',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('pageId', sa.Integer(), nullable=False),
+    sa.Column('total', sa.Float(), nullable=False),
+    sa.Column('createdAt', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
+    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('pepps',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('pageId', sa.Integer(), nullable=False),
+    sa.Column('quantity', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -89,6 +117,16 @@ def upgrade():
     sa.Column('description', sa.String(length=255), nullable=True),
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('previewImage', sa.String(), nullable=False),
+    sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('tours',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('pageId', sa.Integer(), nullable=False),
+    sa.Column('venue', sa.String(length=40), nullable=False),
+    sa.Column('location', sa.String(length=40), nullable=False),
+    sa.Column('tourDate', sa.String(), nullable=False),
+    sa.Column('ticketsLink', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -107,6 +145,16 @@ def upgrade():
     sa.Column('quantity', sa.Integer(), nullable=False),
     sa.Column('size', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['cartId'], ['carts.id'], ),
+    sa.ForeignKeyConstraint(['productId'], ['products.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('orderitems',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('orderId', sa.Integer(), nullable=False),
+    sa.Column('productId', sa.Integer(), nullable=False),
+    sa.Column('quantity', sa.Integer(), nullable=False),
+    sa.Column('size', sa.String(), nullable=True),
+    sa.ForeignKeyConstraint(['orderId'], ['orders.id'], ),
     sa.ForeignKeyConstraint(['productId'], ['products.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -135,15 +183,26 @@ def upgrade():
         op.execute(f"ALTER TABLE carts SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE videos SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE orderItems SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE pepps SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE tours SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE genres SET SCHEMA {SCHEMA};")
 
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
     op.drop_table('productstocks')
     op.drop_table('productimages')
+    op.drop_table('orderitems')
     op.drop_table('cartitems')
     op.drop_table('videos')
+    op.drop_table('tours')
     op.drop_table('products')
+    op.drop_table('pepps')
+    op.drop_table('orders')
+    op.drop_table('follows')
     op.drop_table('carts')
     op.drop_table('pages')
     op.drop_table('users')

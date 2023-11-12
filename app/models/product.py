@@ -26,6 +26,10 @@ class Product(db.Model):
     cartItems = db.relationship(
         "CartItem", back_populates="product", cascade="all, delete-orphan"
     )
+    orderItems = db.relationship(
+        "OrderItem", back_populates="product", cascade="all, delete-orphan"
+    )
+
 
     def to_dict(self):
         return {

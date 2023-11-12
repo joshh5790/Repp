@@ -1,8 +1,9 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from datetime import datetime
 
 
-class Cart(db.Model):
-    __tablename__ = "carts"
+class Order(db.Model):
+    __tablename__ = "orders"
 
     if environment == "production":
         __table_args__ = {"schema": SCHEMA}
@@ -14,12 +15,13 @@ class Cart(db.Model):
     pageId = db.Column(
         db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
     )
-    subtotal = db.Column(db.Float(), nullable=False)
+    total = db.Column(db.Float(), nullable=False)
+    createdAt = db.Column(db.DateTime, default=datetime.utcnow)
 
-    user = db.relationship("User", back_populates="carts")
-    page = db.relationship("Page", back_populates="cart")
-    cartItems = db.relationship(
-        "CartItem", back_populates="cart", cascade="all, delete-orphan"
+    user = db.relationship("User", back_populates="orders")
+    page = db.relationship("Page", back_populates="orders")
+    orderItems = db.relationship(
+        "OrderItem", back_populates="order", cascade="all, delete-orphan"
     )
 
     def to_dict(self):
@@ -27,11 +29,9 @@ class Cart(db.Model):
             "id": self.id,
             "userId": self.userId,
             "pageId": self.pageId,
-            "subtotal": self.subtotal,
+            "total": self.total,
+            "createdAt": self.createdAt,
         }
 
     def get_items(self):
-        return [cartItem.to_dict() for cartItem in self.cartItems]
-
-    def get_items_checkout(self):
-        return [cartItem.checkout() for cartItem in self.cartItems]
+        return [orderItem.to_dict() for orderItem in self.orderItems]

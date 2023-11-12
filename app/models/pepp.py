@@ -1,8 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-
-class Cart(db.Model):
-    __tablename__ = "carts"
+class Pepp(db.Model):
+    __tablename__ = "pepps"
 
     if environment == "production":
         __table_args__ = {"schema": SCHEMA}
@@ -14,24 +13,15 @@ class Cart(db.Model):
     pageId = db.Column(
         db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
     )
-    subtotal = db.Column(db.Float(), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False, default=0)
 
-    user = db.relationship("User", back_populates="carts")
-    page = db.relationship("Page", back_populates="cart")
-    cartItems = db.relationship(
-        "CartItem", back_populates="cart", cascade="all, delete-orphan"
-    )
+    user = db.relationship("User", back_populates="pepps")
+    page = db.relationship("Page", back_populates="pepps")
 
     def to_dict(self):
         return {
             "id": self.id,
             "userId": self.userId,
             "pageId": self.pageId,
-            "subtotal": self.subtotal,
+            "quantity": self.quantity,
         }
-
-    def get_items(self):
-        return [cartItem.to_dict() for cartItem in self.cartItems]
-
-    def get_items_checkout(self):
-        return [cartItem.checkout() for cartItem in self.cartItems]

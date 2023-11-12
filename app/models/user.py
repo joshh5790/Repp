@@ -20,12 +20,15 @@ class User(db.Model, UserMixin):
     state = db.Column(db.String(255))
     country = db.Column(db.String(255))
     profileImage = db.Column(db.String())
-    premiumPepps = db.Column(db.Integer, nullable=False)
-    isRepp = db.Column(db.Boolean())
+    premiumPepps = db.Column(db.Integer, nullable=False, default=0)
+    isRepp = db.Column(db.Boolean(), default=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
     page = db.relationship("Page", back_populates="user", cascade="all, delete-orphan")
     carts = db.relationship("Cart", back_populates="user", cascade="all, delete-orphan")
+    orders = db.relationship("Order", back_populates="user", cascade="all, delete-orphan")
+    follows = db.relationship("Follow", back_populates="user", cascade="all, delete-orphan")
+    pepps = db.relationship("Pepp", back_populates="user", cascade="all, delete-orphan")
 
     @property
     def password(self):
@@ -67,3 +70,12 @@ class User(db.Model, UserMixin):
             if cart.pageId == pageId:
                 return cart.to_dict()
         return {}
+
+    def get_orders(self):
+        return [order.to_dict() for order in self.orders]
+
+    def get_follows(self):
+        return [follow.to_dict() for follow in self.follows]
+
+    def get_pepps(self):
+        return [pepp.to_dict() for pepp in self.pepps]

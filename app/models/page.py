@@ -19,6 +19,7 @@ class Page(db.Model):
     )
     displayName = db.Column(db.String(40), nullable=False)
     linkName = db.Column(db.String(40), nullable=False, unique=True)
+    personalLogo = db.Column(db.String())
     statusText = db.Column(db.String())
     tiktok = db.Column(db.String())
     youtube = db.Column(db.String())
@@ -34,8 +35,9 @@ class Page(db.Model):
     bio = db.Column(db.String())
     newsletter = db.Column(db.String())
     businessInquiries = db.Column(db.String())
-    videoSection = db.Column(db.Boolean(), nullable=False)
-    shopSection = db.Column(db.Boolean(), nullable=False)
+    shopSection = db.Column(db.Boolean(), default=False)
+    videoSection = db.Column(db.Boolean(), default=False)
+    tourSection = db.Column(db.Boolean(), default=False)
 
     user = db.relationship("User", back_populates="page")
     genre = db.relationship("Genre", back_populates="pages")
@@ -46,6 +48,10 @@ class Page(db.Model):
         "Video", back_populates="page", cascade="all, delete-orphan"
     )
     cart = db.relationship("Cart", back_populates="page", cascade="all, delete-orphan")
+    orders = db.relationship("Order", back_populates="page", cascade="all, delete-orphan")
+    follows = db.relationship("Follow", back_populates="page", cascade="all, delete-orphan")
+    tours = db.relationship("Tour", back_populates="page", cascade="all, delete-orphan")
+    pepps = db.relationship("Pepp", back_populates="page", cascade="all, delete-orphan")
 
     def repp_info(self):
         return {
@@ -80,6 +86,7 @@ class Page(db.Model):
             "userId": self.userId,
             "displayName": self.displayName,
             "linkName": self.linkName,
+            "personalLogo": self.personalLogo,
             "statusText": self.statusText,
             "tiktok": self.tiktok,
             "youtube": self.youtube,
@@ -95,8 +102,9 @@ class Page(db.Model):
             "bio": self.bio,
             "newsletter": self.newsletter,
             "businessInquiries": self.businessInquiries,
-            "videoSection": self.videoSection,
             "shopSection": self.shopSection,
+            "videoSection": self.videoSection,
+            "tourSection": self.tourSection,
             "profileImage": self.user.profileImage,
         }
 
@@ -105,3 +113,9 @@ class Page(db.Model):
 
     def get_videos(self):
         return [video.to_dict() for video in self.videos]
+
+    def get_orders(self):
+        return [order.to_dict() for order in self.orders]
+
+    def get_tours(self):
+        return [tour.to_dict() for tour in self.tours]
