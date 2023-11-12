@@ -32,3 +32,6 @@ class Cart(db.Model):
 
     def get_items(self):
         return [cartItem.to_dict() for cartItem in self.cartItems]
+
+    def get_items_checkout(self):
+        return [cartItem.checkout() for cartItem in self.cartItems]

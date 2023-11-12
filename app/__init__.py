@@ -15,8 +15,10 @@ from .api.video_routes import video_routes
 from .api.cart_routes import cart_routes
 from .api.cartItem_routes import cartItem_routes
 from .api.session_routes import session_routes
+from .api.checkout_routes import checkout_routes
 from .seeds import seed_commands
 from .config import Config
+import stripe
 
 app = Flask(__name__, static_folder="../react-app/build", static_url_path="/")
 
@@ -34,6 +36,7 @@ def load_user(id):
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
+stripe.api_key=app.config['STRIPE_SECRET_KEY']
 app.register_blueprint(user_routes, url_prefix="/api/users")
 app.register_blueprint(auth_routes, url_prefix="/api/auth")
 app.register_blueprint(page_routes, url_prefix="/api/pages")
@@ -44,6 +47,7 @@ app.register_blueprint(video_routes, url_prefix="/api/videos")
 app.register_blueprint(cart_routes, url_prefix="/api/carts")
 app.register_blueprint(cartItem_routes, url_prefix="/api/cartItems")
 app.register_blueprint(session_routes, url_prefix="/api/session")
+app.register_blueprint(checkout_routes, url_prefix="/api/checkout")
 db.init_app(app)
 Migrate(app, db)
 

@@ -8,7 +8,7 @@ import EditSocials from "./EditSocials";
 import EditProducts from "./EditProducts";
 import EditVideos from "./EditVideos";
 import ProfilePreview from "./ProfilePreview";
-import Other from "./Other";
+import More from "./More";
 
 const EditProfile = () => {
   const location = useLocation();
@@ -17,11 +17,15 @@ const EditProfile = () => {
   const page = useSelector((state) => Object.values(state.pages)[0]);
   const [currentTab, setCurrentTab] = useState("General");
   const [height, setHeight] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false)
   const heightRef = useRef();
 
   useEffect(async () => {
-    await dispatch(getSessionPageThunk()).then((data) => {
-      if (data && heightRef?.current) setHeight(heightRef.current.clientHeight);
+    await dispatch(getSessionPageThunk()).then(async (data) => {
+      if (data && heightRef?.current) {
+        await setHeight(heightRef.current.clientHeight);
+        await setIsLoaded(true)
+      }
     });
   }, [dispatch]);
 
@@ -29,7 +33,7 @@ const EditProfile = () => {
     if (location.state) setCurrentTab(location.state);
   }, [location.state]);
 
-  if (!user || !user.isRepp) {
+  if (isLoaded && (!user || !user.isRepp)) {
     return (
       <div className="unavailable page-container">
         <h1>Sorry, this page isn't available.</h1>
@@ -87,13 +91,13 @@ const EditProfile = () => {
               Videos
             </span>
             <span
-              className={currentTab === "Other" ? "focus-tab" : " "}
+              className={currentTab === "+ More" ? "focus-tab" : " "}
               onClick={async () => {
-                await setCurrentTab("Other");
+                await setCurrentTab("+ More");
                 await setHeight(heightRef.current.clientHeight);
               }}
             >
-              Other
+              + More
             </span>
           </div>
           <div
@@ -104,7 +108,7 @@ const EditProfile = () => {
             {currentTab === "Socials" && <EditSocials page={page} />}
             {currentTab === "Products" && <EditProducts page={page} />}
             {currentTab === "Videos" && <EditVideos page={page} />}
-            {currentTab === "Other" && <Other page={page} />}
+            {currentTab === "+ More" && <More page={page} />}
           </div>
           <div className="preview-profile-section flex-col" style={{ height }}>
             <ProfilePreview page={page} />

@@ -33,3 +33,10 @@ class CartItem(db.Model):
             "description": product["description"],
             "image": product["previewImage"],
         }
+
+    def checkout(self):
+        product = self.product.to_dict()
+        return {
+            "price": product["price"],
+            "quantity": self.quantity
+        }

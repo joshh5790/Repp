@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import OpenModalButton from "../../OpenModalButton";
 import DeletePage from "../../Modals/DeletePage";
 
-const Other = ({ page }) => {
+const More = ({ page }) => {
   return (
     <div>
       {page && <OpenModalButton
@@ -15,4 +13,4 @@ const Other = ({ page }) => {
   );
 };
 
-export default Other;
+export default More;
