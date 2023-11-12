@@ -28,7 +28,6 @@ class User(db.Model, UserMixin):
     carts = db.relationship("Cart", back_populates="user", cascade="all, delete-orphan")
     orders = db.relationship("Order", back_populates="user", cascade="all, delete-orphan")
     follows = db.relationship("Follow", back_populates="user", cascade="all, delete-orphan")
-    pepps = db.relationship("Pepp", back_populates="user", cascade="all, delete-orphan")
 
     @property
     def password(self):
@@ -76,6 +75,3 @@ class User(db.Model, UserMixin):
 
     def get_follows(self):
         return [follow.to_dict() for follow in self.follows]
-
-    def get_pepps(self):
-        return [pepp.to_dict() for pepp in self.pepps]

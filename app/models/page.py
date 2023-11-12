@@ -51,7 +51,6 @@ class Page(db.Model):
     orders = db.relationship("Order", back_populates="page", cascade="all, delete-orphan")
     follows = db.relationship("Follow", back_populates="page", cascade="all, delete-orphan")
     tours = db.relationship("Tour", back_populates="page", cascade="all, delete-orphan")
-    pepps = db.relationship("Pepp", back_populates="page", cascade="all, delete-orphan")
 
     def repp_info(self):
         return {

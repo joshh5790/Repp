@@ -11,22 +11,18 @@ class Tour(db.Model):
     pageId = db.Column(
         db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
     )
-    venue = db.Column(db.String(40), nullable=False)
-    location = db.Column(db.String(40), nullable=False)
-    tourDate = db.Column(db.String(), nullable=False)
-    ticketsLink = db.Column(db.String())
-
+    name = db.Column(db.String(40), nullable=False)
+    tourLogo = db.Column(db.String())
 
     page = db.relationship("Page", back_populates="tours")
+    tourLocations = db.relationship("TourLocation", back_populates="tour")
 
     def to_dict(self):
         return {
             "id": self.id,
             "pageId": self.pageId,
-            "venue": self.venue,
-            "location": self.location,
-            "tourDate": self.tourDate,
-            "ticketsLink": self.ticketsLink,
+            "name": self.name,
+            "tourLogo": self.tourLogo,
         }
 
     def get_page(self):

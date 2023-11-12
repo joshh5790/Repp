@@ -12,8 +12,6 @@ from .order import Order
 from .orderItem import OrderItem
 from .follow import Follow
 from .tour import Tour
-from .pepp import Pepp
-
-
+from .tourLocation import TourLocation
 
 from .db import environment, SCHEMA
