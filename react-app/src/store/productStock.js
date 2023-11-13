@@ -23,9 +23,9 @@ const removeProductStock = (productStockId) => ({
 
 // thunks
 
-// GET /products/:productId/productStocks/
+// GET /products/:productId/productStock/
 export const getProductStocksThunk = (productId) => async (dispatch) => {
-  const response = await fetch(`/api/products/${productId}/productStocks`);
+  const response = await fetch(`/api/products/${productId}/productStock`);
   if (response.ok) {
     const data = await response.json();
     const formattedData = {};
@@ -40,11 +40,11 @@ export const getProductStocksThunk = (productId) => async (dispatch) => {
   } else return ["Failed to retrieve product stocks."];
 };
 
-// POST /products/:productId/productStocks/
+// POST /products/:productId/productStock/
 export const createProductStockThunk =
   ({ productId, size, stock }) =>
   async (dispatch) => {
-    const response = await fetch(`/api/products/${productId}/productStocks`, {
+    const response = await fetch(`/api/products/${productId}/productStock`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -63,7 +63,7 @@ export const createProductStockThunk =
     } else return ["Failed to create product stock."];
   };
 
-// PUT /productStocks/:productStockId
+// PUT /productStock/:productStockId
 export const updateProductStockThunk =
   ({ productStockId, size, stock }) =>
   async (dispatch) => {
@@ -86,7 +86,7 @@ export const updateProductStockThunk =
     } else return ["Failed to update product stock."];
   };
 
-// DELETE /productStocks/:productStockId
+// DELETE /productStock/:productStockId
 export const deleteProductStockThunk = (productStockId) => async (dispatch) => {
   const response = await fetch(`/api/productStock/${productStockId}`, {
     method: "DELETE",

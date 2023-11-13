@@ -13,7 +13,7 @@ class Follow(db.Model):
     pageId = db.Column(
         db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
     )
-    pepps = db.Column(db.Integer, nullable=False, default=0)
+    pepps = db.Column(db.Integer, nullable=False, default=10)
 
     user = db.relationship("User", back_populates="follows")
     page = db.relationship("Page", back_populates="follows")

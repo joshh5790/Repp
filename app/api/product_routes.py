@@ -84,8 +84,8 @@ def get_product_images(productId):
     return product.get_images()
 
 
-# GET /products/:productid/productStocks
-@product_routes.route("/<int:productId>/productStocks")
+# GET /products/:productid/productStock
+@product_routes.route("/<int:productId>/productStock")
 def get_product_stocks(productId):
     """
     Query for a product by id and returns its productStocks in a list
@@ -124,8 +124,8 @@ def create_product_image(productId):
         return {"errors": form.errors}, 401
 
 
-# POST /products/:productId/productStocks
-@product_routes.route("/<int:productId>/productStocks", methods=["POST"])
+# POST /products/:productId/productStock
+@product_routes.route("/<int:productId>/productStock", methods=["POST"])
 @login_required
 def create_product_stock(productId):
     """

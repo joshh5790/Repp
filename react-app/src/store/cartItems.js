@@ -40,7 +40,7 @@ export const getCartItemsThunk = (cartId) => async (dispatch) => {
   } else return ["Failed to retrieve cartItems."];
 };
 
-// POST /productStocks/:productStockId/cartItems/
+// POST /productStock/:productStockId/cartItems/
 export const createCartItemThunk =
   (productStockId, quantity) => async (dispatch) => {
     const response = await fetch(
@@ -101,7 +101,7 @@ export const deleteCartItemThunk = (cartItemId) => async (dispatch) => {
 // clear cartItems
 export const clearCartItemsThunk = () => async (dispatch) => {
   dispatch(setCartItems({}));
-}
+};
 
 const initialState = {};
 
