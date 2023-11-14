@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRPagesHomeThunk } from "../../../store/pages";
 import { NavLink } from "react-router-dom";
+import OpenModalButton from "../../OpenModalButton";
+import SignupForm from "../../Modals/SignupForm";
 import "./Home.css";
 
 const Home = () => {
@@ -27,6 +29,8 @@ const Home = () => {
   };
   if (isLoaded) {
     return (
+      <>
+
       <div className="home-page page-container">
         <div style={{ width: "100%", height: "100%", position: "relative" }}>
           <div
@@ -68,7 +72,7 @@ const Home = () => {
           <i className="fa-solid fa-chevron-right" />
         </button>
         <div className="home-page-text">
-          <h1>{repps[imageIndex]?.displayName}</h1>
+          <h1 className="no-top">{repps[imageIndex]?.displayName}</h1>
           <NavLink to={`/${repps[imageIndex]?.linkName}`}>
             Visit Page {">"}
           </NavLink>
@@ -98,6 +102,16 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <div className="flex-col home-page-create-profile">
+        <h1>Design Your Profile</h1>
+        <p style={{margin: "1rem 0 2rem 0", lineHeight: "1.5rem"}}>Functions like your personal artist website. <br /> No credit card required.</p>
+        <OpenModalButton
+        buttonText={"Get Started"}
+        className={'button-hover get-started'}
+        modalComponent={<SignupForm />}
+        />
+      </div>
+      </>
     );
   } else
     return (

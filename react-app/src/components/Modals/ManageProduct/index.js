@@ -107,7 +107,7 @@ const ManageProduct = ({ product, pageId, numProducts, videoSection }) => {
         />
       </div>
       <div className="product-modal-details">
-        <label className="product-input-label" style={{ marginTop: "0" }}>
+        <label className="product-input-label no-top">
           Product Name *
           <input
             className="product-input"

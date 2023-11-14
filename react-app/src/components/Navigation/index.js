@@ -1,4 +1,4 @@
-import { useEffect, React } from "react";
+import { useState, useEffect, React } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../../images/repp_name.png";
@@ -6,7 +6,7 @@ import { setSidebarVisibility } from "../../store/navigation";
 import ProfileButton from "./ProfileButton";
 import OpenModalButton from "../OpenModalButton";
 import LoginForm from "../Modals/LoginForm";
-import SearchBar from "../SearchBar";
+// import SearchBar from "../SearchBar";
 import "./Navigation.css";
 
 function Navigation() {
@@ -14,6 +14,11 @@ function Navigation() {
   const sessionUser = useSelector((state) => state.session.user);
   const navVisible = useSelector((state) => state.visibility.nav);
   const location = useLocation();
+  const [isHome, setIsHome] = useState(true)
+
+  useEffect(() => {
+    setIsHome(location.pathname === '/')
+  })
 
   useEffect(() => {}, [sessionUser, dispatch]);
 
@@ -22,7 +27,7 @@ function Navigation() {
   };
 
   return (
-    <ul className={`nav ${navVisible ? "" : "nav-hidden"}`}>
+    <ul className={`nav ${navVisible ? "" : "nav-hidden"} ${isHome ? "home-nav" : ""}`}>
       <li className="nav-left">
         {/* <i
           onClick={() => setSidebarVisible(true)}
@@ -32,11 +37,12 @@ function Navigation() {
           <img src={logo} alt="repp" className="logo" />
         </NavLink>
         <i className="fa-solid fa-info">
-          {location.pathname === "/" && (
+          {isHome && (
             <div className="page-info">
               <h4>Home Page/Navbar</h4>
               <ul>
                 <li>Visiting artist page will cause navbar to disappear, clicking side ellipsis will make it show up</li>
+                <li>Logo designed with Figma</li>
                 <li>Click logo to return to home page</li>
                 <li>Right side of navbar has login button/user settings</li>
                 <li>Links should all be fully functional</li>
@@ -82,7 +88,7 @@ function Navigation() {
         ) : (
           <div className="nav-button login">
             <OpenModalButton
-              buttonText="Log In"
+              buttonText="LOG IN"
               modalComponent={<LoginForm />}
               className="login-button"
             />

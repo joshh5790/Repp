@@ -39,7 +39,7 @@ function LoginForm() {
 
   return (
     <div className="flex-col-center">
-      <h1 className="modal-header">
+      <h1 className="no-top">
         Login to <img src={logo} alt="logo" className="logo" />
       </h1>
       {error && <p className="error-msg">{error}</p>}
