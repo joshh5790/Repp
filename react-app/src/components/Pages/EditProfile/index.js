@@ -17,14 +17,14 @@ const EditProfile = () => {
   const page = useSelector((state) => Object.values(state.pages)[0]);
   const [currentTab, setCurrentTab] = useState("General");
   const [height, setHeight] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
   const heightRef = useRef();
 
   useEffect(async () => {
     await dispatch(getSessionPageThunk()).then(async (data) => {
       if (data && heightRef?.current) {
         await setHeight(heightRef.current.clientHeight);
-        await setIsLoaded(true)
+        await setIsLoaded(true);
       }
     });
   }, [dispatch]);
@@ -101,7 +101,7 @@ const EditProfile = () => {
             </span>
           </div>
           <div
-            className="manage-profile-section flex-col-center"
+            className="manage-profile-section flex-col"
             ref={heightRef}
           >
             {currentTab === "General" && <EditGeneral page={page} />}
@@ -113,20 +113,9 @@ const EditProfile = () => {
           <div className="preview-profile-section flex-col" style={{ height }}>
             <ProfilePreview page={page} />
           </div>
-        </div>
-        <div className="manage-profile-nav">
-          <h1
-            className="manage-profile-section-header"
-            style={{ marginLeft: "12rem" }}
-          >
-            Manage Profile
-          </h1>
-          <h1
-            className="manage-profile-section-header"
-            style={{ marginLeft: "15.8rem" }}
-          >
-            Preview
-          </h1>
+          <h1 style={{ gridArea: "none"}}/>
+          <h1 style={{ gridArea: "manageHeader" }}>Manage Profile</h1>
+          <h1 style={{ gridArea: "previewHeader" }}>Preview</h1>
         </div>
       </div>
     </>

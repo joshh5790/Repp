@@ -7,6 +7,7 @@ import {
   updateVideoThunk,
 } from "../../../store/videos";
 import { updateRPageThunk } from "../../../store/pages";
+import "./EditVideos.css";
 
 const EditVideos = ({ page }) => {
   const dispatch = useDispatch();
@@ -132,63 +133,58 @@ const EditVideos = ({ page }) => {
       {videos.map((video) => (
         <div
           key={video.id}
-          className={`manage-cards ease-bg ${
-            (editInput.length || addMode) ? "no-video-hover" : ""
+          className={`manage-video-cards ease-bg ${
+            editInput.length || addMode ? "no-video-hover" : ""
           }`}
+          onClick={() => {
+            if (!editInput.length && !addMode) {
+              setEditInput(video.name);
+              setEditName(video.name);
+            }
+          }}
         >
-          <div
-            style={{ display: "flex", gap: "1rem" }}
-            onClick={() => {
-              if (!editInput.length && !addMode) {
-                setEditInput(video.name);
-                setEditName(video.name);
-              }
-            }}
-          >
-            <iframe
-              title={video?.name}
-              src={video?.video}
-              className="edit-list-video"
+          <iframe
+            title={video?.name}
+            src={video?.video}
+            className="edit-list-video"
+          />
+          <div className="flex-col" style={{ gap: "1rem", gridArea: "details" }}>
+            <input
+              className="update-video-input"
+              onFocus={() => {
+                if (!editInput.length && !addMode) {
+                  setEditInput(video.name);
+                  setEditName(video.name);
+                }
+              }}
+              onChange={(e) => setEditName(e.target.value)}
+              value={editInput !== video.name ? video.name : editName}
+              disabled={editInput !== video.name && editName.length > 0}
             />
-            <div className="flex-col" style={{ gap: "1rem" }}>
-              <input
-                className="update-video-input"
-                onFocus={() => {
-                  if (!editInput.length && !addMode) {
-                    setEditInput(video.name);
-                    setEditName(video.name);
-                  }
-                }}
-                onChange={(e) => setEditName(e.target.value)}
-                value={editInput !== video.name ? video.name : editName}
-                disabled={editInput !== video.name && editName.length > 0}
-              />
-              {editInput === video?.name && (
-                <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
+            {editInput === video?.name && (
+              <div style={{ display: "flex", gap: '1rem' }}>
+                <button
+                  className="add-video-button button-hover"
+                  onClick={() => handleUpdateVideo(video.id)}
                 >
-                  <button
-                    className="add-video-button button-hover"
-                    onClick={() => handleUpdateVideo(video.id)}
-                  >
-                    Save
-                  </button>
-                  <button
-                    className="cancel-video-button button-hover"
-                    onClick={() => {
-                      setEditInput("");
-                      setEditName("");
-                    }}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              )}
-            </div>
+                  Save
+                </button>
+                <button
+                  className="cancel-video-button button-hover"
+                  onClick={() => {
+                    setEditInput("");
+                    setEditName("");
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            )}
           </div>
           <button
             className="delete-card"
             onClick={() => handleDeleteVideo(video.id)}
+            style={{gridArea: "buttons", alignSelf: "start", justifySelf: 'end'}}
           >
             <i className="fa-solid fa-x" />
           </button>

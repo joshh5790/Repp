@@ -1,10 +1,11 @@
-.home-page.page-container {
+.home-page {
+  position: relative;
   background-size: cover;
   background-position: center;
   object-fit: cover;
   height: 100vh;
   top: 0;
-;}
+}
 
 .home-page-text {
   position: absolute;
@@ -101,7 +102,7 @@
 }
 
 @media (max-width: 700px) {
-  .home-page.page-container {
+  .home-page {
     height: calc(50vh - 3rem);
     min-height: calc(50vh - 3rem);
   }

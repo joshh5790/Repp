@@ -1,0 +1,73 @@
+.manage-video-cards:hover,
+.new-card-button:hover {
+  background-color: #DDDDDD;
+  cursor: pointer;
+}
+
+.manage-video-cards {
+  all: unset;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  grid-template-areas:
+    "visual buttons"
+    "details buttons";
+  align-items: center;
+  padding: 1rem;
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  cursor: pointer;
+  width: calc(100% - 2rem);
+}
+
+.edit-list-video {
+  grid-area: visual;
+  border-radius: 10px;
+  max-width: 23rem;
+  width: 30vw;
+  aspect-ratio: 16 / 9;
+}
+
+.add-video-button.button-hover,
+.cancel-video-button.button-hover {
+  all: unset;
+  padding: 0.4rem;
+  width: 3rem;
+  border: 1px solid #999999;
+  background-color: #EEEEEE;
+  text-align: center;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-video-button.button-hover {
+  background-color: #4444FF;
+  border: 1px solid #4444FF;
+  color: white;
+}
+
+.add-video-button:hover {
+  background-color: white;
+  color: #4444FF;
+}
+
+.cancel-video-button:hover {
+  background-color: #999999;
+  color: white;
+}
+
+.update-video-input {
+  all: unset;
+  background-color: white;
+  padding: 0.5rem;
+  max-width: 22rem;
+  width: 28vw;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+}
+
+.no-video-hover:hover {
+  background-color: #EEEEEE;
+  cursor: auto;
+}

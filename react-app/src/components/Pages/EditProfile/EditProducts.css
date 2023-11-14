@@ -1,0 +1,29 @@
+.manage-product-cards:hover,
+.new-card-button:hover {
+  background-color: #DDDDDD;
+  cursor: pointer;
+}
+
+.manage-product-cards {
+  all: unset;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  cursor: pointer;
+  width: calc(100% - 2rem);
+}
+
+.edit-card {
+  all: unset;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 50%;
+}
+
+.manage-product-img {
+  max-width: 5rem;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}

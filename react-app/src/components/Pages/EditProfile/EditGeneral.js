@@ -55,7 +55,7 @@ const EditGeneral = ({ page }) => {
         <label name="display-name" className="new-profile-label">
           <div>Display Name *</div>
           <input
-            className="new-profile-input"
+            style={{width: "95%"}}
             name="display-name"
             type="text"
             value={displayName}
@@ -76,7 +76,7 @@ const EditGeneral = ({ page }) => {
         <label name="link-name" className="new-profile-label">
           <div>Link Name *</div>
           <input
-            className="new-profile-input"
+            style={{width: "95%"}}
             name="link-name"
             type="text"
             value={linkName}
@@ -97,7 +97,7 @@ const EditGeneral = ({ page }) => {
         <label name="main-image" className="new-profile-label">
           <div>Main Image URL *</div>
           <input
-            className="new-profile-input"
+            style={{width: "95%"}}
             name="main-image"
             type="text"
             value={mainImage}
@@ -122,7 +122,7 @@ const EditGeneral = ({ page }) => {
         >
           <div>Main Video Link</div>
           <input
-            className="new-profile-input"
+            style={{width: "95%"}}
             name="main-video"
             type="text"
             value={mainVideo}
@@ -137,7 +137,7 @@ const EditGeneral = ({ page }) => {
         >
           <div>Bio</div>
           <textarea
-            className="new-profile-input"
+            style={{width: "95%"}}
             name="bio"
             value={bio}
             placeholder="Raddest of mangoes"
@@ -151,7 +151,7 @@ const EditGeneral = ({ page }) => {
         >
           <div>Newsletter Link</div>
           <input
-            className="new-profile-input"
+            style={{width: "95%"}}
             name="newsletter"
             type="text"
             value={newsletter}
@@ -166,7 +166,7 @@ const EditGeneral = ({ page }) => {
         >
           <div>Business Inquiries Email</div>
           <input
-            className="new-profile-input"
+            style={{width: "95%"}}
             name="business-inquiries"
             type="text"
             placeholder="mangomanager@mgmt.com"
@@ -178,6 +178,7 @@ const EditGeneral = ({ page }) => {
         <button
           className="submit-profile-button button-hover"
           onClick={onSubmit}
+          style={{alignSelf: "center"}}
         >
           Save
         </button>

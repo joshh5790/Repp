@@ -1,22 +1,31 @@
-.manage-profile-page {
-  padding-top: 1rem;
-}
-
 .manage-profile-content-container {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    "none manageHeader previewHeader"
+    "manageTabs manageMain previewMain";
   width: 100%;
-  margin-top: 4rem;
+}
+
+.manage-profile-content-container > h1 {
+  position: sticky;
+  top: 5rem;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+  border-bottom: 2px solid #CCCCCC;
 }
 
 .manage-profile-tabs {
+  grid-area: manageTabs;
   display: flex;
   flex-direction: column;
-  width: 12rem;
-  min-width: 12rem;
-  padding-left: 2rem;
+  width: 16vw;
+  max-width: 10rem;
+  margin-left: 1rem;
   min-height: 100%;
-  border-top: 2px solid #EEEEEE;
   position: sticky;
   top: 10rem;
   height: fit-content;
@@ -35,11 +44,14 @@
 }
 
 .manage-profile-section {
+  grid-area: manageMain;
   position: relative;
   gap: 1rem;
-  border: 2px solid #EEEEEE;
+  border-left: 2px solid #EEEEEE;
+  border-right: 2px solid #EEEEEE;
   padding: 1rem;
-  width: 30rem;
+  max-width: 30rem;
+  width: 42vw;
   height: fit-content;
   min-height: calc(100vh - 8rem);
 }
@@ -51,6 +63,8 @@
   margin-bottom: 1rem;
   font-size: 1rem;
 }
+
+
 
 .new-card-button {
   all: unset;
@@ -66,30 +80,7 @@
   font-size: 20px;
 }
 
-.manage-cards:hover,
-.new-card-button:hover {
-  background-color: #DDDDDD;
-  cursor: pointer;
-}
 
-.manage-cards {
-  all: unset;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: #EEEEEE;
-  border-radius: 10px;
-  cursor: pointer;
-  width: calc(100% - 2rem);
-}
-
-.edit-card {
-  all: unset;
-  cursor: pointer;
-  padding: 0.4rem 0.6rem;
-  border-radius: 50%;
-}
 
 .delete-card {
   all: unset;
@@ -104,69 +95,11 @@
   background-color: #AAAAAA;
 }
 
-.edit-list-video {
-  border-radius: 10px;
-  width: 10rem;
-  aspect-ratio: 16 / 9;
-}
-
-.add-video-button.button-hover,
-.cancel-video-button.button-hover {
-  all: unset;
-  padding: 0.4rem;
-  width: 3rem;
-  border: 1px solid #999999;
-  background-color: #EEEEEE;
-  text-align: center;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.add-video-button.button-hover {
-  background-color: #4444FF;
-  border: 1px solid #4444FF;
-  color: white;
-}
-
-.add-video-button:hover {
-  background-color: white;
-  color: #4444FF;
-}
-
-.cancel-video-button:hover {
-  background-color: #999999;
-  color: white;
-}
-
-.update-video-input {
-  all: unset;
-  background-color: white;
-  padding: 0.5rem;
-  width: 10rem;
-  margin-top: 0.5rem;
-  border-radius: 10px;
-}
-
-.no-video-hover:hover {
-  background-color: #EEEEEE;
-  cursor: auto;
-}
-
 .preview-profile-section {
-  border-top: 2px solid #EEEEEE;
+  grid-area: previewMain;
   flex: 1;
   position: relative;
   min-height: calc(100vh - 8rem);
-}
-
-.manage-profile-nav {
-  position: fixed;
-  display: flex;
-  top: 5rem;
-  width: 100%;
-  background-color: white;
 }
 
 .delete-page-button {
@@ -178,4 +111,10 @@
 .delete-page-button:hover {
   background-color: white;
   color: red;
+}
+
+@media (max-width: 1000px) {
+  .manage-cards {
+    flex-direction: column;
+  }
 }

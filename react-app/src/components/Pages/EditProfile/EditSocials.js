@@ -40,7 +40,7 @@ const EditSocials = ({ page }) => {
         facebook,
         discord,
         twitter,
-        external
+        external,
       })
     );
   };
@@ -48,7 +48,7 @@ const EditSocials = ({ page }) => {
   return (
     <>
       <label name="tiktok" className="update-socials-label">
-        <div>
+        <div style={{ minWidth: "8rem" }}>
           <i
             className="fa-brands fa-tiktok"
             style={{ marginRight: "0.5rem" }}
@@ -64,7 +64,7 @@ const EditSocials = ({ page }) => {
         />
       </label>
       <label name="youtube" className="update-socials-label">
-        <div>
+        <div style={{ minWidth: "8rem" }}>
           <i
             className="fa-brands fa-youtube"
             style={{ marginRight: "0.5rem" }}
@@ -80,7 +80,7 @@ const EditSocials = ({ page }) => {
         />
       </label>
       <label name="instagram" className="update-socials-label">
-        <div>
+        <div style={{ minWidth: "8rem" }}>
           <i
             className="fa-brands fa-instagram"
             style={{ marginRight: "0.5rem" }}
@@ -96,7 +96,7 @@ const EditSocials = ({ page }) => {
         />
       </label>
       <label name="applemusic" className="update-socials-label">
-        <div>
+        <div style={{ minWidth: "8rem" }}>
           <i className="fa-brands fa-apple" style={{ marginRight: "0.5rem" }} />
           Apple Music
         </div>
@@ -109,7 +109,7 @@ const EditSocials = ({ page }) => {
         />
       </label>
       <label name="spotify" className="update-socials-label">
-        <div>
+        <div style={{ minWidth: "8rem" }}>
           <i
             className="fa-brands fa-spotify"
             style={{ marginRight: "0.5rem" }}
@@ -124,7 +124,7 @@ const EditSocials = ({ page }) => {
         />
       </label>
       <label name="facebook" className="update-socials-label">
-        <div>
+        <div style={{ minWidth: "8rem" }}>
           <i
             className="fa-brands fa-facebook"
             style={{ marginRight: "0.5rem" }}
@@ -139,7 +139,7 @@ const EditSocials = ({ page }) => {
         />
       </label>
       <label name="discord" className="update-socials-label">
-        <div>
+        <div style={{ minWidth: "8rem" }}>
           <i
             className="fa-brands fa-discord"
             style={{ marginRight: "0.5rem" }}
@@ -154,7 +154,7 @@ const EditSocials = ({ page }) => {
         />
       </label>
       <label name="twitter" className="update-socials-label">
-        <div>
+        <div style={{ minWidth: "8rem" }}>
           <i
             className="fa-brands fa-twitter"
             style={{ marginRight: "0.5rem" }}
@@ -169,7 +169,7 @@ const EditSocials = ({ page }) => {
         />
       </label>
       <label name="external" className="update-socials-label">
-        <div>
+        <div style={{ minWidth: "8rem" }}>
           <i
             className="fa-solid fa-square-up-right"
             style={{ marginRight: "0.5rem" }}
@@ -184,7 +184,11 @@ const EditSocials = ({ page }) => {
           onChange={(e) => setExternal(e.target.value)}
         />
       </label>
-      <button className="close-socials-button button-hover" onClick={onSubmit}>
+      <button
+        className="close-socials-button button-hover"
+        onClick={onSubmit}
+        style={{ alignSelf: "center" }}
+      >
         Save
       </button>
     </>
