@@ -17,3 +17,9 @@
 .product-preview {
     width: 100%;
 }
+
+@media (max-width: 700px) {
+    .product-list {
+        grid-template-columns: 1fr;
+    }
+}

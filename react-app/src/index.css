@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+a,
 p,
 li,
 span,
@@ -14,6 +15,11 @@ h3,
 input,
 textarea {
   font-family: "Ramabhadra", sans-serif;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
 }
 
 textarea {

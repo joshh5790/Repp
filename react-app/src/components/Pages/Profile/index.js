@@ -9,6 +9,7 @@ import ProductSection from "./ProductSection";
 import VideoSection from "./VideoSection";
 import Footer from "./Footer";
 import Cart from "./Cart";
+import LinkSection from "./LinkSection";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,21 @@ const Profile = () => {
   const [invalidPage, setInvalidPage] = useState(false);
   const [mainImage, setMainImage] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      if (isMobile && windowWidth > 700) {
+        setIsMobile(false);
+      } else if (!isMobile && windowWidth <= 700) {
+        setIsMobile(true);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isMobile]);
 
   useEffect(() => {
     dispatch(getOneRPageThunk(linkName))
@@ -36,29 +52,41 @@ const Profile = () => {
         dispatch(setNavVisibility(false));
       })
       .then(() => setIsLoaded(true));
+    if (window.innerWidth <= 700) setIsMobile(true);
+    else setIsMobile(false);
   }, [dispatch, linkName]);
+
+  const scrollToId = (id) => {
+    const element = document.getElementById(id.toLowerCase());
+    const elementPosition =
+      element.getBoundingClientRect().top + window.scrollY;
+    const headerOffset = navVisible ? 127 : 79;
+    const offsetPosition = elementPosition - headerOffset;
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  };
 
   if (isLoaded) {
     if (!invalidPage)
       return (
         <div className="repp-page">
           <div id={linkName} style={{ height: "100vh" }}>
-            <img
-              className="repp-page-home-img"
-              src={mainImage}
-              alt={page?.displayName}
-              onError={({ target }) => {
-                target.onerror = null;
-                target.src =
-                  "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-              }}
+            <LinkSection
+              page={page}
+              sectionHeaders={sectionHeaders}
+              scrollToId={scrollToId}
+              mainImage={mainImage}
+              isMobile={isMobile}
             />
-            <div className="repp-home-text">
-              <h1>{page?.displayName}</h1>
-            </div>
           </div>
           {page?.mainVideo && (
-            <div id="watch" className="repp-page-section" style={{padding: '0', margin: '0', border: 'none'}}>
+            <div
+              id="watch"
+              className={!isMobile && "repp-page-section"}
+              style={{ padding: "0", margin: "0", border: "none" }}
+            >
               <iframe
                 title="Main Video"
                 src={page?.mainVideo}
@@ -88,14 +116,16 @@ const Profile = () => {
           {page?.newsletter && <Footer />}
           <ReppNav
             sectionHeaders={sectionHeaders}
+            scrollToId={scrollToId}
             page={page}
             navVisible={navVisible}
+            isMobile={isMobile}
           />
-          <Cart
+          {numCartItems ? <Cart
             pageId={page?.id}
             numCartItems={numCartItems}
             setNumCartItems={setNumCartItems}
-          />
+          /> : <></>}
         </div>
       );
     else
@@ -106,9 +136,7 @@ const Profile = () => {
             The link you followed may be broken, or the page may have been
             removed.
           </p>
-          <NavLink to="/">
-            Click here to return to the home page.
-          </NavLink>
+          <NavLink to="/">Click here to return to the home page.</NavLink>
         </div>
       );
   } else

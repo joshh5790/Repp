@@ -14,22 +14,6 @@
     padding-bottom: 2rem;
 }
 
-.repp-page-home-img {
-    height: 100vh;
-    width: 100%;
-    object-fit: cover;
-    filter: brightness(70%);
-}
-
-.repp-home-text {
-    position: absolute;
-    left: 10rem;
-    bottom: 10rem;
-}
-
-.repp-home-text * {
-    color: white
-}
 
 .repp-main-video {
     width: 100%;
@@ -52,4 +36,11 @@
     line-height: 1.5rem;
     text-align: center;
     margin: 3rem;
+}
+
+@media (max-width: 700px) {
+    .repp-main-video {
+        aspect-ratio: 16 / 9;
+        height: auto;
+    }
 }

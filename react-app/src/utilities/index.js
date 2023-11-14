@@ -18,5 +18,11 @@ export function isObjectEmpty(obj) {
 }
 
 export function checkNumeric(input) {
-  return /^\d+$/.test(input)
+  return /^\d+$/.test(input);
+}
+
+export function invalidImage({ target }) {
+  target.onerror = null;
+  target.src =
+    "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
 }

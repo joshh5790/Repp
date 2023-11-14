@@ -6,6 +6,7 @@ import {
   deleteProductImageThunk,
 } from "../../../store/productImages";
 import "./ManageImages.css";
+import { invalidImage } from "../../../utilities";
 
 const ManageImages = ({ productId, showImage, setShowImage, setShowStock }) => {
   const dispatch = useDispatch();
@@ -103,11 +104,7 @@ const ManageImages = ({ productId, showImage, setShowImage, setShowStock }) => {
                 alt=""
                 src={image.image}
                 className="list-image"
-                onError={({ currentTarget }) => {
-                  currentTarget.onerror = null;
-                  currentTarget.src =
-                    "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-                }}
+                onError={invalidImage}
               />
               <i
                 onClick={() => handleDeleteImage(image.id)}
