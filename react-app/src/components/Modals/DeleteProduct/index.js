@@ -24,7 +24,7 @@ const DeleteProduct = ({ product, setReload, numProducts, videoSection }) => {
   };
 
   return (
-    <div className="flex-col" style={{ width: "25rem" }}>
+    <div className="flex-col" style={{ maxWidth: "25rem", width: "80vw" }}>
       {product && (
         <>
           <h2>Are you sure you want to delete {product.name}?</h2>

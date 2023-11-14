@@ -12,7 +12,6 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(40), nullable=False)
     lastName = db.Column(db.String(40), nullable=False)
-    username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     gender = db.Column(db.String(10), nullable=False)
     address = db.Column(db.String(255))
@@ -45,7 +44,6 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "firstName": self.firstName,
             "lastName": self.lastName,
-            "username": self.username,
             "email": self.email,
             "gender": self.gender,
             "address": self.address,

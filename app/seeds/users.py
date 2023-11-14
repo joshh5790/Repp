@@ -7,7 +7,6 @@ def seed_users():
     eric = User(
         firstName="Eric",
         lastName="Nam",
-        username="ericnam",
         email="ericnam@aa.io",
         gender="Male",
         address="121 Third St",
@@ -21,7 +20,6 @@ def seed_users():
     tiff = User(
         firstName="Tiffany",
         lastName="Day",
-        username="tiffanyday",
         email="demo@aa.io",
         gender="Female",
         address="123 Main St",
@@ -35,7 +33,6 @@ def seed_users():
     josiah = User(
         firstName="Josiah",
         lastName="Won",
-        username="josiahwon",
         email="josiah@aa.io",
         gender="Male",
         address="122 Second St",
@@ -49,7 +46,6 @@ def seed_users():
     josh = User(
         firstName="Josh",
         lastName="Ho",
-        username="joshho",
         email="a@a.a",
         gender="Male",
         address="121 Third St",

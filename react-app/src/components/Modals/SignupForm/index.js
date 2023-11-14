@@ -9,7 +9,6 @@ function SignupForm() {
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [address, setAddress] = useState("");
@@ -36,7 +35,6 @@ function SignupForm() {
         signUp(
           firstName,
           lastName,
-          username,
           email,
           gender,
           address,
@@ -56,7 +54,7 @@ function SignupForm() {
   };
 
   return (
-    <div className="flex-col-center">
+    <div className="flex-col-center" style={{maxWidth: '30rem', width: '90vw'}}>
       <h1 className="modal-header">Sign Up</h1>
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="signup-col">
@@ -92,23 +90,6 @@ function SignupForm() {
             />
             {errors.lastName && (
               <div className="error-msg">{errors.lastName[0]}</div>
-            )}
-          </label>
-          <label className={errors.username ? "error" : "no-error"}>
-            <div>Username *</div>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => {
-                setErrors((prev) => {
-                  return { ...prev, username: null };
-                });
-                setUsername(e.target.value);
-              }}
-              required
-            />
-            {errors.username && (
-              <div className="error-msg">{errors.username[0]}</div>
             )}
           </label>
           <label className={errors.email ? "error" : "no-error"}>

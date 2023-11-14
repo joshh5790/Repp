@@ -39,7 +39,6 @@ def update_user():
         data = form.data
         user.firstName = data["firstName"]
         user.lastName = data["lastName"]
-        user.username = data["username"]
         user.email = data["email"]
         user.gender = data["gender"]
         user.address = data["address"]

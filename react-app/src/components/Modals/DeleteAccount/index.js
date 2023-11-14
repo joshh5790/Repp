@@ -13,7 +13,7 @@ function DeleteAccount({ user }) {
   const { closeModal } = useModal();
 
   useEffect(() => {
-    if (confirmation === `delete account ${user.username}`) {
+    if (confirmation === `delete account ${user.email}`) {
       setDisableButton(false);
     } else setDisableButton(true);
   }, [confirmation]);
@@ -34,7 +34,7 @@ function DeleteAccount({ user }) {
       <p> All information associated with your account will be deleted.</p>
       <p>Are you sure you want to delete your account?</p>
       <p>
-        Type <span className="red-text">delete account {user.username}</span>{" "}
+        Type <span className="red-text">delete account {user.email}</span>{" "}
         below to confirm.
       </p>
       <input

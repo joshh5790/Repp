@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9cccb811c202
+Revision ID: 5f6f2b3f95e8
 Revises:
-Create Date: 2023-11-11 23:45:31.691591
+Create Date: 2023-11-13 16:25:08.065107
 
 """
 from alembic import op
@@ -10,8 +10,9 @@ import sqlalchemy as sa
 from app.models import environment, SCHEMA
 
 
+
 # revision identifiers, used by Alembic.
-revision = '9cccb811c202'
+revision = '5f6f2b3f95e8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -28,7 +29,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('firstName', sa.String(length=40), nullable=False),
     sa.Column('lastName', sa.String(length=40), nullable=False),
-    sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('gender', sa.String(length=10), nullable=False),
     sa.Column('address', sa.String(length=255), nullable=True),
@@ -40,8 +40,7 @@ def upgrade():
     sa.Column('isRepp', sa.Boolean(), nullable=True),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('username')
+    sa.UniqueConstraint('email')
     )
     op.create_table('pages',
     sa.Column('id', sa.Integer(), nullable=False),

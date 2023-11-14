@@ -58,7 +58,6 @@ export const signUp =
   (
     firstName,
     lastName,
-    username,
     email,
     gender,
     address,
@@ -74,7 +73,6 @@ export const signUp =
       body: JSON.stringify({
         firstName,
         lastName,
-        username,
         email,
         gender,
         address,
@@ -100,7 +98,6 @@ export const updateUser =
   ({
     firstName,
     lastName,
-    username,
     email,
     gender,
     address,
@@ -117,7 +114,6 @@ export const updateUser =
       body: JSON.stringify({
         firstName,
         lastName,
-        username,
         email,
         gender,
         address,
