@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     firstName = db.Column(db.String(40), nullable=False)
     lastName = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    gender = db.Column(db.String(10), nullable=False)
+    gender = db.Column(db.String(10))
     address = db.Column(db.String(255))
     city = db.Column(db.String(255))
     state = db.Column(db.String(255))

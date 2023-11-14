@@ -171,7 +171,6 @@ function SignupForm() {
               });
               setGender(e.target.value);
             }}
-            required
           >
             <option value="" disabled>
               Select a gender...
@@ -205,7 +204,6 @@ function SignupForm() {
                 });
                 setAddress(e.target.value);
               }}
-              required
             />
             {errors.address && (
               <div className="error-msg">{errors.address[0]}</div>
@@ -222,7 +220,6 @@ function SignupForm() {
                 });
                 setCity(e.target.value);
               }}
-              required
             />
             {errors.city && <div className="error-msg">{errors.city[0]}</div>}
           </label>
@@ -237,7 +234,6 @@ function SignupForm() {
                 });
                 setState(e.target.value);
               }}
-              required
             />
             {errors.state && <div className="error-msg">{errors.state[0]}</div>}
           </label>

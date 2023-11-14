@@ -33,40 +33,40 @@ def lastName_data(form, field):
         raise ValidationError("Must be alphabetic")
 
 
-def gender_data(form, field):
-    gender = field.data
-    if not gender:
-        raise ValidationError("Required")
+# def gender_data(form, field):
+#     gender = field.data
+#     if not gender:
+#         raise ValidationError("Required")
 
 
-def address_data(form, field):
-    address = field.data
-    if not address:
-        raise ValidationError("Required")
-    if len(address) < 4:
-        raise ValidationError("Must be at least 4 characters")
-    if len(address) > 255:
-        raise ValidationError("Must be less than 255 characters")
-    if not all(char.isalnum() or char.isspace() for char in address):
-        raise ValidationError("Invalid address")
+# def address_data(form, field):
+#     address = field.data
+#     if not address:
+#         raise ValidationError("Required")
+#     if len(address) < 4:
+#         raise ValidationError("Must be at least 4 characters")
+#     if len(address) > 255:
+#         raise ValidationError("Must be less than 255 characters")
+#     if not all(char.isalnum() or char.isspace() for char in address):
+#         raise ValidationError("Invalid address")
 
 
-def city_data(form, field):
-    city = field.data
-    if not city:
-        raise ValidationError("Required")
-    if len(city) < 3:
-        raise ValidationError("Must be at least 3 characters")
-    if len(city) > 255:
-        raise ValidationError("Must be less than 255 characters")
-    if not all(char.isalpha() or char.isspace() for char in city):
-        raise ValidationError("Must be alphabetic")
+# def city_data(form, field):
+#     city = field.data
+#     if not city:
+#         raise ValidationError("Required")
+#     if len(city) < 3:
+#         raise ValidationError("Must be at least 3 characters")
+#     if len(city) > 255:
+#         raise ValidationError("Must be less than 255 characters")
+#     if not all(char.isalpha() or char.isspace() for char in city):
+#         raise ValidationError("Must be alphabetic")
 
 
-def state_data(form, field):
-    state = field.data
-    if not state:
-        raise ValidationError("Required")
+# def state_data(form, field):
+#     state = field.data
+#     if not state:
+#         raise ValidationError("Required")
 
 
 def password_data(form, field):
@@ -81,10 +81,10 @@ class SignUpForm(FlaskForm):
     firstName = StringField("firstName", validators=[DataRequired(), firstName_data])
     lastName = StringField("lastName", validators=[DataRequired(), lastName_data])
     email = EmailField("email", validators=[DataRequired(), user_exists])
-    gender = StringField("gender", validators=[DataRequired()])
-    address = StringField("address", validators=[DataRequired(), address_data])
-    city = StringField("city", validators=[DataRequired(), city_data])
-    state = StringField("state", validators=[DataRequired(), state_data])
+    gender = StringField("gender")
+    address = StringField("address")
+    city = StringField("city")
+    state = StringField("state")
     password = StringField(
         "password", validators=[DataRequired(), Length(min=6), password_data]
     )

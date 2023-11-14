@@ -43,6 +43,7 @@ label.error {
   background-color: #4444FF;
   border: 1px solid #4444FF;
   color: white;
+  width: 80%;
 }
 
 .signup-button:disabled {
@@ -50,7 +51,6 @@ label.error {
   background-color: #7777FF;
   border: 1px solid #7777FF;
   cursor: auto;
-  width: 80%;
 }
 
 .signup-button:enabled:hover {
