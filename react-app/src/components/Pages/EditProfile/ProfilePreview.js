@@ -4,6 +4,7 @@ import VideoSection from "../Profile/VideoSection";
 import Footer from "../Profile/Footer";
 import ReppNav from "../Profile/ReppNav";
 import "./ProfilePreview.css";
+import { invalidImage } from "../../../utilities";
 
 const ProfilePreview = ({ page }) => {
   const [scale, setScale] = useState(0);
@@ -35,11 +36,7 @@ const ProfilePreview = ({ page }) => {
           //   aspectRatio: `${window.innerWidth} / ${window.innerHeight}`,
           // }}
           alt={page?.displayName}
-          onError={({ target }) => {
-            target.onerror = null;
-            target.src =
-              "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-          }}
+          onError={invalidImage}
         />
         <div className="repp-home-text">
           <h1>{page?.displayName}</h1>

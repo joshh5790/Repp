@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { formatCurrency, isObjectEmpty } from "../../../utilities";
+import { formatCurrency, invalidImage, isObjectEmpty } from "../../../utilities";
 import OpenModalButton from "../../OpenModalButton";
 import { getProductsThunk } from "../../../store/products";
 import { updateRPageThunk } from "../../../store/pages";
@@ -64,11 +64,7 @@ const EditProducts = ({ page }) => {
                   alt=""
                   className="cart-item-img"
                   src={product?.previewImage}
-                  onError={({ target }) => {
-                    target.onerror = null;
-                    target.src =
-                      "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-                  }}
+                  onError={invalidImage}
                 />
                 <div
                   style={{

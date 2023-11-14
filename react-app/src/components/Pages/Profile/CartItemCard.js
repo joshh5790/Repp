@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { formatCurrency } from "../../../utilities";
+import { formatCurrency, invalidImage } from "../../../utilities";
 import { useDispatch } from "react-redux";
 import {
   clearCartItemsThunk,
@@ -42,11 +42,7 @@ const CartItemCard = ({ item, numCartItems, setNumCartItems, setReload }) => {
           alt=""
           className="cart-item-img"
           src={item?.image}
-          onError={({ target }) => {
-            target.onerror = null;
-            target.src =
-              "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-          }}
+          onError={invalidImage}
         />
         <div>
           <div style={{ marginBottom: "0.5rem" }}>{item?.name}</div>

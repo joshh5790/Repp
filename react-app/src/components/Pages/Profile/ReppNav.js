@@ -22,11 +22,7 @@ const ReppNav = ({
       const scrollPosition =
         window.scrollY || document.documentElement.scrollTop;
 
-      const threshold = navVisible
-          ? window.innerHeight - 140
-          : window.innerHeight - 85; // nav bar becomes black at the bottom of home element
-
-      setScrollTop(scrollPosition <= threshold);
+      setScrollTop(scrollPosition <= 150);
     }
 
     window.addEventListener("scroll", handleScroll);
@@ -38,6 +34,7 @@ const ReppNav = ({
 
   return (
     <div
+      // style={{borderRadius: `${isMobile && "0 0 50% 50%"}`}}
       className={`repp-nav ${scrollTop ? "" : "black-nav"} ${
         navVisible ? "lower-nav" : ""
       }`}

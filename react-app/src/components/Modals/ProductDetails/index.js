@@ -10,14 +10,18 @@ import {
   getCartItemsThunk,
 } from "../../../store/cartItems";
 import { createCartThunk, getCartThunk } from "../../../store/carts";
-import { formatCurrency } from "../../../utilities";
+import { formatCurrency, invalidImage } from "../../../utilities";
 
 const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
   const dispatch = useDispatch();
   const sizes = useSelector((state) => Object.values(state.productStock));
   const images = [
     product.previewImage,
-    ...useSelector((state) => Object.values(state.productImages)),
+    ...useSelector((state) =>
+      Object.values(state.productImages).map((obj) => {
+        return obj.image;
+      })
+    ),
   ];
   const carts = useSelector((state) => Object.values(state.carts));
   const [currStock, setCurrStock] = useState({});
@@ -51,7 +55,7 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
   };
 
   const addToCart = async () => {
-    isDisabled = true
+    isDisabled = true;
     let existingCart;
     for (const cart of carts) {
       if (cart.pageId === product.pageId) {
@@ -93,11 +97,7 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
                   }`}
                   key={idx}
                   src={img}
-                  onError={({ target }) => {
-                    target.onerror = null;
-                    target.src =
-                      "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-                  }}
+                  onError={invalidImage}
                 />
               ))}
             </div>
@@ -105,11 +105,7 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
               alt=""
               className="product-modal-img"
               src={images[focusImage]}
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null;
-                currentTarget.src =
-                  "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-              }}
+              onError={invalidImage}
             />
           </div>
           <div className="product-modal-details">

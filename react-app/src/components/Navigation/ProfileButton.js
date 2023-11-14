@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import { NavLink, useHistory } from "react-router-dom";
 import { getSessionPageThunk } from "../../store/pages";
+import { invalidImage } from "../../utilities";
 
 function ProfileButton({ user }) {
   const history = useHistory();
@@ -51,11 +52,7 @@ function ProfileButton({ user }) {
             alt=""
             src={user?.profileImage}
             className="profile-button-img"
-            onError={({ target }) => {
-              target.onerror = null;
-              target.src =
-                "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-            }}
+            onError={invalidImage}
           />
         ) : (
           <i className="fas fa-user-circle" />
@@ -79,11 +76,7 @@ function ProfileButton({ user }) {
               alt=""
               src={user?.profileImage}
               className="profile-dropdown-img"
-              onError={({ target }) => {
-                target.onerror = null;
-                target.src =
-                  "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-              }}
+              onError={invalidImage}
             />
           ) : (
             <i className="fas fa-user-circle" style={{fontSize: "5rem"}}/>

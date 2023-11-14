@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import OpenModalButton from "../../OpenModalButton";
 import SignupForm from "../../Modals/SignupForm";
 import "./Home.css";
+import { invalidImage } from "../../../utilities";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -48,11 +49,7 @@ const Home = () => {
                 src={repp?.mainImage}
                 className="img-slider-img"
                 style={{ translate: `${-100 * imageIndex}%` }}
-                onError={({ target }) => {
-                  target.onerror = null;
-                  target.src =
-                    "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-                }}
+                onError={invalidImage}
               />
             ))}
           </div>

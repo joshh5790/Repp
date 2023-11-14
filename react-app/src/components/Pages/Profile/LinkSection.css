@@ -46,6 +46,7 @@
   gap: 1rem;
   display: flex;
   justify-content: center;
+  border-radius: 200% 200% 0 0;
 }
 
 .repp-page-home-img {

@@ -17,11 +17,6 @@ textarea {
   font-family: "Ramabhadra", sans-serif;
 }
 
-a {
-  all: unset;
-  cursor: pointer;
-}
-
 textarea {
   font-size: 0.8rem;
 }
@@ -33,16 +28,22 @@ textarea::placeholder {
 }
 
 input,
-select,
 textarea {
   all: unset;
+  padding: 0.2rem 0 0.2rem 0.5rem;
+
+}
+
+input,
+select,
+textarea {
   cursor: pointer;
   background-color: #EEEEEE;
   border-radius: 7px;
   font-size: 0.8rem;
-  padding: 0.2rem 0 0.2rem 0.5rem;
   border: 1px solid #CCCCCC;
 }
+
 
 input:focus {
   box-shadow: inset 0 0 2px rgb(0,0,0, 0.5);

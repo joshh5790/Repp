@@ -181,24 +181,6 @@ const EditGeneral = ({ page }) => {
         >
           Save
         </button>
-      {/* {mainImage && (
-        <div className="update-main-img-container">
-
-          <img
-            alt=""
-            className="update-main-img-preview"
-            src={mainImage}
-            onError={({ target }) => {
-              setErrors((prev) => {
-                return { ...prev, mainImage: ["Invalid image url"] };
-              });
-              target.onerror = null;
-              target.src =
-                "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
-            }}
-          />
-        </div>
-      )} */}
     </>
   );
 };
