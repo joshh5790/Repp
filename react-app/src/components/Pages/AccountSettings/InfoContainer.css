@@ -72,3 +72,9 @@
   background-color: white;
   color: black;
 }
+
+@media (max-width: 700px) {
+  .info-inputs-div {
+    flex-direction: column;
+  }
+}

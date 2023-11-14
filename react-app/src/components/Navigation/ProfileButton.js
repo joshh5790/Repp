@@ -86,7 +86,7 @@ function ProfileButton({ user }) {
               }}
             />
           ) : (
-            <i className="fas fa-user-circle profile-button-img" />
+            <i className="fas fa-user-circle" style={{fontSize: "5rem"}}/>
           )}
           <div className="dropdown-info">
             <div>

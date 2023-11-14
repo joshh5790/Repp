@@ -12,7 +12,7 @@ const ProfilePreview = ({ page }) => {
 
   useEffect(async () => {
     await setScale(widthRef.current.clientWidth / window.innerWidth);
-    
+
   });
 
   return (

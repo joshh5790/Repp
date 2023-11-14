@@ -59,12 +59,12 @@ function InfoContainer({
           if (userInfo["New Password"] !== userInfo["Confirm New Password"])
             errorList["Confirm New Password"] = "Passwords do not match";
           break;
-        case "address":
-          if (!userInfo["Address"].match(validAddressCheck))
-            errorList["Old Password"] = "Not a valid address";
-          if (userInfo["City"].length < 3)
-            errorList["City"] = "Required field with 3 or more characters";
-          if (userInfo["State"].length < 1) errorList["State"] = "Required field";
+        // case "address":
+        //   if (!userInfo["Address"].match(validAddressCheck))
+        //     errorList["Old Password"] = "Not a valid address";
+        //   if (userInfo["City"].length < 3)
+        //     errorList["City"] = "Required field with 3 or more characters";
+        //   if (userInfo["State"].length < 1) errorList["State"] = "Required field";
         default:
           break;
       }
@@ -81,17 +81,19 @@ function InfoContainer({
     setErrors({});
     setOnSubmit(true);
 
-    dispatch(updateUser({
-        firstName: userInfo['First Name'],
-        lastName: userInfo['Last Name'],
-        email: userInfo['Email Address'],
-        address: userInfo['Address'],
-        city: userInfo['City'],
-        state: userInfo['State'],
+    dispatch(
+      updateUser({
+        firstName: userInfo["First Name"],
+        lastName: userInfo["Last Name"],
+        email: userInfo["Email Address"],
+        address: userInfo["Address"],
+        city: userInfo["City"],
+        state: userInfo["State"],
         isRepp: currUser.isRepp,
-        profileImage: userInfo['Image URL'],
-        password: userInfo['New Password'],
-    }))
+        profileImage: userInfo["Image URL"],
+        password: userInfo["New Password"],
+      })
+    )
       .then(() => {
         setEditForm(false);
         changeOther();
@@ -135,7 +137,9 @@ function InfoContainer({
           {entries.map((entry) => (
             <span key={entry[0]}>
               {` ${entry[1]}`}
-              {(entry[0] == "City" || entry[0] == "Address") && ","}
+              {entry[1] && (
+                <>{(entry[0] == "City" || entry[0] == "Address") && ","}</>
+              )}
             </span>
           ))}
         </div>
@@ -166,7 +170,10 @@ function InfoContainer({
                 </span>
               ))}
             </div>
-            <button disabled={disableButton} className="save-personal button-hover">
+            <button
+              disabled={disableButton}
+              className="save-personal button-hover"
+            >
               Save
             </button>
           </form>
@@ -197,7 +204,10 @@ function InfoContainer({
                 </span>
               ))}
             </div>
-            <button disabled={disableButton} className="save-personal button-hover">
+            <button
+              disabled={disableButton}
+              className="save-personal button-hover"
+            >
               Save
             </button>
           </form>
