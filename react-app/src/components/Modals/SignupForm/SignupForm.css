@@ -1,15 +1,19 @@
 .signup-form {
   width: 100%;
-  display: flex;
+  display: grid;
+  justify-items: center;
+  grid-template-areas:
+  "firstName profileImage"
+  "lastName gender"
+  "email address"
+  "password address"
+  "confirmPassword address"
+  "submit submit";
 }
 
-.signup-col {
-  margin: 1rem;
-  font-size: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 15rem;
+label > input,
+.signup-form > select {
+  width: 8rem;
 }
 
 label.no-error {
@@ -20,6 +24,20 @@ label.error {
   margin-bottom: 0;
 }
 
+.signup-address-button {
+  font-size: 0.9rem;
+  background-color: #EEEEEE;
+  border: 2px dashed #CCCCCC;
+  height: fit-content;
+  padding: 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.signup-address-button:hover {
+  background-color: #CCCCCC;
+}
+
 .signup-button {
   all: unset;
   background-color: #4444FF;
@@ -28,9 +46,11 @@ label.error {
 }
 
 .signup-button:disabled {
+  margin-top: 1rem;
   background-color: #7777FF;
   border: 1px solid #7777FF;
   cursor: auto;
+  width: 80%;
 }
 
 .signup-button:enabled:hover {

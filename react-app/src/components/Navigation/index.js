@@ -45,7 +45,6 @@ function Navigation() {
                 <li>Logo designed with Figma</li>
                 <li>Click logo to return to home page</li>
                 <li>Right side of navbar has login button/user settings</li>
-                <li>Links should all be fully functional</li>
                 <li>logins for Highvyn and tiffany are josiah@aa.io and demo@aa.io, password is password</li>
                 <li>Site not mobile friendly yet</li>
               </ul>

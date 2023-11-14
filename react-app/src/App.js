@@ -19,27 +19,29 @@ function App() {
   return (
     <>
       {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/account">
-            <AccountSettings />
-          </Route>
-          <Route exact path="/profile/edit">
-            <EditProfile />
-          </Route>
-          <Route exact path="/profile/new">
-            <CreateProfile />
-          </Route>
-          <Route exact path="/checkout"></Route>
-          <Route exact path="/search"></Route>
-          <Route exact path="/:linkName">
-            <Profile />
-          </Route>
-        </Switch>
+        <>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/account">
+              <AccountSettings />
+            </Route>
+            <Route exact path="/profile/edit">
+              <EditProfile />
+            </Route>
+            <Route exact path="/profile/new">
+              <CreateProfile />
+            </Route>
+            <Route exact path="/checkout"></Route>
+            <Route exact path="/search"></Route>
+            <Route exact path="/:linkName">
+              <Profile />
+            </Route>
+          </Switch>
+          <Navigation isLoaded={isLoaded} />
+        </>
       )}
-      <Navigation isLoaded={isLoaded} />
     </>
   );
 }
