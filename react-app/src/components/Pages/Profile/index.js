@@ -11,10 +11,11 @@ import Footer from "./Footer";
 import Cart from "./Cart";
 import LinkSection from "./LinkSection";
 
-const Profile = () => {
+const Profile = ({ previewPage, preview, previewStyle }) => {
   const dispatch = useDispatch();
   const { linkName } = useParams();
-  const page = useSelector((state) => state.pages[linkName]);
+  let page = useSelector((state) => state.pages[linkName]);
+  if (previewPage) page = previewPage;
   const navVisible = useSelector((state) => state.visibility.nav);
   const [sectionHeaders, setSectionHeaders] = useState([]);
   const [numCartItems, setNumCartItems] = useState(0);
@@ -24,6 +25,7 @@ const Profile = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    if (preview) return setIsMobile(previewStyle);
     const handleResize = () => {
       const windowWidth = window.innerWidth;
       if (isMobile && windowWidth > 700) {
@@ -37,7 +39,19 @@ const Profile = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [isMobile]);
 
-  useEffect(() => {
+  useEffect(async () => {
+    if (preview) {
+      await setSectionHeaders(
+        [
+          previewPage?.mainVideo && "WATCH",
+          previewPage?.shopSection && "MERCH",
+          previewPage?.videoSection && "VIDEOS",
+        ].filter((value) => value)
+      );
+      await setMainImage(previewPage?.mainImage);
+      await setIsLoaded(true);
+      return;
+    }
     dispatch(getOneRPageThunk(linkName))
       .then((profile) => {
         if (!profile) return setInvalidPage(true);
@@ -52,7 +66,8 @@ const Profile = () => {
         dispatch(setNavVisibility(false));
       })
       .then(() => setIsLoaded(true));
-    if (window.innerWidth <= 700) setIsMobile(true);
+    if (preview) setIsMobile(previewStyle);
+    else if (window.innerWidth <= 700) setIsMobile(true);
     else setIsMobile(false);
   }, [dispatch, linkName]);
 
@@ -72,13 +87,14 @@ const Profile = () => {
     if (!invalidPage)
       return (
         <div className="repp-page">
-          <div id={linkName} style={{ height: "100vh" }}>
+          <div id={linkName} style={{ height: "100vh", position: "relative" }}>
             <LinkSection
               page={page}
               sectionHeaders={sectionHeaders}
               scrollToId={scrollToId}
               mainImage={mainImage}
               isMobile={isMobile}
+              preview={preview}
             />
           </div>
           {page?.mainVideo && (
@@ -120,12 +136,17 @@ const Profile = () => {
             page={page}
             navVisible={navVisible}
             isMobile={isMobile}
+            preview={preview}
           />
-          {numCartItems ? <Cart
-            pageId={page?.id}
-            numCartItems={numCartItems}
-            setNumCartItems={setNumCartItems}
-          /> : <></>}
+          {!preview ? (
+            <Cart
+              pageId={page?.id}
+              numCartItems={numCartItems}
+              setNumCartItems={setNumCartItems}
+            />
+          ) : (
+            <></>
+          )}
         </div>
       );
     else

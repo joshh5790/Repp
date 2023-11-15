@@ -7,6 +7,7 @@ const LinkSection = ({
   scrollToId,
   mainImage,
   isMobile,
+  preview
 }) => {
   return (
     <>
@@ -26,7 +27,7 @@ const LinkSection = ({
         )}
       </div>
       {isMobile && (
-        <div className="mobile-socials-div">
+        <div style={{position: `${preview && "absolute"}`}} className="mobile-socials-div">
           {page?.tiktok && (
             <a target="_blank" rel="noreferrer" href={page.tiktok}>
               <i className="fa-brands fa-tiktok repp-socials" />

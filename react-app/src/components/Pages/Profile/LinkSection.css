@@ -12,18 +12,19 @@
   left: 50%;
   transform: translateX(-50%);
   gap: 1rem;
+  width: 100%;
 }
 
 .mobile-headers-div {
   gap: 1rem;
-
+  width: 100%;
 }
 
 .mobile-header {
   border: 1px solid white;
   padding: 0.8rem;
   border-radius: 30px;
-  width: 70vw;
+  width: 70%;
   color: white;
   justify-content: center;
   background-color: rgb(0,0,0, 0.7);
