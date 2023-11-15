@@ -12,8 +12,8 @@ class Product(db.Model):
         db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
     )
     name = db.Column(db.String(40), nullable=False)
-    description = db.Column(db.String(255))
     price = db.Column(db.Float(), nullable=False)
+    description = db.Column(db.String(255))
     previewImage = db.Column(db.String(), nullable=False)
 
     page = db.relationship("Page", back_populates="products")

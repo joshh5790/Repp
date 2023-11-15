@@ -27,6 +27,8 @@ def seed_pages():
         genreId=1,
         displayName="Tiffany Day",
         linkName="tiffany-day",
+        personalLogo="//images.squarespace-cdn.com/content/v1/637d57dd5eff390eb0e98337/218e9f02-872a-4ca9-9c06-c7fc2f24adc3/tifflogo_white.png",
+        statusText="",
         tiktok="https://www.tiktok.com/@tiffdidwhat",
         youtube="https://www.youtube.com/@TiffanyDay",
         instagram="https://www.instagram.com/tiffdidwhat/",
@@ -40,8 +42,46 @@ def seed_pages():
         videoSection=True,
         shopSection=False,
     )
-    josiah = Page(
+    ivoris = Page(
         userId=3,
+        genreId=1,
+        displayName="Ivoris",
+        linkName="ivoris",
+        personalLogo="https://static.wixstatic.com/media/94a747_277e70f72d804e80b9b7415866aaa9c4~mv2.png/v1/crop/x_0,y_809,w_1905,h_659/fill/w_220,h_75,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ivoris%20title_edited.png",
+        tiktok="https://www.tiktok.com/@ivorismusic",
+        youtube="https://www.youtube.com/ivoris",
+        spotify="https://open.spotify.com/artist/7wuKa2bUMTCPspwY00Erji",
+        facebook="https://www.facebook.com/ivorismusic",
+        external="https://www.ivorisland.com/",
+        mainImage="https://static.wixstatic.com/media/94a747_957b224c184f48abbdb70b9941ddf572~mv2.jpg/v1/fill/w_1263,h_959,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/94a747_957b224c184f48abbdb70b9941ddf572~mv2.jpg",
+        mainVideo="https://www.youtube.com/embed/oBjwrhvyPCg",
+        bio="Ivoris is the silky-smooth voice set to be your newest obsession. Her debut single ‘Honeysea’ quickly attracted loyal fans across the globe, who were drawn to her gentle vocals and sticky-sweet melodies. This was only the beginning for the singer-songwriter-producer, who has since earned consistent placements on Spotify editorial playlists and amassed millions of streams.",
+        newsletter="ivorisnewsletter@gmail.com",
+        videoSection=True,
+        shopSection=False,
+    )
+    chris = Page(
+        userId=4,
+        genreId=1,
+        displayName="Chris James",
+        linkName="chris-james",
+        tiktok="https://www.tiktok.com/@chrisjamesflames",
+        youtube="https://www.youtube.com/channel/UCOnGcY8KOtPeKiUzyxGyIDg",
+        instagram="https://www.instagram.com/chrisjamesmusic/",
+        applemusic="https://music.apple.com/us/artist/chris-james/1357768128",
+        spotify="https://open.spotify.com/artist/1PU4kQGbRVMSyvawEYEjFp",
+        facebook="https://www.facebook.com/thisischrisjames",
+        twitter="https://twitter.com/ohhichrisjames",
+        external="https://www.chrisjames.lol/",
+        mainImage="https://ucarecdn.com/b0f24da7-e3d4-4657-a18d-89f732f5f3af/",
+        mainVideo="https://www.youtube.com/embed/HRgsgYwpFwQ",
+        bio="Chris James is your new best friend. His upbeat instrumentation, relatable lyrics, and overall warmth have captivated fans and industry alike. <br />Chris has written and produced chart topping songs for a variety of artists. Most notably the RIAA Gold-certified Billboard Hot 100 #1 hit “Life Goes On” by BTS, German Single Charts #1 song “Komet” by Udo Lindenberg and Apache 207, and his own track “Not Angry” which has garnered over 4B+ uses on Douyin. In total, Chris’s songwriting works have totaled over 1 billion streams on Spotify.",
+        newsletter="chrisjamesnewsletter@gmail.com",
+        videoSection=True,
+        shopSection=True,
+    )
+    josiah = Page(
+        userId=5,
         genreId=1,
         displayName="Highvyn",
         linkName="highvyn",
@@ -59,6 +99,8 @@ def seed_pages():
 
     db.session.add(eric)
     db.session.add(tiff)
+    db.session.add(ivoris)
+    db.session.add(chris)
     db.session.add(josiah)
     db.session.commit()
 

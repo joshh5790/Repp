@@ -1,16 +1,17 @@
 """empty message
 
-Revision ID: fbbb99a82052
-Revises: 
-Create Date: 2023-11-13 17:36:31.631518
+Revision ID: 62ef306258eb
+Revises:
+Create Date: 2023-11-15 14:03:44.061352
 
 """
 from alembic import op
 import sqlalchemy as sa
+from app.models import environment, SCHEMA
 
 
 # revision identifiers, used by Alembic.
-revision = 'fbbb99a82052'
+revision = '62ef306258eb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -103,8 +104,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('pageId', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=40), nullable=False),
-    sa.Column('description', sa.String(length=255), nullable=True),
     sa.Column('price', sa.Float(), nullable=False),
+    sa.Column('description', sa.String(length=255), nullable=True),
     sa.Column('previewImage', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -171,6 +172,21 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
+    if environment == "production":
+        op.execute(f"ALTER TABLE products SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE genres SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE pages SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE productstocks SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE productimages SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE cartitems SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE carts SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE videos SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE orderItems SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE tours SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE tourlocations SET SCHEMA {SCHEMA};")
 
 
 def downgrade():

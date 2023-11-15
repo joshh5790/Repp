@@ -39,6 +39,41 @@ def seed_products():
         price=25,
         previewImage="https://cdn.shopify.com/s/files/1/0091/7454/8577/files/tote_550x825.png",
     )
+    product7 = Product(
+        pageId=4,
+        name="guitar sweatshirt",
+        price=38.29,
+        description="A sturdy and warm sweatshirt bound to keep you warm in the colder months. A pre-shrunk, classic fit sweater that's made with air-jet spun yarn for a soft feel and reduced pilling.",
+        previewImage="https://ucarecdn.com/ff1c03eb-181e-4dba-917e-054172159a28/",
+    )
+    product8 = Product(
+        pageId=4,
+        name="phone shirt",
+        price=22.73,
+        description="This t-shirt is everything you've dreamed of and more. It feels soft and lightweight, with the right amount of stretch. It's comfortable and flattering for all.",
+        previewImage="https://ucarecdn.com/902d9757-bcd3-47d3-bd69-f746ac7ebd45/",
+    )
+    product9 = Product(
+        pageId=4,
+        name="will i see u again shirt",
+        price=17.80,
+        description="You've now found the staple t-shirt of your wardrobe. It's made of 100% ring-spun cotton and is soft and comfy. The double stitching on the neckline and sleeves add more durability to what is sure to be a favorite!",
+        previewImage="https://ucarecdn.com/8ee8689b-ca0b-4009-9815-80c5c0f9c4a0/",
+    )
+    product10 = Product(
+        pageId=4,
+        name="Why Should We Turn Around? - Digital",
+        price=5,
+        previewImage="https://ucarecdn.com/599e0c18-0696-4d0f-9149-419cab048abe/",
+    )
+    product11 = Product(
+        pageId=4,
+        name="The Art of Overthinking - Digital",
+        price=7,
+        description="shoutout to ed sheeran for always telling me to believe in myself",
+        previewImage="https://ucarecdn.com/9482589d-d485-4700-856c-816e4be7d35e/",
+    )
+
 
     db.session.add(product1)
     db.session.add(product2)
@@ -46,6 +81,11 @@ def seed_products():
     db.session.add(product4)
     db.session.add(product5)
     db.session.add(product6)
+    db.session.add(product7)
+    db.session.add(product8)
+    db.session.add(product9)
+    db.session.add(product10)
+    db.session.add(product11)
     db.session.commit()
 
 

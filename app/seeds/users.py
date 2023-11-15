@@ -13,7 +13,6 @@ def seed_users():
         city="Los Angeles",
         state="CA",
         profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
-        premiumPepps=0,
         isRepp=True,
         password="password",
     )
@@ -26,7 +25,30 @@ def seed_users():
         city="Los Angeles",
         state="CA",
         profileImage="https://thehiddenhits.files.wordpress.com/2021/01/tiffany-day-the-hidden-hits.jpg",
-        premiumPepps=0,
+        isRepp=True,
+        password="password",
+    )
+    ivoris = User(
+        firstName="Ivoris",
+        lastName="Dunno",
+        email="ivoris@aa.io",
+        gender="Female",
+        address="124 Third St",
+        city="Los Angeles",
+        state="CA",
+        profileImage="https://assets-au-01.kc-usercontent.com/a74cc67d-6861-022b-4d6d-57679e9d331f/75a5095d-7b67-4bc6-80f8-43dc24abe7af/20211107_ivoris_BonnCreative_36.jpg",
+        isRepp=True,
+        password="password",
+    )
+    chris = User(
+        firstName="Chris",
+        lastName="James",
+        email="chrisjames@aa.io",
+        gender="Male",
+        address="125 Second St",
+        city="Los Angeles",
+        state="CA",
+        profileImage="https://ucarecdn.com/c7a047af-05b9-4bb2-a3e1-b11081d44b5d/",
         isRepp=True,
         password="password",
     )
@@ -39,7 +61,6 @@ def seed_users():
         city="Los Angeles",
         state="CA",
         profileImage="https://images.genius.com/e9a779c23099a34081cdd35250f273cc.539x539x1.jpg",
-        premiumPepps=0,
         isRepp=True,
         password="password",
     )
@@ -48,17 +69,17 @@ def seed_users():
         lastName="Ho",
         email="a@a.a",
         gender="Male",
-        address="121 Third St",
+        address="125 Third St",
         city="Los Angeles",
         state="CA",
         profileImage="https://i1.sndcdn.com/avatars-r559nwVkf8e18rUZ-vNUSGg-t500x500.jpg",
-        premiumPepps=0,
         isRepp=False,
         password="password",
     )
 
     db.session.add(eric)
     db.session.add(tiff)
+    db.session.add(ivoris)
     db.session.add(josiah)
     db.session.add(josh)
     db.session.commit()

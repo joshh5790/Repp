@@ -100,8 +100,8 @@ const Home = () => {
         </div>
       </div>
       <div className="flex-col home-page-create-profile">
-        <h1>Design Your Profile</h1>
-        <p style={{margin: "1rem 0 2rem 0", lineHeight: "1.5rem"}}>Functions like your personal artist website. <br /> No credit card required.</p>
+        <h1>Design Your Digital Home</h1>
+        <p style={{margin: "1rem 0 2rem 0", lineHeight: "1.5rem"}}>Your free personal website alternative.<br />Made in minutes, tailored to you.</p>
         <OpenModalButton
         buttonText={"Get Started"}
         className={'button-hover get-started'}

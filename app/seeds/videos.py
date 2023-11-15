@@ -50,32 +50,79 @@ def seed_videos():
     )
     video10 = Video(
         pageId=3,
-        name="need u the most",
-        video="https://www.youtube.com/embed/yElzEgf6lAg",
+        name="Ivoris - I Wish My Mind Would Shut Up (Official Audio)",
+        video="https://www.youtube.com/embed/usgQIvI_JAo",
     )
     video11 = Video(
         pageId=3,
+        name="Cocopops (Official Music Video) - Ivoris",
+        video="https://www.youtube.com/embed/vZM8P0EJCIc",
+    )
+    video12 = Video(
+        pageId=4,
+        name="Chris James - I'm A Mess (Official Music Video)",
+        video="https://www.youtube.com/embed/r4PaD68aamU",
+    )
+    video13 = Video(
+        pageId=4,
+        name="Chris James - Oh My God (Official Music Video)",
+        video="https://www.youtube.com/embed/mJadT6a3dV8",
+    )
+    video14 = Video(
+        pageId=4,
+        name="Chris James - Is It Too Soon (Official Lyric Video)",
+        video="https://www.youtube.com/embed/kG1u-8LgwQ4",
+    )
+    video15 = Video(
+        pageId=4,
+        name="Chris James - The Race (Official Video)",
+        video="https://www.youtube.com/embed/NkhR8QGZpYE",
+    )
+    video16 = Video(
+        pageId=4,
+        name="Chris James - I Wanna Be With You (Official Lyric Video)",
+        video="https://www.youtube.com/embed/tkS1ansCoNo",
+    )
+    video17 = Video(
+        pageId=5,
+        name="need u the most",
+        video="https://www.youtube.com/embed/yElzEgf6lAg",
+    )
+    video18 = Video(
+        pageId=5,
         name="Pretty Girl",
         video="https://www.youtube.com/embed/wyOIYOXswcI",
     )
-    video12 = Video(
-        pageId=3,
+    video19 = Video(
+        pageId=5,
         name="Ghosts",
         video="https://www.youtube.com/embed/bUsw-Tk8edc",
     )
 
-    db.session.add(video1)
-    db.session.add(video2)
-    db.session.add(video3)
-    db.session.add(video4)
-    db.session.add(video5)
-    db.session.add(video6)
-    db.session.add(video7)
-    db.session.add(video8)
-    db.session.add(video9)
-    db.session.add(video10)
-    db.session.add(video11)
-    db.session.add(video12)
+    db.session.add_all(
+        [
+            video1,
+            video2,
+            video3,
+            video4,
+            video5,
+            video6,
+            video7,
+            video8,
+            video9,
+            video10,
+            video11,
+            video12,
+            video13,
+            video14,
+            video15,
+            video16,
+            video17,
+            video18,
+            video19
+        ]
+    )
+
     db.session.commit()
 
 
@@ -87,9 +134,7 @@ def seed_videos():
 # it will reset the primary keys for you as well.
 def undo_videos():
     if environment == "production":
-        db.session.execute(
-            f"TRUNCATE table {SCHEMA}.videos RESTART IDENTITY CASCADE;"
-        )
+        db.session.execute(f"TRUNCATE table {SCHEMA}.videos RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM videos"))
 
