@@ -1,7 +1,8 @@
 .edit-product-modal {
   display: flex;
-  height: 36rem;
-  width: 60rem;
+  height: 80vh;
+  width: 80vw;
+  max-width: 60rem;
   padding: 1rem;
 }
 
@@ -13,7 +14,7 @@
 }
 
 .product-input {
-  width: 20rem;
+  max-width: 20rem;
 }
 
 .add-sizes-container,
@@ -69,4 +70,11 @@
   margin-top: 1rem;
   width: calc(100% - 2rem);
   border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+  .edit-product-modal {
+    flex-direction: column;
+    overflow: auto;
+  }
 }

@@ -94,15 +94,15 @@ const EditVideos = ({ page }) => {
               className="update-socials-label"
               style={{ marginBottom: "0" }}
             >
-              Video Title
-              <input value={name} onChange={(e) => setName(e.target.value)} />
+              Title
+              <input className="add-video-input" value={name} onChange={(e) => setName(e.target.value)} />
             </label>
             <label
               className="update-socials-label"
               style={{ marginBottom: "0" }}
             >
-              Video URL
-              <input value={video} onChange={(e) => setVideo(e.target.value)} />
+              URL
+              <input className="add-video-input" value={video} onChange={(e) => setVideo(e.target.value)} />
             </label>
             <div className="error-msg">
               {errors.video && errors.video[0]}&nbsp;

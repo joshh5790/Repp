@@ -41,13 +41,13 @@
 }
 
 .product-img-container {
-  width: 25rem;
+  width: 30vw;
   display: flex;
   align-items: center;
 }
 
 .product-modal-img {
-  min-width: 80%;
+  width: 100%;
   aspect-ratio: 1 / 1;
 }
 

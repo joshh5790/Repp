@@ -33,7 +33,7 @@ textarea {
 input,
 select,
 textarea {
-  cursor: pointer;
+  cursor: text;
   background-color: #EEEEEE;
   border-radius: 7px;
   font-size: 0.8rem;

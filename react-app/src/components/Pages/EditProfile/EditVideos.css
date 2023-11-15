@@ -4,6 +4,11 @@
   cursor: pointer;
 }
 
+.add-video-input {
+  width: 20vw;
+  max-width: 12rem;
+}
+
 .manage-video-cards {
   all: unset;
   display: grid;
@@ -70,4 +75,13 @@
 .no-video-hover:hover {
   background-color: #EEEEEE;
   cursor: auto;
+}
+
+@media (max-width: 700px) {
+  .edit-list-video {
+    width: 50vw;
+  }
+  .update-video-input {
+    width: 47vw;
+  }
 }
