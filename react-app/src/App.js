@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Pages/Home";
@@ -20,6 +21,9 @@ function App() {
     <>
       {isLoaded && (
         <>
+          <Helmet>
+            <title>REPP</title>
+          </Helmet>
           <Switch>
             <Route exact path="/">
               <Home />

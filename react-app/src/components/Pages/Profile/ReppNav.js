@@ -44,9 +44,18 @@ const ReppNav = ({
         {!isMobile ? (
           <>
             <i onClick={setNavVisible} className="fa-solid fa-ellipsis" />
-            <h2 onClick={() => scrollToId(page?.linkName)}>
-              {page?.displayName}
-            </h2>
+            {page?.personalLogo ? (
+              <img
+                alt={page?.displayName}
+                src={page?.personalLogo}
+                className="repp-nav-logo"
+                onClick={() => scrollToId(page?.linkName)}
+              />
+            ) : (
+              <h2 onClick={() => scrollToId(page?.linkName)}>
+                {page?.displayName}
+              </h2>
+            )}
           </>
         ) : (
           <i onClick={setNavVisible} className="fa-solid fa-ellipsis" />

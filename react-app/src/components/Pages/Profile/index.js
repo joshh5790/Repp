@@ -1,6 +1,7 @@
 import "./Profile.css";
 import { useParams, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneRPageThunk } from "../../../store/pages";
 import { setNavVisibility } from "../../../store/navigation";
@@ -87,6 +88,11 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
     if (!invalidPage)
       return (
         <div className="repp-page">
+          {!preview && (
+            <Helmet>
+              <title>{page?.displayName}</title>
+            </Helmet>
+          )}
           <div id={linkName} style={{ height: "100vh", position: "relative" }}>
             <LinkSection
               page={page}

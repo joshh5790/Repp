@@ -17,10 +17,6 @@
     top: 5rem;
 }
 
-/* .nav-hide {
-    top: -6rem;
-} */
-
 .repp-nav * {
     color: white;
 }
@@ -37,6 +33,10 @@
     cursor: pointer;
 }
 
+.repp-nav-logo {
+    max-width: 7rem;
+}
+
 .repp-nav-nav-buttons > i:hover {
     cursor: pointer;
 }
@@ -47,7 +47,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .repp-nav-links > div {
