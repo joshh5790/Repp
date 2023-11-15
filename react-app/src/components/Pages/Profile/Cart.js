@@ -11,7 +11,7 @@ import {
   getCartItemsThunk,
 } from "../../../store/cartItems";
 
-const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
+const Cart = ({ pageId, numCartItems, setNumCartItems, isMobile }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const cart = useSelector((state) => Object.values(state.carts)[0]);
@@ -64,7 +64,8 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
       >
         &nbsp;
       </div>
-      <div className={`cart-sidebar ${cartVisible ? "" : "hide-cart"}`}>
+      <div
+      className={`cart-sidebar ${cartVisible ? "" : "hide-cart"}`}>
         <i
           onClick={() => dispatch(setCartVisibility(false))}
           className="fa-solid fa-x modal"

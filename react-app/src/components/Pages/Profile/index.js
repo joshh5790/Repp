@@ -143,6 +143,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
               pageId={page?.id}
               numCartItems={numCartItems}
               setNumCartItems={setNumCartItems}
+              isMobile={isMobile}
             />
           ) : (
             <></>

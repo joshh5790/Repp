@@ -37,7 +37,8 @@
   top: 0;
   /* padding: 1.5rem; */
   right: 0;
-  width: 28rem;
+  width: 75vw;
+  max-width: 28rem;
   height: 100vh;
   transition: right 0.3s ease-in-out;
   background-color: white;
@@ -63,7 +64,7 @@
   gap: 1rem;
   margin: 0 1.5rem;
   overflow-y: auto;
-  height: 50vh;
+  height: 55vh;
 }
 
 .cart-item-card {
@@ -92,7 +93,8 @@
 }
 
 .cart-bottom {
-  position: fixed;
+  position: absolute;
+  width: 100%;
   background-color: white;
   bottom: 0;
   padding: 1rem 2rem;
@@ -125,7 +127,7 @@
   display: block;
   text-align: center;
   padding: 1.2rem 0;
-  width: 25rem;
+  width: 100%;
   margin-top: 2rem;
   text-decoration: none;
   color: white;

@@ -35,7 +35,7 @@ const ReppNav = ({
 
   return (
     <div
-      style={{ position: `${preview && "absolute"}`, top: "0" }}
+      style={{ position: `${preview && "absolute"}`, top: `${preview && "0"}` }}
       className={`repp-nav ${scrollTop ? "" : "black-nav"} ${
         navVisible ? "lower-nav" : ""
       }`}
