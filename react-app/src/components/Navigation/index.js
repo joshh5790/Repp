@@ -57,7 +57,6 @@ function Navigation() {
               <li>4 tabs, general, socials, products, and videos</li>
               <li>Feel free to play around, I reset the database somewhat regularly</li>
               <li>fully functional</li>
-              <li>right half is reserved for a profile preview</li>
             </ul>
             </div>
           )}
