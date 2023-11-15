@@ -46,7 +46,7 @@ function Navigation() {
                 <li>Click logo to return to home page</li>
                 <li>Right side of navbar has login button/user settings</li>
                 <li>logins for Highvyn and tiffany are josiah@aa.io and demo@aa.io, password is password</li>
-                <li>home page and signup are now mobile friendly</li>
+                <li>site is fully mobile friendly</li>
               </ul>
             </div>
           )}
