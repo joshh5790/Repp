@@ -11,7 +11,7 @@
   "submit submit";
 }
 
-label > input,
+.signup-input,
 .signup-form > select {
   width: 8rem;
 }

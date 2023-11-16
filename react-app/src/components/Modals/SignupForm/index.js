@@ -63,7 +63,7 @@ function SignupForm() {
       <form className="signup-form" onSubmit={handleSubmit}>
         <label style={{gridArea: "firstName"}} className={errors.firstName ? "error" : "no-error"}>
           <div>First name *</div>
-          <input
+          <input className="signup-input"
             type="text"
             value={firstName}
             onChange={(e) => {
@@ -80,7 +80,7 @@ function SignupForm() {
         </label>
         <label style={{gridArea: "lastName"}} className={errors.lastName ? "error" : "no-error"}>
           <div>Last name *</div>
-          <input
+          <input className="signup-input"
             type="text"
             value={lastName}
             onChange={(e) => {
@@ -97,7 +97,7 @@ function SignupForm() {
         </label>
         <label style={{gridArea: "email"}} className={errors.email ? "error" : "no-error"}>
           <div>Email *</div>
-          <input
+          <input className="signup-input"
             type="text"
             value={email}
             onChange={(e) => {
@@ -112,7 +112,7 @@ function SignupForm() {
         </label>
         <label style={{gridArea: "password"}} className={errors.password ? "error" : "no-error"}>
           <div>Password *</div>
-          <input
+          <input className="signup-input"
             type="password"
             value={password}
             onChange={(e) => {
@@ -129,7 +129,7 @@ function SignupForm() {
         </label>
         <label style={{gridArea: "confirmPassword"}} className={errors.confirmPassword ? "error" : "no-error"}>
           <div>Confirm Password *</div>
-          <input
+          <input className="signup-input"
             type="password"
             value={confirmPassword}
             onChange={(e) => {
@@ -146,7 +146,7 @@ function SignupForm() {
         </label>
         <label style={{gridArea: "profileImage"}} className={errors.profileImage ? "error" : "no-error"}>
           <div>Profile Image</div>
-          <input
+          <input className="signup-input"
             type="text"
             value={profileImage}
             onChange={(e) => {
@@ -195,7 +195,7 @@ function SignupForm() {
         >
           <label className={errors.address ? "error" : "no-error"}>
             <div>Address</div>
-            <input
+            <input className="signup-input"
               type="text"
               value={address}
               onChange={(e) => {
@@ -211,7 +211,7 @@ function SignupForm() {
           </label>
           <label className={errors.city ? "error" : "no-error"}>
             <div>City</div>
-            <input
+            <input className="signup-input"
               type="text"
               value={city}
               onChange={(e) => {
@@ -225,7 +225,7 @@ function SignupForm() {
           </label>
           <label className={errors.state ? "error" : "no-error"}>
             <div>State</div>
-            <input
+            <input className="signup-input"
               type="text"
               value={state}
               onChange={(e) => {

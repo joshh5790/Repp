@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
-from app.models import Cart, CartItem, Order, OrderItem, db
+from app.models import Cart, ProductStock, Order, OrderItem, db
 
 cart_routes = Blueprint("carts", __name__)
 
@@ -64,6 +64,11 @@ def create_order(cartId):
             quantity=item["quantity"],
             size=item["size"],
         )
+        productStock = ProductStock.query.filter_by(productId=item["productId"], size=item["size"]).first()
+        productStock.stock -= item["quantity"]
+        if productStock.stock < 0:
+            return {"error": "Insufficient stock"}, 400
         db.session.add(orderItem)
+    db.session.delete(cart)
     db.session.commit()
     return {"order": order.to_dict(), "items": order.get_items()}

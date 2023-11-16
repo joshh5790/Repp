@@ -9,6 +9,10 @@
   overflow-x: hidden;
 }
 
+.product-modal::-webkit-scrollbar {
+  display: none;
+}
+
 .fa-x.modal {
   position: absolute;
   top: 18px;
@@ -56,7 +60,7 @@
 .product-modal-details {
   justify-self: center;
   padding-left: 2rem;
-  /* flex-grow: 1; */
+  flex-grow: 1;
 }
 
 .product-modal-name {
@@ -102,6 +106,7 @@
   margin-bottom: 2rem;
   text-align: center;
   font-size: 1rem;
+  padding-top: 0.3rem;
   cursor: pointer;
 }
 

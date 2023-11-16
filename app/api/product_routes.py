@@ -1,8 +1,7 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
 from app.models import Product, ProductImage, ProductStock, db
-from app.forms import ProductForm, ProductImageForm, ProductStockForm
-from .auth_routes import validation_errors_to_error_messages
+from app.forms import ProductForm, ProductImageForm
 from flask import request
 
 product_routes = Blueprint("products", __name__)
@@ -140,15 +139,10 @@ def create_product_stock(productId):
         return {
             "Unauthorized": "User does not have permission to add a product stock to this product"
         }, 401
-    form = ProductStockForm()
-    form["csrf_token"].data = request.cookies["csrf_token"]
-    if form.validate_on_submit():
-        data = form.data
-        productStock = ProductStock(
-            productId=productId, size=data["size"], stock=data["stock"]
-        )
-        db.session.add(productStock)
-        db.session.commit()
-        return productStock.to_dict()
-    else:
-        return {"errors": form.errors}, 401
+    data = request.get_json()
+    productStock = ProductStock(
+        productId=productId, size=data["size"], stock=data["stock"]
+    )
+    db.session.add(productStock)
+    db.session.commit()
+    return productStock.to_dict()

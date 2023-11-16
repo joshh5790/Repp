@@ -1,8 +1,7 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
 from app.models import ProductStock, Cart, CartItem, db
-from app.forms import ProductStockForm, CartItemForm
-from .auth_routes import validation_errors_to_error_messages
+from app.forms import CartItemForm
 from flask import request
 
 productStock_routes = Blueprint("productStocks", __name__)
@@ -24,15 +23,11 @@ def update_product_stock(productStockId):
         return {
             "Unauthorized": "User does not have permission to update this stock"
         }, 401
-    form = ProductStockForm()
-    form["csrf_token"].data = request.cookies["csrf_token"]
-    if form.validate_on_submit():
-        productStock.size = form.data["size"]
-        productStock.stock = form.data["stock"]
-        db.session.commit()
-        return productStock.to_dict()
-    else:
-        return {"errors": form.errors}, 401
+    data = request.get_json()
+    productStock.size = data["size"]
+    productStock.stock = data["stock"]
+    db.session.commit()
+    return productStock.to_dict()
 
 
 # DELETE /productStock/:productStockId
@@ -78,10 +73,14 @@ def create_cart_item(productStockId):
         cartItem = None
         for item in cartItems:
             if item["productId"] == product["id"] and item["size"] == productStock.size:
+                if data["quantity"] + cartItem.quantity > productStock.stock:
+                    return {"error": "Not enough stock"}, 400
                 cartItem = CartItem.query.get(item["id"])
                 cartItem.quantity += data["quantity"]
                 break
         if cartItem is None:
+            if data["quantity"] > productStock.stock:
+                return {"error": "Not enough stock"}, 400
             cartItem = CartItem(
                 cartId=cart.id,
                 productId=product["id"],
