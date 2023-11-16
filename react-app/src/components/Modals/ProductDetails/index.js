@@ -9,10 +9,10 @@ import {
   createCartItemThunk,
   getCartItemsThunk,
 } from "../../../store/cartItems";
-import { createCartThunk, getCartThunk } from "../../../store/carts";
+import { createCartThunk, getPageCartThunk } from "../../../store/carts";
 import { formatCurrency, invalidImage } from "../../../utilities";
 
-const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
+const ProductDetails = ({ product, setNumCartItems, preview }) => {
   const dispatch = useDispatch();
   const sizes = useSelector((state) => Object.values(state.productStock));
   const images = [
@@ -29,10 +29,12 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
   const [quantity, setQuantity] = useState(1);
   const [focusImage, setFocusImage] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(preview)
   const { closeModal } = useModal();
 
   useEffect(() => {
     // set size to the first size that has stock
+    if (preview) setIsDisabled(true)
     dispatch(getProductImagesThunk(product.id))
       .then(() => dispatch(getProductStocksThunk(product.id)))
       .then((sizes) => {
@@ -55,7 +57,7 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
   };
 
   const addToCart = async () => {
-    isDisabled = true;
+    setIsDisabled(true)
     let existingCart;
     for (const cart of carts) {
       if (cart.pageId === product.pageId) {
@@ -65,7 +67,7 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
     }
     if (existingCart) {
       await dispatch(createCartItemThunk(currStock.id, quantity)).then(() =>
-        dispatch(getCartThunk()).then((data) =>
+        dispatch(getPageCartThunk(product.pageId)).then((data) =>
           dispatch(getCartItemsThunk(Object.keys(data)[0])).then((data) => {
             setNumCartItems(Object.keys(data).length);
           })
@@ -74,7 +76,7 @@ const ProductDetails = ({ product, setNumCartItems, isDisabled }) => {
     } else {
       await dispatch(createCartThunk(product.pageId))
         .then(() => dispatch(createCartItemThunk(currStock.id, quantity)))
-        .then(() => dispatch(getCartThunk()))
+        .then(() => dispatch(getPageCartThunk(product.pageId)))
         .then(() => dispatch(setCartVisibility(true)));
       setNumCartItems((prev) => prev + 1);
     }

@@ -42,19 +42,21 @@
 
 .product-img-container {
   width: 30vw;
+  min-width: 15rem;
   display: flex;
+  gap: 0.5rem;
   align-items: center;
 }
 
 .product-modal-img {
-  width: 100%;
+  width: calc(100% - 3.5rem);
   aspect-ratio: 1 / 1;
 }
 
 .product-modal-details {
   justify-self: center;
-  margin-left: 2rem;
-  flex-grow: 1;
+  padding-left: 2rem;
+  /* flex-grow: 1; */
 }
 
 .product-modal-name {

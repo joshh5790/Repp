@@ -106,7 +106,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
           {page?.mainVideo && (
             <div
               id="watch"
-              className={!isMobile && "repp-page-section"}
+              className={!isMobile ? "repp-page-section" : " "}
               style={{ padding: "0", margin: "0", border: "none" }}
             >
               <iframe
@@ -121,6 +121,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
               <ProductSection
                 pageId={page?.id}
                 setNumCartItems={setNumCartItems}
+                preview={preview}
               />
             </div>
           )}
@@ -144,15 +145,12 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
             isMobile={isMobile}
             preview={preview}
           />
-          {!preview ? (
+          {!preview && (
             <Cart
               pageId={page?.id}
               numCartItems={numCartItems}
               setNumCartItems={setNumCartItems}
-              isMobile={isMobile}
             />
-          ) : (
-            <></>
           )}
         </div>
       );

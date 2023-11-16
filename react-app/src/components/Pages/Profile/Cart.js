@@ -11,7 +11,7 @@ import {
   getCartItemsThunk,
 } from "../../../store/cartItems";
 
-const Cart = ({ pageId, numCartItems, setNumCartItems, isMobile }) => {
+const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const cart = useSelector((state) => Object.values(state.carts)[0]);
@@ -23,6 +23,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems, isMobile }) => {
   useEffect(() => {
     if (pageId) {
       dispatch(getPageCartThunk(pageId)).then((data) => {
+        console.log(data, "THIS IS DATA")
         if (data.id) {
           dispatch(getCartItemsThunk(data.id)).then((data) =>
             setNumCartItems(data.length)

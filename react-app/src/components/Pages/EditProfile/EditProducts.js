@@ -62,7 +62,7 @@ const EditProducts = ({ page }) => {
           className="manage-product-cards ease-bg"
           key={product.id}
           modalComponent={
-            <ProductDetails product={product} isDisabled={true} />
+            <ProductDetails product={product} preview={true} />
           }
           buttonText={
             <>

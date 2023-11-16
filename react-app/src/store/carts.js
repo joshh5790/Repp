@@ -87,7 +87,7 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_CART:
-      return { ...action.payload };
+      return action.payload;
     case REMOVE_CART:
       const newState = { ...state };
       delete newState[action.payload];
