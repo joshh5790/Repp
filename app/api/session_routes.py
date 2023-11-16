@@ -1,12 +1,16 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
-from app.models import User, db
+from app.models import User, Genre, db
 from app.forms import SignUpForm
-from .auth_routes import validation_errors_to_error_messages
 from flask import request
 
 session_routes = Blueprint("session", __name__)
 
+# GET /session/genres
+@session_routes.route("/genres")
+def get_genres():
+    genres = Genre.query.all()
+    return {"genres": [genre.to_dict() for genre in genres]}
 
 # GET /session/carts
 @session_routes.route("/carts")

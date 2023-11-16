@@ -6,7 +6,7 @@ import ProductDetails from "../../Modals/ProductDetails";
 import "./ProductSection.css";
 import { formatCurrency } from "../../../utilities";
 
-const ProductSection = ({ pageId, setNumCartItems, preview }) => {
+const ProductSection = ({ pageId, setNumCartItems, preview, previewStyle }) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => Object.values(state.products));
 

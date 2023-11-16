@@ -15,7 +15,10 @@ class Page(db.Model):
         unique=True,
     )
     genreId = db.Column(
-        db.Integer, db.ForeignKey(add_prefix_for_prod("genres.id")), nullable=False
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod("genres.id")),
+        nullable=False,
+        default=1,
     )
     displayName = db.Column(db.String(40), nullable=False)
     linkName = db.Column(db.String(40), nullable=False, unique=True)
@@ -48,8 +51,12 @@ class Page(db.Model):
         "Video", back_populates="page", cascade="all, delete-orphan"
     )
     cart = db.relationship("Cart", back_populates="page", cascade="all, delete-orphan")
-    orders = db.relationship("Order", back_populates="page", cascade="all, delete-orphan")
-    follows = db.relationship("Follow", back_populates="page", cascade="all, delete-orphan")
+    orders = db.relationship(
+        "Order", back_populates="page", cascade="all, delete-orphan"
+    )
+    follows = db.relationship(
+        "Follow", back_populates="page", cascade="all, delete-orphan"
+    )
     tours = db.relationship("Tour", back_populates="page", cascade="all, delete-orphan")
 
     def repp_info(self):

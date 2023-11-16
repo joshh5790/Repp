@@ -122,12 +122,13 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
                 pageId={page?.id}
                 setNumCartItems={setNumCartItems}
                 preview={preview}
+                previewStyle={previewStyle}
               />
             </div>
           )}
           {page?.videoSection && (
             <div id="videos" className="repp-page-section">
-              <VideoSection pageId={page?.id} />
+              <VideoSection pageId={page?.id} previewStyle={previewStyle} />
             </div>
           )}
           {page?.bio && (
