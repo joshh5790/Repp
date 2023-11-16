@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
-from app.models import Page, Product, Video, Cart, User, db
-from app.forms import PageForm, ProductForm, VideoForm
+from app.models import Page, Product, Video, Cart, User, Tour, Follow, db
+from app.forms import PageForm, ProductForm, VideoForm, TourForm
 from flask import request
 from app.utils import embed_video, ensure_https
 
@@ -152,6 +152,23 @@ def get_videos(pageId):
     return page.get_videos()
 
 
+# GET /pages/:pageId/tours
+@page_routes.route("/<int:pageId>/tours", methods=["GET"])
+def get_tours(pageId):
+    page = Page.query.get(pageId)
+    if not page:
+        return {"error": "Page not found"}, 404
+    return page.get_tours()
+
+# GET /pages/:pageId/follows
+@page_routes.route("/<int:pageId>/follows", methods=["GET"])
+def get_follows(pageId):
+    page = Page.query.get(pageId)
+    if not page:
+        return {"error": "Page not found"}, 404
+    return page.get_follows()
+
+
 # POST /pages/:pageId/products
 @page_routes.route("/<int:pageId>/products", methods=["POST"])
 @login_required
@@ -209,6 +226,57 @@ def create_video(pageId):
     else:
         return {"errors": form.errors}, 401
 
+# POST /pages/:pageId/tours
+@page_routes.route("/<int:pageId>/tours", methods=["POST"])
+@login_required
+def create_tour(pageId):
+    if not current_user:
+        return {"error": "Unauthorized"}, 401
+    page = Page.query.get(pageId)
+    if not page:
+        return {"error": "Page not found"}, 404
+    if page.userId != current_user.id:
+        return {
+            "Unauthorized": "User does not have permission to add a tour to this page"
+        }, 401
+    form = TourForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        data = form.data
+        tour = Tour(
+            pageId=pageId,
+            name=data["name"],
+            tourLogo=data["tourLogo"],
+        )
+
+        db.session.add(tour)
+        db.session.commit()
+        return tour.to_dict()
+    else:
+        return {"errors": form.errors}, 401
+
+# POST /pages/:pageId/follow
+@page_routes.route("/<int:pageId>/follow", methods=["POST"])
+@login_required
+def create_follow(pageId):
+    if not current_user:
+        return {"error": "Unauthorized"}, 401
+    page = Page.query.get(pageId)
+    if not page:
+        return {"error": "Page not found"}, 404
+    existingFollow = Follow.query.filter(Follow.userId == current_user.id, Follow.pageId == pageId).first()
+    if not existingFollow and current_user.id != page.userId:
+        follow = Follow(
+            userId=current_user.id,
+            pageId=pageId
+        )
+
+        db.session.add(follow)
+        db.session.commit()
+        return follow.to_dict()
+    else:
+        return {"error": "User already follows this page"}, 401
+
 # GET /pages/:pageId/cart
 @page_routes.route("/<int:pageId>/cart", methods=["GET"])
 @login_required
@@ -216,7 +284,6 @@ def get_cart(pageId):
     if not current_user:
         return {"error": "Unauthorized"}, 401
     return current_user.get_one_cart(pageId)
-
 
 # POST /pages/:pageId/cart
 @page_routes.route("/<int:pageId>/cart", methods=["POST"])

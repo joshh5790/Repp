@@ -14,7 +14,7 @@ class TourLocation(db.Model):
     venue = db.Column(db.String(40), nullable=False)
     location = db.Column(db.String(40), nullable=False)
     tourDate = db.Column(db.String(), nullable=False)
-    ticketsLink = db.Column(db.String())
+    ticketsLink = db.Column(db.String(), nullable=False)
 
     tour = db.relationship("Tour", back_populates="tourLocations")
 
@@ -30,3 +30,6 @@ class TourLocation(db.Model):
 
     def get_tour(self):
         return self.tour[0].to_dict() if self.tour else {}
+
+    def get_pageOwnerId(self):
+        return self.tour.page.to_dict()["userId"]

@@ -7,3 +7,4 @@ from .productStock_form import ProductStockForm
 from .cartItem_form import CartItemForm
 from .video_form import VideoForm
 from .tour_form import TourForm
+from .tourLocation_form import TourLocationForm

@@ -118,3 +118,6 @@ class Page(db.Model):
 
     def get_tours(self):
         return [tour.to_dict() for tour in self.tours]
+
+    def get_follows(self):
+        return [follow.to_dict() for follow in self.follows]

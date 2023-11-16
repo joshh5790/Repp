@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
-from app.models import Cart, db
+from app.models import Cart, CartItem, Order, OrderItem, db
 
 cart_routes = Blueprint("carts", __name__)
 
@@ -35,3 +35,35 @@ def get_cart_items(cartId):
     if current_user.id != cart.userId:
         return {"Unauthorized": "User does not have permission to view this cart"}, 401
     return cart.get_items()
+
+
+# POST /carts/:cartId/orders
+@cart_routes.route("/<int:cartId>/orders", methods=["POST"])
+@login_required
+def create_order(cartId):
+    if not current_user:
+        return {"error": "Unauthorized"}, 401
+    cart = Cart.query.get(cartId)
+    if not cart:
+        return {"error": "Cart not found"}, 404
+    if current_user.id != cart.userId:
+        return {"Unauthorized": "User does not have permission to view this cart"}, 401
+    cart_dict = cart.to_dict()
+    order = Order(
+        userId=cart_dict["userId"],
+        pageId=cart_dict["pageId"],
+        total=cart_dict["subtotal"],
+    )
+    db.session.add(order)
+    db.session.commit()
+    cart_items = cart.get_items()
+    for item in cart_items:
+        orderItem = OrderItem(
+            orderId=order.id,
+            productId=item["productId"],
+            quantity=item["quantity"],
+            size=item["size"],
+        )
+        db.session.add(orderItem)
+    db.session.commit()
+    return {"order": order.to_dict(), "items": order.get_items()}

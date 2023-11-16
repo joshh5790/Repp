@@ -16,6 +16,10 @@ from .api.cart_routes import cart_routes
 from .api.cartItem_routes import cartItem_routes
 from .api.session_routes import session_routes
 from .api.checkout_routes import checkout_routes
+from .api.order_routes import order_routes
+from .api.tour_routes import tour_routes
+from .api.tourLocation_routes import tourLocation_routes
+from .api.follow_routes import follow_routes
 from .seeds import seed_commands
 from .config import Config
 import stripe
@@ -48,6 +52,10 @@ app.register_blueprint(cart_routes, url_prefix="/api/carts")
 app.register_blueprint(cartItem_routes, url_prefix="/api/cartItems")
 app.register_blueprint(session_routes, url_prefix="/api/session")
 app.register_blueprint(checkout_routes, url_prefix="/api/checkout")
+app.register_blueprint(order_routes, url_prefix="/api/orders")
+app.register_blueprint(tour_routes, url_prefix="/api/tours")
+app.register_blueprint(tourLocation_routes, url_prefix="/api/tourLocations")
+app.register_blueprint(follow_routes, url_prefix="/api/follows")
 db.init_app(app)
 Migrate(app, db)
 

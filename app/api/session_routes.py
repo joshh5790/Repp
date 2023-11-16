@@ -26,6 +26,24 @@ def get_user_page():
     return current_user.get_page()
 
 
+# GET /session/orders
+@session_routes.route("/orders")
+@login_required
+def get_user_orders():
+    if not current_user:
+        return {"error": "Unauthorized"}, 401
+    return current_user.get_orders()
+
+
+# GET /session/follows
+@session_routes.route("/follows")
+@login_required
+def get_user_follows():
+    if not current_user:
+        return {"error": "Unauthorized"}, 401
+    return current_user.get_follows()
+
+
 # PUT /session/account
 @session_routes.route("/account", methods=["PUT"])
 @login_required
@@ -45,13 +63,23 @@ def update_user():
         user.city = data["city"]
         user.state = data["state"]
         user.password = data["password"]
-        user.isRepp = data['isRepp']
+        user.isRepp = data["isRepp"]
         user.profileImage = data["profileImage"]
         db.session.commit()
         return user.to_dict()
     else:
         return {"errors": form.errors}, 401
 
+# PUT /session/premiumPepps
+@session_routes.route("/premiumPepps", methods=["PUT"])
+@login_required
+def add_user_pepps():
+    if not current_user:
+        return {"error": "Unauthorized"}, 401
+    premiumPepps = request.get_json()['premiumPepps']
+    current_user.premiumPepps += premiumPepps
+    db.session.commit()
+    return current_user.to_dict()
 
 # DELETE /session/account
 @session_routes.route("/account", methods=["DELETE"])
