@@ -73,7 +73,7 @@ def create_cart_item(productStockId):
         cartItem = None
         for item in cartItems:
             if item["productId"] == product["id"] and item["size"] == productStock.size:
-                if data["quantity"] + cartItem.quantity > productStock.stock:
+                if data["quantity"] + item["quantity"] > productStock.stock:
                     return {"error": "Not enough stock"}, 400
                 cartItem = CartItem.query.get(item["id"])
                 cartItem.quantity += data["quantity"]

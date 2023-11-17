@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isObjectEmpty } from "../../../utilities";
@@ -7,6 +7,7 @@ import { updateUser } from "../../../store/session";
 import OpenModalButton from "../../OpenModalButton";
 import SocialsForm from "../../Modals/SocialsForm";
 import "./CreateProfile.css";
+import { setNavVisibility } from "../../../store/navigation";
 
 const CreateProfile = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,10 @@ const CreateProfile = () => {
   const [newsletter, setNewsletter] = useState("");
   const [businessInquiries, setBusinessInquiries] = useState("");
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    dispatch(setNavVisibility(true))
+  }, [])
 
   const onSubmit = async () => {
     setErrors({});

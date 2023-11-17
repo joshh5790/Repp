@@ -6,6 +6,7 @@ import OpenModalButton from "../../OpenModalButton";
 import SignupForm from "../../Modals/SignupForm";
 import "./Home.css";
 import { invalidImage } from "../../../utilities";
+import { setNavVisibility } from "../../../store/navigation";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,10 @@ const Home = () => {
   const repps = useSelector((state) => Object.values(state.pages));
 
   useEffect(() => {
-    dispatch(getRPagesHomeThunk()).then(() => setIsLoaded(true));
+    dispatch(getRPagesHomeThunk()).then(() => {
+      dispatch(setNavVisibility(true))
+      setIsLoaded(true)
+    } );
   }, [dispatch]);
 
   const handleNextImage = () => {

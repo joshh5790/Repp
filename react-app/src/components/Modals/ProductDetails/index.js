@@ -6,6 +6,7 @@ import { getProductStocksThunk } from "../../../store/productStock";
 import { getProductImagesThunk } from "../../../store/productImages";
 import { setCartVisibility } from "../../../store/navigation";
 import {
+  clearCartItemsThunk,
   createCartItemThunk,
   getCartItemsThunk,
 } from "../../../store/cartItems";
@@ -29,12 +30,12 @@ const ProductDetails = ({ product, setNumCartItems, preview }) => {
   const [quantity, setQuantity] = useState(1);
   const [focusImage, setFocusImage] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(preview)
+  const [isDisabled, setIsDisabled] = useState(preview);
   const { closeModal } = useModal();
 
   useEffect(() => {
     // set size to the first size that has stock
-    if (preview) setIsDisabled(true)
+    if (preview) setIsDisabled(true);
     dispatch(getProductImagesThunk(product.id))
       .then(() => dispatch(getProductStocksThunk(product.id)))
       .then((sizes) => {
@@ -57,7 +58,7 @@ const ProductDetails = ({ product, setNumCartItems, preview }) => {
   };
 
   const addToCart = async () => {
-    setIsDisabled(true)
+    setIsDisabled(true);
     let existingCart;
     for (const cart of carts) {
       if (cart.pageId === product.pageId) {
@@ -68,13 +69,14 @@ const ProductDetails = ({ product, setNumCartItems, preview }) => {
     if (existingCart) {
       await dispatch(createCartItemThunk(currStock.id, quantity)).then(() =>
         dispatch(getPageCartThunk(product.pageId)).then((data) =>
-          dispatch(getCartItemsThunk(Object.keys(data)[0])).then((data) => {
-            setNumCartItems(Object.keys(data).length);
-          })
+          dispatch(getCartItemsThunk(data.id)).then((data) =>
+            setNumCartItems(data.length)
+          )
         )
       );
     } else {
       await dispatch(createCartThunk(product.pageId))
+        .then(() => dispatch(clearCartItemsThunk()))
         .then(() => dispatch(createCartItemThunk(currStock.id, quantity)))
         .then(() => dispatch(getPageCartThunk(product.pageId)))
         .then(() => dispatch(setCartVisibility(true)));

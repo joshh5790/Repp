@@ -23,7 +23,6 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
   useEffect(() => {
     if (pageId) {
       dispatch(getPageCartThunk(pageId)).then((data) => {
-        console.log(data, "THIS IS DATA")
         if (data.id) {
           dispatch(getCartItemsThunk(data.id)).then((data) =>
             setNumCartItems(data.length)
@@ -31,7 +30,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
         }
       });
     }
-  }, [dispatch, pageId, setNumCartItems, reload]);
+  }, [dispatch, pageId, reload]);
 
   const handleCheckout = () => {
     dispatch(setCartVisibility(false));

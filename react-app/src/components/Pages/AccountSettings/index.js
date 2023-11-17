@@ -5,6 +5,7 @@ import OpenModalButton from '../../OpenModalButton'
 import DeleteAccount from "../../Modals/DeleteAccount"
 import InfoContainer from "./InfoContainer"
 import './AccountSettings.css'
+import { setNavVisibility } from "../../../store/navigation"
 
 function AccountSettings() {
     const dispatch = useDispatch()
@@ -13,6 +14,7 @@ function AccountSettings() {
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
+        dispatch(setNavVisibility(true))
         restoreUser()
         if (user.id === 1) setOtherEdit(true)
     }, [])
