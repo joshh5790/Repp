@@ -37,6 +37,8 @@ function App() {
             <Route exact path="/profile/new">
               <CreateProfile />
             </Route>
+            <Route exact path="/carts"></Route>
+            <Route exact path="/orders"></Route>
             <Route exact path="/checkout"></Route>
             <Route exact path="/search"></Route>
             <Route exact path="/:linkName">

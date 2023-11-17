@@ -71,9 +71,20 @@ const ReppNav = ({
             ))}
           </>
         ) : (
-          <h2 onClick={() => scrollToId(page?.linkName)}>
-            {page?.displayName}
-          </h2>
+          <>
+            {page?.personalLogo ? (
+              <img
+                alt={page?.displayName}
+                src={page?.personalLogo}
+                className="repp-nav-logo"
+                onClick={() => scrollToId(page?.linkName)}
+              />
+            ) : (
+              <h2 onClick={() => scrollToId(page?.linkName)}>
+                {page?.displayName}
+              </h2>
+            )}
+          </>
         )}
       </div>
       <div className="repp-nav-right">

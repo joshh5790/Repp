@@ -41,6 +41,10 @@ const EditVideos = ({ page }) => {
       setName("");
       setVideo("");
       setAddMode(false);
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      })
     }
   };
 

@@ -155,7 +155,7 @@ const EditProfile = () => {
                 </div>
                 <h2
                   className="preview-header manage-nav"
-                  onClick={() => setPreviewStyle((prev) => !prev)}
+                  // onClick={() => setPreviewStyle((prev) => !prev)}
                 >
                   <span
                     style={{
