@@ -1,10 +1,16 @@
 const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
   currency: "USD",
   style: "currency",
+  currencyDisplay: "symbol"
 });
 
 export function formatCurrency(number) {
   return CURRENCY_FORMATTER.format(number);
+}
+
+// returns currency symbol e.g. USD, EUR, etc.
+export function formatCurrencySymbol() {
+  return CURRENCY_FORMATTER.resolvedOptions().currency;
 }
 
 export function isObjectEmpty(obj) {

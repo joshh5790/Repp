@@ -30,7 +30,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
         }
       });
     }
-  }, [dispatch, pageId, reload]);
+  }, [dispatch, pageId, reload, setNumCartItems]);
 
   const handleCheckout = () => {
     dispatch(setCartVisibility(false));
