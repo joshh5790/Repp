@@ -19,7 +19,7 @@ function DeletePage({ page }) {
     if (confirmation === `delete page ${page.displayName}`) {
       setDisableButton(false);
     } else setDisableButton(true);
-  }, [confirmation]);
+  }, [confirmation, page.displayName]);
 
   const handleDelete = () => {
     dispatch(deleteRPageThunk(page.id)).then(() => {

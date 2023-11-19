@@ -1,7 +1,6 @@
 import "./Profile.css";
 import { useParams, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneRPageThunk } from "../../../store/pages";
 import { setNavVisibility } from "../../../store/navigation";
@@ -38,7 +37,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [isMobile]);
+  }, [isMobile, preview, previewStyle]);
 
   useEffect(async () => {
     if (preview) {
@@ -50,27 +49,29 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
         ].filter((value) => value)
       );
       await setMainImage(previewPage?.mainImage);
+      await setIsMobile(previewStyle)
       await setIsLoaded(true);
       return;
+    } else {
+      dispatch(getOneRPageThunk(linkName))
+        .then((profile) => {
+          if (!profile) return setInvalidPage(true);
+          setSectionHeaders(
+            [
+              profile.mainVideo && "WATCH",
+              profile.shopSection && "MERCH",
+              profile.videoSection && "VIDEOS",
+            ].filter((value) => value)
+          );
+          setMainImage(profile.mainImage);
+          document.title = profile.displayName
+          dispatch(setNavVisibility(false));
+        })
+        .then(() => setIsLoaded(true));
+      if (window.innerWidth <= 700) setIsMobile(true);
+      else setIsMobile(false);
     }
-    dispatch(getOneRPageThunk(linkName))
-      .then((profile) => {
-        if (!profile) return setInvalidPage(true);
-        setSectionHeaders(
-          [
-            profile.mainVideo && "WATCH",
-            profile.shopSection && "MERCH",
-            profile.videoSection && "VIDEOS",
-          ].filter((value) => value)
-        );
-        setMainImage(profile.mainImage);
-        dispatch(setNavVisibility(false));
-      })
-      .then(() => setIsLoaded(true));
-    if (preview) setIsMobile(previewStyle);
-    else if (window.innerWidth <= 700) setIsMobile(true);
-    else setIsMobile(false);
-  }, [dispatch, linkName]);
+  }, [dispatch, linkName, preview, previewStyle]);
 
   const scrollToId = (id) => {
     const element = document.getElementById(id.toLowerCase());
@@ -88,11 +89,6 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
     if (!invalidPage)
       return (
         <div className="repp-page">
-          {!preview && (
-            <Helmet>
-              <title>{page?.displayName}</title>
-            </Helmet>
-          )}
           <div id={linkName} style={{ height: "100vh", position: "relative" }}>
             <LinkSection
               page={page}

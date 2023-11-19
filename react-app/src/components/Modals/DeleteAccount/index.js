@@ -16,7 +16,7 @@ function DeleteAccount({ user }) {
     if (confirmation === `delete account ${user.email}`) {
       setDisableButton(false);
     } else setDisableButton(true);
-  }, [confirmation]);
+  }, [confirmation, user.email]);
 
   const handleDelete = () => {
     dispatch(deleteUser(user.id)).then(() => {

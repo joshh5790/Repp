@@ -48,7 +48,7 @@ const ProductDetails = ({ product, setNumCartItems, preview }) => {
         setOutOfStock(true);
       })
       .then(() => setIsLoaded(true));
-  }, [dispatch, product.id]);
+  }, [dispatch, product.id, preview]);
 
   const setSizeStock = (size) => {
     if (size.stock !== 0) {

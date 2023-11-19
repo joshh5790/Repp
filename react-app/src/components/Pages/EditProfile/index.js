@@ -39,6 +39,7 @@ const EditProfile = () => {
   }, [isMobile]);
 
   useEffect(async () => {
+    document.title = "REPP"
     await dispatch(getSessionPageThunk()).then(async (data) => {
       if (data && heightRef?.current) {
         await setHeight(heightRef.current.clientHeight);

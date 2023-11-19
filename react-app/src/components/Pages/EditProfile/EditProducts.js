@@ -40,7 +40,7 @@ const EditProducts = ({ page }) => {
         }
       });
     }
-  }, []);
+  }, [dispatch, page]);
 
   return (
     <>

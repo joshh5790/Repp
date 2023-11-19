@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Pages/Home";
@@ -15,6 +14,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
+    document.title = "REPP";
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -22,9 +22,6 @@ function App() {
     <>
       {isLoaded && (
         <>
-          <Helmet>
-            <title>REPP</title>
-          </Helmet>
           <Switch>
             <Route exact path="/">
               <Home />
@@ -40,7 +37,7 @@ function App() {
             </Route>
             <Route exact path="/carts"></Route>
             <Route exact path="/orders"></Route>
-            <Route exact path="/checkout">
+            <Route exact path="/checkout/:pageId">
               <Checkout />
             </Route>
             <Route exact path="/search"></Route>

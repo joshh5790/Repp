@@ -14,10 +14,11 @@ function AccountSettings() {
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
+        document.title = "Settings"
         dispatch(setNavVisibility(true))
         restoreUser()
         if (user.id === 1) setOtherEdit(true)
-    }, [])
+    }, [dispatch, restoreUser, user.id])
 
     const changeEditStatus = () => {
         setOtherEdit(prev => !prev)

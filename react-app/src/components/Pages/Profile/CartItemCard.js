@@ -55,6 +55,7 @@ const CartItemCard = ({ item, numCartItems, setNumCartItems, setReload }) => {
             value={quantity}
           >
             <option value="remove">Remove</option>
+            {/* shouldnt be able to exceed stock */}
             {Array.from(Array(99).keys()).map((el) => (
               <option value={el + 1} key={el + 1}>
                 {el + 1}

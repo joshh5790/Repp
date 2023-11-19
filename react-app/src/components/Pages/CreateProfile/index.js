@@ -24,8 +24,9 @@ const CreateProfile = () => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
+    document.title = "Create Profile"
     dispatch(setNavVisibility(true))
-  }, [])
+  }, [dispatch])
 
   const onSubmit = async () => {
     setErrors({});

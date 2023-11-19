@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import CartItemCard from "./CartItemCard";
 import { deleteCartThunk, getPageCartThunk } from "../../../store/carts";
 import { setCartVisibility } from "../../../store/navigation";
@@ -13,11 +13,10 @@ import {
 
 const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const cart = useSelector((state) => Object.values(state.carts)[0]);
   const cartItems = useSelector((state) => state.cartItems);
   const cartVisible = useSelector((state) => state.visibility.cart);
-  const [reload, setReload] = useState(false)
+  const [reload, setReload] = useState(false);
 
   // on page load
   useEffect(() => {
@@ -34,7 +33,6 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
 
   const handleCheckout = () => {
     dispatch(setCartVisibility(false));
-    history.push("/checkout");
   };
 
   const handleDeleteCart = () => {
@@ -64,8 +62,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
       >
         &nbsp;
       </div>
-      <div
-      className={`cart-sidebar ${cartVisible ? "" : "hide-cart"}`}>
+      <div className={`cart-sidebar ${cartVisible ? "" : "hide-cart"}`}>
         <i
           onClick={() => dispatch(setCartVisibility(false))}
           className="fa-solid fa-x modal"
@@ -95,7 +92,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
             <span>{formatCurrency(cart?.subtotal)}</span>
           </div>
           <NavLink
-            to="/checkout"
+            to={`/checkout/${pageId}`}
             onClick={handleCheckout}
             className="cart-checkout-button button-hover"
           >

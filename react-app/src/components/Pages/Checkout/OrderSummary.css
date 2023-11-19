@@ -1,0 +1,15 @@
+.cart-items-checkout {
+  width: 30rem;
+  padding-left: 2rem;
+  justify-self: flex-end;
+  position: sticky;
+  top: 7rem;
+  height: fit-content;
+}
+
+.checkout-subtotal-div {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #EEEEEE;
+  padding-top: 1rem;
+}

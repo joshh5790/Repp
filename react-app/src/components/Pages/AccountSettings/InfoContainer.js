@@ -138,7 +138,7 @@ function InfoContainer({
             <span key={entry[0]}>
               {` ${entry[1]}`}
               {entry[1] && (
-                <>{(entry[0] == "City" || entry[0] == "Address") && ","}</>
+                <>{(entry[0] === "City" || entry[0] === "Address") && ","}</>
               )}
             </span>
           ))}

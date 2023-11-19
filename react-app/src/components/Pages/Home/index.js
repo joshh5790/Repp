@@ -15,6 +15,7 @@ const Home = () => {
   const repps = useSelector((state) => Object.values(state.pages));
 
   useEffect(() => {
+    document.title = "REPP"
     dispatch(getRPagesHomeThunk()).then(() => {
       dispatch(setNavVisibility(true))
       setIsLoaded(true)

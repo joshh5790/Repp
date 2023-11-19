@@ -34,7 +34,7 @@ const ManageImages = ({ productId, showImage, setShowImage, setShowStock }) => {
     document.addEventListener("click", closeImages);
 
     return () => document.removeEventListener("click", closeImages);
-  }, [showImage]);
+  }, [showImage, setShowImage]);
 
   const openImage = (e) => {
     e.stopPropagation();

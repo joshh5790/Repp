@@ -2,7 +2,7 @@ import { useState, useEffect, React } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../../images/repp_name.png";
-import { setSidebarVisibility } from "../../store/navigation";
+// import { setSidebarVisibility } from "../../store/navigation";
 import ProfileButton from "./ProfileButton";
 import OpenModalButton from "../OpenModalButton";
 import LoginForm from "../Modals/LoginForm";
@@ -18,13 +18,13 @@ function Navigation() {
 
   useEffect(() => {
     setIsHome(location.pathname === '/')
-  })
+  }, [])
 
   useEffect(() => {}, [sessionUser, dispatch]);
 
-  const setSidebarVisible = (visible) => {
-    dispatch(setSidebarVisibility(visible));
-  };
+  // const setSidebarVisible = (visible) => {
+  //   dispatch(setSidebarVisibility(visible));
+  // };
 
   return (
     <ul className={`nav ${navVisible ? "" : "nav-hidden"} ${isHome ? "home-nav" : ""}`}>

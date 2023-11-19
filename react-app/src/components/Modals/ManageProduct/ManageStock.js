@@ -35,7 +35,7 @@ const ManageStock = ({ productId, showStock, setShowStock, setShowImage }) => {
     document.addEventListener("click", closeStock);
 
     return () => document.removeEventListener("click", closeStock);
-  }, [showStock]);
+  }, [showStock, setShowStock]);
 
   const openStock = (e) => {
     e.stopPropagation();
