@@ -23,6 +23,10 @@
   padding-right: 2rem;
 }
 
+.payment-form-inputs h2 {
+  margin-bottom: 0;
+}
+
 /* Buttons and links */
 
 #submit-payment {
