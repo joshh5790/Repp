@@ -14,8 +14,6 @@ function DeletePage({ page }) {
   const { closeModal } = useModal();
 
   useEffect(() => {
-    console.log(confirmation);
-    console.log(`delete page ${page.displayName}` === confirmation);
     if (confirmation === `delete page ${page.displayName}`) {
       setDisableButton(false);
     } else setDisableButton(true);

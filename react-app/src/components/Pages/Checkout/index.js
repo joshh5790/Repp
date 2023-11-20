@@ -53,9 +53,7 @@ export default function Checkout() {
     await dispatch(setNavVisibility(true));
     await dispatch(getPageCartThunk(pageId)).then(async (data) => {
       if (data) {
-        await dispatch(getCartPageThunk(data.id)).then((data) => {
-          console.log(data, "AAAAAAAAAAAAAAAAAAAA")
-        })
+        await dispatch(getCartPageThunk(data.id))
         await dispatch(getCartItemsThunk(data.id));
         loadData(data);
       }

@@ -147,7 +147,6 @@ export const updateRPageThunk =
     shopSection,
   }) =>
   async (dispatch) => {
-    console.log("THIS IS VIDEOSECTION", videoSection)
     const response = await fetch(`/api/pages/${pageId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
