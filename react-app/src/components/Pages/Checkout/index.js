@@ -35,7 +35,7 @@ export default function Checkout() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Content-Security-Policy": "script-src, https://checkout.stripe.com",
+        "Content-Security-Policy": "default-src 'self' script-src 'self' 'unsafe-inline' style-src 'self' 'unsafe-inline';",
       },
       body: JSON.stringify({
         amount,

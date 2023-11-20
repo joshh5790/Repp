@@ -81,9 +81,10 @@ def add_user_pepps():
     if not current_user:
         return {"error": "Unauthorized"}, 401
     premiumPepps = request.get_json()['premiumPepps']
-    current_user.premiumPepps += premiumPepps
+    user = User.query.get(current_user.id)
+    user.premiumPepps += premiumPepps
     db.session.commit()
-    return current_user.to_dict()
+    return user.to_dict()
 
 # DELETE /session/account
 @session_routes.route("/account", methods=["DELETE"])

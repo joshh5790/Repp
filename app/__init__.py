@@ -76,6 +76,10 @@ def https_redirect():
             code = 301
             return redirect(url, code=code)
 
+@app.after_request
+def add_security_headers(response):
+    response.headers["Content-Security-Policy"] = "default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'https://checkout.stripe.com'; style-src 'self' 'unsafe-inline'"
+    return response
 
 @app.after_request
 def inject_csrf_token(response):

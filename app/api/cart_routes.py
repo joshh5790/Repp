@@ -83,4 +83,4 @@ def create_order(cartId):
         db.session.add(orderItem)
     db.session.delete(cart)
     db.session.commit()
-    return {"order": order.to_dict(), "items": order.get_items()}
+    return order.to_dict()

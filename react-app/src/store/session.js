@@ -135,6 +135,26 @@ export const updateUser =
     } else return ["Failed to update user."];
   };
 
+// PUT /session/PremiumPepps
+export const updateUserPepps = (premiumPepps) => async (dispatch) => {
+  const response = await fetch("/api/session/premiumPepps", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      premiumPepps,
+    }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) return data.errors;
+  } else return ["Failed to update premium pepps."];
+};
+
 // DELETE /session/account
 export const deleteUser = () => async (dispatch) => {
   const response = await fetch("/api/session/account", {
