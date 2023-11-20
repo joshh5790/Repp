@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
   ExpressCheckoutElement,
   AddressElement,
@@ -9,7 +11,9 @@ import {
 } from "@stripe/react-stripe-js";
 import OrderSummary from "./OrderSummary";
 
-export default function CheckoutForm({ user, cart, cartItems }) {
+export default function CheckoutForm({ user, cart, cartItems, page }) {
+  const dispatch = useDispatch()
+  const history = useHistory();
   const stripe = useStripe();
   const elements = useElements();
 
@@ -71,7 +75,9 @@ export default function CheckoutForm({ user, cart, cartItems }) {
     }
 
     setIsLoading(false);
+    history.push(`/confirmation/${page.linkName}`);
   };
+
   const mapKey = process.env.REACT_APP_MAPS_API_KEY;
 
   const linkAuthElementOptions = {
@@ -114,48 +120,61 @@ export default function CheckoutForm({ user, cart, cartItems }) {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <div className="payment-form-inputs">
-        {/* <ExpressCheckoutElement options={expressCheckoutElementOptions} /> */}
-        <div>
-          <h2>Contact</h2>
-          <LinkAuthenticationElement
-            options={linkAuthElementOptions}
-            id="link-authentication-element"
-          />
+    <>
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <div className="checkout-header">
+          {page?.personalLogo ? (
+            <img
+              alt={page?.displayName}
+              src={page?.personalLogo}
+              className="repp-nav-logo"
+            />
+          ) : (
+            <h2>{page?.displayName}</h2>
+          )}
         </div>
-        <div>
-          <h2>Delivery</h2>
-          <AddressElement options={addressElementOptions} />
+        <div style={{ display: "flex" }}>
+          <div className="payment-form-inputs">
+            {/* <ExpressCheckoutElement options={expressCheckoutElementOptions} /> */}
+            <div>
+              <h2>Contact</h2>
+              <LinkAuthenticationElement
+                options={linkAuthElementOptions}
+                id="link-authentication-element"
+              />
+            </div>
+            <div>
+              <h2>Delivery</h2>
+              <AddressElement options={addressElementOptions} />
+            </div>
+            <div>
+              <h2>Payment</h2>
+              <PaymentElement
+                id="payment-element"
+                options={paymentElementOptions}
+              />
+            </div>
+          </div>
+          <div>
+            <OrderSummary cart={cart} cartItems={cartItems} />
+            <button
+              disabled={isLoading || !stripe || !elements}
+              id="submit-payment"
+              className="button-hover"
+            >
+              <span id="button-text">
+                {isLoading ? (
+                  <div className="spinner" id="spinner"></div>
+                ) : (
+                  "Pay now"
+                )}
+              </span>
+            </button>
+            {/* Show any error or success messages */}
+            {/* {message && <div id="payment-message">{message}</div>} */}
+          </div>
         </div>
-        <div>
-          <h2>Payment</h2>
-          <PaymentElement
-            id="payment-element"
-            options={paymentElementOptions}
-          />
-        </div>
-      </div>
-      <div className="cart-items-checkout">
-        <div>
-          <OrderSummary cart={cart} cartItems={cartItems} />
-        </div>
-        <button
-          disabled={isLoading || !stripe || !elements}
-          id="submit-payment"
-          className="button-hover"
-        >
-          <span id="button-text">
-            {isLoading ? (
-              <div className="spinner" id="spinner"></div>
-            ) : (
-              "Pay now"
-            )}
-          </span>
-        </button>
-        {/* Show any error or success messages */}
-        {/* {message && <div id="payment-message">{message}</div>} */}
-      </div>
-    </form>
+      </form>
+    </>
   );
 }

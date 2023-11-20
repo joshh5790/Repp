@@ -30,6 +30,9 @@ class Cart(db.Model):
             "subtotal": self.subtotal,
         }
 
+    def get_page(self):
+        return self.page.to_dict()
+
     def get_items(self):
         return [cartItem.to_dict() for cartItem in self.cartItems]
 

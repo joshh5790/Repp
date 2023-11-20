@@ -3,18 +3,20 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { formatCurrency, formatCurrencySymbol } from "../../../utilities";
-import CheckoutForm from "./CheckoutForm";
-
-import "./Checkout.css";
+import { formatCurrencySymbol } from "../../../utilities";
+import { getCartPageThunk } from "../../../store/pages";
 import { setNavVisibility } from "../../../store/navigation";
 import { getPageCartThunk } from "../../../store/carts";
 import { getCartItemsThunk } from "../../../store/cartItems";
+import CheckoutForm from "./CheckoutForm";
+
+import "./Checkout.css";
 
 export default function Checkout() {
   const dispatch = useDispatch();
-  const { pageId } = useParams();
+  const { pageId } = useParams(); // use linkname instead
   const user = useSelector((state) => state.session.user);
+  const page = useSelector((state) => Object.values(state.pages)[0]);
   const cart = useSelector((state) => Object.values(state.carts)[0]);
   const cartItems = useSelector((state) => Object.values(state.cartItems));
   const [clientSecret, setClientSecret] = useState("");
@@ -49,9 +51,12 @@ export default function Checkout() {
 
   useEffect(async () => {
     await dispatch(setNavVisibility(true));
-    await dispatch(getPageCartThunk(pageId)).then((data) => {
+    await dispatch(getPageCartThunk(pageId)).then(async (data) => {
       if (data) {
-        dispatch(getCartItemsThunk(data.id));
+        await dispatch(getCartPageThunk(data.id)).then((data) => {
+          console.log(data, "AAAAAAAAAAAAAAAAAAAA")
+        })
+        await dispatch(getCartItemsThunk(data.id));
         loadData(data);
       }
     });
@@ -66,10 +71,10 @@ export default function Checkout() {
   };
 
   return (
-    <div className="page-container">
+    <div className="page-container" style={{height: "calc(100vh - 5rem)", overflow: 'hidden'}}>
       {clientSecret && (
         <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm user={user} cart={cart} cartItems={cartItems} />
+          <CheckoutForm user={user} cart={cart} cartItems={cartItems} page={page} />
         </Elements>
       )}
     </div>

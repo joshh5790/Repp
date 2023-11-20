@@ -24,6 +24,19 @@ export const getSessionPageThunk = () => async (dispatch) => {
   } else return ["Failed to retrieve session page."];
 };
 
+// GET /cart/page
+export const getCartPageThunk = (cartId) => async (dispatch) => {
+  const response = await fetch(`/api/carts/${cartId}/page`);
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setRPage({ [data.linkName]: data }));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) return data.errors;
+  } else return ["Failed to retrieve cart page."];
+}
+
 // GET /pages/
 export const getRPagesThunk = () => async (dispatch) => {
   const response = await fetch("/api/pages");

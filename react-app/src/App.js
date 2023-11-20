@@ -9,6 +9,7 @@ import CreateProfile from "./components/Pages/CreateProfile";
 import EditProfile from "./components/Pages/EditProfile";
 import AccountSettings from "./components/Pages/AccountSettings";
 import Checkout from "./components/Pages/Checkout";
+import Confirmation from "./components/Pages/Confirmation";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +42,9 @@ function App() {
               <Checkout />
             </Route>
             <Route exact path="/search"></Route>
-            <Route exact path="/confirmation"></Route>
+            <Route exact path="/confirmation/:linkName">
+              <Confirmation />
+            </Route>
             <Route exact path="/:linkName">
               <Profile />
             </Route>

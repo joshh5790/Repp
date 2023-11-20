@@ -1,0 +1,39 @@
+.confirmation-text {
+  width: 80vw;
+  max-width: 30rem;
+  align-self: center;
+  text-align: center;
+  gap: 1rem;
+  background-color: rgb(154, 255, 181);
+  border-radius: 20px;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.confirmation-orders-link {
+  text-decoration: none;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  width: 100%;
+  max-width: 15rem;
+}
+
+.confirmation-orders-link:hover {
+  background-color: white;
+  color: black;
+}
+
+.confirmation-artist-link {
+  text-decoration: none;
+  color: white;
+  background-color: #4444FF;
+  border: 1px solid #4444FF;
+  width: 100%;
+  max-width: 15rem;
+}
+
+.confirmation-artist-link:hover {
+  background-color: white;
+  color: #4444FF;
+}

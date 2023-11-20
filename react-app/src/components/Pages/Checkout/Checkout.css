@@ -11,16 +11,25 @@
 
 #payment-form {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  padding: 2rem;
-  justify-content: center;
 }
 
+.checkout-header {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+
 .payment-form-inputs {
-  width: 60%;
+  width: 35vw;
   max-width: 30rem;
   border-right: 1px solid #EEEEEE;
   padding-right: 2rem;
+  overflow: auto;
+  height: calc(100vh - 10rem);
 }
 
 .payment-form-inputs h2 {
@@ -30,14 +39,16 @@
 /* Buttons and links */
 
 #submit-payment {
-  margin: 2rem 0 0 2rem;
+  margin: 2rem 0 0 1rem;
   background: #4444FF;
   border: 1px solid #4444FF;
   color: #ffffff;
   cursor: pointer;
   display: block;
   width: 100%;
-  max-width: 30rem;
+  width: 30vw;
+  min-width: 24rem;
+  max-width: 29rem;
 }
 
 #submit-payment:hover {

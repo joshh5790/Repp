@@ -13,21 +13,21 @@ function AccountSettings() {
     const [otherEdit, setOtherEdit] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
 
+    const restoreUser = () => {
+        setIsLoaded(false)
+        dispatch(authenticate())
+        .then(() => setIsLoaded(true))
+    }
+
     useEffect(() => {
         document.title = "Settings"
         dispatch(setNavVisibility(true))
         restoreUser()
         if (user.id === 1) setOtherEdit(true)
-    }, [dispatch, restoreUser, user.id])
+    }, [dispatch, user.id])
 
     const changeEditStatus = () => {
         setOtherEdit(prev => !prev)
-    }
-
-    const restoreUser = () => {
-        setIsLoaded(false)
-        dispatch(authenticate())
-        .then(() => setIsLoaded(true))
     }
 
     return (

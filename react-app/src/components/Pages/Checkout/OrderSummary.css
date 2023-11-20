@@ -1,15 +1,30 @@
 .cart-items-checkout {
-  width: 30rem;
-  padding-left: 2rem;
+  max-width: 30rem;
+  width: 30vw;
+  min-width: 25rem;
+  padding-left: 1rem;
   justify-self: flex-end;
   position: sticky;
-  top: 7rem;
-  height: fit-content;
+  top: 0;
+  height: calc(100vh - 20rem);
+}
+
+.checkout-cart-items-list {
+  overflow-y: auto;
+  height: 40vh;
+  max-height: 25rem;
+  padding-right: 2rem;
+  margin: 0;
+}
+
+.checkout-cart-items-list::-webkit-scrollbar {
+  display: none;
 }
 
 .checkout-subtotal-div {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #EEEEEE;
+  box-shadow: 0 -5px 3px rgba(0, 0, 0, 0.2);
   padding-top: 1rem;
+  padding-right: 2rem;
 }

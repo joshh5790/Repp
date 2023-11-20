@@ -5,12 +5,14 @@ const OrderSummary = ({ cart, cartItems }) => {
   return (
     <div className="cart-items-checkout">
       <h2>Order Summary</h2>
+      <div className="checkout-cart-items-list">
+
       {cartItems &&
         cartItems.map((item) => (
           <div
             key={item.id}
             className="cart-item-card"
-            style={{ marginBottom: "1rem" }}
+            style={{ margin: "1rem 0" }}
           >
             <div style={{ position: "relative" }}>
               <img className="cart-item-img" src={item.image} alt={item.name} />
@@ -20,9 +22,10 @@ const OrderSummary = ({ cart, cartItems }) => {
               {item.name} <br />
               <b>{item.size}</b>
             </p>
-            <p>{formatCurrency(item.price)}</p>
+            <p>{formatCurrency(item.price * item.quantity)}</p>
           </div>
         ))}
+      </div>
       <div className="checkout-subtotal-div"
         style={{
           display: "flex",
