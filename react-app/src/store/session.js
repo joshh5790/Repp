@@ -21,6 +21,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) return data.errors;
 
     dispatch(setUser(data));
+    return data
   } else return ["Failed to authenticate."];
 };
 

@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     lastName = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     gender = db.Column(db.String(10))
+    # phone = db.Column(db.String(20))
     address = db.Column(db.String(255))
     city = db.Column(db.String(255))
     state = db.Column(db.String(255))
