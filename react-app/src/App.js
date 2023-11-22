@@ -38,7 +38,7 @@ function App() {
             </Route>
             <Route exact path="/carts"></Route>
             <Route exact path="/orders"></Route>
-            <Route exact path="/checkout/:pageId">
+            <Route exact path="/checkout/:linkName">
               <Checkout />
             </Route>
             <Route exact path="/search"></Route>

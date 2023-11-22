@@ -144,6 +144,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
           />
           {!preview && (
             <Cart
+              linkName={linkName}
               pageId={page?.id}
               numCartItems={numCartItems}
               setNumCartItems={setNumCartItems}

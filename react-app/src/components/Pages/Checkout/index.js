@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { formatCurrencySymbol } from "../../../utilities";
-import { getCartPageThunk } from "../../../store/pages";
+import { getCartPageThunk, getOneRPageThunk } from "../../../store/pages";
 import { setNavVisibility } from "../../../store/navigation";
 import { getPageCartThunk } from "../../../store/carts";
 import { getCartItemsThunk } from "../../../store/cartItems";
@@ -24,9 +24,7 @@ const loadData = async (data, userId, setClientSecret) => {
   const response = await fetch("/api/checkout/create-payment-intent", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "Content-Security-Policy":
-        "default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';",
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       amount,
@@ -42,7 +40,7 @@ const loadData = async (data, userId, setClientSecret) => {
 
 export default function Checkout() {
   const dispatch = useDispatch();
-  const { pageId } = useParams(); // use linkname instead
+  const { linkName } = useParams();
   const user = useSelector((state) => state.session.user);
   const page = useSelector((state) => Object.values(state.pages)[0]);
   const cart = useSelector((state) => Object.values(state.carts)[0]);
@@ -51,17 +49,19 @@ export default function Checkout() {
   const publishable_key = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY;
   const stripePromise = loadStripe(publishable_key);
 
-  useEffect(async () => {
-    await dispatch(setNavVisibility(true));
-    await dispatch(getPageCartThunk(pageId)).then(async (data) => {
-      if (data) {
-        await dispatch(getCartPageThunk(data.id));
-        await dispatch(getCartItemsThunk(data.id));
-        await dispatch(authenticate()).then((user) => {
-          loadData(data, user.id, setClientSecret);
-        });
-      }
-    });
+  useEffect(() => {
+    dispatch(setNavVisibility(true));
+    dispatch(getOneRPageThunk(linkName)).then(page => {
+
+      dispatch(getPageCartThunk(page.id)).then(async (data) => {
+        if (data) {
+          await dispatch(getCartItemsThunk(data.id));
+          await dispatch(authenticate()).then((user) => {
+            loadData(data, user.id, setClientSecret);
+          });
+        }
+      });
+    })
   }, [dispatch]);
 
   const appearance = {

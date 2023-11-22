@@ -11,7 +11,7 @@ import {
   getCartItemsThunk,
 } from "../../../store/cartItems";
 
-const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
+const Cart = ({ pageId, linkName, numCartItems, setNumCartItems }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => Object.values(state.carts)[0]);
   const cartItems = useSelector((state) => state.cartItems);
@@ -92,7 +92,7 @@ const Cart = ({ pageId, numCartItems, setNumCartItems }) => {
             <span>{formatCurrency(cart?.subtotal)}</span>
           </div>
           <NavLink
-            to={`/checkout/${pageId}`}
+            to={`/checkout/${linkName}`}
             onClick={handleCheckout}
             className="cart-checkout-button button-hover"
           >
