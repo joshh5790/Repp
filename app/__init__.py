@@ -78,7 +78,7 @@ def https_redirect():
 
 @app.after_request
 def add_security_headers(response):
-    response.headers["Content-Security-Policy"] = "script-src, https://connect-js.stripe.com, https://js.stripe.com, https://checkout.stripe.com, https://maps.googleapis.com; connect-src, https://api.stripe.com, https://checkout.stripe.com, https://maps.googleapis.com; frame-src, https://connect-js.stripe.com, https://js.stripe.com, https://checkout.stripe.com, https://hooks.stripe.com; img-src, https://*.stripe.com;"
+    response.headers["Content-Security-Policy"] = "script-src, https://repp.onrender.com, https://connect-js.stripe.com, https://js.stripe.com, https://checkout.stripe.com, https://maps.googleapis.com; connect-src, https://api.stripe.com, https://checkout.stripe.com, https://maps.googleapis.com; frame-src, https://connect-js.stripe.com, https://js.stripe.com, https://checkout.stripe.com, https://hooks.stripe.com; img-src, https://repp.onrender.com, https://*.stripe.com;"
     return response
 
 @app.after_request
