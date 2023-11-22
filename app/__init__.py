@@ -77,8 +77,14 @@ def https_redirect():
             return redirect(url, code=code)
 
 @app.after_request
-def add_security_headers(response):
-    response.headers["Content-Security-Policy"] = "script-src 'self' https://kit.fontawesome.com/ https://connect-js.stripe.com https://js.stripe.com https://checkout.stripe.com https://maps.googleapis.com; connect-src 'self' https://api.stripe.com https://checkout.stripe.com https://maps.googleapis.com; frame-src 'self' https://connect-js.stripe.com https://js.stripe.com https://checkout.stripe.com https://hooks.stripe.com; img-src 'self' https://*.stripe.com;"
+def add_csp(response):
+    # csp = "default-src 'self'; "
+    # csp += "script-src 'self' https://kit.fontawesome.com/ https://connect-js.stripe.com https://js.stripe.com https://checkout.stripe.com https://maps.googleapis.com; "
+    # csp += "connect-src 'self' https://api.stripe.com https://checkout.stripe.com https://maps.googleapis.com; "
+    # csp += "frame-src 'self' https://connect-js.stripe.com https://js.stripe.com https://checkout.stripe.com https://hooks.stripe.com; "
+    # csp += "img-src 'self' https://*.stripe.com; "
+    csp = 'default-src *; script-src *; connect-src *; frame-src *; img-src *;'
+    response.headers['Content-Security-Policy'] = csp
     return response
 
 @app.after_request
