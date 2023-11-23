@@ -8,6 +8,11 @@ import productStock from "./productStock";
 import videos from "./videos";
 import carts from "./carts";
 import cartItems from "./cartItems";
+import orders from "./orders";
+import orderItems from "./orderItems";
+import tours from "./tours";
+import tourLocations from './tourLocations'
+import follows from "./follows";
 import visibility from "./navigation";
 
 const rootReducer = combineReducers({
@@ -19,6 +24,11 @@ const rootReducer = combineReducers({
   videos,
   carts,
   cartItems,
+  orders,
+  orderItems,
+  tours,
+  tourLocations,
+  follows,
   visibility,
 });
 

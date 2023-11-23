@@ -23,7 +23,7 @@ const removeProductStock = (productStockId) => ({
 
 // thunks
 
-// GET /products/:productId/productStock/
+// GET /products/:productId/productStock
 export const getProductStocksThunk = (productId) => async (dispatch) => {
   const response = await fetch(`/api/products/${productId}/productStock`);
   if (response.ok) {
@@ -40,7 +40,7 @@ export const getProductStocksThunk = (productId) => async (dispatch) => {
   } else return ["Failed to retrieve product stocks."];
 };
 
-// POST /products/:productId/productStock/
+// POST /products/:productId/productStock
 export const createProductStockThunk =
   ({ productId, size, stock }) =>
   async (dispatch) => {
