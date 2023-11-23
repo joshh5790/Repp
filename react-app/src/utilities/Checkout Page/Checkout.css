@@ -1,4 +1,4 @@
-.item-quantity-checkout {
+/* .item-quantity-checkout {
   position: absolute;
   top: -0.7rem;
   right: -0.7rem;
@@ -36,7 +36,6 @@
   margin-bottom: 0;
 }
 
-/* Buttons and links */
 
 #submit-payment {
   margin: 2rem 0 0 1rem;
@@ -61,7 +60,6 @@ button:disabled {
   cursor: default;
 }
 
-/* spinner/processing state, errors */
 .spinner,
 .spinner:before,
 .spinner:after {
@@ -132,4 +130,4 @@ button:disabled {
     width: 80vw;
     min-width: initial;
   }
-}
+} */

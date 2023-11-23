@@ -8,7 +8,7 @@ import Profile from "./components/Pages/Profile";
 import CreateProfile from "./components/Pages/CreateProfile";
 import EditProfile from "./components/Pages/EditProfile";
 import AccountSettings from "./components/Pages/AccountSettings";
-import Checkout from "./components/Pages/Checkout";
+// import Checkout from "./components/Pages/Checkout";
 import Confirmation from "./components/Pages/Confirmation";
 
 function App() {
@@ -38,9 +38,9 @@ function App() {
             </Route>
             <Route exact path="/carts"></Route>
             <Route exact path="/orders"></Route>
-            <Route exact path="/checkout/:linkName">
+            {/* <Route exact path="/checkout/:linkName">
               <Checkout />
-            </Route>
+            </Route> */}
             <Route exact path="/search"></Route>
             <Route exact path="/confirmation/:linkName">
               <Confirmation />
