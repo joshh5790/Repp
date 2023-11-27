@@ -18,7 +18,7 @@ function Navigation() {
 
   useEffect(() => {
     setIsHome(location.pathname === '/')
-  }, [])
+  }, [location.pathname])
 
   useEffect(() => {}, [sessionUser, dispatch]);
 
