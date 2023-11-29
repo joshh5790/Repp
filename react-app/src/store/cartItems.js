@@ -3,6 +3,7 @@
 const SET_CARTITEMS = "cartItems/SET_CARTITEMS";
 const ADD_CARTITEM = "cartItems/ADD_CARTITEM";
 const REMOVE_CARTITEM = "cartItems/REMOVE_CARTITEM";
+const CLEAR_CARTITEMS = "cartItems/CLEAR_CARTITEMS";
 
 // action creators
 
@@ -21,6 +22,9 @@ const removeCartItem = (cartItemId) => ({
   payload: cartItemId,
 });
 
+const clearCartItems = () => ({
+    type: CLEAR_CARTITEMS,
+})
 // thunks
 
 // GET /carts/:cartId/cartItems/
@@ -100,7 +104,7 @@ export const deleteCartItemThunk = (cartItemId) => async (dispatch) => {
 
 // clear cartItems
 export const clearCartItemsThunk = () => async (dispatch) => {
-  dispatch(setCartItems({}));
+  dispatch(clearCartItems());
 };
 
 const initialState = {};
@@ -115,6 +119,8 @@ export default function reducer(state = initialState, action) {
       const newState = { ...state };
       delete newState[action.payload];
       return newState;
+    case CLEAR_CARTITEMS:
+      return {}
     default:
       return state;
   }

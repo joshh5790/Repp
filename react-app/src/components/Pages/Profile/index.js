@@ -77,7 +77,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
     const element = document.getElementById(id.toLowerCase());
     const elementPosition =
       element.getBoundingClientRect().top + window.scrollY;
-    const headerOffset = navVisible ? 127 : 79;
+    const headerOffset = navVisible ? 159 : 79;
     const offsetPosition = elementPosition - headerOffset;
     window.scrollTo({
       top: offsetPosition,
