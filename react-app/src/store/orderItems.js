@@ -33,7 +33,8 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_ORDERITEMS:
-      return { ...action.payload };
+
+      return { ...state, ...action.payload };
     default:
       return state;
   }

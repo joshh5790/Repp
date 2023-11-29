@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import CartItemCard from "./CartItemCard";
-import { deleteCartThunk, getPageCartThunk } from "../../../store/carts";
+import { clearCartThunk, deleteCartThunk, getPageCartThunk } from "../../../store/carts";
 import { setCartVisibility } from "../../../store/navigation";
 import { formatCurrency } from "../../../utilities";
 import "./Cart.css";
@@ -10,6 +10,7 @@ import {
   clearCartItemsThunk,
   getCartItemsThunk,
 } from "../../../store/cartItems";
+import { createOrderThunk } from "../../../store/orders";
 
 const Cart = ({ pageId, linkName, numCartItems, setNumCartItems }) => {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ const Cart = ({ pageId, linkName, numCartItems, setNumCartItems }) => {
 
   const handleCheckout = () => {
     dispatch(setCartVisibility(false));
+    dispatch(createOrderThunk(cart.id))
+    dispatch(clearCartThunk())
+    dispatch(clearCartItemsThunk())
   };
 
   const handleDeleteCart = () => {
@@ -92,7 +96,7 @@ const Cart = ({ pageId, linkName, numCartItems, setNumCartItems }) => {
             <span>{formatCurrency(cart?.subtotal)}</span>
           </div>
           <NavLink
-            to={`/checkout/${linkName}`}
+            to={`/confirmation/${linkName}`}
             onClick={handleCheckout}
             className="cart-checkout-button button-hover"
           >

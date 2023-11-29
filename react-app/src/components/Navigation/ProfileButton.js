@@ -79,7 +79,7 @@ function ProfileButton({ user }) {
               onError={invalidImage}
             />
           ) : (
-            <i className="fas fa-user-circle" style={{fontSize: "5rem"}}/>
+            <i className="fas fa-user-circle" style={{ fontSize: "5rem" }} />
           )}
           <div className="dropdown-info">
             <div>
@@ -96,11 +96,49 @@ function ProfileButton({ user }) {
             <div>&nbsp;</div>
           )}
         </div>
-        <NavLink onClick={closeMenu} className="dropdown-button button-hover" to="/account">
+        <NavLink
+          onClick={closeMenu}
+          className="dropdown-button button-hover"
+          to="/account/carts"
+        >
+          <span>
+            <i
+              className="fa-solid fa-cart-shopping"
+              style={{ color: "#7777FF", width: "2rem", marginRight: "1rem" }}
+            />
+            Your Carts
+          </span>
+          <i
+            className="fa-solid fa-chevron-right"
+            style={{ color: "#999999", fontSize: "1.2rem" }}
+          />
+        </NavLink>
+        <NavLink
+          onClick={closeMenu}
+          className="dropdown-button button-hover"
+          to="/account/orders"
+        >
+          <span>
+            <i
+              className="fa-solid fa-clock-rotate-left"
+              style={{ color: "#7777FF", width: "2rem", marginRight: "1rem" }}
+            />
+            Order History
+          </span>
+          <i
+            className="fa-solid fa-chevron-right"
+            style={{ color: "#999999", fontSize: "1.2rem" }}
+          />
+        </NavLink>
+        <NavLink
+          onClick={closeMenu}
+          className="dropdown-button button-hover"
+          to="/account"
+        >
           <span>
             <i
               className="fa-solid fa-gear"
-              style={{ color: "#7777FF", width: "2rem" }}
+              style={{ color: "#7777FF", width: "2rem", marginRight: "1rem" }}
             />
             Account Settings
           </span>
@@ -118,7 +156,7 @@ function ProfileButton({ user }) {
             <span>
               <i
                 className="fa-solid fa-book-open"
-                style={{ color: "#7777FF", width: "2rem" }}
+                style={{ color: "#7777FF", width: "2rem", marginRight: "1rem" }}
               />
               Edit Your Profile Page
             </span>
@@ -136,7 +174,7 @@ function ProfileButton({ user }) {
             <span>
               <i
                 className="fa-solid fa-book-open"
-                style={{ color: "#7777FF", width: "2rem" }}
+                style={{ color: "#7777FF", width: "2rem", marginRight: "1rem" }}
               />
               Create Your Profile Page
             </span>
@@ -150,7 +188,7 @@ function ProfileButton({ user }) {
           <span>
             <i
               className="fa-solid fa-arrow-right-from-bracket"
-              style={{ color: "#FF7777", width: "2rem" }}
+              style={{ color: "#FF7777", width: "2rem", marginRight: "1rem" }}
             />
             Log Out
           </span>

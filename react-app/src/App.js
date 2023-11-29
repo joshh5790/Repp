@@ -8,6 +8,8 @@ import Profile from "./components/Pages/Profile";
 import CreateProfile from "./components/Pages/CreateProfile";
 import EditProfile from "./components/Pages/EditProfile";
 import AccountSettings from "./components/Pages/AccountSettings";
+import Carts from "./components/Pages/Carts";
+import Orders from "./components/Pages/Orders";
 // import Checkout from "./components/Pages/Checkout";
 import Confirmation from "./components/Pages/Confirmation";
 
@@ -27,6 +29,12 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
+            <Route exact path="/account/carts">
+              <Carts />
+            </Route>
+            <Route exact path="/account/orders">
+              <Orders />
+            </Route>
             <Route exact path="/account">
               <AccountSettings />
             </Route>
@@ -36,8 +44,6 @@ function App() {
             <Route exact path="/profile/new">
               <CreateProfile />
             </Route>
-            <Route exact path="/carts"></Route>
-            <Route exact path="/orders"></Route>
             {/* <Route exact path="/checkout/:linkName">
               <Checkout />
             </Route> */}

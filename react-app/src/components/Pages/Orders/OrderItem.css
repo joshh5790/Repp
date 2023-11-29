@@ -1,0 +1,11 @@
+.order-item-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-item-img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+}

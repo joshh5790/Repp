@@ -23,6 +23,15 @@ def get_pages_home():
     pages = Page.query.all()
     return [page.home_page_info() for page in pages]
 
+# GET /pages/id/:pageId
+@page_routes.route("/id/<int:pageId>")
+def get_page_by_id(pageId):
+    """
+    Query for a page by id and returns that page in a dictionary
+    """
+    page = Page.query.get(pageId)
+    return page.to_dict()
+
 # POST /pages/
 @page_routes.route("/", methods=["POST"])
 @login_required

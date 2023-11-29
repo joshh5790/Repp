@@ -6,7 +6,7 @@
 // import { useParams } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
 // import { formatCurrencySymbol } from "../../../utilities";
-// import { getCartPageThunk, getOneRPageThunk } from "../../../store/pages";
+// import { getPageByIdThunk, getOneRPageThunk } from "../../../store/pages";
 // import { setNavVisibility } from "../../../store/navigation";
 // import { getPageCartThunk } from "../../../store/carts";
 // import { getCartItemsThunk } from "../../../store/cartItems";

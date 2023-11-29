@@ -2,6 +2,19 @@
 
 const GET_ORDERS = "session/GET_ORDERS";
 
+// Selectors
+
+export const ordersSelector = (state) => {
+  const ordersArr = Object.values(state.orders);
+  ordersArr.sort((a, b) => {
+    const dateA = new Date(a?.createdAt);
+    const dateB = new Date(b?.createdAt);
+    return dateB - dateA;
+  });
+  console.log(ordersArr)
+  return ordersArr
+}
+
 // action creators
 
 const getOrders = (orders) => ({
@@ -12,7 +25,7 @@ const getOrders = (orders) => ({
 // thunks
 
 // GET /session/orders/
-export const getOrderThunk = () => async (dispatch) => {
+export const getOrdersThunk = () => async (dispatch) => {
   const response = await fetch(`/api/session/orders`);
   if (response.ok) {
     const data = await response.json();

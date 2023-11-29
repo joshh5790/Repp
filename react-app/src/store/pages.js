@@ -1,11 +1,17 @@
 // constants
 
 const SET_RPAGE = "pages/SET_RPAGE";
+const ADD_RPAGE = "pages/ADD_RPAGE";
 
 // action creators
 
 const setRPage = (rpage) => ({
   type: SET_RPAGE,
+  payload: rpage,
+});
+
+const addRPage = (rpage) => ({
+  type: ADD_RPAGE,
   payload: rpage,
 });
 
@@ -24,9 +30,22 @@ export const getSessionPageThunk = () => async (dispatch) => {
   } else return ["Failed to retrieve session page."];
 };
 
-// GET /cart/page
-export const getCartPageThunk = (cartId) => async (dispatch) => {
-  const response = await fetch(`/api/carts/${cartId}/page`);
+// GET /pages/id/:pageId
+export const addPageThunk = (pageId) => async (dispatch) => {
+  const response = await fetch(`/api/pages/id/${pageId}`);
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(addRPage({ [data.id]: data }));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) return data.errors;
+  } else return ["Failed to retrieve page."];
+};
+
+// GET /pages/id/:pageId
+export const getPageByIdThunk = (pageId) => async (dispatch) => {
+  const response = await fetch(`/api/pages/id/${pageId}`);
   if (response.ok) {
     const data = await response.json();
     dispatch(setRPage({ [data.linkName]: data }));
@@ -34,10 +53,10 @@ export const getCartPageThunk = (cartId) => async (dispatch) => {
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to retrieve cart page."];
-}
+  } else return ["Failed to retrieve page."];
+};
 
-// GET /pages/
+// GET /pages
 export const getRPagesThunk = () => async (dispatch) => {
   const response = await fetch("/api/pages");
   if (response.ok) {
@@ -81,7 +100,7 @@ export const getOneRPageThunk = (linkName) => async (dispatch) => {
   } else return;
 };
 
-// POST /pages/
+// POST /pages
 export const createRPageThunk =
   ({
     displayName,
@@ -198,6 +217,8 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_RPAGE:
       return { ...action.payload };
+    case ADD_RPAGE:
+      return { ...state, ...action.payload };
     default:
       return state;
   }
