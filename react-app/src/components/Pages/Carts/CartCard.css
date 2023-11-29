@@ -1,0 +1,23 @@
+.cart-card {
+  border-radius: 10px;
+  border: 1px solid #CCCCCC;
+  padding: 0;
+}
+
+.cart-header {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #EEEEEE;
+  padding: 1rem 1.5rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.cart-header-detail {
+  gap: 0.3rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+}

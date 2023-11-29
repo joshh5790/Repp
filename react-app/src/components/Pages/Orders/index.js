@@ -15,7 +15,7 @@ const Orders = () => {
       <div style={{ width: "90vw", maxWidth: "1200px" }}>
         <h1>Your Order History</h1>
         <div className="flex-col" style={{ gap: "1rem" }}>
-          {orders ? (
+          {orders.length ? (
             orders.map((order) => <OrderCard order={order} />)
           ) : (
             <div>No orders here!</div>

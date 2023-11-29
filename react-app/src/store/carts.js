@@ -18,7 +18,7 @@ const removeCart = (cartId) => ({
 // thunks
 
 // GET /session/carts/
-export const getCartThunk = () => async (dispatch) => {
+export const getCartsThunk = () => async (dispatch) => {
   const response = await fetch(`/api/session/carts`);
   if (response.ok) {
     const data = await response.json();
