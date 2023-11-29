@@ -16,6 +16,21 @@
   border-radius: 10px 10px 0 0;
 }
 
+.cart-page-link.button-hover {
+  text-decoration: none;
+  background-color: #4444FF;
+  border: 1px solid #4444FF;
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.5rem;
+  width: fit-content;
+}
+
+.cart-page-link:hover {
+  color: #4444FF;
+  background-color: white;
+}
+
 .cart-header-detail {
   gap: 0.3rem;
   font-weight: bold;

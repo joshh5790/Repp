@@ -38,7 +38,7 @@ const CartCard = ({ cart }) => {
           ) : (
             <div style={{ fontWeight: "bold" }}>{page?.displayName}</div>
           )}
-          <NavLink to={`/${page?.linkName}`} style={{color: "black", fontSize: "0.8rem"}}>Visit Page</NavLink>
+          <NavLink to={`/${page?.linkName}`} className="cart-page-link button-hover">Visit Page</NavLink>
         </div>
         <div className="cart-header-detail flex-col">
           <div style={{ color: "#999999", fontSize: "0.7rem" }}>SUBTOTAL</div>

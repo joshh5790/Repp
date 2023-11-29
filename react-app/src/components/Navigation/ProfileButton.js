@@ -90,7 +90,7 @@ function ProfileButton({ user }) {
           {user.isRepp ? (
             <i
               className="fa-solid fa-chevron-right"
-              style={{ color: "#999999", fontSize: "1.2rem" }}
+              style={{ color: "#999999", fontSize: "0.8rem" }}
             />
           ) : (
             <div>&nbsp;</div>
@@ -110,7 +110,7 @@ function ProfileButton({ user }) {
           </span>
           <i
             className="fa-solid fa-chevron-right"
-            style={{ color: "#999999", fontSize: "1.2rem" }}
+            style={{ color: "#999999", fontSize: "0.8rem" }}
           />
         </NavLink>
         <NavLink
@@ -127,7 +127,7 @@ function ProfileButton({ user }) {
           </span>
           <i
             className="fa-solid fa-chevron-right"
-            style={{ color: "#999999", fontSize: "1.2rem" }}
+            style={{ color: "#999999", fontSize: "0.8rem" }}
           />
         </NavLink>
         <NavLink
@@ -144,7 +144,7 @@ function ProfileButton({ user }) {
           </span>
           <i
             className="fa-solid fa-chevron-right"
-            style={{ color: "#999999", fontSize: "1.2rem" }}
+            style={{ color: "#999999", fontSize: "0.8rem" }}
           />
         </NavLink>
         {user?.isRepp ? (
@@ -162,7 +162,7 @@ function ProfileButton({ user }) {
             </span>
             <i
               className="fa-solid fa-chevron-right"
-              style={{ color: "#999999", fontSize: "1.2rem" }}
+              style={{ color: "#999999", fontSize: "0.8rem" }}
             />
           </NavLink>
         ) : (
@@ -180,7 +180,7 @@ function ProfileButton({ user }) {
             </span>
             <i
               className="fa-solid fa-chevron-right"
-              style={{ color: "#999999", fontSize: "1.2rem" }}
+              style={{ color: "#999999", fontSize: "0.8rem" }}
             />
           </NavLink>
         )}
@@ -192,10 +192,6 @@ function ProfileButton({ user }) {
             />
             Log Out
           </span>
-          <i
-            className="fa-solid fa-chevron-right"
-            style={{ color: "#999999", fontSize: "1.2rem" }}
-          />
         </div>
       </div>
     </>
