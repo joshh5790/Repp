@@ -98,7 +98,7 @@
 
 .get-started:hover {
   color: #4444FF;
-  background-color: rgb(155, 217, 251);
+  background-color: rgb(255,255,255, 0.7);
 }
 
 @media (max-width: 700px) {
@@ -126,5 +126,8 @@
     width: 100vw;
     text-align: center;
     background-color: rgb(189, 232, 255);
+  }
+  .get-started:hover {
+    background-color: rgb(155, 217, 251);
   }
 }
