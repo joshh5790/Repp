@@ -11,10 +11,12 @@ class TourLocation(db.Model):
     tourId = db.Column(
         db.Integer(), db.ForeignKey(add_prefix_for_prod("tours.id")), nullable=False
     )
-    venue = db.Column(db.String(40), nullable=False)
+    venue = db.Column(db.String(40))
     location = db.Column(db.String(40), nullable=False)
     tourDate = db.Column(db.String(), nullable=False)
     ticketsLink = db.Column(db.String(), nullable=False)
+    rsvpLink = db.Column(db.String())
+    faqLink = db.Column(db.String())
 
     tour = db.relationship("Tour", back_populates="tourLocations")
 

@@ -25,7 +25,9 @@ def ticketsLink_data(form, field):
 
 
 class TourLocationForm(FlaskForm):
-	venue = StringField("Venue", [DataRequired()])
-	location = StringField("Location", [DataRequired()])
-	tourDate = StringField("Tour Date", [DataRequired()])
-	ticketsLink = URLField("Tickets Link", [DataRequired()])
+    venue = StringField("Venue", [DataRequired()])
+    location = StringField("Location", [DataRequired()])
+    tourDate = StringField("Tour Date", [DataRequired()])
+    ticketsLink = URLField("Tickets Link", [DataRequired()])
+    rsvpLink = URLField("RSVP Link")
+    faqLink = URLField("FAQ Link")

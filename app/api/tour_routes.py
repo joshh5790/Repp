@@ -83,6 +83,8 @@ def add_tour_location(tourId):
         location = data["location"],
         tourDate = data["tourDate"],
         ticketsLink = data["ticketsLink"],
+        rsvpLink = data["rsvpLink"],
+        faqLink = data["faqLink"],
         )
         db.session.add(tourLocation)
         db.session.commit()

@@ -42,14 +42,18 @@ export const getTourLocationsThunk = (tourId) => async (dispatch) => {
 
 // POST /tours/:tourId/tourLocation
 export const createTourLocationThunk =
-  ({ tourId, size, stock }) =>
+  ({ tourId, venue, location, tourDate, ticketsLink, rsvpLink, faqLink }) =>
   async (dispatch) => {
     const response = await fetch(`/api/tours/${tourId}/tourLocation`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        size,
-        stock,
+        venue,
+        location,
+        tourDate,
+        ticketsLink,
+        rsvpLink,
+        faqLink,
       }),
     });
 
@@ -65,14 +69,26 @@ export const createTourLocationThunk =
 
 // PUT /tourLocation/:tourLocationId
 export const updateTourLocationThunk =
-  ({ tourLocationId, size, stock }) =>
+  ({
+    tourLocationId,
+    venue,
+    location,
+    tourDate,
+    ticketsLink,
+    rsvpLink,
+    faqLink,
+  }) =>
   async (dispatch) => {
     const response = await fetch(`/api/tourLocations/${tourLocationId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        size,
-        stock,
+        venue,
+        location,
+        tourDate,
+        ticketsLink,
+        rsvpLink,
+        faqLink,
       }),
     });
 

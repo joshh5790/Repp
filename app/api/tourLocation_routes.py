@@ -31,6 +31,8 @@ def update_tourLocation(tourLocationId):
         tourLocation.location = data["location"]
         tourLocation.tourDate = data["tourDate"]
         tourLocation.ticketsLink = data["ticketsLink"]
+        tourLocation.rsvpLink = data["rsvpLink"]
+        tourLocation.faqLink = data["faqLink"]
         db.session.commit()
         return tourLocation.to_dict()
     else:
