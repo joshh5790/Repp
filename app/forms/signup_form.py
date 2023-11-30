@@ -82,9 +82,12 @@ class SignUpForm(FlaskForm):
     lastName = StringField("lastName", validators=[DataRequired(), lastName_data])
     email = EmailField("email", validators=[DataRequired(), user_exists])
     gender = StringField("gender")
-    address = StringField("address")
+    address_1 = StringField("address 1")
+    address_2 = StringField("address 2")
     city = StringField("city")
-    state = StringField("state")
+    country = StringField("country")
+    state_province = StringField("state_province")
+    postal_code = StringField("postal code")
     password = StringField(
         "password", validators=[DataRequired(), Length(min=6), password_data]
     )

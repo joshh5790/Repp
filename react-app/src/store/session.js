@@ -21,7 +21,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) return data.errors;
 
     dispatch(setUser(data));
-    return data
+    return data;
   } else return ["Failed to authenticate."];
 };
 
@@ -61,9 +61,12 @@ export const signUp =
     lastName,
     email,
     gender,
-    address,
+    address_1,
+    address_2,
     city,
-    state,
+    country,
+    state_province,
+    postal_code,
     password,
     profileImage
   ) =>
@@ -76,9 +79,12 @@ export const signUp =
         lastName,
         email,
         gender,
-        address,
+        address_1,
+        address_2,
         city,
-        state,
+        country,
+        state_province,
+        postal_code,
         password,
         profileImage,
       }),
@@ -101,9 +107,12 @@ export const updateUser =
     lastName,
     email,
     gender,
-    address,
+    address_1,
+    address_2,
     city,
-    state,
+    country,
+    state_province,
+    postal_code,
     password,
     isRepp,
     profileImage,
@@ -117,9 +126,12 @@ export const updateUser =
         lastName,
         email,
         gender,
-        address,
+        address_1,
+        address_2,
         city,
-        state,
+        country,
+        state_province,
+        postal_code,
         password,
         isRepp,
         profileImage,

@@ -14,17 +14,13 @@ class User(db.Model, UserMixin):
     lastName = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     gender = db.Column(db.String(10))
-    # phone = db.Column(db.String(20))
-    # address_1 = db.Column(db.String(255))
-    # address_2 = db.Column(db.String(255))
-    # city = db.Column(db.String(255))
-    # state_province = db.Column(db.String(255))
-    # postal_code = db.Column(db.String(255))
-    # country = db.Column(db.String(255))
-    address = db.Column(db.String(255))
+    phone = db.Column(db.String(20))
+    address_1 = db.Column(db.String(255))
+    address_2 = db.Column(db.String(255))
     city = db.Column(db.String(255))
-    state = db.Column(db.String(255))
     country = db.Column(db.String(255))
+    state_province = db.Column(db.String(255))
+    postal_code = db.Column(db.String(255))
     profileImage = db.Column(db.String())
     premiumPepps = db.Column(db.Integer, nullable=False, default=0)
     isRepp = db.Column(db.Boolean(), default=False)
@@ -32,8 +28,12 @@ class User(db.Model, UserMixin):
 
     page = db.relationship("Page", back_populates="user", cascade="all, delete-orphan")
     carts = db.relationship("Cart", back_populates="user", cascade="all, delete-orphan")
-    orders = db.relationship("Order", back_populates="user", cascade="all, delete-orphan")
-    follows = db.relationship("Follow", back_populates="user", cascade="all, delete-orphan")
+    orders = db.relationship(
+        "Order", back_populates="user", cascade="all, delete-orphan"
+    )
+    follows = db.relationship(
+        "Follow", back_populates="user", cascade="all, delete-orphan"
+    )
 
     @property
     def password(self):
@@ -53,10 +53,13 @@ class User(db.Model, UserMixin):
             "lastName": self.lastName,
             "email": self.email,
             "gender": self.gender,
-            "address": self.address,
+            "phone": self.phone,
+            "address_1": self.address_1,
+            "address_2": self.address_2,
             "city": self.city,
-            "state": self.state,
             "country": self.country,
+            "state_province": self.state_province,
+            "postal_code": self.postal_code,
             "profileImage": self.profileImage,
             "premiumPepps": self.premiumPepps,
             "isRepp": self.isRepp,

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 596b09065645
+Revision ID: 08e83822675d
 Revises:
-Create Date: 2023-11-20 17:13:51.346450
+Create Date: 2023-11-29 17:58:43.670245
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from app.models import environment, SCHEMA
 
 # revision identifiers, used by Alembic.
-revision = '596b09065645'
+revision = '08e83822675d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -29,10 +29,13 @@ def upgrade():
     sa.Column('lastName', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('gender', sa.String(length=10), nullable=True),
-    sa.Column('address', sa.String(length=255), nullable=True),
+    sa.Column('phone', sa.String(length=20), nullable=True),
+    sa.Column('address_1', sa.String(length=255), nullable=True),
+    sa.Column('address_2', sa.String(length=255), nullable=True),
     sa.Column('city', sa.String(length=255), nullable=True),
-    sa.Column('state', sa.String(length=255), nullable=True),
     sa.Column('country', sa.String(length=255), nullable=True),
+    sa.Column('state_province', sa.String(length=255), nullable=True),
+    sa.Column('postal_code', sa.String(length=255), nullable=True),
     sa.Column('profileImage', sa.String(), nullable=True),
     sa.Column('premiumPepps', sa.Integer(), nullable=False),
     sa.Column('isRepp', sa.Boolean(), nullable=True),
@@ -112,7 +115,7 @@ def upgrade():
     op.create_table('tours',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('pageId', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=40), nullable=False),
+    sa.Column('name', sa.String(length=40), nullable=True),
     sa.Column('tourLogo', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['pageId'], ['pages.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -163,10 +166,12 @@ def upgrade():
     op.create_table('tourlocations',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('tourId', sa.Integer(), nullable=False),
-    sa.Column('venue', sa.String(length=40), nullable=False),
+    sa.Column('venue', sa.String(length=40), nullable=True),
     sa.Column('location', sa.String(length=40), nullable=False),
     sa.Column('tourDate', sa.String(), nullable=False),
     sa.Column('ticketsLink', sa.String(), nullable=False),
+    sa.Column('rsvpLink', sa.String(), nullable=True),
+    sa.Column('faqLink', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['tourId'], ['tours.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
