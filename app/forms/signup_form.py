@@ -63,12 +63,6 @@ def lastName_data(form, field):
 #         raise ValidationError("Must be alphabetic")
 
 
-# def state_data(form, field):
-#     state = field.data
-#     if not state:
-#         raise ValidationError("Required")
-
-
 def password_data(form, field):
     password = field.data
     if not password:

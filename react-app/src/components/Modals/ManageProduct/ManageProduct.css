@@ -49,13 +49,13 @@
   background-color: #4444FF;
   border: 1px solid #4444FF;
   border-radius: 10px;
-  color: white;
+  color: #F1F1F1;
 }
 
 .modal-dropdown-button:hover,
 .update-product-button:hover {
   color: #4444FF;
-  background-color: white;
+  background-color: #F1F1F1;
 }
 
 
@@ -67,7 +67,7 @@
   text-align: center;
   background-color: #4444FF;
   border: 1px solid #4444FF;
-  color: white;
+  color: #F1F1F1;
   margin-top: 1rem;
   width: calc(100% - 2rem);
   border-radius: 10px;

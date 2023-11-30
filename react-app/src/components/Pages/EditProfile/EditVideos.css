@@ -49,22 +49,22 @@
 .add-video-button.button-hover {
   background-color: #4444FF;
   border: 1px solid #4444FF;
-  color: white;
+  color: #F1F1F1;
 }
 
 .add-video-button:hover {
-  background-color: white;
+  background-color: #F1F1F1;
   color: #4444FF;
 }
 
 .cancel-video-button:hover {
   background-color: #999999;
-  color: white;
+  color: #F1F1F1;
 }
 
 .update-video-input {
   all: unset;
-  background-color: white;
+  background-color: #F1F1F1;
   padding: 0.5rem;
   max-width: 22rem;
   width: 28vw;

@@ -25,7 +25,7 @@
   padding: 0.8rem;
   border-radius: 30px;
   width: 70%;
-  color: white;
+  color: #F1F1F1;
   justify-content: center;
   background-color: rgb(0,0,0, 0.7);
   display: flex;
@@ -34,7 +34,7 @@
 
 .mobile-header:hover {
   background-color: rgb(255,255,255,0.7);
-  color: black;
+  color: #1C1C1C;
 }
 
 .mobile-socials-div {
@@ -42,7 +42,7 @@
   width: 100%;
   padding: 1rem;
   bottom: 0;
-  background-color: black;
+  background-color: #1C1C1C;
   display: flex;
   gap: 1rem;
   display: flex;
@@ -66,5 +66,5 @@
 }
 
 .repp-home-text * {
-  color: white
+  color: #F1F1F1
 }

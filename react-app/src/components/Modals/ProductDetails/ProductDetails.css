@@ -111,8 +111,8 @@
 }
 
 .product-size-button.focus {
-  background-color: black;
-  color: white;
+  background-color: #1C1C1C;
+  color: #F1F1F1;
 }
 
 .product-size-button.disabled {
@@ -127,15 +127,15 @@
 
 .add-to-cart-button {
   all: unset;
-  background-color: black;
+  background-color: #1C1C1C;
   border: 1px solid black;
-  color: white;
+  color: #F1F1F1;
   width: 6rem;
 }
 
 .add-to-cart-button:enabled:hover {
-  color: black;
-  background-color: white;
+  color: #1C1C1C;
+  background-color: #F1F1F1;
 }
 
 .add-to-cart-button:disabled {

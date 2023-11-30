@@ -18,7 +18,7 @@
 }
 
 .repp-nav * {
-    color: white;
+    color: #F1F1F1;
 }
 
 .repp-nav-left {
@@ -73,7 +73,7 @@
 .repp-socials.fa-tiktok,
 .repp-socials.fa-apple,
 .repp-socials.fa-square-up-right {
-    color: white;
+    color: #F1F1F1;
 }
 
 @media (max-width: 1000px) {

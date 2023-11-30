@@ -6,7 +6,7 @@
   all: unset;
   background-color: #4444FF;
   border: 1px solid #4444FF;
-  color: white;
+  color: #F1F1F1;
   margin-top: 1rem;
 }
 
@@ -18,14 +18,14 @@
 .submit-login-button:enabled:hover,
 .demo-user-button:hover {
   color: #4444FF;
-  background-color: white;
+  background-color: #F1F1F1;
 }
 
 .demo-user-button {
   all: unset;
   background-color: #4444FF;
   border: 1px solid #4444FF;
-  color: white;
+  color: #F1F1F1;
   margin-top: 1rem;
 }
 

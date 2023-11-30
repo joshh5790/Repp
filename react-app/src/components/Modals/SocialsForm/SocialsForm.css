@@ -15,14 +15,14 @@
   border-radius: 10px;
   background-color: #4444FF;
   border: 1px solid #4444FF;
-  color: white;
+  color: #F1F1F1;
   margin-top: 1rem;
   text-align: center;
   width: 10rem;
 }
 
 .close-socials-button:hover {
-  background-color: white;
+  background-color: #F1F1F1;
   color: #4444FF;
 }
 

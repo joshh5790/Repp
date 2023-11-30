@@ -11,7 +11,7 @@ function SignupForm() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
-  const [address, setAddress] = useState("");
+  const [address_1, setAddress_1] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [profileImage, setProfileImage] = useState("");
@@ -38,7 +38,7 @@ function SignupForm() {
           lastName,
           email,
           gender,
-          address,
+          address_1,
           city,
           state,
           password,
@@ -193,20 +193,20 @@ function SignupForm() {
           style={{gridArea: "address"}}
           className="signup-address-section flex-col"
         >
-          <label className={errors.address ? "error" : "no-error"}>
-            <div>Address</div>
+          <label className={errors.address_1 ? "error" : "no-error"}>
+            <div>Address 1</div>
             <input className="signup-input"
               type="text"
-              value={address}
+              value={address_1}
               onChange={(e) => {
                 setErrors((prev) => {
-                  return { ...prev, address: null };
+                  return { ...prev, address_1: null };
                 });
-                setAddress(e.target.value);
+                setAddress_1(e.target.value);
               }}
             />
-            {errors.address && (
-              <div className="error-msg">{errors.address[0]}</div>
+            {errors.address_1 && (
+              <div className="error-msg">{errors.address_1[0]}</div>
             )}
           </label>
           <label className={errors.city ? "error" : "no-error"}>

@@ -12,21 +12,21 @@
 
 .confirmation-orders-link {
   text-decoration: none;
-  color: white;
-  background-color: black;
+  color: #F1F1F1;
+  background-color: #1C1C1C;
   border: 1px solid black;
   width: 100%;
   max-width: 15rem;
 }
 
 .confirmation-orders-link:hover {
-  background-color: white;
-  color: black;
+  background-color: #F1F1F1;
+  color: #1C1C1C;
 }
 
 .confirmation-artist-link {
   text-decoration: none;
-  color: white;
+  color: #F1F1F1;
   background-color: #4444FF;
   border: 1px solid #4444FF;
   width: 100%;
@@ -34,6 +34,6 @@
 }
 
 .confirmation-artist-link:hover {
-  background-color: white;
+  background-color: #F1F1F1;
   color: #4444FF;
 }

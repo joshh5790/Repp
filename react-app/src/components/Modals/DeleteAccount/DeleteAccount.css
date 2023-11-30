@@ -28,7 +28,7 @@
 
 .delete-acc-cancel:hover {
   background-color: #999999;
-  color: white;
+  color: #F1F1F1;
 }
 
 .confirm-delete-acc-button {
@@ -36,7 +36,7 @@
   border-radius: 10px;
   background-color: #ff8888;
   border: 1px solid #fa8888;
-  color: white;
+  color: #F1F1F1;
   border: none;
 }
 
@@ -46,6 +46,6 @@
 }
 
 .confirm-delete-acc-button:enabled:hover {
-  background-color: white;
+  background-color: #F1F1F1;
   color: red;
 }

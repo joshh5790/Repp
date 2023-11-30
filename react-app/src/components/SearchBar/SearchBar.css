@@ -27,7 +27,7 @@
 }
 
 .search-input::placeholder {
-  color: black;
+  color: #1C1C1C;
   font-size: 0.8rem;
 }
 
@@ -44,7 +44,7 @@
 
 .search-button {
   all: unset;
-  /* color: white; */
+  /* color: #F1F1F1; */
 }
 
 @media (max-width: 700px) {
@@ -59,7 +59,7 @@
   }
   .search-bar.mobile-search {
       position: fixed;
-      background-color: white;
+      background-color: #F1F1F1;
       width: 50vw;
       left: 50%;
       transform: translate(-50%);

@@ -15,13 +15,13 @@
   all: unset;
   background-color: red;
   border: 1px solid red;
-  color: white;
+  color: #F1F1F1;
   margin-top: 5rem;
   align-self: flex-end;
   cursor: pointer;
 }
 
 .delete-account-button:hover {
-  background-color: white;
+  background-color: #F1F1F1;
   color: red;
 }

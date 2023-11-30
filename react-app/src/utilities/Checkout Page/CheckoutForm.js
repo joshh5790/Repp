@@ -99,9 +99,9 @@
 //       firstName: user.firstName,
 //       lastName: user.lastName,
 //       address: {
-//         line1: user.address,
+//         line1: user.address_1,
 //         // city: user.city,
-//         // state: user.state,
+//         // state: user.state_province,
 //         // // country: user.country,
 //       },
 //     },

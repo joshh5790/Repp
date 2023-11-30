@@ -41,7 +41,7 @@
   margin: 2rem 0 0 1rem;
   background: #4444FF;
   border: 1px solid #4444FF;
-  color: #ffffff;
+  color: #F1F1F1;
   cursor: pointer;
   display: block;
   width: 100%;
@@ -51,7 +51,7 @@
 }
 
 #submit-payment:hover {
-  background-color: white;
+  background-color: #F1F1F1;
   color: #4444FF;
 }
 
@@ -67,7 +67,7 @@ button:disabled {
 }
 
 .spinner {
-  color: #ffffff;
+  color: #F1F1F1;
   font-size: 22px;
   text-indent: -99999px;
   margin: 0px auto;

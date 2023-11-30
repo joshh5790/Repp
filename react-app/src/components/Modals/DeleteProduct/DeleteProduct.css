@@ -2,22 +2,22 @@
   width: 9rem;
   background-color: #EEEEEE;
   border: 1px solid #EEEEEE;
-  color: black;
+  color: #1C1C1C;
 }
 
 .cancel-delete-button:hover {
   background-color: #999999;
-  color: white;
+  color: #F1F1F1;
 }
 
 .confirm-delete-product {
   background-color: red;
   border: 1px solid red;
-  color: white;
+  color: #F1F1F1;
   width: 10rem;
 }
 
 .confirm-delete-product:hover {
-  background-color: white;
+  background-color: #F1F1F1;
   color: red;
 }

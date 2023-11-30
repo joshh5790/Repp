@@ -7,7 +7,7 @@
 .cart-header {
   display: flex;
   text-decoration: none;
-  color: black;
+  color: #1C1C1C;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -20,7 +20,7 @@
   text-decoration: none;
   background-color: #4444FF;
   border: 1px solid #4444FF;
-  color: white;
+  color: #F1F1F1;
   font-size: 0.7rem;
   padding: 0.5rem;
   width: fit-content;
@@ -28,7 +28,7 @@
 
 .cart-page-link:hover {
   color: #4444FF;
-  background-color: white;
+  background-color: #F1F1F1;
 }
 
 .cart-header-detail {
