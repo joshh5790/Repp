@@ -63,11 +63,11 @@ function AccountSettings() {
             desc=""
             type="address"
             variables={{
-              "Address 1": user?.address_1,
-              "Address 2": user?.address_2,
-              "City": user?.city,
-              "Country": user?.country,
-              "State": user?.state_province,
+              "Address 1": user?.address1,
+              "Address 2": user?.address2,
+              City: user?.city,
+              Country: user?.country,
+              State: user?.subregion,
               "ZIP Code": user?.postal_code,
             }}
             otherEdit={otherEdit}

@@ -29,7 +29,7 @@ const OrderCard = ({ order }) => {
       };
       setFormattedDate(dateType.toLocaleDateString("en-US", options));
     }
-  }, []);
+  }, [order]);
   return (
     <div className="order-card">
       <div className="order-header">

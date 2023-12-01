@@ -15,7 +15,7 @@
 }
 
 .search-bar:hover {
-  box-shadow: 0 0 5px white;
+  box-shadow: 0 0 5px #F1F1F1;
 }
 
 .search-input {

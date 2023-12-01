@@ -11,11 +11,12 @@ def user_exists(form, field):
     if current_user.is_authenticated and current_user.email == email:
         user = User.query.filter(User.email == email).all()
         if len(user) > 1:
-            raise ValidationError('Email address is already in use.')
+            raise ValidationError("Email address is already in use.")
     else:
         user = User.query.filter(User.email == email).first()
         if user:
             raise ValidationError("Email address is already in use.")
+
 
 def firstName_data(form, field):
     firstName = field.data
@@ -76,11 +77,11 @@ class SignUpForm(FlaskForm):
     lastName = StringField("lastName", validators=[DataRequired(), lastName_data])
     email = EmailField("email", validators=[DataRequired(), user_exists])
     gender = StringField("gender")
-    address_1 = StringField("address 1")
-    address_2 = StringField("address 2")
+    address1 = StringField("address 1")
+    address2 = StringField("address 2")
     city = StringField("city")
     country = StringField("country")
-    state_province = StringField("state_province")
+    subregion = StringField("subregion")
     postal_code = StringField("postal code")
     password = StringField(
         "password", validators=[DataRequired(), Length(min=6), password_data]

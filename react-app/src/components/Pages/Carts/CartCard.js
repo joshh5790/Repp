@@ -24,7 +24,7 @@ const CartCard = ({ cart }) => {
     dispatch(getCartItemsThunk(cart.id)).then((data) => {
       setNumCartItems(Object.keys(data).length);
     });
-  }, []);
+  }, [cart]);
   return (
     <div className="cart-card">
       <div className="cart-header">

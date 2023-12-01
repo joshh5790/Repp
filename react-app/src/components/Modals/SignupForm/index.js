@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { signUp } from "../../../store/session";
-import "./SignupForm.css";
 import { isObjectEmpty } from "../../../utilities";
+import "./SignupForm.css";
+
+
 
 function SignupForm() {
   const dispatch = useDispatch();
@@ -11,9 +13,12 @@ function SignupForm() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
-  const [address_1, setAddress_1] = useState("");
+  const [address1, setAddress1] = useState("");
+  // const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [subregion, setSubregion] = useState("");
+  // const [postalCode, setPostalCode] = useState("");
+  // const [country, setCountry] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -38,9 +43,9 @@ function SignupForm() {
           lastName,
           email,
           gender,
-          address_1,
+          address1,
           city,
-          state,
+          subregion,
           password,
           profileImage
         )
@@ -61,9 +66,13 @@ function SignupForm() {
     >
       <h1 className="no-top">Sign Up</h1>
       <form className="signup-form" onSubmit={handleSubmit}>
-        <label style={{gridArea: "firstName"}} className={errors.firstName ? "error" : "no-error"}>
+        <label
+          style={{ gridArea: "firstName" }}
+          className={errors.firstName ? "error" : "no-error"}
+        >
           <div>First name *</div>
-          <input className="signup-input"
+          <input
+            className="signup-input"
             type="text"
             value={firstName}
             onChange={(e) => {
@@ -78,9 +87,13 @@ function SignupForm() {
             <div className="error-msg">{errors.firstName[0]}</div>
           )}
         </label>
-        <label style={{gridArea: "lastName"}} className={errors.lastName ? "error" : "no-error"}>
+        <label
+          style={{ gridArea: "lastName" }}
+          className={errors.lastName ? "error" : "no-error"}
+        >
           <div>Last name *</div>
-          <input className="signup-input"
+          <input
+            className="signup-input"
             type="text"
             value={lastName}
             onChange={(e) => {
@@ -95,9 +108,13 @@ function SignupForm() {
             <div className="error-msg">{errors.lastName[0]}</div>
           )}
         </label>
-        <label style={{gridArea: "email"}} className={errors.email ? "error" : "no-error"}>
+        <label
+          style={{ gridArea: "email" }}
+          className={errors.email ? "error" : "no-error"}
+        >
           <div>Email *</div>
-          <input className="signup-input"
+          <input
+            className="signup-input"
             type="text"
             value={email}
             onChange={(e) => {
@@ -110,9 +127,13 @@ function SignupForm() {
           />
           {errors.email && <div className="error-msg">{errors.email[0]}</div>}
         </label>
-        <label style={{gridArea: "password"}} className={errors.password ? "error" : "no-error"}>
+        <label
+          style={{ gridArea: "password" }}
+          className={errors.password ? "error" : "no-error"}
+        >
           <div>Password *</div>
-          <input className="signup-input"
+          <input
+            className="signup-input"
             type="password"
             value={password}
             onChange={(e) => {
@@ -127,9 +148,13 @@ function SignupForm() {
             <div className="error-msg">{errors.password[0]}</div>
           )}
         </label>
-        <label style={{gridArea: "confirmPassword"}} className={errors.confirmPassword ? "error" : "no-error"}>
+        <label
+          style={{ gridArea: "confirmPassword" }}
+          className={errors.confirmPassword ? "error" : "no-error"}
+        >
           <div>Confirm Password *</div>
-          <input className="signup-input"
+          <input
+            className="signup-input"
             type="password"
             value={confirmPassword}
             onChange={(e) => {
@@ -144,9 +169,13 @@ function SignupForm() {
             <div className="error-msg">{errors.confirmPassword[0]}</div>
           )}
         </label>
-        <label style={{gridArea: "profileImage"}} className={errors.profileImage ? "error" : "no-error"}>
+        <label
+          style={{ gridArea: "profileImage" }}
+          className={errors.profileImage ? "error" : "no-error"}
+        >
           <div>Profile Image</div>
-          <input className="signup-input"
+          <input
+            className="signup-input"
             type="text"
             value={profileImage}
             onChange={(e) => {
@@ -160,10 +189,13 @@ function SignupForm() {
             <div className="error-msg">{errors.profileImage[0]}</div>
           )}
         </label>
-        <label style={{gridArea: "gender", width: "8.5rem"}} className={errors.gender ? "error" : "no-error"}>
+        <label
+          style={{ gridArea: "gender", width: "8.5rem" }}
+          className={errors.gender ? "error" : "no-error"}
+        >
           <div>Gender</div>
           <select
-          style={{width: "8rem"}}
+            style={{ width: "8rem" }}
             defaultValue=""
             onChange={(e) => {
               setErrors((prev) => {
@@ -182,64 +214,72 @@ function SignupForm() {
           </select>
           {errors.gender && <div className="error-msg">{errors.gender[0]}</div>}
         </label>
-        {!addressSection ? <div
-          style={{gridArea: "address"}}
-          onClick={() => setAddressSection((prev) => !prev)}
-          className="signup-address-button button-hover"
-        >
-          + Add Address
-        </div> :
-        <div
-          style={{gridArea: "address"}}
-          className="signup-address-section flex-col"
-        >
-          <label className={errors.address_1 ? "error" : "no-error"}>
-            <div>Address 1</div>
-            <input className="signup-input"
-              type="text"
-              value={address_1}
-              onChange={(e) => {
-                setErrors((prev) => {
-                  return { ...prev, address_1: null };
-                });
-                setAddress_1(e.target.value);
-              }}
-            />
-            {errors.address_1 && (
-              <div className="error-msg">{errors.address_1[0]}</div>
-            )}
-          </label>
-          <label className={errors.city ? "error" : "no-error"}>
-            <div>City</div>
-            <input className="signup-input"
-              type="text"
-              value={city}
-              onChange={(e) => {
-                setErrors((prev) => {
-                  return { ...prev, city: null };
-                });
-                setCity(e.target.value);
-              }}
-            />
-            {errors.city && <div className="error-msg">{errors.city[0]}</div>}
-          </label>
-          <label className={errors.state ? "error" : "no-error"}>
-            <div>State</div>
-            <input className="signup-input"
-              type="text"
-              value={state}
-              onChange={(e) => {
-                setErrors((prev) => {
-                  return { ...prev, state: null };
-                });
-                setState(e.target.value);
-              }}
-            />
-            {errors.state && <div className="error-msg">{errors.state[0]}</div>}
-          </label>
-        </div>}
+        {!addressSection ? (
+          <div
+            style={{ gridArea: "address" }}
+            onClick={() => setAddressSection((prev) => !prev)}
+            className="signup-address-button button-hover"
+          >
+            + Add Address
+          </div>
+        ) : (
+          <div
+            style={{ gridArea: "address" }}
+            className="signup-address-section flex-col"
+          >
+            <label className={errors.address1 ? "error" : "no-error"}>
+              <div>Address 1</div>
+              <input
+                className="signup-input"
+                type="text"
+                value={address1}
+                onChange={(e) => {
+                  setErrors((prev) => {
+                    return { ...prev, address1: null };
+                  });
+                  setAddress1(e.target.value);
+                }}
+              />
+              {errors.address1 && (
+                <div className="error-msg">{errors.address1[0]}</div>
+              )}
+            </label>
+            <label className={errors.city ? "error" : "no-error"}>
+              <div>City</div>
+              <input
+                className="signup-input"
+                type="text"
+                value={city}
+                onChange={(e) => {
+                  setErrors((prev) => {
+                    return { ...prev, city: null };
+                  });
+                  setCity(e.target.value);
+                }}
+              />
+              {errors.city && <div className="error-msg">{errors.city[0]}</div>}
+            </label>
+            <label className={errors.state ? "error" : "no-error"}>
+              <div>Subregion</div>
+              <input
+                className="signup-input"
+                type="text"
+                value={subregion}
+                onChange={(e) => {
+                  setErrors((prev) => {
+                    return { ...prev, subregion: null };
+                  });
+                  setSubregion(e.target.value);
+                }}
+              />
+              {errors.subregion && (
+                <div className="error-msg">{errors.subregion[0]}</div>
+              )}
+            </label>
+          </div>
+        )}
         <button
-         style={{gridArea: "submit"}}
+          style={{ gridArea: "submit" }}
           className="signup-button button-hover"
           type="submit"
           disabled={disableButton}

@@ -15,11 +15,11 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     gender = db.Column(db.String(10))
     phone = db.Column(db.String(20))
-    address_1 = db.Column(db.String(255))
-    address_2 = db.Column(db.String(255))
+    address1 = db.Column(db.String(255))
+    address2 = db.Column(db.String(255))
     city = db.Column(db.String(255))
     country = db.Column(db.String(255))
-    state_province = db.Column(db.String(255))
+    subregion = db.Column(db.String(255))
     postal_code = db.Column(db.String(255))
     profileImage = db.Column(db.String())
     premiumPepps = db.Column(db.Integer, nullable=False, default=0)
@@ -54,11 +54,11 @@ class User(db.Model, UserMixin):
             "email": self.email,
             "gender": self.gender,
             "phone": self.phone,
-            "address_1": self.address_1,
-            "address_2": self.address_2,
+            "address1": self.address1,
+            "address2": self.address2,
             "city": self.city,
             "country": self.country,
-            "state_province": self.state_province,
+            "subregion": self.subregion,
             "postal_code": self.postal_code,
             "profileImage": self.profileImage,
             "premiumPepps": self.premiumPepps,

@@ -6,11 +6,13 @@ from flask import request
 
 session_routes = Blueprint("session", __name__)
 
+
 # GET /session/genres
 @session_routes.route("/genres")
 def get_genres():
     genres = Genre.query.all()
     return {"genres": [genre.to_dict() for genre in genres]}
+
 
 # GET /session/carts
 @session_routes.route("/carts")
@@ -63,11 +65,11 @@ def update_user():
         user.lastName = data["lastName"]
         user.email = data["email"]
         user.gender = data["gender"]
-        user.address_1 = data["address_1"]
-        user.address_2 = data["address_2"]
+        user.address1 = data["address1"]
+        user.address2 = data["address2"]
         user.city = data["city"]
         user.country = data["country"]
-        user.state_province = data["state_province"]
+        user.subregion = data["subregion"]
         user.postal_code = data["postal_code"]
         user.password = data["password"]
         user.isRepp = data["isRepp"]
@@ -77,17 +79,19 @@ def update_user():
     else:
         return {"errors": form.errors}, 401
 
+
 # PUT /session/premiumPepps
 @session_routes.route("/premiumPepps", methods=["PUT"])
 @login_required
 def add_user_pepps():
     if not current_user:
         return {"error": "Unauthorized"}, 401
-    premiumPepps = request.get_json()['premiumPepps']
+    premiumPepps = request.get_json()["premiumPepps"]
     user = User.query.get(current_user.id)
     user.premiumPepps += premiumPepps
     db.session.commit()
     return user.to_dict()
+
 
 # DELETE /session/account
 @session_routes.route("/account", methods=["DELETE"])

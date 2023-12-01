@@ -44,7 +44,7 @@ const EditVideos = ({ page }) => {
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: "smooth",
-      })
+      });
     }
   };
 
@@ -82,7 +82,7 @@ const EditVideos = ({ page }) => {
           className="new-card-button"
           style={{
             border: "2px solid #999999",
-            backgroundColor: "white",
+            backgroundColor: "#F1F1F1",
             cursor: "auto",
           }}
         >
@@ -99,14 +99,22 @@ const EditVideos = ({ page }) => {
               style={{ marginBottom: "0" }}
             >
               Title
-              <input className="add-video-input" value={name} onChange={(e) => setName(e.target.value)} />
+              <input
+                className="add-video-input"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </label>
             <label
               className="update-socials-label"
               style={{ marginBottom: "0" }}
             >
               URL
-              <input className="add-video-input" value={video} onChange={(e) => setVideo(e.target.value)} />
+              <input
+                className="add-video-input"
+                value={video}
+                onChange={(e) => setVideo(e.target.value)}
+              />
             </label>
             <div className="error-msg">
               {errors.video && errors.video[0]}&nbsp;
@@ -152,7 +160,10 @@ const EditVideos = ({ page }) => {
             src={video?.video}
             className="edit-list-video"
           />
-          <div className="flex-col" style={{ gap: "1rem", gridArea: "details" }}>
+          <div
+            className="flex-col"
+            style={{ gap: "1rem", gridArea: "details" }}
+          >
             <input
               className="update-video-input"
               onFocus={() => {
@@ -166,7 +177,7 @@ const EditVideos = ({ page }) => {
               disabled={editInput !== video.name && editName.length > 0}
             />
             {editInput === video?.name && (
-              <div style={{ display: "flex", gap: '1rem' }}>
+              <div style={{ display: "flex", gap: "1rem" }}>
                 <button
                   className="add-video-button button-hover"
                   onClick={() => handleUpdateVideo(video.id)}
@@ -188,7 +199,11 @@ const EditVideos = ({ page }) => {
           <button
             className="delete-card"
             onClick={() => handleDeleteVideo(video.id)}
-            style={{gridArea: "buttons", alignSelf: "start", justifySelf: 'end'}}
+            style={{
+              gridArea: "buttons",
+              alignSelf: "start",
+              justifySelf: "end",
+            }}
           >
             <i className="fa-solid fa-x" />
           </button>

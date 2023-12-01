@@ -7,7 +7,7 @@ const LinkSection = ({
   scrollToId,
   mainImage,
   isMobile,
-  preview
+  preview,
 }) => {
   return (
     <>
@@ -27,7 +27,10 @@ const LinkSection = ({
         )}
       </div>
       {isMobile && (
-        <div style={{position: `${preview && "absolute"}`}} className="mobile-socials-div">
+        <div
+          style={{ position: `${preview && "absolute"}` }}
+          className="mobile-socials-div"
+        >
           {page?.tiktok && (
             <a target="_blank" rel="noreferrer" href={page.tiktok}>
               <i className="fa-brands fa-tiktok repp-socials" />
@@ -37,7 +40,7 @@ const LinkSection = ({
             <a target="_blank" rel="noreferrer" href={page.youtube}>
               <i
                 className="fa-brands fa-youtube repp-socials"
-                style={{ color: "white" }}
+                style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
@@ -45,7 +48,7 @@ const LinkSection = ({
             <a target="_blank" rel="noreferrer" href={page.instagram}>
               <i
                 className="fa-brands fa-instagram repp-socials"
-                style={{ color: "white" }}
+                style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
@@ -58,7 +61,7 @@ const LinkSection = ({
             <a target="_blank" rel="noreferrer" href={page.spotify}>
               <i
                 className="fa-brands fa-spotify repp-socials"
-                style={{ color: "white" }}
+                style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
@@ -66,7 +69,7 @@ const LinkSection = ({
             <a target="_blank" rel="noreferrer" href={page.facebook}>
               <i
                 className="fa-brands fa-facebook repp-socials"
-                style={{ color: "white" }}
+                style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
@@ -74,7 +77,7 @@ const LinkSection = ({
             <a target="_blank" rel="noreferrer" href={page.discord}>
               <i
                 className="fa-brands fa-discord repp-socials"
-                style={{ color: "white" }}
+                style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
@@ -82,7 +85,7 @@ const LinkSection = ({
             <a target="_blank" rel="noreferrer" href={page.twitter}>
               <i
                 className="fa-brands fa-twitter repp-socials"
-                style={{ color: "white" }}
+                style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
