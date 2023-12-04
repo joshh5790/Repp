@@ -10,10 +10,13 @@ import VideoSection from "./VideoSection";
 import Footer from "./Footer";
 import Cart from "./Cart";
 import LinkSection from "./LinkSection";
+import Tours from "./Tours";
+import { authenticate } from "../../../store/session";
 
 const Profile = ({ previewPage, preview, previewStyle }) => {
   const dispatch = useDispatch();
   const { linkName } = useParams();
+  const user = useSelector((state) => state.session.user);
   let page = useSelector((state) => state.pages[linkName]);
   if (previewPage) page = previewPage;
   const navVisible = useSelector((state) => state.visibility.nav);
@@ -40,6 +43,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
   }, [isMobile, preview, previewStyle]);
 
   useEffect(async () => {
+    dispatch(authenticate())
     if (preview) {
       await setSectionHeaders(
         [
@@ -91,6 +95,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
         <div className="repp-page">
           <div id={linkName} style={{ height: "100vh", position: "relative" }}>
             <LinkSection
+              user={user}
               page={page}
               sectionHeaders={sectionHeaders}
               scrollToId={scrollToId}
@@ -112,6 +117,11 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
               />
             </div>
           )}
+          {/* {page?.tourSection && (
+            <div id="tours" className="repp-page-section">
+              <Tours pageId={page?.id} previewStyle={previewStyle} />
+            </div>
+          )} */}
           {page?.shopSection && (
             <div id="merch" className="repp-page-section">
               <ProductSection

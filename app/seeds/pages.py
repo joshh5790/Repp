@@ -21,6 +21,7 @@ def seed_pages():
         businessInquiries="info@enmgmt.com",
         videoSection=True,
         shopSection=True,
+        tourSection=True,
     )
     tiff = Page(
         userId=2,
@@ -41,6 +42,7 @@ def seed_pages():
         newsletter="tiffanydaynewsletter@gmail.com",
         videoSection=True,
         shopSection=False,
+        tourSection=True,
     )
     ivoris = Page(
         userId=3,
@@ -79,6 +81,7 @@ def seed_pages():
         newsletter="chrisjamesnewsletter@gmail.com",
         videoSection=True,
         shopSection=True,
+        tourSection=True,
     )
     josiah = Page(
         userId=5,

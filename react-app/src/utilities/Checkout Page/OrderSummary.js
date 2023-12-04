@@ -30,7 +30,7 @@
 //         style={{
 //           display: "flex",
 //           justifyContent: "space-between",
-//           borderTop: "1px solid #EEEEEE",
+//           borderTop: "1px solid #DDDDDD",
 //         }}
 //       >
 //         <div>Subtotal</div>

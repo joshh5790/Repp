@@ -18,7 +18,7 @@
     "details buttons";
   align-items: center;
   padding: 1rem;
-  background-color: #EEEEEE;
+  background-color: #DDDDDD;
   border-radius: 10px;
   cursor: pointer;
   width: calc(100% - 2rem);
@@ -38,7 +38,7 @@
   padding: 0.4rem;
   width: 3rem;
   border: 1px solid #999999;
-  background-color: #EEEEEE;
+  background-color: #DDDDDD;
   text-align: center;
   font-size: 0.8rem;
   border-radius: 5px;
@@ -73,7 +73,7 @@
 }
 
 .no-video-hover:hover {
-  background-color: #EEEEEE;
+  background-color: #DDDDDD;
   cursor: auto;
 }
 

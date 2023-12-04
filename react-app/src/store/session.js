@@ -56,7 +56,7 @@ export const logout = () => async (dispatch) => {
 
 // POST /auth/signup
 export const signUp =
-  (
+  ({
     firstName,
     lastName,
     email,
@@ -68,8 +68,8 @@ export const signUp =
     subregion,
     postal_code,
     password,
-    profileImage
-  ) =>
+    profileImage,
+  }) =>
   async (dispatch) => {
     const response = await fetch("/api/auth/signup", {
       method: "POST",

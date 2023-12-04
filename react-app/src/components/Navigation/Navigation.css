@@ -37,6 +37,11 @@
   cursor: pointer;
   font-size: 1.2rem;
   padding-right: 1rem;
+  color: #F1F1F1;
+}
+
+.toggle-sidebar:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255);
 }
 
 .logo-link {
@@ -169,7 +174,7 @@
 }
 
 .dropdown-button:hover {
-  background-color: #EEEEEE;
+  background-color: #DDDDDD;
 }
 
 .fa-solid.fa-info {

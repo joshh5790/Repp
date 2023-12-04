@@ -21,7 +21,7 @@ const CartCard = ({ cart }) => {
   const [reload, setReload] = useState(false);
   useEffect(() => {
     dispatch(addPageThunk(cart.pageId));
-    dispatch(getCartItemsThunk(cart.id)).then((data) => {
+    dispatch(getCartItemsThunk(cart.id, true)).then((data) => {
       setNumCartItems(Object.keys(data).length);
     });
   }, [cart]);

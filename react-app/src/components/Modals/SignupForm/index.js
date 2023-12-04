@@ -5,8 +5,6 @@ import { signUp } from "../../../store/session";
 import { isObjectEmpty } from "../../../utilities";
 import "./SignupForm.css";
 
-
-
 function SignupForm() {
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
@@ -38,7 +36,7 @@ function SignupForm() {
     setErrors({});
     if (password === confirmPassword) {
       const currErrors = await dispatch(
-        signUp(
+        signUp({
           firstName,
           lastName,
           email,
@@ -47,8 +45,8 @@ function SignupForm() {
           city,
           subregion,
           password,
-          profileImage
-        )
+          profileImage,
+        })
       );
       if (!isObjectEmpty(currErrors)) return setErrors(currErrors);
       else closeModal();

@@ -4,6 +4,16 @@ const SET_FOLLOWS = "follows/SET_FOLLOWS";
 const ADD_FOLLOW = "follows/ADD_FOLLOW";
 const REMOVE_FOLLOW = "follows/REMOVE_FOLLOW";
 
+// selectors
+
+export const sessionFollows = (state) => {
+  const follows = Object.values(state.follows).filter(
+    (follow) => follow.userId === state.session.user.id
+  );
+
+  return follows;
+};
+
 // action creators
 
 const setFollows = (follows) => ({
@@ -38,7 +48,7 @@ export const getSessionFollowsThunk = () => async (dispatch) => {
     const data = await response.json();
     if (data.errors) return data.errors;
   } else return ["Failed to retrieve follows."];
-}
+};
 
 // GET /pages/:pageId/follows
 export const getFollowsThunk = (pageId) => async (dispatch) => {
@@ -59,15 +69,11 @@ export const getFollowsThunk = (pageId) => async (dispatch) => {
 
 // POST /pages/:pageId/follows
 export const createFollowThunk =
-  ({ pageId, size, stock }) =>
+  ({ pageId }) =>
   async (dispatch) => {
     const response = await fetch(`/api/pages/${pageId}/follows`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        size,
-        stock,
-      }),
     });
 
     if (response.ok) {
@@ -82,15 +88,14 @@ export const createFollowThunk =
 
 // PUT /follows/:followId
 export const updateFollowThunk =
-  ({ followId, size, stock }) =>
+  ({ followId, pepps }) =>
   async (dispatch) => {
     const response = await fetch(`/api/follows/${followId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        size,
-        stock,
-      }),
+      body: {
+        pepps,
+      },
     });
 
     if (response.ok) {
@@ -121,7 +126,7 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_FOLLOWS:
-      return { ...action.payload };
+      return { ...state, ...action.payload };
     case ADD_FOLLOW:
       return { ...state, ...action.payload };
     case REMOVE_FOLLOW:

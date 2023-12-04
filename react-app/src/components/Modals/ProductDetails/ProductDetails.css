@@ -91,7 +91,7 @@
 
 .product-size-button:not(.disabled, .focus):hover {
   cursor: pointer;
-  background-color: #EEEEEE;
+  background-color: #DDDDDD;
 }
 
 .product-modal-quantity-label {

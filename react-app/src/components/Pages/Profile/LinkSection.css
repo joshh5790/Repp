@@ -66,5 +66,19 @@
 }
 
 .repp-home-text * {
-  color: #F1F1F1
+  color: #F1F1F1;
+}
+
+.follow-button.button-hover {
+  color: black;
+  background-color: rgb(242,242,242, 0.8);
+  border: 2px solid rgb(242,242,242, 0.8);
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.follow-button:hover {
+  background-color: black;
+  color: rgb(242,242,242, 0.8);
 }

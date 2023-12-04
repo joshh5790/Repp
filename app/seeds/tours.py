@@ -11,7 +11,7 @@ def seed_tours():
         pageId=2,
     )
     tour3 = Tour(
-        pageId=1,
+        pageId=3,
         name="The Thrill of the Chase Tour",
     )
 

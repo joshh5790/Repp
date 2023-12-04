@@ -6,6 +6,8 @@ from .products import seed_products, undo_products
 from .productImages import seed_productImages, undo_productImages
 from .productStocks import seed_productStocks, undo_productStocks
 from .videos import seed_videos, undo_videos
+from .tours import seed_tours, undo_tours
+from .tourLocations import seed_tourLocations, undo_tourLocations
 
 
 
@@ -31,6 +33,8 @@ def seed():
         undo_productImages()
         undo_productStocks()
         undo_videos()
+        undo_tours()
+        undo_tourLocations()
     seed_users()
     seed_genres()
     seed_pages()
@@ -38,6 +42,8 @@ def seed():
     seed_productImages()
     seed_productStocks()
     seed_videos()
+    seed_tours()
+    seed_tourLocations()
 
 
 # Creates the `flask seed undo` command
@@ -50,3 +56,5 @@ def undo():
     undo_productImages()
     undo_productStocks()
     undo_videos()
+    undo_tours()
+    undo_tourLocations()

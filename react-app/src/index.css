@@ -34,7 +34,7 @@ input,
 select,
 textarea {
   cursor: text;
-  background-color: #EEEEEE;
+  background-color: #DDDDDD;
   border-radius: 7px;
   font-size: 0.8rem;
   border: 1px solid #CCCCCC;
@@ -141,7 +141,7 @@ i {
 } */
 
 .skeleton {
-  background-color: #EEEEEE;
+  background-color: #DDDDDD;
   border-radius: 1rem;
   animation: skeleton-loading 1s linear infinite alternate;
 }

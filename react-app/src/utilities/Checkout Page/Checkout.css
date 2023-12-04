@@ -3,7 +3,7 @@
   top: -0.7rem;
   right: -0.7rem;
   padding: 0.4rem 0.66rem;
-  background-color: #EEEEEE;
+  background-color: #DDDDDD;
   border-radius: 50%;
   font-size: 0.8rem;
   font-weight: bold;
@@ -26,7 +26,7 @@
 .payment-form-inputs {
   width: 35vw;
   max-width: 30rem;
-  border-right: 1px solid #EEEEEE;
+  border-right: 1px solid #DDDDDD;
   padding-right: 2rem;
   overflow: auto;
   height: calc(100vh - 10rem);

@@ -1,7 +1,11 @@
+import { useDispatch } from "react-redux";
 import { invalidImage } from "../../../utilities";
 import "./LinkSection.css";
+import { useState, useEffect } from "react";
+import { createFollowThunk, getFollowsThunk } from "../../../store/follows";
 
 const LinkSection = ({
+  user,
   page,
   sectionHeaders,
   scrollToId,
@@ -9,6 +13,38 @@ const LinkSection = ({
   isMobile,
   preview,
 }) => {
+  const dispatch = useDispatch();
+  const [following, setFollowing] = useState(0);
+  // const [followText, setFollowText] = useState(false)
+  // could do overflow hidden, resize width on hover
+
+  useEffect(() => {
+    dispatch(getFollowsThunk(page.id)).then(
+      data => {
+        if (user.id === page.userId) return setFollowing('owner')
+        for (const follow of data) {
+          if (follow.userId === user.id) {
+            return setFollowing('following')
+          }
+        }
+        setFollowing('notFollowing')
+      }
+    )
+  }, []);
+
+  const addFollow = () => {
+    dispatch(createFollowThunk({pageId: page.id}))
+    setFollowing(1)
+  }
+
+
+  // const onMouseEnter = () => {
+
+  // }
+  // const onMouseLeave = () => {
+
+  // }
+
   return (
     <>
       <div className="mobile-page-links flex-col-center">
@@ -103,7 +139,14 @@ const LinkSection = ({
         onError={invalidImage}
       />
       <div className="repp-home-text">
-        {!isMobile && <h1>{page?.displayName}</h1>}
+        {!isMobile && (
+          <>
+            <h1>{page?.displayName}</h1>
+            {following === 'notFollowing' && (
+              <div onClick={addFollow} className="follow-button button-hover">+ Follow</div>
+            )}
+          </>
+        )}
       </div>
     </>
   );

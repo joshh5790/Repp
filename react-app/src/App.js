@@ -12,6 +12,7 @@ import Carts from "./components/Pages/Carts";
 import Orders from "./components/Pages/Orders";
 // import Checkout from "./components/Pages/Checkout";
 import Confirmation from "./components/Pages/Confirmation";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ function App() {
             </Route>
           </Switch>
           <Navigation isLoaded={isLoaded} />
+          <Sidebar />
         </>
       )}
     </>

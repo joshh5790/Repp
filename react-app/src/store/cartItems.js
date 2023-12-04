@@ -1,7 +1,7 @@
 // constants
 
 const SET_CARTITEMS = "cartItems/SET_CARTITEMS";
-const ADD_CARTITEM = "cartItems/ADD_CARTITEM";
+const ADD_CARTITEMS = "cartItems/ADD_CARTITEMS";
 const REMOVE_CARTITEM = "cartItems/REMOVE_CARTITEM";
 const CLEAR_CARTITEMS = "cartItems/CLEAR_CARTITEMS";
 
@@ -12,9 +12,9 @@ const setCartItems = (cartItems) => ({
   payload: cartItems,
 });
 
-const addCartItem = (cartItem) => ({
-  type: ADD_CARTITEM,
-  payload: cartItem,
+const addCartItems = (cartItems) => ({
+  type: ADD_CARTITEMS,
+  payload: cartItems,
 });
 
 const removeCartItem = (cartItemId) => ({
@@ -28,7 +28,7 @@ const clearCartItems = () => ({
 // thunks
 
 // GET /carts/:cartId/cartItems/
-export const getCartItemsThunk = (cartId) => async (dispatch) => {
+export const getCartItemsThunk = (cartId, add) => async (dispatch) => {
   const response = await fetch(`/api/carts/${cartId}/cartItems`);
   if (response.ok) {
     const data = await response.json();
@@ -36,7 +36,8 @@ export const getCartItemsThunk = (cartId) => async (dispatch) => {
     for (const cartItem of data) {
       formattedData[cartItem.id] = cartItem;
     }
-    dispatch(setCartItems(formattedData));
+    if (add) dispatch(addCartItems(formattedData));
+    else dispatch(setCartItems(formattedData));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -60,7 +61,7 @@ export const createCartItemThunk =
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(addCartItem({ [data.id]: data }));
+      dispatch(addCartItems({ [data.id]: data }));
       return data;
     } else if (response.status < 500) {
       const data = await response.json();
@@ -81,7 +82,7 @@ export const updateCartItemThunk =
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(addCartItem({ [data.id]: data }));
+      dispatch(addCartItems({ [data.id]: data }));
       return data;
     } else if (response.status < 500) {
       const data = await response.json();
@@ -112,8 +113,8 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_CARTITEMS:
-      return { ...state, ...action.payload };
-    case ADD_CARTITEM:
+      return { ...action.payload };
+    case ADD_CARTITEMS:
       return { ...state, ...action.payload };
     case REMOVE_CARTITEM:
       const newState = { ...state };

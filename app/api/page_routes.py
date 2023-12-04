@@ -265,7 +265,7 @@ def create_tour(pageId):
         return {"errors": form.errors}, 401
 
 # POST /pages/:pageId/follow
-@page_routes.route("/<int:pageId>/follow", methods=["POST"])
+@page_routes.route("/<int:pageId>/follows", methods=["POST"])
 @login_required
 def create_follow(pageId):
     if not current_user:
