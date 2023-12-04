@@ -44,7 +44,7 @@ const PageButton = ({ followId, pageId, remove }) => {
         }}
       >
         {remove && removeHover ? (
-          <div style={{ color: "red", justifySelf: "center", width: "100%" }}>
+          <div style={{ color: "red", fontWeight: "bold", justifySelf: "center", width: "100%" }}>
             Unfollow
           </div>
         ) : (
