@@ -16,7 +16,7 @@ const OrderCard = ({ order }) => {
     });
     return filteredOrderItems;
   });
-  const page = useSelector((state) => state.pages[order.pageId]);
+  const page = useSelector((state) => Object.values(state.pages).find(page => page.id === order.pageId));
   useEffect(() => {
     dispatch(addPageThunk(order.pageId));
     dispatch(getOrderItemsThunk(order.id));

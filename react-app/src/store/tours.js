@@ -29,7 +29,6 @@ export const getToursThunk = (pageId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     const formattedData = {};
-    console.log(data, "BBBBBBBBBBBBBBBBBBBB", pageId)
     for (const tour of data) {
       formattedData[tour.id] = tour;
     }

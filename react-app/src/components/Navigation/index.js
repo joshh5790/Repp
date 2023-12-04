@@ -42,10 +42,10 @@ function Navigation() {
               <h4>Home Page/Navbar</h4>
               <ul>
                 <li>Visiting artist page will cause navbar to disappear, clicking side ellipsis will make it show up</li>
-                <li>Logo designed with Figma</li>
                 <li>Click logo to return to home page</li>
+                <li>If user is logged in, following sidebar will be available next to the logo</li>
                 <li>Right side of navbar has login button/user settings</li>
-                <li>logins for Highvyn and tiffany are josiah@aa.io and demo@aa.io, password is password</li>
+                <li>login for tiffany is demo@aa.io, password is password</li>
                 <li>site is fully mobile friendly</li>
               </ul>
             </div>
@@ -55,8 +55,7 @@ function Navigation() {
             <h4>Edit Profile Page</h4>
             <ul>
               <li>4 tabs, general, socials, products, and videos</li>
-              <li>Feel free to play around, I reset the database somewhat regularly</li>
-              <li>fully functional</li>
+              <li>desktop view not yet available</li>
             </ul>
             </div>
           )}
@@ -65,10 +64,8 @@ function Navigation() {
             <h4>Profile Page</h4>
             <ul>
               <li>clicking on artist name in profile navbar brings user to top</li>
-              <li>Eric's page has a merch section that has items that can be added to cart</li>
               <li>Cart is profile page specific, carts will only show for the respective artist's page</li>
-              <li>Checkout functionality not working yet</li>
-              <li>Newsletter functionality not working yet</li>
+              <li>Newsletter functionality not yet available</li>
             </ul>
             </div>
           )}

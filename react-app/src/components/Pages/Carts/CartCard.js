@@ -16,7 +16,7 @@ const CartCard = ({ cart }) => {
     });
     return filteredCartItems;
   });
-  const page = useSelector((state) => state.pages[cart.pageId]);
+  const page = useSelector((state) => Object.values(state.pages).find(page => page.id === cart.pageId));
   const [numCartItems, setNumCartItems] = useState(0);
   const [reload, setReload] = useState(false);
   useEffect(() => {
