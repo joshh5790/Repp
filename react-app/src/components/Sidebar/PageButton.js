@@ -17,13 +17,25 @@ const PageButton = ({ pageId, remove }) => {
     history.push(`/${page?.linkName}`)
   }
 
-  const handleRemove = () => {
+  const mouseEnterRemove = (e) => {
+    if (remove) {
+      e.target.value = 'Unfollow'
+    }
+  }
+
+  const mouseLeaveRemove = (e) => {
+
+  }
+
+  const handleRemove = (e) => {
 
   }
 
   return (
     <div className="sidebar-page-button button-hover">
       <div
+        onMouseEnter={mouseEnterRemove}
+        onMouseLeave={mouseLeaveRemove}
         onClick={handleSidebarLink}
         style={{
           display: "flex",

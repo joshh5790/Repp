@@ -36,7 +36,7 @@ def seed_pages():
         spotify="https://open.spotify.com/artist/5D5Qbe1lf3aMnLsPSzXItu",
         discord="https://discord.com/invite/PG2s2b3Mgg",
         external="https://www.tiffdidwhat.com/",
-        mainImage="https://images.squarespace-cdn.com/content/v1/637d57dd5eff390eb0e98337/5c9a89cf-68a5-4cd7-8f3f-a28d6207cb69/image00002.jpeg",
+        mainImage="https://images.squarespace-cdn.com/content/v1/637d57dd5eff390eb0e98337/912c70aa-3a66-485e-a260-d670bf3fac8c/tiffpress2023-allywei-16.jpg",
         mainVideo="https://www.youtube.com/embed/MzkQVaiAlrE",
         bio="my name is tiff. im 23 years old and i make music. um. that’s pretty much most of my life. um. i live in los angeles and um. it’s great here. um. i enjoy um rice. and um pasta. and i really like pickles but i have a health condition that um uh doesn’t um really let me eat them properly. um. anyways. the goal is the be um. a really big pop star. um. maybe you can help wid that. um. thanks. >.<",
         newsletter="tiffanydaynewsletter@gmail.com",
