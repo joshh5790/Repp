@@ -30,7 +30,7 @@ def seed_tours():
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
 def undo_tours():
-    if environment == "tourion":
+    if environment == "production":
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.tours RESTART IDENTITY CASCADE;"
         )

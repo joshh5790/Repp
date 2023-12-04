@@ -29,10 +29,10 @@ function Navigation() {
   return (
     <ul className={`nav ${navVisible ? "" : "nav-hidden"} ${isHome ? "home-nav" : ""}`}>
       <li className="nav-left">
-        <i
+        {sessionUser && <i
           onClick={() => setSidebarVisible(true)}
           className={`fa-solid fa-bars toggle-sidebar`}
-        />
+        />}
         <NavLink exact to="/" className="logo-link">
           <img src={logo} alt="repp" className="logo" />
         </NavLink>
