@@ -22,7 +22,7 @@ export const getSessionPageThunk = () => async (dispatch) => {
   const response = await fetch("/api/session/page");
   if (response.ok) {
     const data = await response.json();
-    dispatch(setRPage({ [data.linkName]: data }));
+    dispatch(addRPage({ [data.linkName]: data }));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -48,7 +48,7 @@ export const getPageByIdThunk = (pageId) => async (dispatch) => {
   const response = await fetch(`/api/pages/id/${pageId}`);
   if (response.ok) {
     const data = await response.json();
-    dispatch(setRPage({ [data.linkName]: data }));
+    dispatch(addRPage({ [data.linkName]: data }));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -65,7 +65,7 @@ export const getRPagesThunk = () => async (dispatch) => {
     for (const page of data) {
       formattedData[page.linkName] = page;
     }
-    dispatch(setRPage(formattedData));
+    dispatch(addRPage(formattedData));
     return formattedData;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -82,7 +82,7 @@ export const getRPagesHomeThunk = () => async (dispatch) => {
     for (const page of data) {
       formattedData[page.linkName] = page;
     }
-    dispatch(setRPage(formattedData));
+    dispatch(addRPage(formattedData));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -95,7 +95,7 @@ export const getOneRPageThunk = (linkName) => async (dispatch) => {
   const response = await fetch(`/api/pages/${linkName}`);
   if (response.ok) {
     const data = await response.json();
-    dispatch(setRPage({ [data.linkName]: data }));
+    dispatch(addRPage({ [data.linkName]: data }));
     return data;
   } else return;
 };
@@ -134,7 +134,7 @@ export const createRPageThunk =
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(setRPage({ [data.linkName]: data }));
+      dispatch(addRPage({ [data.linkName]: data }));
       return null;
     } else if (response.status < 500) {
       const data = await response.json();
@@ -193,7 +193,7 @@ export const updateRPageThunk =
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(setRPage({ [data.linkName]: data }));
+      dispatch(addRPage({ [data.linkName]: data }));
       return null;
     } else if (response.status < 500) {
       const data = await response.json();
