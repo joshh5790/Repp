@@ -3,11 +3,6 @@ from wtforms import URLField, StringField
 from wtforms.validators import DataRequired, ValidationError
 
 
-def venue_data(form, field):
-    venue = field.data
-    if not venue:
-        raise ValidationError("Please enter a venue.")
-
 def location_data(form, field):
     location = field.data
     if not location:

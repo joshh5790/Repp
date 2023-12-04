@@ -278,57 +278,57 @@ def seed_tourLocations():
                 tourDate="DEC 03 SUN",
                 ticketsLink="https://www.ticketmaster.com/event/22005ECF7AF6B7EF",
             ),
-            TourLocation(
-                tourId=2,
-                venue="South Side Ballroom @ 7:30pm",
-                location="Dallas, TX, United States",
-                tourDate="NOV 30 THU",
-                ticketsLink="https://www.ticketmaster.com/event/22005ECF7AF6B7EF",
-				rsvpLink="https://www.bandsintown.com/artist-rsvp/15485620?event_id=1029444266&utm_campaign=event&utm_medium=api&app_id=squarespace-oleander-amethyst-fgfz&utm_source=public_api&came_from=267&spn=0&signature=ZZ23a31594d7868333598c5afab9109127706a14762d769cdeca43aa37c3400e02"
-            ),
-            TourLocation(
-                tourId=2,
-                venue="Stubb's Waller Creek Amphitheater @ 6:30pm",
-                location="Austin, TX, United States",
-                tourDate="DEC 2 SAT",
-                ticketsLink="https://www.ticketmaster.com/event/22005ECF7AF6B7EF",
-				rsvpLink="https://www.bandsintown.com/artist-rsvp/15485620?event_id=1029445130&utm_campaign=event&utm_medium=api&app_id=squarespace-oleander-amethyst-fgfz&utm_source=public_api&came_from=267&spn=0&signature=ZZ23a31594d7868333598c5afab9109127706a14762d769cdeca43aa37c3400e02"
-            ),
-            TourLocation(
-                tourId=3,
-                location="Hamburg, Germany",
-                tourDate="Jan 23, 2024",
-                ticketsLink="https://tickets.kj.de/produkte/59564-tickets-chris-james-nochtspeicher-hamburg-am-23-01-2024",
-				rsvpLink="https://www.bandsintown.com/e/104803317?app_id=supertape_f8c3f1a149aaaa4bbd96c837182b1e3e&came_from=706&utm_medium=api&utm_source=public_api&utm_campaign=event&trigger=rsvp_going"
-            ),
-            TourLocation(
-                tourId=3,
-                location="Hannover, Germany",
-                tourDate="Jan 24, 2024",
-                ticketsLink="https://tickets.kj.de/produkte/59581-tickets-chris-james-lux-hannover-am-24-01-2024",
-				rsvpLink="https://www.bandsintown.com/e/104803330?app_id=supertape_f8c3f1a149aaaa4bbd96c837182b1e3e&came_from=706&utm_medium=api&utm_source=public_api&utm_campaign=event&trigger=rsvp_going"
-            ),
-            TourLocation(
-                tourId=3,
-                location="Berlin, Germany",
-                tourDate="Jan 25, 2024",
-                ticketsLink="https://tickets.kj.de/produkte/59570-tickets-chris-james-privatclub-berlin-am-25-01-2024",
-				rsvpLink="https://www.bandsintown.com/e/104803336?app_id=supertape_f8c3f1a149aaaa4bbd96c837182b1e3e&came_from=706&utm_medium=api&utm_source=public_api&utm_campaign=event&trigger=rsvp_going"
-            ),
-            TourLocation(
-                tourId=3,
-                location="Munich, Germany",
-                tourDate="Jan 26, 2024",
-                ticketsLink="https://tickets.kj.de/produkte/59571-tickets-chris-james-milla-club-muenchen-am-26-01-2024",
-				rsvpLink="https://www.bandsintown.com/e/104803336?app_id=supertape_f8c3f1a149aaaa4bbd96c837182b1e3e&came_from=706&utm_medium=api&utm_source=public_api&utm_campaign=event&trigger=rsvp_going"
-            ),
-            TourLocation(
-                tourId=3,
-                location="Cologne, Germany",
-                tourDate="Jan 27, 2024",
-                ticketsLink="https://tickets.kj.de/produkte/59568-tickets-chris-james-artheater-koeln-am-27-01-2024",
-				rsvpLink="https://www.bandsintown.com/e/104803340?app_id=supertape_f8c3f1a149aaaa4bbd96c837182b1e3e&came_from=706&utm_medium=api&utm_source=public_api&utm_campaign=event&trigger=rsvp_going"
-            ),
+            # TourLocation(
+            #     tourId=2,
+            #     venue="South Side Ballroom @ 7:30pm",
+            #     location="Dallas, TX, United States",
+            #     tourDate="NOV 30 THU",
+            #     ticketsLink="https://www.ticketmaster.com/event/22005ECF7AF6B7EF",
+			# 	rsvpLink="https://www.bandsintown.com/artist-rsvp/15485620?event_id=1029444266&utm_campaign=event&utm_medium=api&app_id=squarespace-oleander-amethyst-fgfz&utm_source=public_api&came_from=267&spn=0&signature=ZZ23a31594d7868333598c5afab9109127706a14762d769cdeca43aa37c3400e02"
+            # ),
+            # TourLocation(
+            #     tourId=2,
+            #     venue="Stubb's Waller Creek Amphitheater @ 6:30pm",
+            #     location="Austin, TX, United States",
+            #     tourDate="DEC 2 SAT",
+            #     ticketsLink="https://www.ticketmaster.com/event/22005ECF7AF6B7EF",
+			# 	rsvpLink="https://www.bandsintown.com/artist-rsvp/15485620?event_id=1029445130&utm_campaign=event&utm_medium=api&app_id=squarespace-oleander-amethyst-fgfz&utm_source=public_api&came_from=267&spn=0&signature=ZZ23a31594d7868333598c5afab9109127706a14762d769cdeca43aa37c3400e02"
+            # ),
+            # TourLocation(
+            #     tourId=3,
+            #     location="Hamburg, Germany",
+            #     tourDate="Jan 23, 2024",
+            #     ticketsLink="https://tickets.kj.de/produkte/59564-tickets-chris-james-nochtspeicher-hamburg-am-23-01-2024",
+			# 	rsvpLink="https://www.bandsintown.com/e/104803317?app_id=supertape_f8c3f1a149aaaa4bbd96c837182b1e3e&came_from=706&utm_medium=api&utm_source=public_api&utm_campaign=event&trigger=rsvp_going"
+            # ),
+            # TourLocation(
+            #     tourId=3,
+            #     location="Hannover, Germany",
+            #     tourDate="Jan 24, 2024",
+            #     ticketsLink="https://tickets.kj.de/produkte/59581-tickets-chris-james-lux-hannover-am-24-01-2024",
+			# 	rsvpLink="https://www.bandsintown.com/e/104803330?app_id=supertape_f8c3f1a149aaaa4bbd96c837182b1e3e&came_from=706&utm_medium=api&utm_source=public_api&utm_campaign=event&trigger=rsvp_going"
+            # ),
+            # TourLocation(
+            #     tourId=3,
+            #     location="Berlin, Germany",
+            #     tourDate="Jan 25, 2024",
+            #     ticketsLink="https://tickets.kj.de/produkte/59570-tickets-chris-james-privatclub-berlin-am-25-01-2024",
+			# 	rsvpLink="https://www.bandsintown.com/e/104803336?app_id=supertape_f8c3f1a149aaaa4bbd96c837182b1e3e&came_from=706&utm_medium=api&utm_source=public_api&utm_campaign=event&trigger=rsvp_going"
+            # ),
+            # TourLocation(
+            #     tourId=3,
+            #     location="Munich, Germany",
+            #     tourDate="Jan 26, 2024",
+            #     ticketsLink="https://tickets.kj.de/produkte/59571-tickets-chris-james-milla-club-muenchen-am-26-01-2024",
+			# 	rsvpLink="https://www.bandsintown.com/e/104803336?app_id=supertape_f8c3f1a149aaaa4bbd96c837182b1e3e&came_from=706&utm_medium=api&utm_source=public_api&utm_campaign=event&trigger=rsvp_going"
+            # ),
+            # TourLocation(
+            #     tourId=3,
+            #     location="Cologne, Germany",
+            #     tourDate="Jan 27, 2024",
+            #     ticketsLink="https://tickets.kj.de/produkte/59568-tickets-chris-james-artheater-koeln-am-27-01-2024",
+			# 	rsvpLink="https://www.bandsintown.com/e/104803340?app_id=supertape_f8c3f1a149aaaa4bbd96c837182b1e3e&came_from=706&utm_medium=api&utm_source=public_api&utm_campaign=event&trigger=rsvp_going"
+            # ),
         ]
     )
     db.session.commit()

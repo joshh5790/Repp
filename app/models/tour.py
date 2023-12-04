@@ -11,7 +11,7 @@ class Tour(db.Model):
     pageId = db.Column(
         db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
     )
-    name = db.Column(db.String(40))
+    name = db.Column(db.String())
     tourLogo = db.Column(db.String())
 
     page = db.relationship("Page", back_populates="tours")
