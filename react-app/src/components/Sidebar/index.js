@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getSessionFollowsThunk, sessionFollows } from "../../store/follows";
 import { setSidebarVisibility } from "../../store/navigation";
 import PageButton from "./PageButton";
+import { authenticate } from "../../store/session";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -13,10 +14,12 @@ const Sidebar = () => {
   const sidebarVisible = useSelector((state) => state.visibility.sidebar);
   const [remove, setRemove] = useState(false)
   useEffect(() => {
-    dispatch(getSessionFollowsThunk());
+    dispatch(authenticate()).then((data) => {
+      if (data.id) dispatch(getSessionFollowsThunk())
+    })
     dispatch(setSidebarVisibility(false))
     setRemove(false)
-  }, []);
+  }, [dispatch]);
 
   const hideSidebar = () => {
     dispatch(setSidebarVisibility(false))
@@ -45,11 +48,11 @@ const Sidebar = () => {
           </NavLink>
         </div>
         <h3 style={{margin: '2rem 0 1rem 1.5rem'}}>Following</h3>
-        {follows?.map((follow) => (
+        {follows.length ? follows?.map((follow) => (
           <div key={follow.id} className="follow-card">
             <PageButton pageId={follow.pageId} remove={remove}/>
           </div>
-        ))}
+        )) : <div>You are not following any artists.</div>}
         <div className="remove-follows-button button-hover" onClick={() => setRemove(prev => !prev)}>
           {!remove ? 'Manage Follows' : 'Cancel'}
         </div>

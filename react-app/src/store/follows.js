@@ -7,6 +7,7 @@ const REMOVE_FOLLOW = "follows/REMOVE_FOLLOW";
 // selectors
 
 export const sessionFollows = (state) => {
+  if (!state.session.user) return [];
   const follows = Object.values(state.follows).filter(
     (follow) => follow.userId === state.session.user.id
   );
