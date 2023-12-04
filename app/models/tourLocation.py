@@ -11,8 +11,8 @@ class TourLocation(db.Model):
     tourId = db.Column(
         db.Integer(), db.ForeignKey(add_prefix_for_prod("tours.id")), nullable=False
     )
-    venue = db.Column(db.String(40))
-    location = db.Column(db.String(40), nullable=False)
+    venue = db.Column(db.String())
+    location = db.Column(db.String(), nullable=False)
     tourDate = db.Column(db.String(), nullable=False)
     ticketsLink = db.Column(db.String(), nullable=False)
     rsvpLink = db.Column(db.String())
