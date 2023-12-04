@@ -19,7 +19,7 @@ const Home = () => {
     dispatch(getRPagesHomeThunk()).then(() => {
       dispatch(setNavVisibility(true))
       setIsLoaded(true)
-    } );
+    });
   }, [dispatch]);
 
   const handleNextImage = () => {

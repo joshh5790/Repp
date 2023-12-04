@@ -35,7 +35,7 @@ export const addPageThunk = (pageId) => async (dispatch) => {
   const response = await fetch(`/api/pages/id/${pageId}`);
   if (response.ok) {
     const data = await response.json();
-    dispatch(addRPage({ [data.id]: data }));
+    dispatch(addRPage({ [data.linkName]: data }));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -63,7 +63,7 @@ export const getRPagesThunk = () => async (dispatch) => {
     const data = await response.json();
     const formattedData = {};
     for (const page of data) {
-      formattedData[page.id] = page;
+      formattedData[page.linkName] = page;
     }
     dispatch(setRPage(formattedData));
     return formattedData;

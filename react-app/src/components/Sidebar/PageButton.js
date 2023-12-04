@@ -1,20 +1,30 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPageThunk } from "../../store/pages";
 import { setSidebarVisibility } from "../../store/navigation";
 
-const PageButton = ({ pageId }) => {
+const PageButton = ({ pageId, remove }) => {
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.pages[pageId]);
+  const history = useHistory()
+  const page = useSelector((state) => Object.values(state.pages).find(page => page.id === pageId));
   useEffect(() => {
     dispatch(addPageThunk(pageId));
   }, []);
+
+  const handleSidebarLink = () => {
+    dispatch(setSidebarVisibility(false))
+    history.push(`/${page?.linkName}`)
+  }
+
+  const handleRemove = () => {
+
+  }
+
   return (
     <div className="sidebar-page-button button-hover">
-      <NavLink
-        to={`/${page?.linkName}`}
-        onClick={() => dispatch(setSidebarVisibility(false))}
+      <div
+        onClick={handleSidebarLink}
         style={{
           display: "flex",
           gap: "1rem",
@@ -28,7 +38,7 @@ const PageButton = ({ pageId }) => {
           <img className="sidebar-button-img" src={page?.profileImage} />
         </div>
         <div>{page?.displayName}</div>
-      </NavLink>
+      </div>
     </div>
   );
 };
