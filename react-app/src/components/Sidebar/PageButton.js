@@ -43,17 +43,11 @@ const PageButton = ({ followId, pageId, remove }) => {
           width: "100%",
         }}
       >
+          <img className="sidebar-button-img" src={page?.profileImage} />
         {remove && removeHover ? (
-          <div style={{ color: "red", fontWeight: "bold", justifySelf: "center", width: "100%" }}>
-            Unfollow
-          </div>
+          <div style={{ color: "red", fontWeight: "bold" }}>Unfollow</div>
         ) : (
-          <>
-            <div>
-              <img className="sidebar-button-img" src={page?.profileImage} />
-            </div>
-            <div>{page?.displayName}</div>
-          </>
+          <div>{page?.displayName}</div>
         )}
       </div>
     </div>
