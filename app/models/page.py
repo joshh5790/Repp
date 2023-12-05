@@ -84,6 +84,7 @@ class Page(db.Model):
             "displayName": self.displayName,
             "linkName": self.linkName,
             "mainImage": self.mainImage,
+            "profileImage": self.user.profileImage,
         }
 
     def to_dict(self):
