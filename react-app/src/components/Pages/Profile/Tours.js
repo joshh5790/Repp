@@ -16,7 +16,9 @@ const Tours = ({ pageId, previewStyle }) => {
  return (
   <div className='repp-page-tours'>
     <h2>TOURS</h2>
+    {tours.map((tour) => <div>
 
+    </div>)}
 
   </div>
  )

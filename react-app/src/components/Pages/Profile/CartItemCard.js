@@ -16,6 +16,7 @@ const CartItemCard = ({ item, numCartItems, setNumCartItems, setReload }) => {
   useEffect(() => {
     setQuantity(item.quantity)
   }, [item.quantity])
+  
   const updateCartItem = async (newQuantity) => {
     if (newQuantity === "remove") {
       if (numCartItems === 1) {
