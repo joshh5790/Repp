@@ -97,10 +97,10 @@ function Navigation() {
             marginLeft: "1rem"
           }}
         >
-          <a href="https://github.com/joshh5790">
+          <a href="https://github.com/joshh5790" target="_blank">
             <i className="fa-brands fa-github" style={{color: "white"}} />
           </a>
-          <a href="https://www.linkedin.com/in/joshua-ho-5790/">
+          <a href="https://www.linkedin.com/in/joshua-ho-5790/" target="_blank">
             <i className="fa-brands fa-linkedin" style={{color: "white"}} />
           </a>
         </div>
