@@ -24,6 +24,7 @@ This website offers a space for music artists to create a page that looks and fu
   * videos section
   * about section
 * users have separate carts for separate artist profiles, and can view their order history
+* limited mobile preview while artist is editing their page
 
 <br>
 
@@ -37,11 +38,12 @@ This website offers a space for music artists to create a page that looks and fu
 
 ### Future Features:
 
-- create an interactions section that allows page visitors to interact with the music artist
-- Enable messaging between artists that mutually follow one another
+* create an interactions section that allows page visitors to interact with the music artist
+* Enable messaging between artists that mutually follow one another
+* Enable desktop preview while an artist edits their page
 
 <div align="center">
-  
+
 ## Installation
 
 </div>
@@ -76,11 +78,11 @@ This website offers a space for music artists to create a page that looks and fu
    ```bash
    flask db migrate
    ```
-  
+
    ```bash
    flask seed all
    ```
-   
+
    ```bash
    flask run
    ```
