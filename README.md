@@ -41,6 +41,7 @@ This website offers a space for music artists to create a page that looks and fu
 * create an interactions section that allows page visitors to interact with the music artist
 * Enable messaging between artists that mutually follow one another
 * Enable desktop preview while an artist edits their page
+* Create newsletter functionality for each artist page
 
 <div align="center">
 
