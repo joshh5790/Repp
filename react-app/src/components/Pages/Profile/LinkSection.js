@@ -21,7 +21,7 @@ const LinkSection = ({
   useEffect(() => {
     dispatch(getFollowsThunk(page.id)).then(
       data => {
-        if (user.id === page.userId) return setFollowing('owner')
+        if (user && user.id === page.userId) return setFollowing('owner')
         for (const follow of data) {
           if (follow.userId === user.id) {
             return setFollowing('following')
@@ -142,7 +142,7 @@ const LinkSection = ({
         {!isMobile && (
           <>
             <h1>{page?.displayName}</h1>
-            {following === 'notFollowing' && (
+            {user && following === 'notFollowing' && (
               <div onClick={addFollow} className="follow-button button-hover">+ Follow</div>
             )}
           </>

@@ -48,7 +48,7 @@ const Cart = ({ pageId, linkName, numCartItems, setNumCartItems }) => {
 
   return (
     <>
-      {numCartItems && (
+      {numCartItems ? (
         <div
           onClick={() => dispatch(setCartVisibility((prev) => !prev))}
           className={`open-cart-button button-hover flex-col-center ${
@@ -58,7 +58,7 @@ const Cart = ({ pageId, linkName, numCartItems, setNumCartItems }) => {
           <div>{numCartItems}</div>
           <i className="fa-solid fa-cart-shopping" />
         </div>
-      )}
+      ) : ''}
       <div
         id="cart-background"
         className={cartVisible && cart ? "" : "hidden"}
