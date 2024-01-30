@@ -19,7 +19,7 @@ function SearchBar() {
   const handleSubmit = e => {
     e.preventDefault();
     // Do something with the search term
-    history.push('/search')
+    history.push(`/search?query=${term}`)
 
   };
 
