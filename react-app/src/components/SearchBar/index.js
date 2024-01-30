@@ -7,7 +7,8 @@ function SearchBar() {
   const history = useHistory()
   const [term, setTerm] = useState("");
 
-  const clearSearch = () => {
+  const clearSearch = e => {
+    e.preventDefault()
     setTerm('')
   }
 
@@ -36,17 +37,18 @@ function SearchBar() {
               value={term}
               onChange={handleChange}
               className="search-input"
+              style={{color: "#EEEEEE"}}
           />
-          <div style={{display: 'flex'}}>
-            <button
-              onClick={clearSearch}
-              className={`clear-search ${term.length === 0 ? 'hidden' : ''}`}>
-              <i className="fa-solid fa-x" />
-            </button>
+          <div style={{display: 'flex', flexDirection: "row-reverse"}}>
             <button
                 type="submit"
                 className="search-button">
-                <i className="fa-solid fa-magnifying-glass" />
+                <i className="fa-solid fa-magnifying-glass" style={{color: "#EEEEEE", cursor: 'pointer'}} />
+            </button>
+            <button
+              onClick={clearSearch}
+              className={`clear-search ${term.length === 0 ? 'hidden' : ''}`}>
+              <i className="fa-solid fa-x" style={{color: "#EEEEEE", cursor: 'pointer'}} />
             </button>
           </div>
       </form>

@@ -6,7 +6,7 @@ import { setSidebarVisibility } from "../../store/navigation";
 import ProfileButton from "./ProfileButton";
 import OpenModalButton from "../OpenModalButton";
 import LoginForm from "../Modals/LoginForm";
-// import SearchBar from "../SearchBar";
+import SearchBar from "../SearchBar";
 import "./Navigation.css";
 
 function Navigation() {
@@ -105,9 +105,9 @@ function Navigation() {
           </a>
         </div>
       </li>
-      {/* <li className="search-bar-container">
+      <li className="search-bar-container">
         <SearchBar />
-      </li> */}
+      </li>
 
       <li className="nav-right">
         {sessionUser ? (

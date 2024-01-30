@@ -20,7 +20,7 @@ def get_pages():
 # GET /pages/home
 @page_routes.route('/home')
 def get_pages_home():
-    pages = Page.query.all()
+    pages = Page.query.limit(5).all()
     return [page.home_page_info() for page in pages]
 
 # GET /pages/id/:pageId
