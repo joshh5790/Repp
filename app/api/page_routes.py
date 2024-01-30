@@ -23,6 +23,16 @@ def get_pages_home():
     pages = Page.query.limit(5).all()
     return [page.home_page_info() for page in pages]
 
+# GET /pages/search
+@page_routes.route('/search')
+def get_pages_search():
+    query = request.args.get('query')
+    pages = Page.query.filter(
+        Page.name.ilike(f'%{query}%')).all()
+    if not len(pages):
+        return {'pages': []}
+    return {'pages': [page.to_dict() for page in pages]}
+
 # GET /pages/id/:pageId
 @page_routes.route("/id/<int:pageId>")
 def get_page_by_id(pageId):
