@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DebounceInput from 'react-debounce-input'
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import './SearchBar.css'
 
 function SearchBar() {
+  const location = useLocation()
   const history = useHistory()
   const [term, setTerm] = useState("");
+
+  useEffect(() => {
+    if (location.pathname === '/search') {
+      const queryParams = new URLSearchParams(location.search)
+      setTerm(queryParams.get('query'))
+    }
+    else {
+      setTerm("")
+    }
+  }, [location.pathname])
 
   const clearSearch = e => {
     e.preventDefault()

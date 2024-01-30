@@ -1,7 +1,6 @@
 .search-bar {
   display: flex;
   flex-direction: row;
-  width: fit-content;
   justify-content: space-between;
   border: 1px solid #EEEEEE;
   border-radius: 20rem;

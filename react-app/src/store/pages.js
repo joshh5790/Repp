@@ -90,6 +90,23 @@ export const getRPagesHomeThunk = () => async (dispatch) => {
   } else return ["Failed to retrieve home page information."];
 };
 
+// GET /pages/search
+export const getRPagesSearchThunk = (query) => async (dispatch) => {
+  const response = await fetch(`/api/pages/search?query=${query}`);
+  if (response.ok) {
+    const data = await response.json();
+    const formattedData = {};
+    for (const page of data) {
+      formattedData[page.linkName] = page;
+    }
+    dispatch(addRPage(formattedData));
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) return data.errors;
+  } else return ["Failed to retrieve pages."];
+}
+
 // GET /pages/:linkName
 export const getOneRPageThunk = (linkName) => async (dispatch) => {
   const response = await fetch(`/api/pages/${linkName}`);
