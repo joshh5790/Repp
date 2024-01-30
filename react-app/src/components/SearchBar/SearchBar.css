@@ -6,6 +6,7 @@
   border-radius: 20rem;
   padding: 0.5rem 1rem;
   width: 100%;
+  max-width: 40vw;
 }
 
 .search-button-mobile {
@@ -31,7 +32,7 @@
 }
 
 .search-input:focus {
-  outline: none;
+  box-shadow: none;
 }
 
 .clear-search {

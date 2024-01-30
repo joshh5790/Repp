@@ -58,6 +58,9 @@
   width: 40%;
   max-width: 30rem;
   min-width: 10rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-right {

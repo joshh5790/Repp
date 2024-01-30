@@ -44,7 +44,7 @@ function SearchBar() {
               type="text"
               minLength={2}
               debounceTimeout={500}
-              placeholder="Search by people"
+              placeholder="Search by artist"
               value={term}
               onChange={handleChange}
               className="search-input"
