@@ -99,7 +99,7 @@ export const getRPagesSearchThunk = (query) => async (dispatch) => {
     for (const page of data) {
       formattedData[page.linkName] = page;
     }
-    dispatch(addRPage(formattedData));
+    dispatch(setRPage(formattedData));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
