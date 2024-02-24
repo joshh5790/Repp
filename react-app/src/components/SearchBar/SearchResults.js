@@ -5,11 +5,12 @@ import { getRPagesSearchThunk } from "../../store/pages";
 
 const SearchResults = ({ term }) => {
   const pages = useSelector((state) => state.pages);
+  const [searchTerm, setSearchTerm] = useState(term)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getRPagesSearchThunk(term));
-  }, [dispatch, term]);
+  }, [dispatch, term]); // term needs to be a state variable to refresh this component
   return (
     <div className="search-results">
       {pages.length > 0 ? (
