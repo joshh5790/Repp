@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Pages/Home";
-import Search from "./components/Pages/SearchResults";
 import Profile from "./components/Pages/Profile";
 import CreateProfile from "./components/Pages/CreateProfile";
 import EditProfile from "./components/Pages/EditProfile";
@@ -31,9 +30,6 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/search">
-              <Search />
-            </Route>
             <Route exact path="/account/carts">
               <Carts />
             </Route>
@@ -52,7 +48,6 @@ function App() {
             {/* <Route exact path="/checkout/:linkName">
               <Checkout />
             </Route> */}
-            <Route exact path="/search"></Route>
             <Route exact path="/confirmation/:linkName">
               <Confirmation />
             </Route>
