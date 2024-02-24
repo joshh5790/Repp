@@ -95,11 +95,6 @@ export const getRPagesSearchThunk = (query) => async (dispatch) => {
   const response = await fetch(`/api/pages/search?query=${query}`);
   if (response.ok) {
     const data = await response.json();
-    const formattedData = {};
-    for (const page of data) {
-      formattedData[page.linkName] = page;
-    }
-    dispatch(setRPage(formattedData));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();

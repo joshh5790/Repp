@@ -9,12 +9,9 @@ const SearchResults = ({ term }) => {
 
   useEffect(() => {
     dispatch(getRPagesSearchThunk(term));
-  }, [dispatch]);
+  }, [dispatch, term]);
   return (
     <div className="search-results">
-      <h2 style={{ margin: "0.5rem 0" }}>
-        Search results for <em>{term}</em>:
-      </h2>
       {pages.length > 0 ? (
         <div className="search-list-artists">
           {pages.map((page) => (

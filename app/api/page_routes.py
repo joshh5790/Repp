@@ -28,10 +28,10 @@ def get_pages_home():
 def get_pages_search():
     query = request.args.get('query')
     pages = Page.query.filter(
-        Page.name.ilike(f'%{query}%')).all()
+        Page.displayName.ilike(f'%{query}%')).all()
     if not len(pages):
         return {'pages': []}
-    return {'pages': [page.to_dict() for page in pages]}
+    return [page.to_dict() for page in pages]
 
 # GET /pages/id/:pageId
 @page_routes.route("/id/<int:pageId>")
