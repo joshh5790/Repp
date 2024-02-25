@@ -19,7 +19,7 @@ const SearchResults = ({ term, setTerm }) => {
             <NavLink
               to={`/${page?.linkName}`}
               key={page?.id}
-              className="search-results-button"
+              className="search-results-button button-hover"
               onClick={() => setTerm("")}
             >
               <img

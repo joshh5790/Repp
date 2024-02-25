@@ -56,7 +56,7 @@ def seed_users():
         country="United States",
         subregion="CA",
         postal_code="96018",
-        profileImage="https://ucarecdn.com/c7a047af-05b9-4bb2-a3e1-b11081d44b5d/",
+        profileImage="https://i.scdn.co/image/ab6761610000e5eb466280922e99e53a2ccc2064",
         isRepp=True,
         password="password",
     )

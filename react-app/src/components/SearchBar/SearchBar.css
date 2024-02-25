@@ -48,6 +48,8 @@
 
 .search-results-div {
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 3rem;
   border-radius: 10px;
   padding: 10px;
@@ -55,6 +57,7 @@
   max-height: 25rem;
   width: 100%;
   background-color: #F1F1F1;
+  min-height: 5rem;
 }
 
 @media (max-width: 700px) {
