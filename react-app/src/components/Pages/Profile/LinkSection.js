@@ -23,7 +23,7 @@ const LinkSection = ({
       data => {
         if (user && user.id === page.userId) return setFollowing('owner')
         for (const follow of data) {
-          if (follow.userId === user.id) {
+          if (follow.userId === user?.id) {
             return setFollowing('following')
           }
         }

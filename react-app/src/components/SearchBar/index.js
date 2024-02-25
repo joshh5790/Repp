@@ -19,7 +19,7 @@ function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Do something with the search term
+    // unnecessary, remove submit stuff
   };
 
   return (
@@ -56,7 +56,7 @@ function SearchBar() {
       <div
         className={`search-results-div ${term.length === 0 ? "hidden" : ""}`}
       >
-        <SearchResults term={term} />
+        <SearchResults term={term} setTerm={setTerm} />
       </div>
     </>
   );

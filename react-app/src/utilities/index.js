@@ -1,7 +1,7 @@
 const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
   currency: "USD",
   style: "currency",
-  currencyDisplay: "symbol"
+  currencyDisplay: "symbol",
 });
 
 export function formatCurrency(number) {
@@ -32,3 +32,6 @@ export function invalidImage({ target }) {
   target.src =
     "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
 }
+
+// random line I need to run
+// export NODE_OPTIONS=--openssl-legacy-provider

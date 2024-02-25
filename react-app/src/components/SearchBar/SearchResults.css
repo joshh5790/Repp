@@ -1,0 +1,22 @@
+.search-results-button {
+  display: flex;
+  text-decoration: none;
+  gap: 1rem;
+  height: 4rem;
+  align-items: center;
+  width: 100%;
+  color: black;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.search-results-button:hover {
+  background-color: #CCCCCC;
+}
+
+.search-results-img {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}

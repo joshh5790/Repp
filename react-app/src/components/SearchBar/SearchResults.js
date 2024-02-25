@@ -2,15 +2,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getRPagesSearchThunk } from "../../store/pages";
+import "./SearchResults.css";
 
-const SearchResults = ({ term }) => {
-  const pages = useSelector((state) => state.pages);
-  const [searchTerm, setSearchTerm] = useState(term)
+const SearchResults = ({ term, setTerm }) => {
   const dispatch = useDispatch();
-
+  const [pages, setPages] = useState([]);
   useEffect(() => {
-    dispatch(getRPagesSearchThunk(term));
-  }, [dispatch, term]); // term needs to be a state variable to refresh this component
+    dispatch(getRPagesSearchThunk(term)).then((data) => setPages(data));
+  }, [dispatch, term]);
+
   return (
     <div className="search-results">
       {pages.length > 0 ? (
@@ -19,11 +19,14 @@ const SearchResults = ({ term }) => {
             <NavLink
               to={`/${page?.linkName}`}
               key={page?.id}
-              className="page-card"
+              className="search-results-button"
+              onClick={() => setTerm("")}
             >
-              <div className="page-image">
-                <img src={page?.image} alt="Preview" />
-              </div>
+              <img
+                className="search-results-img"
+                src={page?.profileImage}
+                alt="Preview"
+              />
               <div>{page?.displayName}</div>
             </NavLink>
           ))}
