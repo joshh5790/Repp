@@ -31,7 +31,7 @@ def update_product(productId):
     product = Product.query.get(productId)
     if not product:
         return {"error": "Product not found"}, 404
-    if current_user.id != product.get_pageOwnerId():
+    if current_user.id != product.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to update this product"
         }, 401
@@ -61,7 +61,7 @@ def delete_product(productId):
     product = Product.query.get(productId)
     if not product:
         return {"error": "Product not found"}, 404
-    if current_user.id != product.get_pageOwnerId():
+    if current_user.id != product.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to delete this product"
         }, 401
@@ -107,7 +107,7 @@ def create_product_image(productId):
     product = Product.query.get(productId)
     if not product:
         return {"error": "Product not found"}, 404
-    if current_user.id != product.get_pageOwnerId():
+    if current_user.id != product.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to add a product image to this product"
         }, 401
@@ -135,7 +135,7 @@ def create_product_stock(productId):
     product = Product.query.get(productId)
     if not product:
         return {"error": "Product not found"}, 404
-    if current_user.id != product.get_pageOwnerId():
+    if current_user.id != product.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to add a product stock to this product"
         }, 401

@@ -42,7 +42,7 @@ export const getToursThunk = (profileId) => async (dispatch) => {
 
 // POST /profiles/:profileId/tours
 export const createTourThunk =
-  ({ profileId, venue, location, tourDate, ticketsLink, rsvpLink, faqLink }) =>
+  ({ profileId, venue, location, tourDate, ticketsLink, soldOut, }) =>
   async (dispatch) => {
     const response = await fetch(`/api/profiles/${profileId}/tours`, {
       method: "POST",
@@ -52,8 +52,7 @@ export const createTourThunk =
         location,
         tourDate,
         ticketsLink,
-        rsvpLink,
-        faqLink,
+        soldOut,
       }),
     });
 
@@ -75,8 +74,7 @@ export const updateTourThunk =
     location,
     tourDate,
     ticketsLink,
-    rsvpLink,
-    faqLink,
+    soldOut,
   }) =>
   async (dispatch) => {
     const response = await fetch(`/api/tours/${tourId}`, {
@@ -87,8 +85,7 @@ export const updateTourThunk =
         location,
         tourDate,
         ticketsLink,
-        rsvpLink,
-        faqLink,
+        soldOut,
       }),
     });
 

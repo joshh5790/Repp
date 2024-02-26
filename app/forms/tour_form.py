@@ -24,4 +24,4 @@ class TourForm(FlaskForm):
     location = StringField("Location", [DataRequired()])
     tourDate = StringField("Tour Date", [DataRequired()])
     ticketsLink = URLField("Tickets Link", [DataRequired()])
-    soldOut = BooleanField("Sold Out?", [DataRequired()])
+    soldOut = BooleanField("Sold Out?")

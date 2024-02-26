@@ -2,6 +2,7 @@ import OpenModalButton from "../../OpenModalButton";
 import DeleteProfile from "../../Modals/DeleteProfile";
 
 const More = ({ profile }) => {
+  // add buttons for delete all products, delete all tours, delete all videos
   return (
     <div>
       {profile && (

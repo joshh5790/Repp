@@ -12,13 +12,12 @@ import "./EditTours.css";
 const EditTours = ({ profile }) => {
   const dispatch = useDispatch();
   const tours = useSelector((state) => Object.values(state.tours));
-  const [tourName, setTourName] = useState("");
+  const [tourName, setTourName] = useState(profile.tourName);
   const [tourDate, setTourDate] = useState("");
   const [venue, setVenue] = useState("");
   const [location, setLocation] = useState("");
   const [ticketsLink, setTicketsLink] = useState("");
   const [addMode, setAddMode] = useState(false);
-  const [editName, setEditName] = useState("");
   const [editInput, setEditInput] = useState(0);
   const [reload, setReload] = useState(false);
 
@@ -38,15 +37,26 @@ const EditTours = ({ profile }) => {
     }
   };
 
-  const handleTourNameChange = () => {};
+  const handleTourNameChange = () => {
+    dispatch(updateProfileThunk({ profileId: profile.id, tourName }));
+    setReload((prev) => !prev);
+  };
 
   const handleAddTour = () => {};
 
+  const handleSoldOut = (tourId, soldOut) => {
+    dispatch(updateTourThunk({ tourId, soldOut: !soldOut }));
+    setEditInput(0);
+  };
+
   const handleDeleteTour = (tourId) => {};
 
-  const handleUpdateTour = (tourId) => {};
-
-  const handleDeleteAllTours = () => {};
+  const handleUpdateTour = (tourId) => {
+    setEditInput(0);
+    dispatch(
+      updateTourThunk({ tourId, tourDate, venue, location, ticketsLink })
+    );
+  };
 
   // sold out will be a button right under the x for removing a tour
   // click the SOLD OUT? button to mark a tour as sold out! with party emojis
@@ -70,60 +80,109 @@ const EditTours = ({ profile }) => {
         </button>
       </div>
       <div className="new-card-button add-tour-button">+ Add Tour Location</div>
-      {tours &&
-        tours.map((tour) => (
-          <div key={tour.id} className={`tour-card ease-bg ${editInput === tour.id ? 'focus-tour' : ''}`} onClick={() => focusTour(tour)}>
-            <div>{tour.soldOut ? '🎉 SOLD OUT! 🎉' : 'Sold out?'}</div>
-            <button
-            className="delete-card"
-            onClick={() => handleDeleteTour(tour.id)}
-            style={{
-              gridArea: "buttons",
-              alignSelf: "start",
-              justifySelf: "end",
-              }}
+      <div>THIS IS EDITINPUT: {editInput}</div>
+      <div className="edit-tours-list">
+        {tours &&
+          tours.map((tour) => (
+            <form
+              key={tour?.id}
+              className={`tour-card ease-bg ${
+                editInput === tour?.id ? "focus-tour" : ""
+              }`}
+              onClick={() => focusTour(tour)}
             >
-              <i className="fa-solid fa-x" />
-            </button>
-            <div></div>
-            <form>
+              <div
+                className="soldout-button button-hover"
+                onClick={() => handleSoldOut(tour?.id, tour?.soldOut)}
+              >
+                {tour.soldOut ? "🎉 SOLD OUT! 🎉" : "Sold out?"}
+              </div>
+              {/* edit card button has no actual functionality other than indicating to the user that they can't simply click on the inputs to edit */}
+              <button
+                className="edit-card"
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  right: "5px",
+                  alignSelf: "start",
+                  justifySelf: "end",
+                }}
+              >
+                <i className="fa-regular fa-pen-to-square" />
+              </button>
+              <button
+                className="delete-card"
+                onClick={() => handleDeleteTour(tour.id)}
+                style={{
+                  position: "absolute",
+                  top: "5px",
+                  right: "5px",
+                  alignSelf: "start",
+                  justifySelf: "end",
+                }}
+              >
+                <i className="fa-solid fa-x" />
+              </button>
               <input
-                className=""
-                value={tour.tourDate}
+                className="tour-input"
+                placeholder="Date"
+                value={editInput !== tour.id ? tour.tourDate : tourDate}
                 onChange={(e) => setTourDate(e.target.value)}
                 disabled={editInput !== tour.id}
               />
               <input
-                className=""
-                value={tour.venue}
+                className="tour-input"
+                placeholder="Venue"
+                value={editInput !== tour.id ? tour.venue : venue}
                 onChange={(e) => setVenue(e.target.value)}
                 disabled={editInput !== tour.id}
               />
               <input
-                className=""
-                value={tour.location}
+                className="tour-input"
+                placeholder="Location"
+                value={editInput !== tour.id ? tour.location : location}
                 onChange={(e) => setLocation(e.target.value)}
                 disabled={editInput !== tour.id}
               />
               <input
-                className=""
-                value={tour.ticketsLink}
+                className="tour-input"
+                placeholder="External Tickets Link"
+                value={editInput !== tour.id ? tour.ticketsLink : ticketsLink}
                 onChange={(e) => setTicketsLink(e.target.value)}
                 disabled={editInput !== tour.id}
               />
-              <button className="">Cancel</button>
-              <button className="" onClick={() => handleUpdateTour(tour.id)}>
-                Save
-              </button>
+              {editInput === tour.id && (
+                <div
+                  style={{
+                    marginTop: "0.5rem",
+                    gridArea: "buttons",
+                    display: "flex",
+                    gap: "1rem",
+                  }}
+                >
+                  <button
+                    className="tour-button-cancel button-hover"
+                    onClick={() => setEditInput(0)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="tour-button-save button-hover"
+                    onClick={() => handleUpdateTour(tour.id)}
+                  >
+                    Save
+                  </button>
+                </div>
+              )}
             </form>
-          </div>
-        ))}
-      <button
+          ))}
+      </div>
+      {/* <button
         className="clear-all-tours-button button-hover"
         onClick={handleDeleteAllTours}
       >
         Delete All Tours
-      </button>
+      </button> */}
     </>
   );
 };

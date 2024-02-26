@@ -20,7 +20,7 @@ def update_video(videoId):
     video = Video.query.get(videoId)
     if not video:
         return {"error": "Video not found"}, 404
-    if current_user.id != video.get_pageOwnerId():
+    if current_user.id != video.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to update this video"
         }, 401
@@ -44,7 +44,7 @@ def delete_video(videoId):
     video = Video.query.get(videoId)
     if not video:
         return {"error": "Video not found"}, 404
-    if current_user.id != video.get_pageOwnerId():
+    if current_user.id != video.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to delete this video"
         }, 401

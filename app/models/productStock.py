@@ -27,5 +27,5 @@ class ProductStock(db.Model):
     def get_product(self):
         return self.product.to_dict()
 
-    def get_pageOwnerId(self):
-        return self.product.get_pageOwnerId()
+    def get_profileOwnerId(self):
+        return self.product.get_profileOwnerId()

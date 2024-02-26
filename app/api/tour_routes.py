@@ -19,7 +19,7 @@ def update_tour(tourId):
     tour = Tour.query.get(tourId)
     if not tour:
         return {"error": "Tour not found"}, 404
-    if current_user.id != tour.get_pageOwnerId():
+    if current_user.id != tour.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to update this tour"
         }, 401
@@ -47,7 +47,7 @@ def delete_tour(tourId):
     tour = Tour.query.get(tourId)
     if not tour:
         return {"error": "Tour not found"}, 404
-    if current_user.id != tour.get_pageOwnerId():
+    if current_user.id != tour.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to delete this tour"
         }, 401

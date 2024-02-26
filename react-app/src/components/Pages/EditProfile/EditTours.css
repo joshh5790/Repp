@@ -1,5 +1,6 @@
 .edit-tour-name-div {
   display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -26,9 +27,76 @@
   height: 4rem;
 }
 
+.edit-tours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .tour-card {
+  position: relative;
+  cursor: pointer;
   display: grid;
-  height: 4rem;
+  background-color: #444444;
+  padding: 1rem;
+  border-radius: 10px;
+  grid-template-areas:
+    "soldout soldout"
+    "inputs inputs"
+    "inputs inputs"
+    "buttons buttons";
+  justify-items: center;
+}
+
+.soldout-button.button-hover {
+  grid-area: soldout;
+  background-color: black;
+  color: white;
+  width: 10rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1px solid black;
+  padding: 0.5rem;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.soldout-button:hover {
+  color: black;
+  background-color: white;
+}
+
+.tour-input {
+  margin-bottom: 0.5rem;
+}
+
+.tour-button-save.button-hover,
+.tour-button-cancel.button-hover {
+  all: unset;
+  padding: 0.4rem;
+  width: 3rem;
+  border: 1px solid #999999;
+  background-color: #DDDDDD;
+  text-align: center;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tour-button-save.button-hover {
+  background-color: #4444FF;
+  border: 1px solid #4444FF;
+  color: #F1F1F1;
+}
+
+.tour-button-save:hover {
+  background-color: #F1F1F1;
+  color: #4444FF;
+}
+
+.tour-button-cancel:hover {
+  background-color: #999999;
+  color: #F1F1F1;
 }
 
 .clear-all-tours-button.button-hover {

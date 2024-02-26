@@ -19,7 +19,7 @@ def update_product_stock(productStockId):
     productStock = ProductStock.query.get(productStockId)
     if not productStock:
         return {"error": "Product stock not found"}, 404
-    if current_user.id != productStock.get_pageOwnerId():
+    if current_user.id != productStock.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to update this stock"
         }, 401
@@ -39,7 +39,7 @@ def delete_product_stock(productStockId):
     productStock = ProductStock.query.get(productStockId)
     if not productStock:
         return {"error": "Product stock not found"}, 404
-    if current_user.id != productStock.get_pageOwnerId():
+    if current_user.id != productStock.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to delete this stock"
         }, 401

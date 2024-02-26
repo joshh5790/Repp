@@ -20,7 +20,7 @@ def update_product_image(productImageId):
     productImage = ProductImage.query.get(productImageId)
     if not productImage:
         return {"error": "Product image not found"}, 404
-    if current_user.id != productImage.get_pageOwnerId():
+    if current_user.id != productImage.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to update this product image"
         }, 401
@@ -43,7 +43,7 @@ def delete_product_image(productImageId):
     productImage = ProductImage.query.get(productImageId)
     if not productImage:
         return {"error": "Product image not found"}, 404
-    if current_user.id != productImage.get_pageOwnerId():
+    if current_user.id != productImage.get_profileOwnerId():
         return {
             "Unauthorized": "User does not have permission to delete this product image"
         }, 401
