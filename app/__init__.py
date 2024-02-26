@@ -7,7 +7,7 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-from .api.page_routes import page_routes
+from .api.profile_routes import profile_routes
 from .api.product_routes import product_routes
 from .api.productImage_routes import productImage_routes
 from .api.productStock_routes import productStock_routes
@@ -18,7 +18,6 @@ from .api.session_routes import session_routes
 from .api.checkout_routes import checkout_routes
 from .api.order_routes import order_routes
 from .api.tour_routes import tour_routes
-from .api.tourLocation_routes import tourLocation_routes
 from .api.follow_routes import follow_routes
 from .seeds import seed_commands
 from .config import Config
@@ -43,7 +42,7 @@ app.config.from_object(Config)
 stripe.api_key=app.config['STRIPE_SECRET_KEY']
 app.register_blueprint(user_routes, url_prefix="/api/users")
 app.register_blueprint(auth_routes, url_prefix="/api/auth")
-app.register_blueprint(page_routes, url_prefix="/api/pages")
+app.register_blueprint(profile_routes, url_prefix="/api/pages")
 app.register_blueprint(product_routes, url_prefix="/api/products")
 app.register_blueprint(productImage_routes, url_prefix="/api/productImages")
 app.register_blueprint(productStock_routes, url_prefix="/api/productStock")
@@ -54,7 +53,6 @@ app.register_blueprint(session_routes, url_prefix="/api/session")
 app.register_blueprint(checkout_routes, url_prefix="/api/checkout")
 app.register_blueprint(order_routes, url_prefix="/api/orders")
 app.register_blueprint(tour_routes, url_prefix="/api/tours")
-app.register_blueprint(tourLocation_routes, url_prefix="/api/tourLocations")
 app.register_blueprint(follow_routes, url_prefix="/api/follows")
 db.init_app(app)
 Migrate(app, db)

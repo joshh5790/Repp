@@ -10,18 +10,18 @@ class Follow(db.Model):
     userId = db.Column(
         db.Integer(), db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
-    pageId = db.Column(
-        db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
+    profileId = db.Column(
+        db.Integer(), db.ForeignKey(add_prefix_for_prod("profiles.id")), nullable=False
     )
     pepps = db.Column(db.Integer, nullable=False, default=10)
 
     user = db.relationship("User", back_populates="follows")
-    page = db.relationship("Page", back_populates="follows")
+    profile = db.relationship("Profile", back_populates="follows")
 
     def to_dict(self):
         return {
             "id": self.id,
             "userId": self.userId,
-            "pageId": self.pageId,
+            "profileId": self.profileId,
 			"pepps": self.pepps,
         }

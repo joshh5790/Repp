@@ -10,7 +10,7 @@ import VideoSection from "./VideoSection";
 import Footer from "./Footer";
 import Cart from "./Cart";
 import LinkSection from "./LinkSection";
-import Tours from "./Tours";
+// import Tours from "./Tours";
 import { authenticate } from "../../../store/session";
 
 const Profile = ({ previewPage, preview, previewStyle }) => {
@@ -117,11 +117,6 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
               />
             </div>
           )}
-          {/* {page?.tourSection && (
-            <div id="tours" className="repp-page-section">
-              <Tours pageId={page?.id} previewStyle={previewStyle} />
-            </div>
-          )} */}
           {page?.shopSection && (
             <div id="merch" className="repp-page-section">
               <ProductSection

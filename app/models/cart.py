@@ -11,13 +11,13 @@ class Cart(db.Model):
     userId = db.Column(
         db.Integer(), db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
-    pageId = db.Column(
-        db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
+    profileId = db.Column(
+        db.Integer(), db.ForeignKey(add_prefix_for_prod("profiles.id")), nullable=False
     )
     subtotal = db.Column(db.Float(), nullable=False)
 
     user = db.relationship("User", back_populates="carts")
-    page = db.relationship("Page", back_populates="cart")
+    profile = db.relationship("Profile", back_populates="cart")
     cartItems = db.relationship(
         "CartItem", back_populates="cart", cascade="all, delete-orphan"
     )
@@ -26,12 +26,12 @@ class Cart(db.Model):
         return {
             "id": self.id,
             "userId": self.userId,
-            "pageId": self.pageId,
+            "profileId": self.profileId,
             "subtotal": self.subtotal,
         }
 
-    def get_page(self):
-        return self.page.to_dict()
+    def get_profile(self):
+        return self.profile.to_dict()
 
     def get_items(self):
         return [cartItem.to_dict() for cartItem in self.cartItems]

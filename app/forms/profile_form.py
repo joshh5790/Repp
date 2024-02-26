@@ -2,41 +2,41 @@ from flask_wtf import FlaskForm
 from flask_login import current_user
 from wtforms import StringField, URLField, EmailField, BooleanField
 from wtforms.validators import DataRequired, ValidationError
-from app.models import Page
+from app.models import Profile
 
 
 def displayname_exists(form, field):
     # Checking if user exists
     displayName = field.data
-    page_data = current_user.get_page()
+    profile_data = current_user.get_profile()
     if (
         current_user.is_authenticated
-        and "displayName" in page_data
-        and page_data["displayName"] == displayName
+        and "displayName" in profile_data
+        and profile_data["displayName"] == displayName
     ):
-        page = Page.query.filter(Page.displayName == displayName).all()
-        if len(page) > 1:
+        profile = Profile.query.filter(Profile.displayName == displayName).all()
+        if len(profile) > 1:
             raise ValidationError("Display name is already in use.")
     else:
-        page = Page.query.filter(Page.displayName == displayName).first()
-        if page:
+        profile = Profile.query.filter(Profile.displayName == displayName).first()
+        if profile:
             raise ValidationError("Display name is already in use.")
 
 
 def linkname_exists(form, field):
     linkName = field.data
-    page_data = current_user.get_page()
+    profile_data = current_user.get_profile()
     if (
         current_user.is_authenticated
-        and "linkName" in page_data
-        and page_data["linkName"] == linkName
+        and "linkName" in profile_data
+        and profile_data["linkName"] == linkName
     ):
-        page = Page.query.filter(Page.linkName == linkName).all()
-        if len(page) > 1:
+        profile = Profile.query.filter(Profile.linkName == linkName).all()
+        if len(profile) > 1:
             raise ValidationError("Link name is already in use.")
     else:
-        page = Page.query.filter(Page.linkName == linkName).first()
-        if page:
+        profile = Profile.query.filter(Profile.linkName == linkName).first()
+        if profile:
             raise ValidationError("Link name is already in use.")
 
 
@@ -45,7 +45,7 @@ def mainImage_data(form, field):
     if not mainImage:
         raise ValidationError("Main image field is required.")
 
-class PageForm(FlaskForm):
+class ProfileForm(FlaskForm):
     displayName = StringField(
         "Display Name", validators=[DataRequired(), displayname_exists]
     )

@@ -22,5 +22,5 @@ class ProductImage(db.Model):
             "image": self.image,
         }
 
-    def get_pageOwnerId(self):
-        return self.product.get_pageOwnerId()
+    def get_profileOwnerId(self):
+        return self.product.get_profileOwnerId()

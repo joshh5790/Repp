@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask_login import login_required, current_user
 from app.models import Video, db
 from app.forms import VideoForm
-from .page_routes import embed_video
+from .profile_routes import embed_video
 from flask import request
 
 video_routes = Blueprint("videos", __name__)

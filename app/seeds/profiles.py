@@ -1,9 +1,9 @@
-from app.models import db, Page, environment, SCHEMA
+from app.models import db, Profile, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
-def seed_pages():
-    eric = Page(
+def seed_profiles():
+    eric = Profile(
         userId=1,
         genreId=1,
         displayName="Eric Nam",
@@ -21,9 +21,8 @@ def seed_pages():
         businessInquiries="info@enmgmt.com",
         videoSection=True,
         shopSection=True,
-        tourSection=True,
     )
-    tiff = Page(
+    tiff = Profile(
         userId=2,
         genreId=1,
         displayName="Tiffany Day",
@@ -42,9 +41,8 @@ def seed_pages():
         newsletter="tiffanydaynewsletter@gmail.com",
         videoSection=True,
         shopSection=False,
-        tourSection=True,
     )
-    ivoris = Page(
+    ivoris = Profile(
         userId=3,
         genreId=1,
         displayName="Ivoris",
@@ -62,7 +60,7 @@ def seed_pages():
         videoSection=True,
         shopSection=False,
     )
-    chris = Page(
+    chris = Profile(
         userId=4,
         genreId=1,
         displayName="Chris James",
@@ -81,9 +79,8 @@ def seed_pages():
         newsletter="chrisjamesnewsletter@gmail.com",
         videoSection=True,
         shopSection=True,
-        tourSection=True,
     )
-    josiah = Page(
+    josiah = Profile(
         userId=5,
         genreId=1,
         displayName="Highvyn",
@@ -114,10 +111,10 @@ def seed_pages():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_pages():
+def undo_profiles():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.pages RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.profiles RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM pages"))
+        db.session.execute(text("DELETE FROM profiles"))
 
     db.session.commit()

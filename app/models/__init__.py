@@ -1,7 +1,7 @@
 from .db import db
 from .user import User
 from .genre import Genre
-from .page import Page
+from .profile import Profile
 from .product import Product
 from .productImage import ProductImage
 from .productStock import ProductStock
@@ -12,6 +12,5 @@ from .order import Order
 from .orderItem import OrderItem
 from .follow import Follow
 from .tour import Tour
-from .tourLocation import TourLocation
 
 from .db import environment, SCHEMA

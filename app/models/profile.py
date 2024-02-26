@@ -1,8 +1,8 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
-class Page(db.Model):
-    __tablename__ = "pages"
+class Profile(db.Model):
+    __tablename__ = "profiles"
 
     if environment == "production":
         __table_args__ = {"schema": SCHEMA}
@@ -40,24 +40,26 @@ class Page(db.Model):
     businessInquiries = db.Column(db.String())
     shopSection = db.Column(db.Boolean(), default=False)
     videoSection = db.Column(db.Boolean(), default=False)
-    tourSection = db.Column(db.Boolean(), default=False)
+    tourName = db.Column(db.String())
 
-    user = db.relationship("User", back_populates="page")
-    genre = db.relationship("Genre", back_populates="pages")
+    user = db.relationship("User", back_populates="profile")
+    genre = db.relationship("Genre", back_populates="profiles")
     products = db.relationship(
-        "Product", back_populates="page", cascade="all, delete-orphan"
+        "Product", back_populates="profile", cascade="all, delete-orphan"
     )
     videos = db.relationship(
-        "Video", back_populates="page", cascade="all, delete-orphan"
+        "Video", back_populates="profile", cascade="all, delete-orphan"
     )
-    cart = db.relationship("Cart", back_populates="page", cascade="all, delete-orphan")
+    cart = db.relationship("Cart", back_populates="profile", cascade="all, delete-orphan")
     orders = db.relationship(
-        "Order", back_populates="page", cascade="all, delete-orphan"
+        "Order", back_populates="profile", cascade="all, delete-orphan"
+    )
+    tours = db.relationship(
+        "Tour", back_populates="profile", cascade="all, delete-orphan"
     )
     follows = db.relationship(
-        "Follow", back_populates="page", cascade="all, delete-orphan"
+        "Follow", back_populates="profile", cascade="all, delete-orphan"
     )
-    tours = db.relationship("Tour", back_populates="page", cascade="all, delete-orphan")
 
     def repp_info(self):
         return {
@@ -75,6 +77,7 @@ class Page(db.Model):
             "external": self.external,
             "mainImage": self.mainImage,
             "bio": self.bio,
+            "tourName": self.tourName,
             "profileImage": self.user.profileImage,
         }
 
@@ -111,7 +114,7 @@ class Page(db.Model):
             "businessInquiries": self.businessInquiries,
             "shopSection": self.shopSection,
             "videoSection": self.videoSection,
-            "tourSection": self.tourSection,
+            "tourName": self.tourName,
             "profileImage": self.user.profileImage,
         }
 

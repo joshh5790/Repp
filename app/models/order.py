@@ -12,14 +12,14 @@ class Order(db.Model):
     userId = db.Column(
         db.Integer(), db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
-    pageId = db.Column(
-        db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
+    profileId = db.Column(
+        db.Integer(), db.ForeignKey(add_prefix_for_prod("profiles.id")), nullable=False
     )
     total = db.Column(db.Float(), nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.utcnow)
 
     user = db.relationship("User", back_populates="orders")
-    page = db.relationship("Page", back_populates="orders")
+    profile = db.relationship("Profile", back_populates="orders")
     orderItems = db.relationship(
         "OrderItem", back_populates="order", cascade="all, delete-orphan"
     )
@@ -28,7 +28,7 @@ class Order(db.Model):
         return {
             "id": self.id,
             "userId": self.userId,
-            "pageId": self.pageId,
+            "profileId": self.profileId,
             "total": self.total,
             "createdAt": self.createdAt,
         }

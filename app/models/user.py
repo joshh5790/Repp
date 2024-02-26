@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
     isRepp = db.Column(db.Boolean(), default=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    page = db.relationship("Page", back_populates="user", cascade="all, delete-orphan")
+    profile = db.relationship("Profile", back_populates="user", cascade="all, delete-orphan")
     carts = db.relationship("Cart", back_populates="user", cascade="all, delete-orphan")
     orders = db.relationship(
         "Order", back_populates="user", cascade="all, delete-orphan"
@@ -65,16 +65,16 @@ class User(db.Model, UserMixin):
             "isRepp": self.isRepp,
         }
 
-    def get_page(self):
-        return self.page[0].to_dict() if self.page else {}
+    def get_profile(self):
+        return self.profile[0].to_dict() if self.profile else {}
 
     def get_carts(self):
         return [cart.to_dict() for cart in self.carts]
 
-    def get_one_cart(self, pageId):
+    def get_one_cart(self, profileId):
         carts = self.carts
         for cart in carts:
-            if cart.pageId == pageId:
+            if cart.profileId == profileId:
                 return cart.to_dict()
         return {}
 

@@ -8,15 +8,15 @@ class Product(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    pageId = db.Column(
-        db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
+    profileId = db.Column(
+        db.Integer(), db.ForeignKey(add_prefix_for_prod("profiles.id")), nullable=False
     )
     name = db.Column(db.String(40), nullable=False)
     price = db.Column(db.Float(), nullable=False)
     description = db.Column(db.String(255))
     previewImage = db.Column(db.String(), nullable=False)
 
-    page = db.relationship("Page", back_populates="products")
+    profile = db.relationship("Profile", back_populates="products")
     images = db.relationship(
         "ProductImage", back_populates="product", cascade="all, delete-orphan"
     )
@@ -34,7 +34,7 @@ class Product(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "pageId": self.pageId,
+            "profileId": self.profileId,
             "name": self.name,
             "description": self.description,
             "price": self.price,
@@ -47,5 +47,5 @@ class Product(db.Model):
     def get_stock(self):
         return [stock.to_dict() for stock in self.stock]
 
-    def get_pageOwnerId(self):
-        return self.page.to_dict()["userId"]
+    def get_profileOwnerId(self):
+        return self.profile.to_dict()["userId"]

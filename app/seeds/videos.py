@@ -4,97 +4,97 @@ from sqlalchemy.sql import text
 
 def seed_videos():
     video1 = Video(
-        pageId=2,
+        profileId=2,
         name="Calone",
         video="https://www.youtube.com/embed/gB9NxOmwPjI",
     )
     video2 = Video(
-        pageId=2,
+        profileId=2,
         name="IF I DON'T TEXT YOU FIRST",
         video="https://www.youtube.com/embed/Jr2R5My0Bnc",
     )
     video3 = Video(
-        pageId=2,
+        profileId=2,
         name="APESHIT",
         video="https://www.youtube.com/embed/Ck92vi2VWuU",
     )
     video4 = Video(
-        pageId=2,
+        profileId=2,
         name="PARTY W OUT ME",
         video="https://www.youtube.com/embed/DXNFBM7CRko",
     )
     video5 = Video(
-        pageId=2,
+        profileId=2,
         name="SPOILED BITCH",
         video="https://www.youtube.com/embed/hD16PbFfEnA",
     )
     video6 = Video(
-        pageId=1,
+        profileId=1,
         name="Exist",
         video="https://www.youtube.com/embed/rxdjL1nx_eY",
     )
     video7 = Video(
-        pageId=1,
+        profileId=1,
         name="House on a Hill",
         video="https://www.youtube.com/embed/MUMFc7Wt5G4",
     )
     video8 = Video(
-        pageId=1,
+        profileId=1,
         name="Any Other Way",
         video="https://www.youtube.com/embed/oril2uJAiJY",
     )
     video9 = Video(
-        pageId=1,
+        profileId=1,
         name="I Don't Know You Anymore",
         video="https://www.youtube.com/embed/GHJyfokY5Dw",
     )
     video10 = Video(
-        pageId=3,
+        profileId=3,
         name="Ivoris - I Wish My Mind Would Shut Up (Official Audio)",
         video="https://www.youtube.com/embed/usgQIvI_JAo",
     )
     video11 = Video(
-        pageId=3,
+        profileId=3,
         name="Cocopops (Official Music Video) - Ivoris",
         video="https://www.youtube.com/embed/vZM8P0EJCIc",
     )
     video12 = Video(
-        pageId=4,
+        profileId=4,
         name="Chris James - I'm A Mess (Official Music Video)",
         video="https://www.youtube.com/embed/r4PaD68aamU",
     )
     video13 = Video(
-        pageId=4,
+        profileId=4,
         name="Chris James - Oh My God (Official Music Video)",
         video="https://www.youtube.com/embed/mJadT6a3dV8",
     )
     video14 = Video(
-        pageId=4,
+        profileId=4,
         name="Chris James - Is It Too Soon (Official Lyric Video)",
         video="https://www.youtube.com/embed/kG1u-8LgwQ4",
     )
     video15 = Video(
-        pageId=4,
+        profileId=4,
         name="Chris James - The Race (Official Video)",
         video="https://www.youtube.com/embed/NkhR8QGZpYE",
     )
     video16 = Video(
-        pageId=4,
+        profileId=4,
         name="Chris James - I Wanna Be With You (Official Lyric Video)",
         video="https://www.youtube.com/embed/tkS1ansCoNo",
     )
     video17 = Video(
-        pageId=5,
+        profileId=5,
         name="need u the most",
         video="https://www.youtube.com/embed/yElzEgf6lAg",
     )
     video18 = Video(
-        pageId=5,
+        profileId=5,
         name="Pretty Girl",
         video="https://www.youtube.com/embed/wyOIYOXswcI",
     )
     video19 = Video(
-        pageId=5,
+        profileId=5,
         name="Ghosts",
         video="https://www.youtube.com/embed/bUsw-Tk8edc",
     )

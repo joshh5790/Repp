@@ -9,7 +9,7 @@ class Genre(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   genre = db.Column(db.String(50), nullable=False)
 
-  pages = db.relationship("Page", back_populates="genre")
+  profiles = db.relationship("Profile", back_populates="genre")
 
   def to_dict(self):
     return {

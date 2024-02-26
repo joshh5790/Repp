@@ -8,21 +8,21 @@ class Video(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    pageId = db.Column(
-        db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
+    profileId = db.Column(
+        db.Integer(), db.ForeignKey(add_prefix_for_prod("profiles.id")), nullable=False
     )
     name = db.Column(db.String(), nullable=False)
     video = db.Column(db.String(), nullable=False)
 
-    page = db.relationship("Page", back_populates="videos")
+    profile = db.relationship("Profile", back_populates="videos")
 
     def to_dict(self):
         return {
             "id": self.id,
-            "pageId": self.pageId,
+            "profileId": self.profileId,
             "name": self.name,
             "video": self.video,
         }
 
-    def get_pageOwnerId(self):
-        return self.page.to_dict()["userId"]
+    def get_profileOwnerId(self):
+        return self.profile.to_dict()["userId"]

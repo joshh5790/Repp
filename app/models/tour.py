@@ -8,28 +8,28 @@ class Tour(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    pageId = db.Column(
-        db.Integer(), db.ForeignKey(add_prefix_for_prod("pages.id")), nullable=False
+    profileId = db.Column(
+        db.Integer(), db.ForeignKey(add_prefix_for_prod("profiles.id")), nullable=False
     )
-    name = db.Column(db.String())
-    tourLogo = db.Column(db.String())
+    venue = db.Column(db.String())
+    location = db.Column(db.String(), nullable=False)
+    tourDate = db.Column(db.String(), nullable=False)
+    ticketsLink = db.Column(db.String(), nullable=False)
+    soldOut = db.Column(db.Boolean, default=False)
 
-    page = db.relationship("Page", back_populates="tours")
-    tourLocations = db.relationship("TourLocation", back_populates="tour")
+    profile = db.relationship("Profile", back_populates="tours")
+
 
     def to_dict(self):
         return {
             "id": self.id,
-            "pageId": self.pageId,
-            "name": self.name,
-            "tourLogo": self.tourLogo,
+            "profileId": self.profileId,
+            "venue": self.venue,
+            "location": self.location,
+            "tourDate": self.tourDate,
+            "ticketsLink": self.ticketsLink,
+            "soldOut": self.soldOut
         }
 
-    def get_page(self):
-        return self.page[0].to_dict() if self.page else {}
-
-    def get_pageOwnerId(self):
-        return self.page.to_dict()["userId"]
-
-    def get_locations(self):
-        return [location.to_dict() for location in self.tourLocations]
+    def get_profileOwnerId(self):
+        return self.profile.to_dict()["userId"]
