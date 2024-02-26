@@ -9,6 +9,7 @@ import EditProducts from "./EditProducts";
 import EditVideos from "./EditVideos";
 import More from "./More";
 import Profile from "../Profile";
+import EditTours from "./EditTours";
 
 const EditProfile = () => {
   const location = useLocation();
@@ -107,6 +108,16 @@ const EditProfile = () => {
                 Products
               </span>
               <span
+                className={currentTab === "Tours" ? "focus-tab" : ""}
+                onClick={async () => {
+                  await setCurrentTab("Tours");
+                  if (heightRef.current)
+                    await setHeight(heightRef.current.clientHeight);
+                }}
+              >
+                Tours
+              </span>
+              <span
                 className={currentTab === "Videos" ? "focus-tab" : " "}
                 onClick={async () => {
                   await setCurrentTab("Videos");
@@ -136,6 +147,7 @@ const EditProfile = () => {
                   {currentTab === "General" && <EditGeneral profile={profile} />}
                   {currentTab === "Socials" && <EditSocials profile={profile} />}
                   {currentTab === "Products" && <EditProducts profile={profile} />}
+                  {currentTab === "Tours" && <EditTours profile={profile} />}
                   {currentTab === "Videos" && <EditVideos profile={profile} />}
                   {currentTab === "+ More" && <More profile={profile} />}
                 </div>
@@ -158,14 +170,14 @@ const EditProfile = () => {
                   className="preview-header manage-nav"
                   // onClick={() => setPreviewStyle((prev) => !prev)}
                 >
-                  <span
+                  {/* <span
                     style={{
                       fontWeight: `${previewStyle ? "normal" : "bold"}`,
                     }}
                   >
                     Desktop
                   </span>
-                  &nbsp;|&nbsp;
+                  &nbsp;|&nbsp; */}
                   <span
                     style={{
                       fontWeight: `${!previewStyle ? "normal" : "bold"}`,

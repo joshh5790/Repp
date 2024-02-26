@@ -1,0 +1,46 @@
+.edit-tour-name-div {
+  display: flex;
+  gap: 1rem;
+}
+
+.edit-tour-name-input {
+  flex-grow: 1;
+}
+
+.confirm-tour-name-change.button-hover {
+  height: 2rem;
+  padding-top: 0.4rem;
+  background-color: black;
+  color: #F1F1F1;
+  border: 1px solid black;
+  box-shadow: none;
+}
+
+.confirm-tour-name-change:hover {
+  background-color: #F1F1F1;
+  color: black;
+}
+
+.add-tour-button.new-card-button {
+  font-weight: bold;
+  height: 4rem;
+}
+
+.tour-card {
+  display: grid;
+  height: 4rem;
+}
+
+.clear-all-tours-button.button-hover {
+  height: 2.5rem;
+  padding-top: 0.6rem;
+  width: 100%;
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+}
+
+.clear-all-tours-button:hover {
+  color: red;
+  background-color: white;
+}
