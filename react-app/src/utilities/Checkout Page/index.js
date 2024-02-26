@@ -6,9 +6,9 @@
 // import { useParams } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
 // import { formatCurrencySymbol } from "../../../utilities";
-// import { getPageByIdThunk, getOneRPageThunk } from "../../../store/pages";
+// import { getProfileByIdThunk, getOneProfileThunk } from "../../../store/profiles";
 // import { setNavVisibility } from "../../../store/navigation";
-// import { getPageCartThunk } from "../../../store/carts";
+// import { getProfileCartThunk } from "../../../store/carts";
 // import { getCartItemsThunk } from "../../../store/cartItems";
 // import CheckoutForm from "./CheckoutForm";
 
@@ -53,9 +53,9 @@
 
 //   useEffect(() => {
 //     dispatch(setNavVisibility(true));
-//     dispatch(getOneRPageThunk(linkName)).then(page => {
+//     dispatch(getOneProfileThunk(linkName)).then(page => {
 
-//       dispatch(getPageCartThunk(page.id)).then(async (data) => {
+//       dispatch(getProfileCartThunk(page.id)).then(async (data) => {
 //         if (data) {
 //           await dispatch(getCartItemsThunk(data.id));
 //           await dispatch(authenticate()).then((user) => {

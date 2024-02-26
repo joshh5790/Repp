@@ -1,14 +1,16 @@
 import OpenModalButton from "../../OpenModalButton";
-import DeletePage from "../../Modals/DeletePage";
+import DeleteProfile from "../../Modals/DeleteProfile";
 
-const More = ({ page }) => {
+const More = ({ profile }) => {
   return (
     <div>
-      {page && <OpenModalButton
-        buttonText="Delete Page"
-        className="delete-page-button button-hover"
-        modalComponent={<DeletePage page={page}/>}
-      />}
+      {profile && (
+        <OpenModalButton
+          buttonText="Delete Profile"
+          className="delete-profile-button button-hover"
+          modalComponent={<DeleteProfile profile={profile} />}
+        />
+      )}
     </div>
   );
 };

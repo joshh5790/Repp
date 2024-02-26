@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useLocation, NavLink } from "react-router-dom";
 import "./EditProfile.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getSessionPageThunk } from "../../../store/pages";
+import { getSessionProfileThunk } from "../../../store/profiles";
 import EditGeneral from "./EditGeneral";
 import EditSocials from "./EditSocials";
 import EditProducts from "./EditProducts";
@@ -14,7 +14,7 @@ const EditProfile = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const page = useSelector((state) => Object.values(state.pages)[0]);
+  const profile = useSelector((state) => Object.values(state.profiles)[0]);
   const [currentTab, setCurrentTab] = useState("General");
   const [height, setHeight] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -39,8 +39,8 @@ const EditProfile = () => {
   }, [isMobile]);
 
   useEffect(async () => {
-    document.title = "REPP"
-    await dispatch(getSessionPageThunk()).then(async (data) => {
+    document.title = "REPP";
+    await dispatch(getSessionProfileThunk()).then(async (data) => {
       if (data && heightRef?.current) {
         await setHeight(heightRef.current.clientHeight);
       }
@@ -133,11 +133,11 @@ const EditProfile = () => {
                   className="manage-profile-section flex-col"
                   ref={heightRef}
                 >
-                  {currentTab === "General" && <EditGeneral page={page} />}
-                  {currentTab === "Socials" && <EditSocials page={page} />}
-                  {currentTab === "Products" && <EditProducts page={page} />}
-                  {currentTab === "Videos" && <EditVideos page={page} />}
-                  {currentTab === "+ More" && <More page={page} />}
+                  {currentTab === "General" && <EditGeneral profile={profile} />}
+                  {currentTab === "Socials" && <EditSocials profile={profile} />}
+                  {currentTab === "Products" && <EditProducts profile={profile} />}
+                  {currentTab === "Videos" && <EditVideos profile={profile} />}
+                  {currentTab === "+ More" && <More profile={profile} />}
                 </div>
                 <h2 className="manage-header manage-nav">Manage Profile</h2>
               </>
@@ -149,7 +149,7 @@ const EditProfile = () => {
                   style={{ height }}
                 >
                   <Profile
-                    previewPage={page}
+                    previewPage={profile}
                     preview={true}
                     previewStyle={previewStyle}
                   />

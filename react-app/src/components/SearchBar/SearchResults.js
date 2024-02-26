@@ -1,14 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getRPagesSearchThunk } from "../../store/pages";
+import { getProfilesSearchThunk } from "../../store/profiles";
 import "./SearchResults.css";
 
 const SearchResults = ({ term, setTerm }) => {
   const dispatch = useDispatch();
   const [pages, setPages] = useState([]);
   useEffect(() => {
-    dispatch(getRPagesSearchThunk(term)).then((data) => setPages(data));
+    dispatch(getProfilesSearchThunk(term)).then((data) => setPages(data));
   }, [dispatch, term]);
 
   return (

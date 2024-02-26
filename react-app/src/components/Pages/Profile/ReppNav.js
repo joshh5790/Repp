@@ -6,7 +6,7 @@ import "./ReppNav.css";
 const ReppNav = ({
   sectionHeaders,
   scrollToId,
-  page,
+  profile,
   navVisible,
   isMobile,
   preview,
@@ -44,16 +44,16 @@ const ReppNav = ({
         {!isMobile ? (
           <>
             <i onClick={setNavVisible} className="fa-solid fa-ellipsis" />
-            {page?.personalLogo ? (
+            {profile?.personalLogo ? (
               <img
-                alt={page?.displayName}
-                src={page?.personalLogo}
+                alt={profile?.displayName}
+                src={profile?.personalLogo}
                 className="repp-nav-logo"
-                onClick={() => scrollToId(page?.linkName)}
+                onClick={() => scrollToId(profile?.linkName)}
               />
             ) : (
-              <h2 onClick={() => scrollToId(page?.linkName)}>
-                {page?.displayName}
+              <h2 onClick={() => scrollToId(profile?.linkName)}>
+                {profile?.displayName}
               </h2>
             )}
           </>
@@ -72,16 +72,16 @@ const ReppNav = ({
           </>
         ) : (
           <>
-            {page?.personalLogo ? (
+            {profile?.personalLogo ? (
               <img
-                alt={page?.displayName}
-                src={page?.personalLogo}
+                alt={profile?.displayName}
+                src={profile?.personalLogo}
                 className="repp-nav-logo"
-                onClick={() => scrollToId(page?.linkName)}
+                onClick={() => scrollToId(profile?.linkName)}
               />
             ) : (
-              <h2 onClick={() => scrollToId(page?.linkName)}>
-                {page?.displayName}
+              <h2 onClick={() => scrollToId(profile?.linkName)}>
+                {profile?.displayName}
               </h2>
             )}
           </>
@@ -90,66 +90,66 @@ const ReppNav = ({
       <div className="repp-nav-right">
         {!isMobile && (
           <>
-            {page?.tiktok && (
-              <a target="_blank" rel="noreferrer" href={page?.tiktok}>
+            {profile?.tiktok && (
+              <a target="_blank" rel="noreferrer" href={profile?.tiktok}>
                 <i className="fa-brands fa-tiktok repp-socials" />
               </a>
             )}
-            {page?.youtube && (
-              <a target="_blank" rel="noreferrer" href={page?.youtube}>
+            {profile?.youtube && (
+              <a target="_blank" rel="noreferrer" href={profile?.youtube}>
                 <i
                   className="fa-brands fa-youtube repp-socials"
                   style={{ color: "#F1F1F1" }}
                 />
               </a>
             )}
-            {page?.instagram && (
-              <a target="_blank" rel="noreferrer" href={page?.instagram}>
+            {profile?.instagram && (
+              <a target="_blank" rel="noreferrer" href={profile?.instagram}>
                 <i
                   className="fa-brands fa-instagram repp-socials"
                   style={{ color: "#F1F1F1" }}
                 />
               </a>
             )}
-            {page?.applemusic && (
-              <a target="_blank" rel="noreferrer" href={page?.applemusic}>
+            {profile?.applemusic && (
+              <a target="_blank" rel="noreferrer" href={profile?.applemusic}>
                 <i className="fa-brands fa-apple repp-socials" />
               </a>
             )}
-            {page?.spotify && (
-              <a target="_blank" rel="noreferrer" href={page?.spotify}>
+            {profile?.spotify && (
+              <a target="_blank" rel="noreferrer" href={profile?.spotify}>
                 <i
                   className="fa-brands fa-spotify repp-socials"
                   style={{ color: "#F1F1F1" }}
                 />
               </a>
             )}
-            {page?.facebook && (
-              <a target="_blank" rel="noreferrer" href={page?.facebook}>
+            {profile?.facebook && (
+              <a target="_blank" rel="noreferrer" href={profile?.facebook}>
                 <i
                   className="fa-brands fa-facebook repp-socials"
                   style={{ color: "#F1F1F1" }}
                 />
               </a>
             )}
-            {page?.discord && (
-              <a target="_blank" rel="noreferrer" href={page?.discord}>
+            {profile?.discord && (
+              <a target="_blank" rel="noreferrer" href={profile?.discord}>
                 <i
                   className="fa-brands fa-discord repp-socials"
                   style={{ color: "#F1F1F1" }}
                 />
               </a>
             )}
-            {page?.twitter && (
-              <a target="_blank" rel="noreferrer" href={page?.twitter}>
+            {profile?.twitter && (
+              <a target="_blank" rel="noreferrer" href={profile?.twitter}>
                 <i
                   className="fa-brands fa-twitter repp-socials"
                   style={{ color: "#F1F1F1" }}
                 />
               </a>
             )}
-            {page?.external && (
-              <a target="_blank" rel="noreferrer" href={page?.external}>
+            {profile?.external && (
+              <a target="_blank" rel="noreferrer" href={profile?.external}>
                 <i className="fa-solid fa-square-up-right repp-socials" />
               </a>
             )}

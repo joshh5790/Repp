@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import { NavLink, useHistory } from "react-router-dom";
-import { getSessionPageThunk } from "../../store/pages";
+import { getSessionProfileThunk } from "../../store/profiles";
 import { invalidImage } from "../../utilities";
 
 function ProfileButton({ user }) {
@@ -39,7 +39,7 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   const handleRedirect = () => {
-    dispatch(getSessionPageThunk())
+    dispatch(getSessionProfileThunk())
       .then((data) => history.push(`/${data.linkName}`))
       .then(closeMenu);
   };

@@ -6,7 +6,7 @@ import { createFollowThunk, getFollowsThunk } from "../../../store/follows";
 
 const LinkSection = ({
   user,
-  page,
+  profile,
   sectionHeaders,
   scrollToId,
   mainImage,
@@ -19,24 +19,21 @@ const LinkSection = ({
   // could do overflow hidden, resize width on hover
 
   useEffect(() => {
-    dispatch(getFollowsThunk(page.id)).then(
-      data => {
-        if (user && user.id === page.userId) return setFollowing('owner')
-        for (const follow of data) {
-          if (follow.userId === user?.id) {
-            return setFollowing('following')
-          }
+    dispatch(getFollowsThunk(profile.id)).then((data) => {
+      if (user && user.id === profile.userId) return setFollowing("owner");
+      for (const follow of data) {
+        if (follow.userId === user?.id) {
+          return setFollowing("following");
         }
-        setFollowing('notFollowing')
       }
-    )
+      setFollowing("notFollowing");
+    });
   }, []);
 
   const addFollow = () => {
-    dispatch(createFollowThunk({pageId: page.id}))
-    setFollowing(1)
-  }
-
+    dispatch(createFollowThunk({ profileId: profile.id }));
+    setFollowing(1);
+  };
 
   // const onMouseEnter = () => {
 
@@ -67,83 +64,85 @@ const LinkSection = ({
           style={{ position: `${preview && "absolute"}` }}
           className="mobile-socials-div"
         >
-          {page?.tiktok && (
-            <a target="_blank" rel="noreferrer" href={page.tiktok}>
+          {profile?.tiktok && (
+            <a target="_blank" rel="noreferrer" href={profile.tiktok}>
               <i className="fa-brands fa-tiktok repp-socials" />
             </a>
           )}
-          {page?.youtube && (
-            <a target="_blank" rel="noreferrer" href={page.youtube}>
+          {profile?.youtube && (
+            <a target="_blank" rel="noreferrer" href={profile.youtube}>
               <i
                 className="fa-brands fa-youtube repp-socials"
                 style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
-          {page?.instagram && (
-            <a target="_blank" rel="noreferrer" href={page.instagram}>
+          {profile?.instagram && (
+            <a target="_blank" rel="noreferrer" href={profile.instagram}>
               <i
                 className="fa-brands fa-instagram repp-socials"
                 style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
-          {page?.applemusic && (
-            <a target="_blank" rel="noreferrer" href={page.applemusic}>
+          {profile?.applemusic && (
+            <a target="_blank" rel="noreferrer" href={profile.applemusic}>
               <i className="fa-brands fa-apple repp-socials" />
             </a>
           )}
-          {page?.spotify && (
-            <a target="_blank" rel="noreferrer" href={page.spotify}>
+          {profile?.spotify && (
+            <a target="_blank" rel="noreferrer" href={profile.spotify}>
               <i
                 className="fa-brands fa-spotify repp-socials"
                 style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
-          {page?.facebook && (
-            <a target="_blank" rel="noreferrer" href={page.facebook}>
+          {profile?.facebook && (
+            <a target="_blank" rel="noreferrer" href={profile.facebook}>
               <i
                 className="fa-brands fa-facebook repp-socials"
                 style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
-          {page?.discord && (
-            <a target="_blank" rel="noreferrer" href={page.discord}>
+          {profile?.discord && (
+            <a target="_blank" rel="noreferrer" href={profile.discord}>
               <i
                 className="fa-brands fa-discord repp-socials"
                 style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
-          {page?.twitter && (
-            <a target="_blank" rel="noreferrer" href={page.twitter}>
+          {profile?.twitter && (
+            <a target="_blank" rel="noreferrer" href={profile.twitter}>
               <i
                 className="fa-brands fa-twitter repp-socials"
                 style={{ color: "#F1F1F1" }}
               />
             </a>
           )}
-          {page?.external && (
-            <a target="_blank" rel="noreferrer" href={page.external}>
+          {profile?.external && (
+            <a target="_blank" rel="noreferrer" href={profile.external}>
               <i className="fa-solid fa-square-up-right repp-socials" />
             </a>
           )}
         </div>
       )}
       <img
-        className="repp-page-home-img"
+        className="profile-page-home-img"
         src={mainImage}
-        alt={page?.displayName}
+        alt={profile?.displayName}
         onError={invalidImage}
       />
       <div className="repp-home-text">
         {!isMobile && (
           <>
-            <h1>{page?.displayName}</h1>
-            {user && following === 'notFollowing' && (
-              <div onClick={addFollow} className="follow-button button-hover">+ Follow</div>
+            <h1>{profile?.displayName}</h1>
+            {user && following === "notFollowing" && (
+              <div onClick={addFollow} className="follow-button button-hover">
+                + Follow
+              </div>
             )}
           </>
         )}

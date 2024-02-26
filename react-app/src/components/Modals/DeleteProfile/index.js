@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { useHistory } from "react-router-dom";
-import { deleteRPageThunk } from "../../../store/pages";
+import { deleteProfileThunk } from "../../../store/profiles";
 import { updateUser } from "../../../store/session";
-import "./DeletePage.css";
+import "./DeleteProfile.css";
 
-function DeletePage({ page }) {
+function DeleteProfile({ page }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [confirmation, setConfirmation] = useState("");
@@ -14,14 +14,14 @@ function DeletePage({ page }) {
   const { closeModal } = useModal();
 
   useEffect(() => {
-    if (confirmation === `delete page ${page.displayName}`) {
+    if (confirmation === `delete profile ${page.displayName}`) {
       setDisableButton(false);
     } else setDisableButton(true);
   }, [confirmation, page.displayName]);
 
   const handleDelete = () => {
-    dispatch(deleteRPageThunk(page.id)).then(() => {
-      dispatch(updateUser({isRepp: false}))
+    dispatch(deleteProfileThunk(page.id)).then(() => {
+      dispatch(updateUser({ isRepp: false }));
       closeModal();
       history.push("/");
     });
@@ -60,4 +60,4 @@ function DeletePage({ page }) {
   );
 }
 
-export default DeletePage;
+export default DeleteProfile;

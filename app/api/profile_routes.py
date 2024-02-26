@@ -78,6 +78,7 @@ def create_profile():
             businessInquiries=data["businessInquiries"],
             videoSection=False,
             shopSection=False,
+            tourName=data["tourName"]
         )
         user = User.query.get(current_user.id)
         user.isRepp = True
@@ -127,6 +128,7 @@ def update_profile(profileId):
         profile.businessInquiries = data["businessInquiries"]
         profile.videoSection = data["videoSection"]
         profile.shopSection = data["shopSection"]
+        profile.tourName = data["tourName"]
 
         db.session.commit()
         return profile.to_dict()
@@ -252,7 +254,7 @@ def create_video(profileId):
         return {"errors": form.errors}, 401
 
 
-# POST /profiles/:profileId/tour
+# POST /profiles/:profileId/tours
 @profile_routes.route("/<int:profileId>/tours", methods=["POST"])
 @login_required
 def create_tour(profileId):

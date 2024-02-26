@@ -6,10 +6,10 @@ import {
   getVideosThunk,
   updateVideoThunk,
 } from "../../../store/videos";
-import { updateRPageThunk } from "../../../store/pages";
+import { updateProfileThunk } from "../../../store/profiles";
 import "./EditVideos.css";
 
-const EditVideos = ({ page }) => {
+const EditVideos = ({ profile }) => {
   const dispatch = useDispatch();
   const videos = useSelector((state) => Object.values(state.videos));
   const [name, setName] = useState("");
@@ -21,20 +21,20 @@ const EditVideos = ({ page }) => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    if (page) {
-      dispatch(getVideosThunk(page.id));
+    if (profile) {
+      dispatch(getVideosThunk(profile.id));
     }
-  }, [dispatch, page]);
+  }, [dispatch, profile]);
 
   const handleAddVideo = () => {
     if (!video) return setErrors({ video: ["URL is required."] });
     else {
-      dispatch(createVideoThunk({ pageId: page.id, name, video }));
-      if (!page.videoSection)
+      dispatch(createVideoThunk({ profileId: profile.id, name, video }));
+      if (!profile.videoSection)
         dispatch(
-          updateRPageThunk({
-            pageId: page.id,
-            shopSection: page.shopSection,
+          updateProfileThunk({
+            profileId: profile.id,
+            shopSection: profile.shopSection,
             videoSection: true,
           })
         );
@@ -51,9 +51,9 @@ const EditVideos = ({ page }) => {
   const handleDeleteVideo = async (videoId) => {
     if (videos.length === 1) {
       await dispatch(
-        updateRPageThunk({
-          pageId: page.id,
-          shopSection: page.shopSection,
+        updateProfileThunk({
+          profileId: profile.id,
+          shopSection: profile.shopSection,
           videoSection: false,
         })
       );

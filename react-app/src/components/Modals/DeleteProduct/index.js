@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { deleteProductThunk } from "../../../store/products";
 import "./DeleteProduct.css";
-import { updateRPageThunk } from "../../../store/pages";
+import { updateProfileThunk } from "../../../store/profiles";
 
 const DeleteProduct = ({ product, setReload, numProducts, videoSection }) => {
   const dispatch = useDispatch();
@@ -12,8 +12,8 @@ const DeleteProduct = ({ product, setReload, numProducts, videoSection }) => {
     dispatch(deleteProductThunk(product.id));
     if (numProducts === 1) {
       dispatch(
-        updateRPageThunk({
-          pageId: product.pageId,
+        updateProfileThunk({
+          profileId: product.profileId,
           shopSection: false,
           videoSection,
         })

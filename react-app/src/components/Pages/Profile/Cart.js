@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import CartItemCard from "./CartItemCard";
-import { clearCartThunk, deleteCartThunk, getPageCartThunk } from "../../../store/carts";
+import {
+  clearCartThunk,
+  deleteCartThunk,
+  getProfileCartThunk,
+} from "../../../store/carts";
 import { setCartVisibility } from "../../../store/navigation";
 import { formatCurrency } from "../../../utilities";
 import "./Cart.css";
@@ -12,7 +16,7 @@ import {
 } from "../../../store/cartItems";
 import { createOrderThunk } from "../../../store/orders";
 
-const Cart = ({ pageId, linkName, numCartItems, setNumCartItems }) => {
+const Cart = ({ profileId, linkName, numCartItems, setNumCartItems }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => Object.values(state.carts)[0]);
   const cartItems = useSelector((state) => state.cartItems);
@@ -21,8 +25,8 @@ const Cart = ({ pageId, linkName, numCartItems, setNumCartItems }) => {
 
   // on page load
   useEffect(() => {
-    if (pageId) {
-      dispatch(getPageCartThunk(pageId)).then((data) => {
+    if (profileId) {
+      dispatch(getProfileCartThunk(profileId)).then((data) => {
         if (data.id) {
           dispatch(getCartItemsThunk(data.id)).then((data) =>
             setNumCartItems(data.length)
@@ -30,13 +34,13 @@ const Cart = ({ pageId, linkName, numCartItems, setNumCartItems }) => {
         }
       });
     }
-  }, [dispatch, pageId, reload, setNumCartItems]);
+  }, [dispatch, profileId, reload, setNumCartItems]);
 
   const handleCheckout = () => {
     dispatch(setCartVisibility(false));
-    dispatch(createOrderThunk(cart.id))
-    dispatch(clearCartThunk())
-    dispatch(clearCartItemsThunk())
+    dispatch(createOrderThunk(cart.id));
+    dispatch(clearCartThunk());
+    dispatch(clearCartItemsThunk());
   };
 
   const handleDeleteCart = () => {
@@ -58,7 +62,9 @@ const Cart = ({ pageId, linkName, numCartItems, setNumCartItems }) => {
           <div>{numCartItems}</div>
           <i className="fa-solid fa-cart-shopping" />
         </div>
-      ) : ''}
+      ) : (
+        ""
+      )}
       <div
         id="cart-background"
         className={cartVisible && cart ? "" : "hidden"}

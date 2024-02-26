@@ -2,7 +2,7 @@ import "./Profile.css";
 import { useParams, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getOneRPageThunk } from "../../../store/pages";
+import { getOneProfileThunk } from "../../../store/profiles";
 import { setNavVisibility } from "../../../store/navigation";
 import ReppNav from "./ReppNav";
 import ProductSection from "./ProductSection";
@@ -17,8 +17,8 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
   const dispatch = useDispatch();
   const { linkName } = useParams();
   const user = useSelector((state) => state.session.user);
-  let page = useSelector((state) => state.pages[linkName]);
-  if (previewPage) page = previewPage;
+  let profile = useSelector((state) => state.profiles[linkName]);
+  if (previewPage) profile = previewPage;
   const navVisible = useSelector((state) => state.visibility.nav);
   const [sectionHeaders, setSectionHeaders] = useState([]);
   const [numCartItems, setNumCartItems] = useState(0);
@@ -43,7 +43,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
   }, [isMobile, preview, previewStyle]);
 
   useEffect(async () => {
-    dispatch(authenticate())
+    dispatch(authenticate());
     if (preview) {
       await setSectionHeaders(
         [
@@ -53,11 +53,11 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
         ].filter((value) => value)
       );
       await setMainImage(previewPage?.mainImage);
-      await setIsMobile(previewStyle)
+      await setIsMobile(previewStyle);
       await setIsLoaded(true);
       return;
     } else {
-      dispatch(getOneRPageThunk(linkName))
+      dispatch(getOneProfileThunk(linkName))
         .then((profile) => {
           if (!profile) return setInvalidPage(true);
           setSectionHeaders(
@@ -68,7 +68,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
             ].filter((value) => value)
           );
           setMainImage(profile.mainImage);
-          document.title = profile.displayName
+          document.title = profile.displayName;
           dispatch(setNavVisibility(false));
         })
         .then(() => setIsLoaded(true));
@@ -92,11 +92,11 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
   if (isLoaded) {
     if (!invalidPage)
       return (
-        <div className="repp-page">
+        <div className="profile-page">
           <div id={linkName} style={{ height: "100vh", position: "relative" }}>
             <LinkSection
               user={user}
-              page={page}
+              profile={profile}
               sectionHeaders={sectionHeaders}
               scrollToId={scrollToId}
               mainImage={mainImage}
@@ -104,52 +104,55 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
               preview={preview}
             />
           </div>
-          {page?.mainVideo && (
+          {profile?.mainVideo && (
             <div
               id="watch"
-              className={!isMobile ? "repp-page-section" : " "}
+              className={!isMobile ? "profile-page-section" : " "}
               style={{ padding: "0", margin: "0", border: "none" }}
             >
               <iframe
                 title="Main Video"
-                src={page?.mainVideo}
+                src={profile?.mainVideo}
                 className="repp-main-video"
               />
             </div>
           )}
-          {page?.shopSection && (
-            <div id="merch" className="repp-page-section">
+          {profile?.shopSection && (
+            <div id="merch" className="profile-page-section">
               <ProductSection
-                pageId={page?.id}
+                profileId={profile?.id}
                 setNumCartItems={setNumCartItems}
                 preview={preview}
                 previewStyle={previewStyle}
               />
             </div>
           )}
-          {page?.videoSection && (
-            <div id="videos" className="repp-page-section">
-              <VideoSection pageId={page?.id} previewStyle={previewStyle} />
+          {profile?.videoSection && (
+            <div id="videos" className="profile-page-section">
+              <VideoSection
+                profileId={profile?.id}
+                previewStyle={previewStyle}
+              />
             </div>
           )}
-          {page?.bio && (
+          {profile?.bio && (
             <div id="about" className="flex-col-center">
               <h2>ABOUT</h2>
-              <div>{page?.bio}</div>
+              <div>{profile?.bio}</div>
             </div>
           )}
-          {page?.newsletter && <Footer />}
+          {profile?.newsletter && <Footer />}
           <ReppNav
             sectionHeaders={sectionHeaders}
             scrollToId={scrollToId}
-            page={page}
+            profile={profile}
             navVisible={navVisible}
             isMobile={isMobile}
             preview={preview}
           />
           {!preview && (
             <Cart
-              pageId={page?.id}
+              profileId={profile?.id}
               linkName={linkName}
               numCartItems={numCartItems}
               setNumCartItems={setNumCartItems}

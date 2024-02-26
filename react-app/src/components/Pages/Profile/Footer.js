@@ -2,7 +2,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <div className="repp-page-footer">
+    <div className="profile-page-footer">
       {/* <button className='subscribe-button button-hover'>
         Subscribe to Newsletter
       </button> */}

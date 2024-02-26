@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateRPageThunk } from "../../../store/pages";
+import { updateProfileThunk } from "../../../store/profiles";
 
-const EditSocials = ({ page }) => {
+const EditSocials = ({ profile }) => {
   const dispatch = useDispatch();
   const [tiktok, setTiktok] = useState("");
   const [youtube, setYoutube] = useState("");
@@ -15,23 +15,23 @@ const EditSocials = ({ page }) => {
   const [external, setExternal] = useState("");
 
   useEffect(() => {
-    setTiktok(page["tiktok"] || "");
-    setYoutube(page["youtube"] || "");
-    setInstagram(page["instagram"] || "");
-    setApplemusic(page["applemusic"] || "");
-    setSpotify(page["spotify"] || "");
-    setFacebook(page["facebook"] || "");
-    setDiscord(page["discord"] || "");
-    setTwitter(page["twitter"] || "");
-    setExternal(page["external"] || "");
-  }, [page]);
+    setTiktok(profile["tiktok"] || "");
+    setYoutube(profile["youtube"] || "");
+    setInstagram(profile["instagram"] || "");
+    setApplemusic(profile["applemusic"] || "");
+    setSpotify(profile["spotify"] || "");
+    setFacebook(profile["facebook"] || "");
+    setDiscord(profile["discord"] || "");
+    setTwitter(profile["twitter"] || "");
+    setExternal(profile["external"] || "");
+  }, [profile]);
 
   const onSubmit = async () => {
     await dispatch(
-      updateRPageThunk({
-        pageId: page.id,
-        shopSection: page.shopSection,
-        videoSection: page.videoSection,
+      updateProfileThunk({
+        profileId: profile.id,
+        shopSection: profile.shopSection,
+        videoSection: profile.videoSection,
         tiktok,
         youtube,
         instagram,

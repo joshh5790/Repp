@@ -51,9 +51,9 @@ export const getSessionFollowsThunk = () => async (dispatch) => {
   } else return ["Failed to retrieve follows."];
 };
 
-// GET /pages/:pageId/follows
-export const getFollowsThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}/follows`);
+// GET /profiles/:profileId/follows
+export const getFollowsThunk = (profileId) => async (dispatch) => {
+  const response = await fetch(`/api/profiles/${profileId}/follows`);
   if (response.ok) {
     const data = await response.json();
     const formattedData = {};
@@ -68,11 +68,11 @@ export const getFollowsThunk = (pageId) => async (dispatch) => {
   } else return ["Failed to retrieve follows."];
 };
 
-// POST /pages/:pageId/follows
+// POST /profiles/:profileId/follows
 export const createFollowThunk =
-  ({ pageId }) =>
+  ({ profileId }) =>
   async (dispatch) => {
-    const response = await fetch(`/api/pages/${pageId}/follows`, {
+    const response = await fetch(`/api/profiles/${profileId}/follows`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     });

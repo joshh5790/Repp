@@ -34,9 +34,9 @@ export const getCartsThunk = () => async (dispatch) => {
   } else dispatch(setCart({}));
 };
 
-// GET /pages/:pageId/carts
-export const getPageCartThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}/cart`);
+// GET /profiles/:profileId/carts
+export const getProfileCartThunk = (profileId) => async (dispatch) => {
+  const response = await fetch(`/api/profiles/${profileId}/cart`);
   if (response.ok) {
     const data = await response.json();
     dispatch(setCart({ [data.id]: data }));
@@ -47,9 +47,9 @@ export const getPageCartThunk = (pageId) => async (dispatch) => {
   } else dispatch(setCart({}));
 };
 
-// POST /pages/:pageId/carts
-export const createCartThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}/cart`, {
+// POST /profiles/:profileId/carts
+export const createCartThunk = (profileId) => async (dispatch) => {
+  const response = await fetch(`/api/profiles/${profileId}/cart`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
   });

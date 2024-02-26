@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isObjectEmpty } from "../../../utilities";
-import { createRPageThunk } from "../../../store/pages";
+import { createProfileThunk } from "../../../store/profiles";
 import { updateUser } from "../../../store/session";
 import OpenModalButton from "../../OpenModalButton";
 import SocialsForm from "../../Modals/SocialsForm";
@@ -24,15 +24,15 @@ const CreateProfile = () => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    document.title = "Create Profile"
-    dispatch(setNavVisibility(true))
-  }, [dispatch])
+    document.title = "Create Profile";
+    dispatch(setNavVisibility(true));
+  }, [dispatch]);
 
   const onSubmit = async () => {
     setErrors({});
 
     const currErrors = await dispatch(
-      createRPageThunk({
+      createProfileThunk({
         displayName,
         linkName,
         tiktok: socials.tiktok,
@@ -55,7 +55,7 @@ const CreateProfile = () => {
     );
     if (!isObjectEmpty(currErrors)) return setErrors(currErrors);
     else {
-      dispatch(updateUser({isRepp: true}));
+      dispatch(updateUser({ isRepp: true }));
       history.push({
         pathname: "/profile/edit",
         state: "Products",
@@ -223,7 +223,7 @@ const CreateProfile = () => {
             onChange={(e) => setBusinessInquiries(e.target.value)}
           />
         </label>
-        <div className="flex-col-center" style={{gap: '1rem'}}>
+        <div className="flex-col-center" style={{ gap: "1rem" }}>
           <OpenModalButton
             buttonText="Link Socials"
             modalComponent={

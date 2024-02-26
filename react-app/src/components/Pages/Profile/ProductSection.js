@@ -6,13 +6,18 @@ import ProductDetails from "../../Modals/ProductDetails";
 import "./ProductSection.css";
 import { formatCurrency } from "../../../utilities";
 
-const ProductSection = ({ pageId, setNumCartItems, preview, previewStyle }) => {
+const ProductSection = ({
+  profileId,
+  setNumCartItems,
+  preview,
+  previewStyle,
+}) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => Object.values(state.products));
 
   useEffect(() => {
-    dispatch(getProductsThunk(pageId));
-  }, [dispatch, pageId]);
+    dispatch(getProductsThunk(profileId));
+  }, [dispatch, profileId]);
 
   return (
     <>
@@ -21,7 +26,13 @@ const ProductSection = ({ pageId, setNumCartItems, preview, previewStyle }) => {
         {products.map((product) => (
           <li className="product-container" key={product?.id}>
             <OpenModalButton
-              modalComponent={() => <ProductDetails product={product} setNumCartItems={setNumCartItems} preview={preview} />}
+              modalComponent={() => (
+                <ProductDetails
+                  product={product}
+                  setNumCartItems={setNumCartItems}
+                  preview={preview}
+                />
+              )}
               className="product-card-button"
               buttonText={
                 <div className="product-card">
@@ -34,7 +45,9 @@ const ProductSection = ({ pageId, setNumCartItems, preview, previewStyle }) => {
                   </div>
                   <div className="flex-col-center">
                     <h3 className="product-card-name">{product?.name}</h3>
-                    <p className="product-card-price">{formatCurrency(product?.price)}</p>
+                    <p className="product-card-price">
+                      {formatCurrency(product?.price)}
+                    </p>
                   </div>
                 </div>
               }

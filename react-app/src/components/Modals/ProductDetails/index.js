@@ -10,7 +10,7 @@ import {
   createCartItemThunk,
   getCartItemsThunk,
 } from "../../../store/cartItems";
-import { createCartThunk, getPageCartThunk } from "../../../store/carts";
+import { createCartThunk, getProfileCartThunk } from "../../../store/carts";
 import { formatCurrency, invalidImage } from "../../../utilities";
 
 const ProductDetails = ({ product, setNumCartItems, preview }) => {
@@ -61,24 +61,24 @@ const ProductDetails = ({ product, setNumCartItems, preview }) => {
     setIsDisabled(true);
     let existingCart;
     for (const cart of carts) {
-      if (cart.pageId === product.pageId) {
+      if (cart.profileId === product.profileId) {
         existingCart = cart.id;
         break;
       }
     }
     if (existingCart) {
       await dispatch(createCartItemThunk(currStock.id, quantity)).then(() =>
-        dispatch(getPageCartThunk(product.pageId)).then((data) =>
+        dispatch(getProfileCartThunk(product.profileId)).then((data) =>
           dispatch(getCartItemsThunk(data.id)).then((data) =>
             setNumCartItems(data.length)
           )
         )
       );
     } else {
-      await dispatch(createCartThunk(product.pageId))
+      await dispatch(createCartThunk(product.profileId))
         .then(() => dispatch(clearCartItemsThunk()))
         .then(() => dispatch(createCartItemThunk(currStock.id, quantity)))
-        .then(() => dispatch(getPageCartThunk(product.pageId)))
+        .then(() => dispatch(getProfileCartThunk(product.profileId)))
         .then(() => dispatch(setCartVisibility(true)));
       setNumCartItems((prev) => prev + 1);
     }

@@ -8,12 +8,12 @@ import {
   createProductThunk,
   updateProductThunk,
 } from "../../../store/products";
-import { updateRPageThunk } from "../../../store/pages";
+import { updateProfileThunk } from "../../../store/profiles";
 import "./ManageProduct.css";
 import { DebounceInput } from "react-debounce-input";
 
-const ManageProduct = ({ product, pageId, numProducts, videoSection }) => {
-  // need numProducts and videoSection to update page's shopSection to true
+const ManageProduct = ({ product, profileId, numProducts, videoSection }) => {
+  // need numProducts and videoSection to update profile's shopSection to true
   // if the created product is the first product
   const dispatch = useDispatch();
   const [currProduct, setCurrProduct] = useState({});
@@ -40,7 +40,7 @@ const ManageProduct = ({ product, pageId, numProducts, videoSection }) => {
   }, [currProduct]);
 
   const handleUpdateProduct = async () => {
-    if (!isObjectEmpty(errors)) return
+    if (!isObjectEmpty(errors)) return;
     if (!isObjectEmpty(currProduct)) {
       const currErrors = await dispatch(
         updateProductThunk({
@@ -67,7 +67,7 @@ const ManageProduct = ({ product, pageId, numProducts, videoSection }) => {
     } else {
       await dispatch(
         createProductThunk({
-          pageId,
+          profileId,
           name,
           price,
           previewImage,
@@ -78,7 +78,7 @@ const ManageProduct = ({ product, pageId, numProducts, videoSection }) => {
           setCurrProduct(data);
           if (numProducts === 0) {
             dispatch(
-              updateRPageThunk({ pageId, shopSection: true, videoSection })
+              updateProfileThunk({ profileId, shopSection: true, videoSection })
             );
           }
         } else setErrors(data);

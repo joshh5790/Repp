@@ -15,7 +15,7 @@ const Confirmation = () => {
     <h1>Thank You!</h1>
     <p>Your order has been placed successfully.</p>
     <NavLink className="confirmation-orders-link button-hover" to='/account/orders'>Track Your Orders</NavLink>
-    <NavLink className="confirmation-artist-link button-hover" to={`/${linkName}`}>Return to Artist Page</NavLink>
+    <NavLink className="confirmation-artist-link button-hover" to={`/${linkName}`}>Return to Artist Profile</NavLink>
     </div>
   </div>)
 }

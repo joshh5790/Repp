@@ -1,26 +1,26 @@
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPageThunk } from "../../store/pages";
+import { addProfileThunk } from "../../store/profiles";
 import { setSidebarVisibility } from "../../store/navigation";
 import { deleteFollowThunk } from "../../store/follows";
 
-const PageButton = ({ followId, pageId, remove }) => {
+const PageButton = ({ followId, profileId, remove }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const page = useSelector((state) =>
-    Object.values(state.pages).find((page) => page.id === pageId)
+  const profile = useSelector((state) =>
+    Object.values(state.profiles).find((profile) => profile.id === profileId)
   );
   const [removeHover, setRemoveHover] = useState(false);
   useEffect(() => {
-    dispatch(addPageThunk(pageId));
+    dispatch(addProfileThunk(profileId));
   }, []);
 
   const handleSidebarLink = () => {
     if (remove) dispatch(deleteFollowThunk(followId));
     else {
       dispatch(setSidebarVisibility(false));
-      history.push(`/${page?.linkName}`);
+      history.push(`/${profile?.linkName}`);
     }
   };
 
@@ -43,11 +43,11 @@ const PageButton = ({ followId, pageId, remove }) => {
           width: "100%",
         }}
       >
-          <img className="sidebar-button-img" src={page?.profileImage} />
+        <img className="sidebar-button-img" src={profile?.profileImage} />
         {remove && removeHover ? (
           <div style={{ color: "red", fontWeight: "bold" }}>Unfollow</div>
         ) : (
-          <div>{page?.displayName}</div>
+          <div>{profile?.displayName}</div>
         )}
       </div>
     </div>

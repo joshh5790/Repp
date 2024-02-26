@@ -1,23 +1,21 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { getVideosThunk } from '../../../store/videos';
-import './VideoSection.css'
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getVideosThunk } from "../../../store/videos";
+import "./VideoSection.css";
 
-const VideoSection = ({ pageId }) => {
-  const dispatch = useDispatch()
-  const videos = useSelector(state => Object.values(state.videos))
+const VideoSection = ({ profileId }) => {
+  const dispatch = useDispatch();
+  const videos = useSelector((state) => Object.values(state.videos));
 
   useEffect(() => {
-    dispatch(getVideosThunk(pageId))
-  }, [dispatch, pageId])
+    dispatch(getVideosThunk(profileId));
+  }, [dispatch, profileId]);
   return (
     <>
       <h1>VIDEOS</h1>
-      <div className='videos-list'>
-        {videos.map(video => (
-          <div
-          key={video?.id}
-          className='video-container flex-col-center'>
+      <div className="videos-list">
+        {videos.map((video) => (
+          <div key={video?.id} className="video-container flex-col-center">
             <iframe
               title={video?.name}
               src={video?.video}
@@ -28,7 +26,7 @@ const VideoSection = ({ pageId }) => {
         ))}
       </div>
     </>
-  )
-}
+  );
+};
 
 export default VideoSection;

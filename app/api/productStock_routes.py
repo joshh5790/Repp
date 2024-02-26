@@ -61,7 +61,7 @@ def create_cart_item(productStockId):
     if not productStock:
         return {"error": "Product not found or not in stock"}, 404
     product = productStock.get_product()
-    curr_cart = current_user.get_one_cart(product["pageId"])
+    curr_cart = current_user.get_one_cart(product["profileId"])
     cart = Cart.query.get(curr_cart["id"])
     cartItems = cart.get_items()
     if not cart:

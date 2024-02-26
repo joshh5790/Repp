@@ -53,7 +53,11 @@ const Sidebar = () => {
           <>
             {follows?.map((follow) => (
               <div key={follow.id} className="follow-card">
-                <PageButton followId={follow.id} pageId={follow.pageId} remove={remove} />
+                <PageButton
+                  followId={follow.id}
+                  profileId={follow.profileId}
+                  remove={remove}
+                />
               </div>
             ))}
             <div

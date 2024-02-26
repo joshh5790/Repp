@@ -1,119 +1,119 @@
 // constants
 
-const SET_RPAGE = "pages/SET_RPAGE";
-const ADD_RPAGE = "pages/ADD_RPAGE";
+const SET_PROFILE = "profiles/SET_PROFILE";
+const ADD_PROFILE = "profiles/ADD_PROFILE";
 
 // action creators
 
-const setRPage = (rpage) => ({
-  type: SET_RPAGE,
-  payload: rpage,
+const setProfile = (profile) => ({
+  type: SET_PROFILE,
+  payload: profile,
 });
 
-const addRPage = (rpage) => ({
-  type: ADD_RPAGE,
-  payload: rpage,
+const addProfile = (profile) => ({
+  type: ADD_PROFILE,
+  payload: profile,
 });
 
 // thunks
 
-// GET /session/page
-export const getSessionPageThunk = () => async (dispatch) => {
-  const response = await fetch("/api/session/page");
+// GET /session/profile
+export const getSessionProfileThunk = () => async (dispatch) => {
+  const response = await fetch("/api/session/profile");
   if (response.ok) {
     const data = await response.json();
-    dispatch(addRPage({ [data.linkName]: data }));
+    dispatch(addProfile({ [data.linkName]: data }));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to retrieve session page."];
+  } else return ["Failed to retrieve session profile."];
 };
 
-// GET /pages/id/:pageId
-export const addPageThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/id/${pageId}`);
+// GET /profiles/id/:profileId
+export const addProfileThunk = (profileId) => async (dispatch) => {
+  const response = await fetch(`/api/profiles/id/${profileId}`);
   if (response.ok) {
     const data = await response.json();
-    dispatch(addRPage({ [data.linkName]: data }));
+    dispatch(addProfile({ [data.linkName]: data }));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to retrieve page."];
+  } else return ["Failed to retrieve profile."];
 };
 
-// GET /pages/id/:pageId
-export const getPageByIdThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/id/${pageId}`);
+// GET /profiles/id/:profileId
+export const getProfileByIdThunk = (profileId) => async (dispatch) => {
+  const response = await fetch(`/api/profiles/id/${profileId}`);
   if (response.ok) {
     const data = await response.json();
-    dispatch(addRPage({ [data.linkName]: data }));
+    dispatch(addProfile({ [data.linkName]: data }));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to retrieve page."];
+  } else return ["Failed to retrieve profile."];
 };
 
-// GET /pages
-export const getRPagesThunk = () => async (dispatch) => {
-  const response = await fetch("/api/pages");
+// GET /profiles
+export const getProfilesThunk = () => async (dispatch) => {
+  const response = await fetch("/api/profiles");
   if (response.ok) {
     const data = await response.json();
     const formattedData = {};
-    for (const page of data) {
-      formattedData[page.linkName] = page;
+    for (const profile of data) {
+      formattedData[profile.linkName] = profile;
     }
-    dispatch(addRPage(formattedData));
+    dispatch(addProfile(formattedData));
     return formattedData;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to retrieve pages."];
+  } else return ["Failed to retrieve profiles."];
 };
 
-// GET /pages/home
-export const getRPagesHomeThunk = () => async (dispatch) => {
-  const response = await fetch("/api/pages/home");
+// GET /profiles/home
+export const getProfilesHomeThunk = () => async (dispatch) => {
+  const response = await fetch("/api/profiles/home");
   if (response.ok) {
     const data = await response.json();
     const formattedData = {};
-    for (const page of data) {
-      formattedData[page.linkName] = page;
+    for (const profile of data) {
+      formattedData[profile.linkName] = profile;
     }
-    dispatch(addRPage(formattedData));
+    dispatch(addProfile(formattedData));
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to retrieve home page information."];
+  } else return ["Failed to retrieve home profile information."];
 };
 
-// GET /pages/search
-export const getRPagesSearchThunk = (query) => async (dispatch) => {
-  const response = await fetch(`/api/pages/search?query=${query}`);
+// GET /profiles/search
+export const getProfilesSearchThunk = (query) => async (dispatch) => {
+  const response = await fetch(`/api/profiles/search?query=${query}`);
   if (response.ok) {
     const data = await response.json();
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) return data.errors;
-  } else return ["Failed to retrieve pages."];
+  } else return ["Failed to retrieve profiles."];
 }
 
-// GET /pages/:linkName
-export const getOneRPageThunk = (linkName) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${linkName}`);
+// GET /profiles/:linkName
+export const getOneProfileThunk = (linkName) => async (dispatch) => {
+  const response = await fetch(`/api/profiles/${linkName}`);
   if (response.ok) {
     const data = await response.json();
-    dispatch(addRPage({ [data.linkName]: data }));
+    dispatch(addProfile({ [data.linkName]: data }));
     return data;
   } else return;
 };
 
-// POST /pages
-export const createRPageThunk =
+// POST /profiles
+export const createProfileThunk =
   ({
     displayName,
     linkName,
@@ -125,9 +125,10 @@ export const createRPageThunk =
     businessInquiries,
     videoSection,
     shopSection,
+    tourName,
   }) =>
   async (dispatch) => {
-    const response = await fetch("/api/pages/", {
+    const response = await fetch("/api/profiles/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -141,23 +142,24 @@ export const createRPageThunk =
         businessInquiries,
         videoSection,
         shopSection,
+        tourName,
       }),
     });
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(addRPage({ [data.linkName]: data }));
+      dispatch(addProfile({ [data.linkName]: data }));
       return null;
     } else if (response.status < 500) {
       const data = await response.json();
       if (data.errors) return data.errors;
-    } else return ["Failed to create page."];
+    } else return ["Failed to create profile."];
   };
 
-// PUT /pages/:pageId
-export const updateRPageThunk =
+// PUT /profiles/:profileId
+export const updateProfileThunk =
   ({
-    pageId,
+    profileId,
     displayName,
     linkName,
     tiktok,
@@ -178,7 +180,7 @@ export const updateRPageThunk =
     shopSection,
   }) =>
   async (dispatch) => {
-    const response = await fetch(`/api/pages/${pageId}`, {
+    const response = await fetch(`/api/profiles/${profileId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -205,31 +207,31 @@ export const updateRPageThunk =
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(addRPage({ [data.linkName]: data }));
+      dispatch(addProfile({ [data.linkName]: data }));
       return null;
     } else if (response.status < 500) {
       const data = await response.json();
       if (data.errors) return data.errors;
-    } else return ["Failed to update page."];
+    } else return ["Failed to update profile."];
   };
 
-// DELETE /pages/:pageId
-export const deleteRPageThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}`, {
+// DELETE /profiles/:profileId
+export const deleteProfileThunk = (profileId) => async (dispatch) => {
+  const response = await fetch(`/api/profiles/${profileId}`, {
     method: "DELETE",
   });
 
-  if (response.ok) dispatch(setRPage({}));
-  else return ["Failed to delete page."];
+  if (response.ok) dispatch(setProfile({}));
+  else return ["Failed to delete profile."];
 };
 
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case SET_RPAGE:
+    case SET_PROFILE:
       return { ...action.payload };
-    case ADD_RPAGE:
+    case ADD_PROFILE:
       return { ...state, ...action.payload };
     default:
       return state;

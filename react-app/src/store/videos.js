@@ -23,9 +23,9 @@ const removeVideo = (videoId) => ({
 
 // thunks
 
-// GET /pages/:pageId/videos/
-export const getVideosThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}/videos`);
+// GET /pages/:profileId/videos/
+export const getVideosThunk = (profileId) => async (dispatch) => {
+  const response = await fetch(`/api/pages/${profileId}/videos`);
   if (response.ok) {
     const data = await response.json();
     const formattedData = {};
@@ -40,11 +40,11 @@ export const getVideosThunk = (pageId) => async (dispatch) => {
   } else return ["Failed to retrieve videos."];
 };
 
-// POST /pages/:pageId/videos/
+// POST /pages/:profileId/videos/
 export const createVideoThunk =
-  ({ pageId, name, video }) =>
+  ({ profileId, name, video }) =>
   async (dispatch) => {
-    const response = await fetch(`/api/pages/${pageId}/videos`, {
+    const response = await fetch(`/api/pages/${profileId}/videos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

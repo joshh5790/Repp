@@ -23,13 +23,13 @@ def get_user_carts():
     return current_user.get_carts()
 
 
-# GET /session/page
-@session_routes.route("/page")
+# GET /session/profile
+@session_routes.route("/profile")
 @login_required
-def get_user_page():
+def get_user_profile():
     if not current_user:
         return {"error": "Unauthorized"}, 401
-    return current_user.get_page()
+    return current_user.get_profile()
 
 
 # GET /session/orders

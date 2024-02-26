@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session";
-import pages from "./pages";
+import profiles from "./profiles";
 import products from "./products";
 import productImages from "./productImages";
 import productStock from "./productStock";
@@ -17,7 +17,7 @@ import visibility from "./navigation";
 
 const rootReducer = combineReducers({
   session,
-  pages,
+  profiles,
   products,
   productImages,
   productStock,

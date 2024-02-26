@@ -7,51 +7,51 @@ import {
 } from "../../../utilities";
 import OpenModalButton from "../../OpenModalButton";
 import { getProductsThunk } from "../../../store/products";
-import { updateRPageThunk } from "../../../store/pages";
+import { updateProfileThunk } from "../../../store/profiles";
 import ProductDetails from "../../Modals/ProductDetails";
 import DeleteProduct from "../../Modals/DeleteProduct";
 import ManageProduct from "../../Modals/ManageProduct";
-import './EditProducts.css'
+import "./EditProducts.css";
 
-const EditProducts = ({ page }) => {
+const EditProducts = ({ profile }) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => Object.values(state.products));
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    if (page) {
-      dispatch(getProductsThunk(page.id)).then((data) => {
-        if (isObjectEmpty(data) && page.shopSection) {
+    if (profile) {
+      dispatch(getProductsThunk(profile.id)).then((data) => {
+        if (isObjectEmpty(data) && profile.shopSection) {
           dispatch(
-            updateRPageThunk({
-              pageId: page.id,
-              videoSection: page.videoSection,
+            updateProfileThunk({
+              profileId: profile.id,
+              videoSection: profile.videoSection,
               shopSection: false,
             })
           );
-        } else if (!isObjectEmpty(data) && !page.shopSection) {
+        } else if (!isObjectEmpty(data) && !profile.shopSection) {
           dispatch(
-            updateRPageThunk({
-              pageId: page.id,
-              videoSection: page.videoSection,
+            updateProfileThunk({
+              profileId: profile.id,
+              videoSection: profile.videoSection,
               shopSection: true,
             })
           );
         }
       });
     }
-  }, [dispatch, page]);
+  }, [dispatch, profile]);
 
   return (
     <>
-      {page && (
+      {profile && (
         <OpenModalButton
           className="new-card-button ease-bg"
           modalComponent={
             <ManageProduct
-              pageId={page.id}
+              profileId={profile.id}
               numProducts={products.length}
-              videoSection={page.videoSection}
+              videoSection={profile.videoSection}
             />
           }
           buttonText={<b>+ New Product</b>}
@@ -61,9 +61,7 @@ const EditProducts = ({ page }) => {
         <OpenModalButton
           className="manage-product-cards ease-bg"
           key={product.id}
-          modalComponent={
-            <ProductDetails product={product} preview={true} />
-          }
+          modalComponent={<ProductDetails product={product} preview={true} />}
           buttonText={
             <>
               <img
@@ -79,7 +77,7 @@ const EditProducts = ({ page }) => {
                   flexDirection: "column",
                   alignItems: "flex-start",
                   marginLeft: "1rem",
-                  flexGrow: '1'
+                  flexGrow: "1",
                 }}
               >
                 <div
@@ -89,14 +87,20 @@ const EditProducts = ({ page }) => {
                     fontWeight: "bold",
                     marginBottom: "1rem",
                     whiteSpace: "nowrap",
-                    width: "15vw"
+                    width: "15vw",
                   }}
                 >
                   {product?.name}
                 </div>
                 <div>{formatCurrency(product?.price)}</div>
               </div>
-              <div style={{justifySelf: "flex-end", display: 'flex', flexDirection: "column"}}>
+              <div
+                style={{
+                  justifySelf: "flex-end",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
                 <OpenModalButton
                   className={"delete-card ease-bg"}
                   buttonText={<i className="fa-solid fa-x" />}
@@ -105,7 +109,7 @@ const EditProducts = ({ page }) => {
                       product={product}
                       setReload={setReload}
                       numProducts={products.length}
-                      videoSection={page.videoSection}
+                      videoSection={profile.videoSection}
                     />
                   }
                 />

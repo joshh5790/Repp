@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPageThunk } from "../../../store/pages";
+import { addProfileThunk } from "../../../store/profiles";
 import { formatCurrency } from "../../../utilities";
 import { getOrderItemsThunk } from "../../../store/orderItems";
 import OrderItem from "./OrderItem";
@@ -12,13 +12,15 @@ const OrderCard = ({ order }) => {
   const orderItems = useSelector((state) => {
     const allOrderItems = Object.values(state.orderItems);
     const filteredOrderItems = allOrderItems.filter((orderItem) => {
-      return orderItem.orderId === order.id
+      return orderItem.orderId === order.id;
     });
     return filteredOrderItems;
   });
-  const page = useSelector((state) => Object.values(state.pages).find(page => page.id === order.pageId));
+  const profile = useSelector((state) =>
+    Object.values(state.profiles).find((profile) => profile.id === order.profileId)
+  );
   useEffect(() => {
-    dispatch(addPageThunk(order.pageId));
+    dispatch(addProfileThunk(order.profileId));
     dispatch(getOrderItemsThunk(order.id));
     if (order?.createdAt) {
       const dateType = new Date(order.createdAt);
@@ -34,14 +36,14 @@ const OrderCard = ({ order }) => {
     <div className="order-card">
       <div className="order-header">
         <div>
-          {page?.personalLogo ? (
+          {profile?.personalLogo ? (
             <img
-              alt={page?.displayName}
-              src={page?.personalLogo}
+              alt={profile?.displayName}
+              src={profile?.personalLogo}
               className="repp-nav-logo"
             />
           ) : (
-            <div style={{ fontWeight: "bold" }}>{page?.displayName}</div>
+            <div style={{ fontWeight: "bold" }}>{profile?.displayName}</div>
           )}
           <div style={{ fontSize: "0.8rem", marginTop: "0.5rem" }}>
             Order ID #{order.id}
@@ -64,9 +66,8 @@ const OrderCard = ({ order }) => {
         className="flex-col"
         style={{ width: "100%", gap: "1rem", padding: "1rem" }}
       >
-        {orderItems.length && (
-          orderItems.map((item) => <OrderItem key={item.id} item={item} />)
-        )}
+        {orderItems.length &&
+          orderItems.map((item) => <OrderItem key={item.id} item={item} />)}
       </div>
     </div>
   );

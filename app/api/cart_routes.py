@@ -22,6 +22,7 @@ def delete_cart(cartId):
     db.session.commit()
     return {"message": "Cart deleted"}
 
+
 # GET /carts/:cartId/cartItems
 @cart_routes.route("/<int:cartId>/cartItems")
 @login_required
@@ -50,7 +51,7 @@ def create_order(cartId):
     cart_dict = cart.to_dict()
     order = Order(
         userId=cart_dict["userId"],
-        pageId=cart_dict["pageId"],
+        profileId=cart_dict["profileId"],
         total=cart_dict["subtotal"],
     )
     db.session.add(order)
@@ -63,7 +64,9 @@ def create_order(cartId):
             quantity=item["quantity"],
             size=item["size"],
         )
-        productStock = ProductStock.query.filter_by(productId=item["productId"], size=item["size"]).first()
+        productStock = ProductStock.query.filter_by(
+            productId=item["productId"], size=item["size"]
+        ).first()
         productStock.stock -= item["quantity"]
         if productStock.stock < 0:
             return {"error": "Insufficient stock"}, 400

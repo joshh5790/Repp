@@ -23,9 +23,9 @@ const removeProduct = (productId) => ({
 
 // thunks
 
-// GET /pages/:pageId/products/
-export const getProductsThunk = (pageId) => async (dispatch) => {
-  const response = await fetch(`/api/pages/${pageId}/products`);
+// GET /profiles/:profileId/products/
+export const getProductsThunk = (profileId) => async (dispatch) => {
+  const response = await fetch(`/api/profiles/${profileId}/products`);
   if (response.ok) {
     const data = await response.json();
     const formattedData = {};
@@ -40,10 +40,10 @@ export const getProductsThunk = (pageId) => async (dispatch) => {
   } else return ["Failed to retrieve products."];
 };
 
-// POST /pages/:pageId/products/
+// POST /profiles/:profileId/products/
 export const createProductThunk =
-  ({pageId, name, description, price, previewImage}) => async (dispatch) => {
-    const response = await fetch(`/api/pages/${pageId}/products`, {
+  ({profileId, name, description, price, previewImage}) => async (dispatch) => {
+    const response = await fetch(`/api/profiles/${profileId}/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

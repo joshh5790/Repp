@@ -44,11 +44,11 @@ function Navigation() {
         </NavLink>
         <i className="fa-solid fa-info">
           {isHome && (
-            <div className="page-info">
+            <div className="profile-info">
               <h4>Home Page/Navbar</h4>
               <ul>
                 <li>
-                  Visiting artist page will cause navbar to disappear, clicking
+                  Visiting artist profile will cause navbar to disappear, clicking
                   side ellipsis will make it show up
                 </li>
                 <li>Click logo to return to home page</li>
@@ -63,7 +63,7 @@ function Navigation() {
             </div>
           )}
           {location.pathname === "/profile/edit" && (
-            <div className="page-info">
+            <div className="profile-info">
               <h4>Edit Profile Page</h4>
               <ul>
                 <li>4 tabs, general, socials, products, and videos</li>
@@ -74,15 +74,15 @@ function Navigation() {
           {(location.pathname === "/tiffany-day" ||
             location.pathname === "/highvyn" ||
             location.pathname === "/eric-nam") && (
-            <div className="page-info">
+            <div className="profile-info">
               <h4>Profile Page</h4>
               <ul>
                 <li>
                   clicking on artist name in profile navbar brings user to top
                 </li>
                 <li>
-                  Cart is profile page specific, carts will only show for the
-                  respective artist's page
+                  Cart is profile specific, carts will only show for the
+                  respective artist's profile
                 </li>
                 <li>Newsletter functionality not yet available</li>
               </ul>
@@ -94,14 +94,14 @@ function Navigation() {
             display: "flex",
             gap: "1rem",
             fontSize: "2rem",
-            marginLeft: "1rem"
+            marginLeft: "1rem",
           }}
         >
           <a href="https://github.com/joshh5790" target="_blank">
-            <i className="fa-brands fa-github" style={{color: "white"}} />
+            <i className="fa-brands fa-github" style={{ color: "white" }} />
           </a>
           <a href="https://www.linkedin.com/in/joshua-ho-5790/" target="_blank">
-            <i className="fa-brands fa-linkedin" style={{color: "white"}} />
+            <i className="fa-brands fa-linkedin" style={{ color: "white" }} />
           </a>
         </div>
       </li>
