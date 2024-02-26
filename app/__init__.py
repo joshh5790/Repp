@@ -42,7 +42,7 @@ app.config.from_object(Config)
 stripe.api_key=app.config['STRIPE_SECRET_KEY']
 app.register_blueprint(user_routes, url_prefix="/api/users")
 app.register_blueprint(auth_routes, url_prefix="/api/auth")
-app.register_blueprint(profile_routes, url_prefix="/api/pages")
+app.register_blueprint(profile_routes, url_prefix="/api/profiles")
 app.register_blueprint(product_routes, url_prefix="/api/products")
 app.register_blueprint(productImage_routes, url_prefix="/api/productImages")
 app.register_blueprint(productStock_routes, url_prefix="/api/productStock")
