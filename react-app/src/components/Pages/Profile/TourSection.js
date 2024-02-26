@@ -19,7 +19,9 @@ const TourSection = ({ profileId, tourName, previewStyle }) => {
       {tours.map((tour) => (
         <div className="tour-details">
           <div>
-            <div>{tour?.tourDate}</div>
+            <div>
+              <b>{tour?.tourDate}</b>
+            </div>
             <div>{tour?.venue}</div>
           </div>
           <div className="tour-location-div">{tour?.location}</div>

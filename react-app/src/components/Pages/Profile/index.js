@@ -49,6 +49,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
         [
           previewPage?.mainVideo && "WATCH",
           previewPage?.shopSection && "MERCH",
+          previewPage?.tourName && "TOUR",
           previewPage?.videoSection && "VIDEOS",
         ].filter((value) => value)
       );
@@ -64,6 +65,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
             [
               profile.mainVideo && "WATCH",
               profile.shopSection && "MERCH",
+              profile.tourName && "TOURS",
               profile.videoSection && "VIDEOS",
             ].filter((value) => value)
           );
