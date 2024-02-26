@@ -12,9 +12,9 @@ const SearchResults = ({ term, setTerm }) => {
   }, [dispatch, term]);
 
   return (
-    <div className="search-results">
+    <div style={{ width: "100%" }}>
       {pages.length > 0 ? (
-        <div className="search-list-artists">
+        <div>
           {pages.map((page) => (
             <NavLink
               to={`/${page?.linkName}`}

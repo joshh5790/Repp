@@ -91,7 +91,7 @@ export const getProfilesHomeThunk = () => async (dispatch) => {
 };
 
 // GET /profiles/search
-export const getProfilesSearchThunk = (query) => async (dispatch) => {
+export const getProfilesSearchThunk = (query) => async () => {
   const response = await fetch(`/api/profiles/search?query=${query}`);
   if (response.ok) {
     const data = await response.json();
