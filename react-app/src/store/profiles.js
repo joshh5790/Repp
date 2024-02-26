@@ -178,6 +178,7 @@ export const updateProfileThunk =
     businessInquiries,
     videoSection,
     shopSection,
+    tourName,
   }) =>
   async (dispatch) => {
     const response = await fetch(`/api/profiles/${profileId}`, {
@@ -202,6 +203,7 @@ export const updateProfileThunk =
         businessInquiries,
         videoSection,
         shopSection,
+        tourName,
       }),
     });
 

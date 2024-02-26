@@ -10,8 +10,7 @@ import carts from "./carts";
 import cartItems from "./cartItems";
 import orders from "./orders";
 import orderItems from "./orderItems";
-// import tours from "./tours";
-// import tourLocations from './tourLocations'
+import tours from "./tours";
 import follows from "./follows";
 import visibility from "./navigation";
 
@@ -26,8 +25,7 @@ const rootReducer = combineReducers({
   cartItems,
   orders,
   orderItems,
-  // tours,
-  // tourLocations,
+  tours,
   follows,
   visibility,
 });

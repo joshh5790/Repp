@@ -66,3 +66,4 @@ class ProfileForm(FlaskForm):
     businessInquiries = EmailField("Business Inquiries")
     videoSection = BooleanField("Video Section")
     shopSection = BooleanField("Shop Section")
+    tourName = StringField("Tour Name")
