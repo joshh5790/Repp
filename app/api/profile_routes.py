@@ -22,7 +22,7 @@ def get_profiles():
 @profile_routes.route("/home")
 def get_profiles_home():
     profiles = Profile.query.limit(5).all()
-    return [profile.home_profile_info() for profile in profiles]
+    return [profile.home_page_info() for profile in profiles]
 
 
 # GET /profiles/search
