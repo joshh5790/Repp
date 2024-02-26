@@ -10,7 +10,7 @@ import VideoSection from "./VideoSection";
 import Footer from "./Footer";
 import Cart from "./Cart";
 import LinkSection from "./LinkSection";
-// import Tours from "./Tours";
+import TourSection from "./TourSection";
 import { authenticate } from "../../../store/session";
 
 const Profile = ({ previewPage, preview, previewStyle }) => {
@@ -123,6 +123,15 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
                 profileId={profile?.id}
                 setNumCartItems={setNumCartItems}
                 preview={preview}
+                previewStyle={previewStyle}
+              />
+            </div>
+          )}
+          {profile?.tourName && (
+            <div id="tours" className="profile-page-section">
+              <TourSection
+                profileId={profile?.id}
+                tourName={profile?.tourName}
                 previewStyle={previewStyle}
               />
             </div>

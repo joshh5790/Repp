@@ -1,0 +1,38 @@
+.tour-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 60rem;
+}
+
+.tour-location-div {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tour-tickets-button {
+  width: 8rem;
+  height: 3rem;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  font-weight: bolder;
+  text-decoration: none;
+  line-height: 16px;
+  border: 1px solid black;
+}
+
+.tour-tickets-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.profile-page-tours {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}

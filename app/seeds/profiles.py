@@ -21,6 +21,7 @@ def seed_profiles():
         businessInquiries="info@enmgmt.com",
         videoSection=True,
         shopSection=True,
+        tourName="HOUSE ON A HILL"
     )
     tiff = Profile(
         userId=2,
