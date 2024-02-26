@@ -80,7 +80,6 @@ const EditTours = ({ profile }) => {
         </button>
       </div>
       <div className="new-card-button add-tour-button">+ Add Tour Location</div>
-      <div>THIS IS EDITINPUT: {editInput}</div>
       <div className="edit-tours-list">
         {tours &&
           tours.map((tour) => (
@@ -102,10 +101,11 @@ const EditTours = ({ profile }) => {
                 className="edit-card"
                 style={{
                   position: "absolute",
-                  top: "10px",
-                  right: "5px",
+                  top: "5px",
+                  right: "40px",
                   alignSelf: "start",
                   justifySelf: "end",
+                  color: "white",
                 }}
               >
                 <i className="fa-regular fa-pen-to-square" />
