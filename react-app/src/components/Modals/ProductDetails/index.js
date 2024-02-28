@@ -12,8 +12,10 @@ import {
 } from "../../../store/cartItems";
 import { createCartThunk, getProfileCartThunk } from "../../../store/carts";
 import { formatCurrency, invalidImage } from "../../../utilities";
+import OpenModalButton from "../../OpenModalButton";
+import LoginForm from "../LoginForm";
 
-const ProductDetails = ({ product, setNumCartItems, preview }) => {
+const ProductDetails = ({ product, setNumCartItems, preview, user }) => {
   const dispatch = useDispatch();
   const sizes = useSelector((state) => Object.values(state.productStock));
   const images = [
@@ -117,7 +119,7 @@ const ProductDetails = ({ product, setNumCartItems, preview }) => {
             <p className="product-modal-price">
               {formatCurrency(product?.price)}
             </p>
-            {!outOfStock ? (
+            {!outOfStock && user && user?.id ? (
               <div>
                 <div style={{ display: "flex" }}>
                   {sizes.length > 1 &&
@@ -156,10 +158,21 @@ const ProductDetails = ({ product, setNumCartItems, preview }) => {
                   Add to Cart
                 </button>
               </div>
-            ) : (
+            ) : outOfStock ? (
               <div className="out-of-stock">
                 <b>Out of Stock</b>
               </div>
+            ) : (
+              <>
+                <div className="out-of-stock" style={{ color: "#444444" }}>
+                  <b>Log in to add this item to your cart.</b>
+                </div>
+                <OpenModalButton
+                  buttonText="LOG IN"
+                  modalComponent={<LoginForm />}
+                  className="cart-login-button button-hover"
+                />
+              </>
             )}
           </div>
         </div>

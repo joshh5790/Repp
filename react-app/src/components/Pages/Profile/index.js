@@ -126,6 +126,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
                 setNumCartItems={setNumCartItems}
                 preview={preview}
                 previewStyle={previewStyle}
+                user={user}
               />
             </div>
           )}
