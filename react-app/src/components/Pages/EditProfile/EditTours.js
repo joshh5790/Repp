@@ -96,14 +96,15 @@ const EditTours = ({ profile }) => {
                 onClick={() => handleSoldOut(tour?.id, tour?.soldOut)}
               >
                 {tour.soldOut ? "🎉 SOLD OUT! 🎉" : "Sold out?"}
+                {/* sold out button needs to not activate addmode */}
               </div>
               {/* edit card button has no actual functionality other than indicating to the user that they can't simply click on the inputs to edit */}
               <button
                 className="edit-card"
                 style={{
                   position: "absolute",
-                  top: "10px",
-                  right: "5px",
+                  top: "5px",
+                  right: "40px",
                   alignSelf: "start",
                   justifySelf: "end",
                 }}
