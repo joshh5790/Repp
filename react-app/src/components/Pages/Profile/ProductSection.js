@@ -11,6 +11,7 @@ const ProductSection = ({
   setNumCartItems,
   preview,
   previewStyle,
+  user,
 }) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => Object.values(state.products));
@@ -31,6 +32,7 @@ const ProductSection = ({
                   product={product}
                   setNumCartItems={setNumCartItems}
                   preview={preview}
+                  user={user}
                 />
               )}
               className="product-card-button"
