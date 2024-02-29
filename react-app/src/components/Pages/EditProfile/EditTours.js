@@ -27,7 +27,8 @@ const EditTours = ({ profile }) => {
     }
   }, [dispatch, profile]);
 
-  const focusTour = (tour) => {
+  const focusTour = (e, tour) => {
+    e.preventDefault();
     if (!editInput && !addMode) {
       setEditInput(tour.id);
       setTourDate(tour.tourDate);
@@ -80,7 +81,6 @@ const EditTours = ({ profile }) => {
         </button>
       </div>
       <div className="new-card-button add-tour-button">+ Add Tour Location</div>
-      <div>THIS IS EDITINPUT: {editInput}</div>
       <div className="edit-tours-list">
         {tours &&
           tours.map((tour) => (
@@ -89,16 +89,13 @@ const EditTours = ({ profile }) => {
               className={`tour-card ease-bg ${
                 editInput === tour?.id ? "focus-tour" : ""
               }`}
-              onClick={() => focusTour(tour)}
             >
               <div
                 className="soldout-button button-hover"
                 onClick={() => handleSoldOut(tour?.id, tour?.soldOut)}
               >
                 {tour.soldOut ? "🎉 SOLD OUT! 🎉" : "Sold out?"}
-                {/* sold out button needs to not activate addmode */}
               </div>
-              {/* edit card button has no actual functionality other than indicating to the user that they can't simply click on the inputs to edit */}
               <button
                 className="edit-card"
                 style={{
@@ -108,6 +105,7 @@ const EditTours = ({ profile }) => {
                   alignSelf: "start",
                   justifySelf: "end",
                 }}
+                onClick={(e) => focusTour(e, tour)}
               >
                 <i className="fa-regular fa-pen-to-square" />
               </button>
