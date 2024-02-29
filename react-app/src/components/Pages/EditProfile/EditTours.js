@@ -43,14 +43,20 @@ const EditTours = ({ profile }) => {
     setReload((prev) => !prev);
   };
 
-  const handleAddTour = () => {};
+  const handleAddTour = () => {
+    
+  };
 
   const handleSoldOut = (tourId, soldOut) => {
     dispatch(updateTourThunk({ tourId, soldOut: !soldOut }));
     setEditInput(0);
   };
 
-  const handleDeleteTour = (tourId) => {};
+  const handleDeleteTour = (tourId) => {
+    dispatch(deleteTourThunk(tourId));
+    setEditInput(0);
+    setReload((prev) => !prev);
+  };
 
   const handleUpdateTour = (tourId) => {
     setEditInput(0);
@@ -59,8 +65,7 @@ const EditTours = ({ profile }) => {
     );
   };
 
-  // sold out will be a button right under the x for removing a tour
-  // click the SOLD OUT? button to mark a tour as sold out! with party emojis
+  // tours need to be sorted by date, can have a button to sort by earliest and latest
 
   // maybe move delete all tours to + More tab
 
