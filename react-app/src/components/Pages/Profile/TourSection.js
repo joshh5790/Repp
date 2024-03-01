@@ -30,7 +30,10 @@ const TourSection = ({ profileId, tourName, previewStyle }) => {
             target="_blank"
             rel="noreferrer"
             href={tour?.ticketsLink}
-            className="tour-tickets-button button-hover"
+            className={tour?.soldOut ? "sold-out button-hover" : "tour-tickets-button button-hover"}
+            onClick={e => {
+              if (tour?.soldOut) e.preventDefault()
+            }}
           >
             {tour?.soldOut ? "SOLD OUT" : "BUY TICKETS"}
           </a>

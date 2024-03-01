@@ -4,7 +4,7 @@ import {
   createTourThunk,
   deleteTourThunk,
   getToursThunk,
-  updateTourThunk,
+  updateTourThunk
 } from "../../../store/tours";
 import { updateProfileThunk } from "../../../store/profiles";
 import "./EditTours.css";
@@ -43,9 +43,7 @@ const EditTours = ({ profile }) => {
     setReload((prev) => !prev);
   };
 
-  const handleAddTour = () => {
-    
-  };
+  const handleAddTour = () => {};
 
   const handleSoldOut = (tourId, soldOut) => {
     dispatch(updateTourThunk({ tourId, soldOut: !soldOut }));

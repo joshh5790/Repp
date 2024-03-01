@@ -24,6 +24,19 @@
   border: 1px solid black;
 }
 
+.sold-out.button-hover {
+  width: 8rem;
+  height: 3rem;
+  background-color: #444444;
+  color: white;
+  font-size: 14px;
+  font-weight: bolder;
+  text-decoration: none;
+  line-height: 16px;
+  border: 1px solid black;
+  cursor: default;
+}
+
 .tour-tickets-button:hover {
   background-color: white;
   color: black;
