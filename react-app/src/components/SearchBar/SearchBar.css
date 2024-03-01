@@ -6,6 +6,7 @@
   border-radius: 20rem;
   padding: 0.5rem 1rem;
   width: 100%;
+  color: #EEEEEE;
 }
 
 .search-button-mobile {
@@ -15,9 +16,10 @@
 
 .search-bar:hover {
   box-shadow: 0 0 5px #F1F1F1;
+  cursor: text;
 }
 
-.search-input {
+#search-input {
   max-width: 30rem;
   border: none;
   background-color: rgb(0,0,0,0);

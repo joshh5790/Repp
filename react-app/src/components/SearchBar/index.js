@@ -18,26 +18,25 @@ function SearchBar() {
     setTerm(e.target.value);
   };
 
+  const focusInput = () => {
+    const input = document.getElementById("search-input")
+    input.focus()
+  }
+
   return (
     <>
-      <form onSubmit={handleSubmit} className={`search-bar`}>
+      <form onClick={focusInput} className={`search-bar`}>
         <DebounceInput
           type="text"
+          id="search-input"
           minLength={1}
           debounceTimeout={500}
           placeholder="Search by artist"
           value={term}
           onChange={handleChange}
-          className="search-input"
-          style={{ color: "#EEEEEE" }}
         />
         <div style={{ display: "flex", flexDirection: "row-reverse" }}>
-          <button type="submit" className="search-button">
-            <i
-              className="fa-solid fa-magnifying-glass"
-              style={{ color: "#EEEEEE", cursor: "pointer" }}
-            />
-          </button>
+          <i className="fa-solid fa-magnifying-glass" />
           <button
             onClick={clearSearch}
             className={`clear-search ${term.length === 0 ? "hidden" : ""}`}
