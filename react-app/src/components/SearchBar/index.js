@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import DebounceInput from "react-debounce-input";
 import { useHistory } from "react-router-dom";
 import SearchResults from "./SearchResults";
@@ -7,6 +7,7 @@ import "./SearchBar.css";
 function SearchBar() {
   const history = useHistory();
   const [term, setTerm] = useState("");
+  const ref = useRef(null)
 
   const clearSearch = (e) => {
     e.preventDefault();
@@ -15,11 +16,6 @@ function SearchBar() {
 
   const handleChange = (e) => {
     setTerm(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // unnecessary, remove submit stuff
   };
 
   return (

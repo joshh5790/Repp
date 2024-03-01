@@ -107,7 +107,7 @@ const EditTours = ({ profile }) => {
                   right: "40px",
                   alignSelf: "start",
                   justifySelf: "end",
-                  color: "white",
+                  color: "#F1F1F1",
                 }}
                 onClick={(e) => focusTour(e, tour)}
               >

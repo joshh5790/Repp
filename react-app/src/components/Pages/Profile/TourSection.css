@@ -16,7 +16,7 @@
   width: 8rem;
   height: 3rem;
   background-color: black;
-  color: white;
+  color: #F1F1F1;
   font-size: 14px;
   font-weight: bolder;
   text-decoration: none;
@@ -28,7 +28,7 @@
   width: 8rem;
   height: 3rem;
   background-color: #444444;
-  color: white;
+  color: #F1F1F1;
   font-size: 14px;
   font-weight: bolder;
   text-decoration: none;
@@ -38,7 +38,7 @@
 }
 
 .tour-tickets-button:hover {
-  background-color: white;
+  background-color: #F1F1F1;
   color: black;
 }
 

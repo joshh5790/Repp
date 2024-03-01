@@ -2,12 +2,13 @@
   width: 100%;
   height: 15rem;
   background-color: black;
+  color: #F1F1F1;
   /* bottom: 0;
   position: absolute; */
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex-direction: column;
 }
 
 .subscribe-button {
