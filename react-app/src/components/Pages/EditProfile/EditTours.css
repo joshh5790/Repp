@@ -24,7 +24,7 @@
 
 .add-tour-button.new-card-button {
   font-weight: bold;
-  height: 4rem;
+  height: 10rem;
 }
 
 .edit-tours-list {
@@ -35,9 +35,8 @@
 
 .tour-card {
   position: relative;
-  cursor: pointer;
   display: grid;
-  background-color: #444444;
+  background-color: #DDDDDD;
   padding: 1rem;
   border-radius: 10px;
   grid-template-areas:

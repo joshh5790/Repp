@@ -74,7 +74,7 @@ def seed_profiles():
         facebook="https://www.facebook.com/thisischrisjames",
         twitter="https://twitter.com/ohhichrisjames",
         external="https://www.chrisjames.lol/",
-        mainImage="https://ucarecdn.com/b0f24da7-e3d4-4657-a18d-89f732f5f3af/",
+        mainImage="https://imagedelivery.net/S_KBi515leX4rwPDIF-mpg/27ea663a-cf8a-4895-8d0e-e2a0de23e000",
         mainVideo="https://www.youtube.com/embed/HRgsgYwpFwQ",
         bio="Chris James is your new best friend. His upbeat instrumentation, relatable lyrics, and overall warmth have captivated fans and industry alike. Chris has written and produced chart topping songs for a variety of artists. Most notably the RIAA Gold-certified Billboard Hot 100 #1 hit “Life Goes On” by BTS, German Single Charts #1 song “Komet” by Udo Lindenberg and Apache 207, and his own track “Not Angry” which has garnered over 4B+ uses on Douyin. In total, Chris’s songwriting works have totaled over 1 billion streams on Spotify.",
         newsletter="chrisjamesnewsletter@gmail.com",

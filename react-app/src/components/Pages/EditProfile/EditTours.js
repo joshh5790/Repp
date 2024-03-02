@@ -4,7 +4,7 @@ import {
   createTourThunk,
   deleteTourThunk,
   getToursThunk,
-  updateTourThunk
+  updateTourThunk,
 } from "../../../store/tours";
 import { updateProfileThunk } from "../../../store/profiles";
 import "./EditTours.css";
@@ -83,7 +83,94 @@ const EditTours = ({ profile }) => {
           Confirm
         </button>
       </div>
-      <div className="new-card-button add-tour-button">+ Add Tour Location</div>
+      {!addMode ? (
+        <div
+          onClick={() => setAddMode(true)}
+          className="new-card-button add-tour-button"
+        >
+          + Add Tour Location
+        </div>
+      ) : (
+        <div
+          className="new-card-button add-tour-button"
+          style={{
+            border: "2px solid #999999",
+            backgroundColor: "#F1F1F1",
+            cursor: "auto",
+          }}
+        >
+          <div
+            className="flex-col"
+            style={{
+              marginTop: "1rem",
+              gap: "0.5rem",
+              width: "100%",
+            }}
+          >
+            <label
+              className="update-socials-label"
+              style={{ marginBottom: "0" }}
+            >
+              Date
+              <input
+                className="add-video-input"
+                value={tourDate}
+                onChange={(e) => setTourDate(e.target.value)}
+              />
+            </label>
+            <label
+              className="update-socials-label"
+              style={{ marginBottom: "0" }}
+            >
+              Venue
+              <input
+                className="add-video-input"
+                value={venue}
+                onChange={(e) => setVenue(e.target.value)}
+              />
+            </label>
+            <label
+              className="update-socials-label"
+              style={{ marginBottom: "0" }}
+            >
+              Location
+              <input
+                className="add-video-input"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </label>
+            <label
+              className="update-socials-label"
+              style={{ marginBottom: "0" }}
+            >
+              Link to Tickets
+              <input
+                className="add-video-input"
+                value={ticketsLink}
+                onChange={(e) => setTicketsLink(e.target.value)}
+              />
+            </label>
+            <div>
+              <button
+                className="add-video-button button-hover"
+                onClick={handleAddTour}
+              >
+                Add
+              </button>
+              <button
+                className="cancel-video-button button-hover"
+                onClick={() => {
+                  setTourDate("");
+                  setAddMode(false);
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="edit-tours-list">
         {tours &&
           tours.map((tour) => (
@@ -110,6 +197,7 @@ const EditTours = ({ profile }) => {
                   color: "#F1F1F1",
                 }}
                 onClick={(e) => focusTour(e, tour)}
+                disabled={tour?.soldOut}
               >
                 <i className="fa-regular fa-pen-to-square" />
               </button>
