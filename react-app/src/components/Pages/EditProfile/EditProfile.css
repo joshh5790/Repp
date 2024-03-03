@@ -112,7 +112,7 @@
 }
 
 .delete-card:hover,
-.edit-card:hover {
+.edit-card:hover:not(.disabled) {
   background-color: #AAAAAA;
 }
 

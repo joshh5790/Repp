@@ -43,7 +43,10 @@ const EditTours = ({ profile }) => {
     setReload((prev) => !prev);
   };
 
-  const handleAddTour = () => {};
+  const handleAddTour = () => {
+    dispatch(createTourThunk({tourDate, venue, location, ticketsLink}))
+    resetState()
+  };
 
   const handleSoldOut = (tourId, soldOut) => {
     dispatch(updateTourThunk({ tourId, soldOut: !soldOut }));
@@ -52,16 +55,23 @@ const EditTours = ({ profile }) => {
 
   const handleDeleteTour = (tourId) => {
     dispatch(deleteTourThunk(tourId));
-    setEditInput(0);
-    setReload((prev) => !prev);
+    resetState()
   };
 
   const handleUpdateTour = (tourId) => {
-    setEditInput(0);
     dispatch(
       updateTourThunk({ tourId, tourDate, venue, location, ticketsLink })
     );
+    resetState()
   };
+
+  const resetState = () => {
+    setEditInput(0);
+    setTourDate("");
+    setVenue("");
+    setLocation("");
+    setTicketsLink("");
+  }
 
   // tours need to be sorted by date, can have a button to sort by earliest and latest
 
@@ -88,7 +98,7 @@ const EditTours = ({ profile }) => {
           onClick={() => setAddMode(true)}
           className="new-card-button add-tour-button"
         >
-          + Add Tour Location
+          + New Tour Location
         </div>
       ) : (
         <div
@@ -161,7 +171,7 @@ const EditTours = ({ profile }) => {
               <button
                 className="cancel-video-button button-hover"
                 onClick={() => {
-                  setTourDate("");
+                  resetState();
                   setAddMode(false);
                 }}
               >
@@ -187,14 +197,13 @@ const EditTours = ({ profile }) => {
                 {tour.soldOut ? "🎉 SOLD OUT! 🎉" : "Sold out?"}
               </div>
               <button
-                className="edit-card"
+                className={"edit-card" + (tour?.soldOut ? " disabled" : "")}
                 style={{
                   position: "absolute",
                   top: "5px",
                   right: "40px",
                   alignSelf: "start",
                   justifySelf: "end",
-                  color: "#F1F1F1",
                 }}
                 onClick={(e) => focusTour(e, tour)}
                 disabled={tour?.soldOut}
@@ -202,15 +211,8 @@ const EditTours = ({ profile }) => {
                 <i className="fa-regular fa-pen-to-square" />
               </button>
               <button
-                className="delete-card"
+                className="delete-card delete-tour"
                 onClick={() => handleDeleteTour(tour.id)}
-                style={{
-                  position: "absolute",
-                  top: "5px",
-                  right: "5px",
-                  alignSelf: "start",
-                  justifySelf: "end",
-                }}
               >
                 <i className="fa-solid fa-x" />
               </button>
@@ -253,7 +255,7 @@ const EditTours = ({ profile }) => {
                 >
                   <button
                     className="tour-button-cancel button-hover"
-                    onClick={() => setEditInput(0)}
+                    onClick={resetState}
                   >
                     Cancel
                   </button>

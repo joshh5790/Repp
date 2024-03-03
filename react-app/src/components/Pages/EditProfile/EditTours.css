@@ -33,6 +33,14 @@
   gap: 1rem;
 }
 
+.delete-card.delete-tour {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  align-self: start;
+  justify-self: end;
+}
+
 .tour-card {
   position: relative;
   display: grid;

@@ -25,7 +25,6 @@ const TourSection = ({ profileId, tourName, previewStyle }) => {
             <div>{tour?.venue}</div>
           </div>
           <div className="tour-location-div">{tour?.location}</div>
-          {/* check if we can disable anchor tags */}
           <a
             target="_blank"
             rel="noreferrer"

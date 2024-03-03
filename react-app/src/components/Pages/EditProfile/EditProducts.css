@@ -22,6 +22,12 @@
   border-radius: 50%;
 }
 
+.edit-card.disabled {
+  color: #888888;
+  cursor: default;
+}
+
+
 .manage-product-img {
   max-width: 5rem;
   aspect-ratio: 1 / 1;
