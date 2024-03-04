@@ -22,11 +22,6 @@
   color: black;
 }
 
-.add-tour-button.new-card-button {
-  font-weight: bold;
-  height: 10rem;
-}
-
 .edit-tours-list {
   display: flex;
   flex-direction: column;

@@ -7,6 +7,8 @@ import {
   updateTourThunk,
 } from "../../../store/tours";
 import { updateProfileThunk } from "../../../store/profiles";
+import AddTour from "../../Modals/AddTour";
+import OpenModalButton from "../../OpenModalButton";
 import "./EditTours.css";
 
 const EditTours = ({ profile }) => {
@@ -17,7 +19,6 @@ const EditTours = ({ profile }) => {
   const [venue, setVenue] = useState("");
   const [location, setLocation] = useState("");
   const [ticketsLink, setTicketsLink] = useState("");
-  const [addMode, setAddMode] = useState(false);
   const [editInput, setEditInput] = useState(0);
   const [reload, setReload] = useState(false);
 
@@ -29,7 +30,7 @@ const EditTours = ({ profile }) => {
 
   const focusTour = (e, tour) => {
     e.preventDefault();
-    if (!editInput && !addMode) {
+    if (!editInput) {
       setEditInput(tour.id);
       setTourDate(tour.tourDate);
       setVenue(tour.venue);
@@ -43,26 +44,22 @@ const EditTours = ({ profile }) => {
     setReload((prev) => !prev);
   };
 
-  const handleAddTour = () => {
-    dispatch(createTourThunk({tourDate, venue, location, ticketsLink}))
-    resetState()
-  };
-
   const handleSoldOut = (tourId, soldOut) => {
     dispatch(updateTourThunk({ tourId, soldOut: !soldOut }));
     setEditInput(0);
   };
 
-  const handleDeleteTour = (tourId) => {
+  const handleDeleteTour = (tourId, e) => {
+    e.preventDefault()
     dispatch(deleteTourThunk(tourId));
-    resetState()
+    resetState();
   };
 
   const handleUpdateTour = (tourId) => {
     dispatch(
       updateTourThunk({ tourId, tourDate, venue, location, ticketsLink })
     );
-    resetState()
+    resetState();
   };
 
   const resetState = () => {
@@ -71,7 +68,7 @@ const EditTours = ({ profile }) => {
     setVenue("");
     setLocation("");
     setTicketsLink("");
-  }
+  };
 
   // tours need to be sorted by date, can have a button to sort by earliest and latest
 
@@ -93,94 +90,11 @@ const EditTours = ({ profile }) => {
           Confirm
         </button>
       </div>
-      {!addMode ? (
-        <div
-          onClick={() => setAddMode(true)}
-          className="new-card-button add-tour-button"
-        >
-          + New Tour Location
-        </div>
-      ) : (
-        <div
-          className="new-card-button add-tour-button"
-          style={{
-            border: "2px solid #999999",
-            backgroundColor: "#F1F1F1",
-            cursor: "auto",
-          }}
-        >
-          <div
-            className="flex-col"
-            style={{
-              marginTop: "1rem",
-              gap: "0.5rem",
-              width: "100%",
-            }}
-          >
-            <label
-              className="update-socials-label"
-              style={{ marginBottom: "0" }}
-            >
-              Date
-              <input
-                className="add-video-input"
-                value={tourDate}
-                onChange={(e) => setTourDate(e.target.value)}
-              />
-            </label>
-            <label
-              className="update-socials-label"
-              style={{ marginBottom: "0" }}
-            >
-              Venue
-              <input
-                className="add-video-input"
-                value={venue}
-                onChange={(e) => setVenue(e.target.value)}
-              />
-            </label>
-            <label
-              className="update-socials-label"
-              style={{ marginBottom: "0" }}
-            >
-              Location
-              <input
-                className="add-video-input"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
-            </label>
-            <label
-              className="update-socials-label"
-              style={{ marginBottom: "0" }}
-            >
-              Link to Tickets
-              <input
-                className="add-video-input"
-                value={ticketsLink}
-                onChange={(e) => setTicketsLink(e.target.value)}
-              />
-            </label>
-            <div>
-              <button
-                className="add-video-button button-hover"
-                onClick={handleAddTour}
-              >
-                Add
-              </button>
-              <button
-                className="cancel-video-button button-hover"
-                onClick={() => {
-                  resetState();
-                  setAddMode(false);
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <OpenModalButton
+        modalComponent={<AddTour profileId={profile?.id}/>}
+        buttonText={<b>+ New Tour Location</b>}
+        className={"new-card-button"}
+      />
       <div className="edit-tours-list">
         {tours &&
           tours.map((tour) => (
@@ -212,7 +126,7 @@ const EditTours = ({ profile }) => {
               </button>
               <button
                 className="delete-card delete-tour"
-                onClick={() => handleDeleteTour(tour.id)}
+                onClick={(e) => handleDeleteTour(tour.id, e)}
               >
                 <i className="fa-solid fa-x" />
               </button>

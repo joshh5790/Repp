@@ -78,7 +78,7 @@ def create_profile():
             businessInquiries=data["businessInquiries"],
             videoSection=False,
             shopSection=False,
-            tourName=data["tourName"]
+            tourName=data["tourName"],
         )
         user = User.query.get(current_user.id)
         user.isRepp = True
@@ -269,6 +269,9 @@ def create_tour(profileId):
         }, 401
     form = TourForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    print(form.validate_on_submit())
+    print(form.data)
     if form.validate_on_submit():
         data = form.data
         tour = Tour(
@@ -277,7 +280,6 @@ def create_tour(profileId):
             location=data["location"],
             tourDate=data["tourDate"],
             ticketsLink=data["ticketsLink"],
-            soldOut=data["soldOut"],
         )
 
         db.session.add(tour)

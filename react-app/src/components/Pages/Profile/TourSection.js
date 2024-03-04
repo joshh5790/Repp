@@ -17,7 +17,7 @@ const TourSection = ({ profileId, tourName, previewStyle }) => {
     <div className="profile-page-tours">
       <h2>{tourName}</h2>
       {tours.map((tour) => (
-        <div className="tour-details">
+        <div key={tour?.id} className="tour-details">
           <div>
             <div>
               <b>{tour?.tourDate}</b>
