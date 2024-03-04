@@ -269,7 +269,6 @@ def create_tour(profileId):
         }, 401
     form = TourForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     print(form.validate_on_submit())
     print(form.data)
     if form.validate_on_submit():
