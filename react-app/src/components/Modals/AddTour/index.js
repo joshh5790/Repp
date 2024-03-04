@@ -2,27 +2,28 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { createTourThunk } from "../../../store/tours";
-import './AddTour.css'
+import "./AddTour.css";
 
 const AddTour = ({ profileId }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [tourDate, setTourDate] = useState("");
   const [venue, setVenue] = useState("");
   const [location, setLocation] = useState("");
   const [ticketsLink, setTicketsLink] = useState("");
   const { closeModal } = useModal();
 
-
   const handleAddTour = (e) => {
-    e.preventDefault()
-    dispatch(createTourThunk({ profileId, tourDate, venue, location, ticketsLink }));
-    closeModal()
+    e.preventDefault();
+    dispatch(
+      createTourThunk({ profileId, tourDate, venue, location, ticketsLink })
+    );
+    closeModal();
   };
 
   return (
     <>
       <form className="flex-col">
-        <label>
+        <label className="product-input-label">
           Tour Date
           <input
             className="product-input"
@@ -30,7 +31,7 @@ const AddTour = ({ profileId }) => {
             onChange={(e) => setTourDate(e.target.value)}
           />
         </label>
-        <label>
+        <label className="product-input-label">
           Venue
           <input
             className="product-input"
@@ -38,7 +39,7 @@ const AddTour = ({ profileId }) => {
             onChange={(e) => setVenue(e.target.value)}
           />
         </label>
-        <label>
+        <label className="product-input-label">
           Location
           <input
             className="product-input"
@@ -46,7 +47,7 @@ const AddTour = ({ profileId }) => {
             onChange={(e) => setLocation(e.target.value)}
           />
         </label>
-        <label>
+        <label className="product-input-label">
           Tickets Link
           <input
             className="product-input"
@@ -54,7 +55,9 @@ const AddTour = ({ profileId }) => {
             onChange={(e) => setTicketsLink(e.target.value)}
           />
         </label>
-        <button onClick={e => handleAddTour(e)}>Add Tour</button>
+        <button className="add-tour-button button-hover" onClick={(e) => handleAddTour(e)}>
+          Add Tour
+        </button>
       </form>
     </>
   );
