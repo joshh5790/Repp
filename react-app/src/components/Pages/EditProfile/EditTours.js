@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  createTourThunk,
   deleteTourThunk,
   getToursThunk,
   updateTourThunk,
@@ -13,7 +12,7 @@ import "./EditTours.css";
 
 const EditTours = ({ profile }) => {
   const dispatch = useDispatch();
-  const tours = useSelector((state) => Object.values(state.tours));
+  const tours = useSelector((state) => Object.values(state.tours)); // .sort((a, b) => a.date - b.date), tour dates are not date variables
   const [tourName, setTourName] = useState(profile.tourName);
   const [tourDate, setTourDate] = useState("");
   const [venue, setVenue] = useState("");

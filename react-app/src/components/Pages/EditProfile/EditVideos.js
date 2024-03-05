@@ -70,7 +70,6 @@ const EditVideos = ({ profile }) => {
 
   return (
     <>
-    {/* instead of addmode, just use a modal instead */}
       {!addMode ? (
         <div
           onClick={() => setAddMode(true)}
