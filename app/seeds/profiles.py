@@ -21,7 +21,7 @@ def seed_profiles():
         businessInquiries="info@enmgmt.com",
         videoSection=True,
         shopSection=True,
-        tourName="HOUSE ON A HILL"
+        tourName="HOUSE ON A HILL",
     )
     tiff = Profile(
         userId=2,
@@ -114,7 +114,9 @@ def seed_profiles():
 # it will reset the primary keys for you as well.
 def undo_profiles():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.profiles RESTART IDENTITY CASCADE;")
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.profiles RESTART IDENTITY CASCADE;"
+        )
     else:
         db.session.execute(text("DELETE FROM profiles"))
 
