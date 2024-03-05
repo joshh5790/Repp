@@ -27,12 +27,12 @@
   min-width: 3rem;
 }
 
-.search-input::placeholder {
-  color: #EEEEEE;
+#search-input::placeholder {
+  color: #FEFEFE;
   font-size: 0.8rem;
 }
 
-.search-input:focus {
+#search-input:focus {
   box-shadow: none;
 }
 
