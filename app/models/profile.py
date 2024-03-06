@@ -44,6 +44,7 @@ class Profile(db.Model):
 
     user = db.relationship("User", back_populates="profile")
     genre = db.relationship("Genre", back_populates="profiles")
+    profileLinks = db.relationship("ProfileLink", back_populates="profile")
     products = db.relationship(
         "Product", back_populates="profile", cascade="all, delete-orphan"
     )
