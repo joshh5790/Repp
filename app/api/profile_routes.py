@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
-from app.models import Profile, Product, Video, Cart, User, Follow, Tour, db
-from app.forms import ProfileForm, ProductForm, VideoForm, TourForm
+from app.models import Profile, ProfileLink, Product, Video, Cart, User, Follow, Tour, db
+from app.forms import ProfileForm, ProfileLinkForm, ProductForm, VideoForm, TourForm
 from flask import request
 from app.utils import embed_video, ensure_https
 
@@ -158,6 +158,15 @@ def delete_profile(profileId):
     return {"message": "Profile deleted successfully"}
 
 
+# GET /profiles/:profileId/profileLinks
+@profile_routes.route("/<int:profileId>/profileLinks", methods=["GET"])
+def get_profileLinks(profileId):
+    profile = Profile.query.get(profileId)
+    if not profile:
+        return {"error": "Profile not found"}, 404
+    return profile.get_profileLinks()
+
+
 # GET /profiles/:profileId/products
 @profile_routes.route("/<int:profileId>/products", methods=["GET"])
 def get_products(profileId):
@@ -193,6 +202,35 @@ def get_follows(profileId):
         return {"error": "Profile not found"}, 404
     return profile.get_follows()
 
+
+# POST /profiles/:profileId/profileLinks
+@profile_routes.route("/<int:profileId>/profileLinks", methods=["POST"])
+@login_required
+def create_profileLink(profileId):
+    if not current_user:
+        return {"error": "Unauthorized"}, 401
+    profile = Profile.query.get(profileId)
+    if not profile:
+        return {"error": "Profile not found"}, 404
+    if profile.userId != current_user.id:
+        return {
+            "Unauthorized": "User does not have permission to add a profileLink to this profile"
+        }, 401
+    form = ProfileLinkForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        data = form.data
+        profileLink = ProfileLink(
+            profileId=profileId,
+            text=data["text"],
+            link=ensure_https(data["link"]),
+        )
+
+        db.session.add(profileLink)
+        db.session.commit()
+        return profileLink.to_dict()
+    else:
+        return {"errors": form.errors}, 401
 
 # POST /profiles/:profileId/products
 @profile_routes.route("/<int:profileId>/products", methods=["POST"])

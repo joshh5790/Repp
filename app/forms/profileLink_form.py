@@ -4,17 +4,17 @@ from wtforms.validators import DataRequired, ValidationError
 
 
 def text_data(form, field):
-    name = field.data
-    if not name:
-        raise ValidationError("Please enter a video name.")
+    text = field.data
+    if not text:
+        raise ValidationError("Please enter text for your link.")
 
 
 def link_data(form, field):
-    video = field.data
-    if not video:
-        raise ValidationError("Please enter a video url.")
+    link = field.data
+    if not link:
+        raise ValidationError("Please enter a valid link.")
 
 
 class ProfileLinkForm(FlaskForm):
     text = StringField("Link Text", [DataRequired()])
-    Link = URLField("Link", [DataRequired(), link_data])
+    Link = URLField("Link URL", [DataRequired(), link_data])

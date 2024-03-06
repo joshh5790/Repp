@@ -1,6 +1,7 @@
 from .login_form import LoginForm
 from .signup_form import SignUpForm
 from .profile_form import ProfileForm
+from .profileLink_form import ProfileLinkForm
 from .product_form import ProductForm
 from .productImage_form import ProductImageForm
 from .cartItem_form import CartItemForm

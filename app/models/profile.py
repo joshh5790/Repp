@@ -119,6 +119,9 @@ class Profile(db.Model):
             "profileImage": self.user.profileImage,
         }
 
+    def get_profileLinks(self):
+        return [profileLink.to_dict() for profileLink in self.profileLinks]
+
     def get_products(self):
         return [product.to_dict() for product in self.products]
 

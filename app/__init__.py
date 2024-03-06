@@ -8,6 +8,7 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.profile_routes import profile_routes
+from .api.profileLink_routes import profileLink_routes
 from .api.product_routes import product_routes
 from .api.productImage_routes import productImage_routes
 from .api.productStock_routes import productStock_routes
@@ -43,6 +44,7 @@ stripe.api_key=app.config['STRIPE_SECRET_KEY']
 app.register_blueprint(user_routes, url_prefix="/api/users")
 app.register_blueprint(auth_routes, url_prefix="/api/auth")
 app.register_blueprint(profile_routes, url_prefix="/api/profiles")
+app.register_blueprint(profileLink_routes, url_prefix="/api/profileLinks")
 app.register_blueprint(product_routes, url_prefix="/api/products")
 app.register_blueprint(productImage_routes, url_prefix="/api/productImages")
 app.register_blueprint(productStock_routes, url_prefix="/api/productStock")

@@ -2,6 +2,7 @@ from .db import db
 from .user import User
 from .genre import Genre
 from .profile import Profile
+from .profileLink import ProfileLink
 from .product import Product
 from .productImage import ProductImage
 from .productStock import ProductStock
