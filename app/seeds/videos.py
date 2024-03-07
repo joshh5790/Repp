@@ -58,18 +58,18 @@ def seed_videos():
         name="Cocopops (Official Music Video) - Ivoris",
         video="https://www.youtube.com/embed/vZM8P0EJCIc",
     )
-    video17 = Video(
-        profileId=5,
+    video12 = Video(
+        profileId=4,
         name="need u the most",
         video="https://www.youtube.com/embed/yElzEgf6lAg",
     )
-    video18 = Video(
-        profileId=5,
+    video13 = Video(
+        profileId=4,
         name="Pretty Girl",
         video="https://www.youtube.com/embed/wyOIYOXswcI",
     )
-    video19 = Video(
-        profileId=5,
+    video14 = Video(
+        profileId=4,
         name="Ghosts",
         video="https://www.youtube.com/embed/bUsw-Tk8edc",
     )
@@ -87,9 +87,9 @@ def seed_videos():
             video9,
             video10,
             video11,
-            video17,
-            video18,
-            video19
+            video12,
+            video13,
+            video14
         ]
     )
 
