@@ -58,31 +58,6 @@ def seed_videos():
         name="Cocopops (Official Music Video) - Ivoris",
         video="https://www.youtube.com/embed/vZM8P0EJCIc",
     )
-    video12 = Video(
-        profileId=4,
-        name="Chris James - I'm A Mess (Official Music Video)",
-        video="https://www.youtube.com/embed/r4PaD68aamU",
-    )
-    video13 = Video(
-        profileId=4,
-        name="Chris James - Oh My God (Official Music Video)",
-        video="https://www.youtube.com/embed/mJadT6a3dV8",
-    )
-    video14 = Video(
-        profileId=4,
-        name="Chris James - Is It Too Soon (Official Lyric Video)",
-        video="https://www.youtube.com/embed/kG1u-8LgwQ4",
-    )
-    video15 = Video(
-        profileId=4,
-        name="Chris James - The Race (Official Video)",
-        video="https://www.youtube.com/embed/NkhR8QGZpYE",
-    )
-    video16 = Video(
-        profileId=4,
-        name="Chris James - I Wanna Be With You (Official Lyric Video)",
-        video="https://www.youtube.com/embed/tkS1ansCoNo",
-    )
     video17 = Video(
         profileId=5,
         name="need u the most",
@@ -112,11 +87,6 @@ def seed_videos():
             video9,
             video10,
             video11,
-            video12,
-            video13,
-            video14,
-            video15,
-            video16,
             video17,
             video18,
             video19
