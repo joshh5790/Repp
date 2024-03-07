@@ -62,7 +62,7 @@ def seed_profiles():
         shopSection=False,
     )
     josiah = Profile(
-        userId=4,
+        userId=5,
         genreId=1,
         displayName="Highvyn",
         linkName="highvyn",
