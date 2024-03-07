@@ -11,7 +11,7 @@ class ProfileLink(db.Model):
   text = db.Column(db.String(50), nullable=False)
   link = db.Column(db.String(50), nullable=False)
 
-  profile = db.relationship("Profile", back_populates="profileLink")
+  profile = db.relationship("Profile", back_populates="profileLinks")
 
   def to_dict(self):
     return {
