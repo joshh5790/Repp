@@ -19,20 +19,6 @@ def seed_productStocks():
             ProductStock(productId=4, size="XL", stock=10),
             ProductStock(productId=5, stock=10),
             ProductStock(productId=6, stock=10),
-            ProductStock(productId=7, size="S", stock=10),
-            ProductStock(productId=7, size="M", stock=10),
-            ProductStock(productId=7, size="L", stock=10),
-            ProductStock(productId=7, size="XL", stock=10),
-            ProductStock(productId=8, size="S", stock=10),
-            ProductStock(productId=8, size="M", stock=10),
-            ProductStock(productId=8, size="L", stock=10),
-            ProductStock(productId=8, size="XL", stock=10),
-            ProductStock(productId=9, size="S", stock=10),
-            ProductStock(productId=9, size="M", stock=10),
-            ProductStock(productId=9, size="L", stock=10),
-            ProductStock(productId=9, size="XL", stock=10),
-            ProductStock(productId=10, stock=1000),
-            ProductStock(productId=11, stock=1000),
         ]
     )
     db.session.commit()
