@@ -19,10 +19,9 @@ function DeleteAccount({ user }) {
   }, [confirmation, user.email]);
 
   const handleDelete = () => {
-    dispatch(deleteUser(user.id)).then(() => {
-      closeModal();
-      history.push("/");
-    });
+    dispatch(deleteUser(user.id))
+    closeModal();
+    history.push("/");
   };
 
   return (
