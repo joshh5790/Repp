@@ -116,9 +116,17 @@ const Home = () => {
             modalComponent={<SignupForm />}
           />
         </div>
-        <div>
-          <h2>About</h2>
-          <div>This website is a platform for music artists to create profiles that are functionally and visually identical to their own personal websites, but without the fees that come with maintaining a website and without the stress of having to pick out a good design. With REPP, creating a personal website for fans to access is as simple as setting up a dating profile, providing music artists with direct control over every aspect of their site.</div>
+        <div className="flex-col-center" style={{ margin: "1rem 0 1rem 1rem" }}>
+          <h3 style={{ marginTop: "0" }}>About</h3>
+          <div style={{ textAlign: "center", maxWidth: "50rem" }}>
+            This website is a platform for music artists to create profiles that
+            are functionally and visually identical to their own personal
+            websites, but without the fees that come with maintaining a website
+            and without the stress of having to pick out a good design. With
+            REPP, creating a personal website for fans to access is as simple as
+            setting up a dating profile, providing music artists with direct
+            control over every aspect of their site.
+          </div>
         </div>
       </>
     );

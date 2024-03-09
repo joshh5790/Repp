@@ -225,4 +225,7 @@
   .nav-right {
     margin-right: 2rem;
   }
+  .home-nav {
+    background-color: black;
+  }
 }
