@@ -6,6 +6,16 @@ def seed_profileLinks():
     db.session.add_all(
         [
             ProfileLink(
+                profileId=1,
+                text="PARTYING IN MUMBAI",
+                link="https://www.youtube.com/watch?v=aHmt9GE3kkE",
+            ),
+            ProfileLink(
+                profileId=1,
+                text="Latest Happy Hour!",
+                link="https://www.youtube.com/watch?v=nGtEIykygyE",
+            ),
+            ProfileLink(
                 profileId=2,
                 text="APESHIT OUT NOW",
                 link="https://lnk.dmsmusic.co/tiffanyday_apeshit",
