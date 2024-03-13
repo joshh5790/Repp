@@ -1,7 +1,8 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { invalidImage } from "../../../utilities";
 import "./LinkSection.css";
 import { useState, useEffect } from "react";
+import { getProfileLinksThunk } from "../../../store/profileLinks";
 import { createFollowThunk, getFollowsThunk } from "../../../store/follows";
 
 const LinkSection = ({
@@ -15,8 +16,12 @@ const LinkSection = ({
 }) => {
   const dispatch = useDispatch();
   const [following, setFollowing] = useState(0);
+  const profileLinks = useSelector((state) =>
+    Object.values(state.profileLinks)
+  );
 
   useEffect(() => {
+    dispatch(getProfileLinksThunk());
     dispatch(getFollowsThunk(profile.id)).then((data) => {
       if (user && user.id === profile.userId) return setFollowing("owner");
       for (const follow of data) {
@@ -26,7 +31,7 @@ const LinkSection = ({
       }
       setFollowing("notFollowing");
     });
-  }, []);
+  }, [dispatch, profile.id, profile.userId]);
 
   const addFollow = () => {
     dispatch(createFollowThunk({ profileId: profile.id }));
@@ -39,9 +44,18 @@ const LinkSection = ({
         <>
           <div className="mobile-page-links flex-col-center">
             <div className="mobile-headers-div flex-col-center">
+              {profileLinks.map((link) => (
+                <a
+                  href={link?.link}
+                  className="profile-section-link"
+                  key={link?.id}
+                >
+                  {link?.text}
+                </a>
+              ))}
               {sectionHeaders.map((header) => (
                 <div
-                  className="mobile-header"
+                  className="profile-section-link"
                   onClick={() => scrollToId(header)}
                   key={header}
                 >

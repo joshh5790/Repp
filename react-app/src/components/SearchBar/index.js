@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import DebounceInput from "react-debounce-input";
 import { useHistory } from "react-router-dom";
 import SearchResults from "./SearchResults";

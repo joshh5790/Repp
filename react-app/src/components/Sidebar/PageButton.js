@@ -14,7 +14,7 @@ const PageButton = ({ followId, profileId, remove }) => {
   const [removeHover, setRemoveHover] = useState(false);
   useEffect(() => {
     dispatch(addProfileThunk(profileId));
-  }, []);
+  }, [dispatch, profileId]);
 
   const handleSidebarLink = () => {
     if (remove) dispatch(deleteFollowThunk(followId));
@@ -43,7 +43,7 @@ const PageButton = ({ followId, profileId, remove }) => {
           width: "100%",
         }}
       >
-        <img className="sidebar-button-img" src={profile?.profileImage} />
+        <img className="sidebar-button-img" alt="" src={profile?.profileImage} />
         {remove && removeHover ? (
           <div style={{ color: "red", fontWeight: "bold" }}>Unfollow</div>
         ) : (

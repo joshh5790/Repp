@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProfilesSearchThunk } from "../../store/profiles";
