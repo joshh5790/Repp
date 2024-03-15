@@ -50,6 +50,7 @@ const LinkSection = ({
                   className="profile-section-link"
                   key={link?.id}
                   target="_blank"
+                  style={{textDecoration: "none"}}
                 >
                   {link?.text}
                 </a>
