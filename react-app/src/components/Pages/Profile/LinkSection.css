@@ -82,3 +82,16 @@
   background-color: black;
   color: rgb(242,242,242, 0.8);
 }
+
+.profile-links-div {
+  position: absolute;
+  right: 8rem;
+  bottom: 8rem;
+  width: 20rem;
+}
+
+.profile-links-div > .profile-section-link {
+  width: 100%;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}

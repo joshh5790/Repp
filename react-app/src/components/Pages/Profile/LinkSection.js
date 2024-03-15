@@ -21,7 +21,7 @@ const LinkSection = ({
   );
 
   useEffect(() => {
-    dispatch(getProfileLinksThunk());
+    dispatch(getProfileLinksThunk(profile.id));
     dispatch(getFollowsThunk(profile.id)).then((data) => {
       if (user && user.id === profile.userId) return setFollowing("owner");
       for (const follow of data) {
@@ -49,6 +49,7 @@ const LinkSection = ({
                   href={link?.link}
                   className="profile-section-link"
                   key={link?.id}
+                  target="_blank"
                 >
                   {link?.text}
                 </a>
@@ -152,6 +153,21 @@ const LinkSection = ({
           </>
         )}
       </div>
+      {!isMobile && (
+        <div className="profile-links-div">
+          {profileLinks.map((link) => (
+            <a
+              href={link?.link}
+              target="_blank"
+              className="profile-section-link"
+              key={link?.id}
+              style={{ textDecoration: "none" }}
+            >
+              {link?.text}
+            </a>
+          ))}
+        </div>
+      )}
     </>
   );
 };
