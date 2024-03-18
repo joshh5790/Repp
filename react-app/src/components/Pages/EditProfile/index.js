@@ -107,7 +107,7 @@ const EditProfile = () => {
               >
                 Products
               </span>
-              <span
+              {/*<span
                 className={currentTab === "Tours" ? "focus-tab" : ""}
                 onClick={async () => {
                   await setCurrentTab("Tours");
@@ -116,7 +116,7 @@ const EditProfile = () => {
                 }}
               >
                 Tours
-              </span>
+              </span>*/}
               <span
                 className={currentTab === "Videos" ? "focus-tab" : " "}
                 onClick={async () => {
