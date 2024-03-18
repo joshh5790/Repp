@@ -1,16 +1,22 @@
 .edit-tour-name-div {
-  display: flex;
+  display: grid;
   align-items: center;
-  gap: 1rem;
+  grid-template-areas:
+    "label input button";
+  gap: 0.5rem;
 }
 
 .edit-tour-name-input {
-  flex-grow: 1;
+  justify-self: start;
+  grid-area: input;
+  width: 80%;
 }
 
 .confirm-tour-name-change.button-hover {
+  align-self: start;
+  grid-area: button;
   height: 2rem;
-  padding-top: 0.4rem;
+  padding: 0.4rem 0.5rem;
   background-color: black;
   color: #F1F1F1;
   border: 1px solid black;
@@ -37,20 +43,18 @@
 }
 
 .tour-card {
-  position: relative;
   display: grid;
+  grid-template-areas:
+    "details soldout"
+    "details link";
+  position: relative;
   background-color: #DDDDDD;
   padding: 1rem;
   border-radius: 10px;
-  grid-template-areas:
-    "soldout soldout"
-    "inputs inputs"
-    "inputs inputs"
-    "buttons buttons";
-  justify-items: center;
 }
 
 .soldout-button.button-hover {
+  left: 50%;
   grid-area: soldout;
   background-color: black;
   color: white;
@@ -113,4 +117,12 @@
 .clear-all-tours-button:hover {
   color: red;
   background-color: white;
+}
+
+@media (max-width: 700px) {
+  .edit-tour-name-div {
+    grid-template-areas:
+      "label button"
+      "input button";
+  }
 }

@@ -6,7 +6,7 @@ import {
   updateTourThunk,
 } from "../../../store/tours";
 import { updateProfileThunk } from "../../../store/profiles";
-import AddTour from "../../Modals/AddTour";
+import ManageTour from "../../Modals/ManageTour";
 import OpenModalButton from "../../OpenModalButton";
 import "./EditTours.css";
 
@@ -49,15 +49,8 @@ const EditTours = ({ profile }) => {
   };
 
   const handleDeleteTour = (tourId, e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(deleteTourThunk(tourId));
-    resetState();
-  };
-
-  const handleUpdateTour = (tourId) => {
-    dispatch(
-      updateTourThunk({ tourId, tourDate, venue, location, ticketsLink })
-    );
     resetState();
   };
 
@@ -76,7 +69,7 @@ const EditTours = ({ profile }) => {
   return (
     <>
       <div className="edit-tour-name-div">
-        <b>Tour Name:</b>
+        <b style={{ gridArea: "label" }}>Tour Name</b>
         <input
           className="edit-tour-name-input"
           value={tourName}
@@ -90,14 +83,14 @@ const EditTours = ({ profile }) => {
         </button>
       </div>
       <OpenModalButton
-        modalComponent={<AddTour profileId={profile?.id}/>}
+        modalComponent={<ManageTour profileId={profile?.id} />}
         buttonText={<b>+ New Tour Location</b>}
         className={"new-card-button"}
       />
       <div className="edit-tours-list">
         {tours &&
           tours.map((tour) => (
-            <form
+            <div
               key={tour?.id}
               className={`tour-card ease-bg ${
                 editInput === tour?.id ? "focus-tour" : ""
@@ -129,58 +122,15 @@ const EditTours = ({ profile }) => {
               >
                 <i className="fa-solid fa-x" />
               </button>
-              <input
-                className="tour-input"
-                placeholder="Date"
-                value={editInput !== tour.id ? tour.tourDate : tourDate}
-                onChange={(e) => setTourDate(e.target.value)}
-                disabled={editInput !== tour.id}
-              />
-              <input
-                className="tour-input"
-                placeholder="Venue"
-                value={editInput !== tour.id ? tour.venue : venue}
-                onChange={(e) => setVenue(e.target.value)}
-                disabled={editInput !== tour.id}
-              />
-              <input
-                className="tour-input"
-                placeholder="Location"
-                value={editInput !== tour.id ? tour.location : location}
-                onChange={(e) => setLocation(e.target.value)}
-                disabled={editInput !== tour.id}
-              />
-              <input
-                className="tour-input"
-                placeholder="External Tickets Link"
-                value={editInput !== tour.id ? tour.ticketsLink : ticketsLink}
-                onChange={(e) => setTicketsLink(e.target.value)}
-                disabled={editInput !== tour.id}
-              />
-              {editInput === tour.id && (
-                <div
-                  style={{
-                    marginTop: "0.5rem",
-                    gridArea: "buttons",
-                    display: "flex",
-                    gap: "1rem",
-                  }}
-                >
-                  <button
-                    className="tour-button-cancel button-hover"
-                    onClick={resetState}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="tour-button-save button-hover"
-                    onClick={() => handleUpdateTour(tour.id)}
-                  >
-                    Save
-                  </button>
+              <div style={{gridArea: "details"}}>
+                <div>
+                  <b>{tour?.tourDate}</b>
                 </div>
-              )}
-            </form>
+                <div>{tour?.venue}</div>
+                <div>{tour?.location}</div>
+              </div>
+              <a href={tour?.ticketsLink}>Link</a>
+            </div>
           ))}
       </div>
       {/* <button

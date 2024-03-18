@@ -1,11 +1,20 @@
-.add-tour-button.button-hover {
+/* #tour-modal {
+
+} */
+
+.tour-button.button-hover {
   margin-top: 1rem;
   background-color: #4444FF;
   border: 1px solid #4444FF;
   color: #F1F1F1;
 }
 
-.add-tour-button:hover {
+.tour-button:hover {
   background-color: white;
   color: #4444FF;
+}
+@media (max-width: 700px) {
+  .tour-modal {
+    width: 70vw;
+  }
 }

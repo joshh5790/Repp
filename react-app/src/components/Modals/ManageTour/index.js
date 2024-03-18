@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { createTourThunk } from "../../../store/tours";
-import "./AddTour.css";
+import "./ManageTour.css";
 
-const AddTour = ({ profileId }) => {
+const ManageTour = ({ profileId }) => {
   const dispatch = useDispatch();
   const [tourDate, setTourDate] = useState("");
   const [venue, setVenue] = useState("");
@@ -21,7 +21,7 @@ const AddTour = ({ profileId }) => {
   };
 
   return (
-    <>
+    <div id="tour-modal">
       <form className="flex-col">
         <label className="product-input-label">
           Tour Date
@@ -55,12 +55,15 @@ const AddTour = ({ profileId }) => {
             onChange={(e) => setTicketsLink(e.target.value)}
           />
         </label>
-        <button className="add-tour-button button-hover" onClick={(e) => handleAddTour(e)}>
+        <button
+          className="tour-button button-hover"
+          onClick={(e) => handleAddTour(e)}
+        >
           Add Tour
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
-export default AddTour;
+export default ManageTour;
