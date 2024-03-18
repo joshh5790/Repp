@@ -130,7 +130,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
               />
             </div>
           )}
-          {/* {profile?.tourName && (
+          {profile?.tourName && (
             <div id="tours" className="profile-page-section">
               <TourSection
                 profileId={profile?.id}
@@ -138,7 +138,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
                 previewStyle={previewStyle}
               />
             </div>
-          )} */}
+          )}
           {profile?.videoSection && (
             <div id="videos" className="profile-page-section">
               <VideoSection

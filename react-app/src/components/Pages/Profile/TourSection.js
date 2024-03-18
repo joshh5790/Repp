@@ -18,20 +18,22 @@ const TourSection = ({ profileId, tourName, previewStyle }) => {
       <h2>{tourName}</h2>
       {tours.map((tour) => (
         <div key={tour?.id} className="tour-details">
-          <div>
-            <div>
-              <b>{tour?.tourDate}</b>
-            </div>
-            <div>{tour?.venue}</div>
+          <div style={{ gridArea: "date", fontWeight: "bold" }}>
+            {tour?.tourDate}
           </div>
+          <div style={{ gridArea: "venue" }}>{tour?.venue}</div>
           <div className="tour-location-div">{tour?.location}</div>
           <a
             target="_blank"
             rel="noreferrer"
             href={tour?.ticketsLink}
-            className={tour?.soldOut ? "sold-out button-hover" : "tour-tickets-button button-hover"}
-            onClick={e => {
-              if (tour?.soldOut) e.preventDefault()
+            className={
+              tour?.soldOut
+                ? "sold-out button-hover"
+                : "tour-tickets-button button-hover"
+            }
+            onClick={(e) => {
+              if (tour?.soldOut) e.preventDefault();
             }}
           >
             {tour?.soldOut ? "SOLD OUT" : "BUY TICKETS"}
