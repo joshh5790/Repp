@@ -14,11 +14,6 @@ const EditTours = ({ profile }) => {
   const dispatch = useDispatch();
   const tours = useSelector((state) => Object.values(state.tours)); // .sort((a, b) => a.date - b.date), tour dates are not date variables
   const [tourName, setTourName] = useState(profile.tourName);
-  const [tourDate, setTourDate] = useState("");
-  const [venue, setVenue] = useState("");
-  const [location, setLocation] = useState("");
-  const [ticketsLink, setTicketsLink] = useState("");
-  const [editInput, setEditInput] = useState(0);
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
@@ -27,17 +22,6 @@ const EditTours = ({ profile }) => {
     }
   }, [dispatch, profile]);
 
-  const focusTour = (e, tour) => {
-    e.preventDefault();
-    if (!editInput) {
-      setEditInput(tour.id);
-      setTourDate(tour.tourDate);
-      setVenue(tour.venue);
-      setLocation(tour.location);
-      setTicketsLink(tour.ticketsLink);
-    }
-  };
-
   const handleTourNameChange = () => {
     dispatch(updateProfileThunk({ profileId: profile.id, tourName }));
     setReload((prev) => !prev);
@@ -45,21 +29,11 @@ const EditTours = ({ profile }) => {
 
   const handleSoldOut = (tourId, soldOut) => {
     dispatch(updateTourThunk({ tourId, soldOut: !soldOut }));
-    setEditInput(0);
   };
 
   const handleDeleteTour = (tourId, e) => {
     e.preventDefault();
     dispatch(deleteTourThunk(tourId));
-    resetState();
-  };
-
-  const resetState = () => {
-    setEditInput(0);
-    setTourDate("");
-    setVenue("");
-    setLocation("");
-    setTicketsLink("");
   };
 
   // tours need to be sorted by date, can have a button to sort by earliest and latest
@@ -90,12 +64,7 @@ const EditTours = ({ profile }) => {
       <div className="edit-tours-list">
         {tours &&
           tours.map((tour) => (
-            <div
-              key={tour?.id}
-              className={`tour-card ease-bg ${
-                editInput === tour?.id ? "focus-tour" : ""
-              }`}
-            >
+            <div key={tour?.id} className={"tour-card ease-bg"}>
               <div
                 className="tour-card-button button-hover"
                 style={{ gridArea: "soldout" }}
@@ -117,7 +86,10 @@ const EditTours = ({ profile }) => {
               >
                 <i className="fa-solid fa-x" />
               </button>
-              <div style={{ gridArea: "details" }}>
+              <div
+                className="edit-tour-details"
+                style={{ gridArea: "details" }}
+              >
                 <div>
                   <b>{tour?.tourDate}</b>
                 </div>
@@ -135,12 +107,6 @@ const EditTours = ({ profile }) => {
             </div>
           ))}
       </div>
-      {/* <button
-        className="clear-all-tours-button button-hover"
-        onClick={handleDeleteAllTours}
-      >
-        Delete All Tours
-      </button> */}
     </>
   );
 };

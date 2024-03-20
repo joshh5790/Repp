@@ -133,4 +133,15 @@
       "label button"
       "input button";
   }
+  .tour-card-button.button-hover {
+    width: 5rem;
+    margin: 0 0 0.5rem 0;
+    height: 2rem;
+  }
+  .edit-tour-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 0.5rem;
+  }
 }
