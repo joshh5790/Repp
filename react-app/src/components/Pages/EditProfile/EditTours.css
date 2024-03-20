@@ -49,24 +49,24 @@
     "details link";
   position: relative;
   background-color: #DDDDDD;
-  padding: 1rem;
+  padding: 3rem 1rem 1rem 1rem;
   border-radius: 10px;
 }
 
-.soldout-button.button-hover {
+.tour-card-button.button-hover {
+  justify-self: end;
   left: 50%;
-  grid-area: soldout;
   background-color: black;
   color: white;
   width: 10rem;
-  margin-bottom: 0.5rem;
-  border-radius: 1px solid black;
+  margin: 0 1rem 0.5rem 0;
+  border: 1px solid black;
   padding: 0.5rem;
   font-size: 12px;
   border-radius: 10px;
 }
 
-.soldout-button:hover {
+.tour-card-button:hover {
   color: black;
   background-color: white;
 }
@@ -117,6 +117,14 @@
 .clear-all-tours-button:hover {
   color: red;
   background-color: white;
+}
+
+.edit-tour-button.edit-card {
+  position: absolute;
+  top: 5px;
+  right: 40px;
+  align-self: start;
+  justify-self: end;
 }
 
 @media (max-width: 700px) {

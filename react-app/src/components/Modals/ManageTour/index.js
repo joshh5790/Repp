@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
-import { createTourThunk } from "../../../store/tours";
+import { createTourThunk, updateTourThunk } from "../../../store/tours";
 import "./ManageTour.css";
 
-const ManageTour = ({ profileId }) => {
+const ManageTour = ({ profileId, tour }) => {
   const dispatch = useDispatch();
   const [tourDate, setTourDate] = useState("");
   const [venue, setVenue] = useState("");
@@ -12,11 +12,25 @@ const ManageTour = ({ profileId }) => {
   const [ticketsLink, setTicketsLink] = useState("");
   const { closeModal } = useModal();
 
-  const handleAddTour = (e) => {
+  useEffect(() => {
+    if (tour) {
+      setTourDate(tour.tourDate)
+      setVenue(tour.venue)
+      setLocation(tour.location)
+      setTicketsLink(tour.ticketsLink)
+    }
+  }, [tour])
+
+  const manageTour = (e) => {
     e.preventDefault();
-    dispatch(
-      createTourThunk({ profileId, tourDate, venue, location, ticketsLink })
-    );
+    if (profileId) {
+      dispatch(
+        createTourThunk({ profileId, tourDate, venue, location, ticketsLink })
+      );
+    }
+    else {
+      dispatch(updateTourThunk({ tourId: tour.id, tourDate, venue, location, ticketsLink }))
+    }
     closeModal();
   };
 
@@ -57,9 +71,9 @@ const ManageTour = ({ profileId }) => {
         </label>
         <button
           className="tour-button button-hover"
-          onClick={(e) => handleAddTour(e)}
+          onClick={(e) => manageTour(e)}
         >
-          Add Tour
+          {profileId ? "Add Tour" : "Update Tour"}
         </button>
       </form>
     </div>

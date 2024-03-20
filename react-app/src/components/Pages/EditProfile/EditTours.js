@@ -97,39 +97,41 @@ const EditTours = ({ profile }) => {
               }`}
             >
               <div
-                className="soldout-button button-hover"
+                className="tour-card-button button-hover"
+                style={{ gridArea: "soldout" }}
                 onClick={() => handleSoldOut(tour?.id, tour?.soldOut)}
               >
                 {tour.soldOut ? "🎉 SOLD OUT! 🎉" : "Sold out?"}
               </div>
-              <button
-                className={"edit-card" + (tour?.soldOut ? " disabled" : "")}
-                style={{
-                  position: "absolute",
-                  top: "5px",
-                  right: "40px",
-                  alignSelf: "start",
-                  justifySelf: "end",
-                }}
-                onClick={(e) => focusTour(e, tour)}
-                disabled={tour?.soldOut}
-              >
-                <i className="fa-regular fa-pen-to-square" />
-              </button>
+              <OpenModalButton
+                className={
+                  "edit-card edit-tour-button ease-bg" +
+                  (tour?.soldOut ? " disabled" : "")
+                }
+                buttonText={<i className="fa-regular fa-pen-to-square" />}
+                modalComponent={<ManageTour tour={tour} />}
+              />
               <button
                 className="delete-card delete-tour"
                 onClick={(e) => handleDeleteTour(tour.id, e)}
               >
                 <i className="fa-solid fa-x" />
               </button>
-              <div style={{gridArea: "details"}}>
+              <div style={{ gridArea: "details" }}>
                 <div>
                   <b>{tour?.tourDate}</b>
                 </div>
                 <div>{tour?.venue}</div>
                 <div>{tour?.location}</div>
               </div>
-              <a href={tour?.ticketsLink}>Link</a>
+              <a
+                target="_blank"
+                className="tour-card-button button-hover"
+                style={{ textDecoration: "none", gridArea: "link" }}
+                href={tour?.ticketsLink}
+              >
+                Link
+              </a>
             </div>
           ))}
       </div>
