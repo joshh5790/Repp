@@ -44,7 +44,7 @@ const LinkSection = ({
         <>
           <div className="mobile-page-links flex-col-center">
             <div className="mobile-headers-div flex-col-center">
-              {profileLinks.map((link) => (
+              {/* {profileLinks.map((link) => (
                 <a
                   href={link?.link}
                   className="profile-section-link"
@@ -54,7 +54,7 @@ const LinkSection = ({
                 >
                   {link?.text}
                 </a>
-              ))}
+              ))} */}
               {sectionHeaders.map((header) => (
                 <div
                   className="profile-section-link"
@@ -156,7 +156,7 @@ const LinkSection = ({
       </div>
       {!isMobile && (
         <div className="profile-links-div">
-          {profileLinks.map((link) => (
+          {/* {profileLinks.map((link) => (
             <a
               href={link?.link}
               target="_blank"
@@ -166,7 +166,7 @@ const LinkSection = ({
             >
               {link?.text}
             </a>
-          ))}
+          ))} */}
         </div>
       )}
     </>

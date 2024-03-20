@@ -17,12 +17,15 @@ const TourSection = ({ profileId, tourName, previewStyle }) => {
     <div className="profile-page-tours">
       <h2>{tourName}</h2>
       {tours.map((tour) => (
-        <div key={tour?.id} className="tour-details">
+        <div
+          key={tour?.id}
+          className={"tour-details " + (previewStyle ? "mobile" : "desktop")}
+        >
           <div style={{ gridArea: "date", fontWeight: "bold" }}>
             {tour?.tourDate}
           </div>
           <div style={{ gridArea: "venue" }}>{tour?.venue}</div>
-          <div className="tour-location-div">{tour?.location}</div>
+          <div className={"tour-location-div " + (previewStyle ? "mobile" : "desktop")}>{tour?.location}</div>
           <a
             target="_blank"
             rel="noreferrer"

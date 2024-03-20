@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { getVideosThunk } from "../../../store/videos";
 import "./VideoSection.css";
 
-const VideoSection = ({ profileId }) => {
+const VideoSection = ({ profileId, previewStyle }) => {
   const dispatch = useDispatch();
   const videos = useSelector((state) => Object.values(state.videos));
 
@@ -13,7 +13,7 @@ const VideoSection = ({ profileId }) => {
   return (
     <>
       <h1>VIDEOS</h1>
-      <div className="videos-list">
+      <div className={"videos-list " + (previewStyle ? "mobile" : "desktop")}>
         {videos.map((video) => (
           <div key={video?.id} className="video-container flex-col-center">
             <iframe

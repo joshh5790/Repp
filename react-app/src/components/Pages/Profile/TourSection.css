@@ -9,11 +9,22 @@
   max-width: 60rem;
 }
 
+.mobile.tour-details {
+  grid-template-areas:
+      "date button"
+      "venue button"
+      "location button";
+}
+
 .tour-location-div {
   grid-area: location;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.mobile.tour-location-div {
+  position: relative;
 }
 
 .tour-tickets-button {
@@ -65,6 +76,5 @@
   }
   .tour-location-div {
     position: relative;
-    /* transform: none; */
   }
 }

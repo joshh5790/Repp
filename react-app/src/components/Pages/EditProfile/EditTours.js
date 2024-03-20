@@ -64,7 +64,7 @@ const EditTours = ({ profile }) => {
       <div className="edit-tours-list">
         {tours &&
           tours.map((tour) => (
-            <div key={tour?.id} className={"tour-card ease-bg"}>
+            <div key={tour?.id} className="tour-card ease-bg">
               <div
                 className="tour-card-button button-hover"
                 style={{ gridArea: "soldout" }}
