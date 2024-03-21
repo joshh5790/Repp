@@ -7,6 +7,11 @@
     align-items: center;
     justify-content: space-between;
     transition: top 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    z-index: 2;
+}
+
+.repp-nav.mobile {
+    max-width: 400px;
 }
 
 .black-nav {

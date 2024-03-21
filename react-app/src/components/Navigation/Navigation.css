@@ -17,6 +17,7 @@
   background-image: linear-gradient(rgb(23, 23, 28), black);
   /* background-image: linear-gradient(0.25turn, rgb(66, 66, 255) 5%, rgb(189, 232, 255) 40%, rgb(255, 255, 69) 70%); */
   transition: top 0.3s ease-in-out;
+  z-index: 2;
 }
 
 .home-nav {
