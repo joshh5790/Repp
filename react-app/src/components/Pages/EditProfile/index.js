@@ -37,7 +37,7 @@ const EditProfile = () => {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [isMobile]);
+  }, []);
 
   useEffect(async () => {
     document.title = "REPP";
