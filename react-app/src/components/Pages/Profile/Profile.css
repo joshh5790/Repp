@@ -1,6 +1,11 @@
 .profile-page {
     height: fit-content;
     width: 100%;
+    background-color: #F1F1F1;
+}
+
+.profile-page.mobile {
+    max-width: 400px;
 }
 
 .profile-page-section {
@@ -45,6 +50,13 @@
     max-width: 50rem;
     text-align: center;
     margin: 3rem auto;
+}
+
+#profile-page-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #F1F1F1;
 }
 
 @media (max-width: 700px) {

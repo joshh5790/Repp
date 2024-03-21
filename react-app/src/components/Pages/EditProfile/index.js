@@ -144,9 +144,15 @@ const EditProfile = () => {
                   className="manage-profile-section flex-col"
                   ref={heightRef}
                 >
-                  {currentTab === "General" && <EditGeneral profile={profile} />}
-                  {currentTab === "Socials" && <EditSocials profile={profile} />}
-                  {currentTab === "Products" && <EditProducts profile={profile} />}
+                  {currentTab === "General" && (
+                    <EditGeneral profile={profile} />
+                  )}
+                  {currentTab === "Socials" && (
+                    <EditSocials profile={profile} />
+                  )}
+                  {currentTab === "Products" && (
+                    <EditProducts profile={profile} />
+                  )}
                   {currentTab === "Tours" && <EditTours profile={profile} />}
                   {currentTab === "Videos" && <EditVideos profile={profile} />}
                   {currentTab === "+ More" && <More profile={profile} />}
@@ -157,9 +163,10 @@ const EditProfile = () => {
             {(!isMobile || (isMobile && mobileTab === "preview")) && (
               <>
                 <div
-                  className="preview-profile-section flex-col"
+                  className="preview-profile-section flex-col-center"
                   style={{ height }}
                 >
+                  <div className="darken-preview-background"/>
                   <Profile
                     previewPage={profile}
                     preview={true}

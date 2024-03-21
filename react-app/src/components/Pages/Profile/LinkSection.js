@@ -136,12 +136,6 @@ const LinkSection = ({
           </div>
         </>
       )}
-      <img
-        className="profile-page-home-img"
-        src={mainImage}
-        alt={profile?.displayName}
-        onError={invalidImage}
-      />
       <div className="repp-home-text">
         {!isMobile && (
           <>
@@ -169,6 +163,12 @@ const LinkSection = ({
           ))} */}
         </div>
       )}
+      <img
+        className="profile-page-home-img"
+        src={mainImage}
+        alt={profile?.displayName}
+        onError={invalidImage}
+      />
     </>
   );
 };

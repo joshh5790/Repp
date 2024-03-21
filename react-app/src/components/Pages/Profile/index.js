@@ -94,7 +94,9 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
   if (isLoaded) {
     if (!invalidPage)
       return (
-        <div className="profile-page">
+        <div
+          className={"profile-page " + (previewStyle ? "mobile" : "desktop")}
+        >
           <div id={linkName} style={{ height: "100vh", position: "relative" }}>
             <LinkSection
               user={user}
@@ -150,7 +152,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
           {profile?.bio && (
             <div id="about" className="flex-col-center">
               <h2>ABOUT</h2>
-              <div>{profile?.bio}</div>
+              <div style={{ width: "90%" }}>{profile?.bio}</div>
             </div>
           )}
           {profile?.newsletter && <Footer />}
@@ -161,6 +163,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
             navVisible={navVisible}
             isMobile={isMobile}
             preview={preview}
+            previewStyle={previewStyle}
           />
           {!preview && (
             <Cart
