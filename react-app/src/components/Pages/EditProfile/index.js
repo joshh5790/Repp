@@ -10,6 +10,7 @@ import EditVideos from "./EditVideos";
 import More from "./More";
 import Profile from "../Profile";
 import EditTours from "./EditTours";
+import Tabs from "./Tabs";
 
 const EditProfile = () => {
   const location = useLocation();
@@ -17,13 +18,11 @@ const EditProfile = () => {
   const user = useSelector((state) => state.session.user);
   const profile = useSelector((state) => Object.values(state.profiles)[0]);
   const [currentTab, setCurrentTab] = useState("General");
-  const [height, setHeight] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileTab, setMobileTab] = useState("manage");
   const [isLoaded, setIsLoaded] = useState(false);
   // previewStyle false is desktop, true is mobile
   const [previewStyle, setPreviewStyle] = useState(true);
-  const heightRef = useRef();
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,11 +40,8 @@ const EditProfile = () => {
 
   useEffect(async () => {
     document.title = "REPP";
-    await dispatch(getSessionProfileThunk()).then(async (data) => {
-      if (data && heightRef?.current) {
-        await setHeight(heightRef.current.clientHeight);
-      }
-      await setIsLoaded(true);
+    await dispatch(getSessionProfileThunk()).then((data) => {
+      setIsLoaded(true);
     });
     if (window.innerWidth <= 700) setIsMobile(true);
     else setIsMobile(false);
@@ -76,74 +72,11 @@ const EditProfile = () => {
             {/* add these two to the respective containers instead */}
           </div>
           <div className="manage-profile-content-container">
-            <div className="manage-profile-tabs">
-              <span
-                className={currentTab === "General" ? "focus-tab" : " "}
-                onClick={async () => {
-                  await setCurrentTab("General");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                General
-              </span>
-              <span
-                className={currentTab === "Socials" ? "focus-tab" : " "}
-                onClick={async () => {
-                  await setCurrentTab("Socials");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                Socials
-              </span>
-              <span
-                className={currentTab === "Products" ? "focus-tab" : " "}
-                onClick={async () => {
-                  await setCurrentTab("Products");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                Products
-              </span>
-              <span
-                className={currentTab === "Tours" ? "focus-tab" : ""}
-                onClick={async () => {
-                  await setCurrentTab("Tours");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                Tours
-              </span>
-              <span
-                className={currentTab === "Videos" ? "focus-tab" : " "}
-                onClick={async () => {
-                  await setCurrentTab("Videos");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                Videos
-              </span>
-              <span
-                className={currentTab === "+ More" ? "focus-tab" : " "}
-                onClick={async () => {
-                  await setCurrentTab("+ More");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                + More
-              </span>
-            </div>
+            <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
             {(!isMobile || (isMobile && mobileTab === "manage")) && (
               <>
-                <div
-                  className="manage-profile-section flex-col"
-                  ref={heightRef}
-                >
+                <h2 className="manage-header manage-nav">Manage Profile</h2>
+                <div className="manage-profile-section flex-col">
                   {currentTab === "General" && (
                     <EditGeneral profile={profile} />
                   )}
@@ -157,16 +90,12 @@ const EditProfile = () => {
                   {currentTab === "Videos" && <EditVideos profile={profile} />}
                   {currentTab === "+ More" && <More profile={profile} />}
                 </div>
-                <h2 className="manage-header manage-nav">Manage Profile</h2>
               </>
             )}
             {(!isMobile || (isMobile && mobileTab === "preview")) && (
               <>
-                <div
-                  className="preview-profile-section flex-col-center"
-                  style={{ height }}
-                >
-                  <div className="darken-preview-background"/>
+                <div className="preview-profile-section flex-col-center">
+                  <div className="darken-preview-background" />
                   <Profile
                     previewPage={profile}
                     preview={true}
@@ -190,7 +119,7 @@ const EditProfile = () => {
                       fontWeight: `${!previewStyle ? "normal" : "bold"}`,
                     }}
                   >
-                    Mobile
+                    Mobile Preview
                   </span>
                 </h2>
               </>
