@@ -142,9 +142,6 @@
     "manageTabs mainContent";
     grid-template-columns: 25vw 75vw;
   }
-  .manage-profile-tabs {
-    padding: 0;
-  }
 
   .manage-header,
   .preview-header {

@@ -20,3 +20,9 @@
   background-color: #DDDDDD;
   font-weight: bold;
 }
+
+@media (max-width: 700px) {
+  .manage-profile-tabs {
+    padding-left: 0.1rem;
+  }
+}
