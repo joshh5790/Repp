@@ -66,10 +66,11 @@ const EditProfile = () => {
             />
           )}
           {(!narrow || (narrow && mobileTab === "manage")) && (
-            <div className="flex-col" style={{ height: "100vh" }}>
-              <h2 className="manage-nav" style={{ marginTop: "5.2rem" }}>
-                Manage Profile
-              </h2>
+            <div
+              className={narrow && mobileTab === "manage" ? "flexgrow" : ""}
+              style={{ height: "100vh", overflow: "hidden" }}
+            >
+              <h2 className="manage-nav">Manage Profile</h2>
               <div className="manage-profile-section flex-col">
                 {currentTab === "General" && <EditGeneral profile={profile} />}
                 {currentTab === "Socials" && <EditSocials profile={profile} />}

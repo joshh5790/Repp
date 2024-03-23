@@ -83,6 +83,10 @@ i {
   transition: background-color 100ms ease-in-out, color 100ms ease-in-out, font-weight 100ms ease-in-out;
 }
 
+.flexgrow {
+  flex-grow: 1;
+}
+
 .ease-bg {
   transition: background-color 100ms ease-in-out, font-weight 100ms ease-in-out;
 }

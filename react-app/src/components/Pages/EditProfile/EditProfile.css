@@ -2,11 +2,6 @@
   position: relative;
   display: flex;
   max-height: 100vh;
-  /* display: grid;
-  grid-template-columns: 15vw minmax(auto, 30rem) auto;
-  grid-template-areas:
-    "switch manageHeader previewHeader"
-    "manageTabs manageMain previewMain"; */
   width: 100%;
 }
 
@@ -17,7 +12,6 @@
   height: 4rem;
   margin: 5rem 0 0 0;
   border-bottom: 2px solid #CCCCCC;
-  z-index: 2;
 }
 
 .switch-header.manage-nav {
@@ -43,14 +37,13 @@
 }
 
 .manage-profile-section {
-  position: relative;
   gap: 1rem;
   border-left: 2px solid #DDDDDD;
   border-right: 2px solid #DDDDDD;
   padding: 1rem;
-  flex-grow: 1;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
+  height: calc(100vh - 9rem);
   width: 30vw;
 }
 
@@ -94,10 +87,7 @@
 }
 
 .preview-profile-section {
-  flex: 1;
-  position: relative;
-  min-height: calc(100vh - 8rem);
-  height: 60vh;
+  height: calc(100vh - 9rem);
   overflow-y: auto;
 }
 
