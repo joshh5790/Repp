@@ -37,7 +37,7 @@ const EditProfile = () => {
   useEffect(() => {
     const handleResize = () => {
       const windowWidth = window.innerWidth;
-      windowWidth > 700 ? setNarrow(false) : setNarrow(true);
+      windowWidth > 900 ? setNarrow(false) : setNarrow(true);
     };
 
     window.addEventListener("resize", handleResize);
@@ -53,13 +53,23 @@ const EditProfile = () => {
   }
 
   return (
-    <div className="page-container">
+    <>
       {isLoaded && (
         <div className="manage-profile-content-container">
-          {!(narrow && mobileTab === "preview") && <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />}
+          {!(narrow && mobileTab === "preview") && (
+            <Tabs
+              currentTab={currentTab}
+              setCurrentTab={setCurrentTab}
+              mobileTab={mobileTab}
+              setMobileTab={setMobileTab}
+              narrow={narrow}
+            />
+          )}
           {(!narrow || (narrow && mobileTab === "manage")) && (
-            <>
-              <h2 className="manage-header manage-nav">Manage Profile</h2>
+            <div className="flex-col" style={{ height: "100vh" }}>
+              <h2 className="manage-nav" style={{ marginTop: "5.2rem" }}>
+                Manage Profile
+              </h2>
               <div className="manage-profile-section flex-col">
                 {currentTab === "General" && <EditGeneral profile={profile} />}
                 {currentTab === "Socials" && <EditSocials profile={profile} />}
@@ -70,18 +80,10 @@ const EditProfile = () => {
                 {currentTab === "Videos" && <EditVideos profile={profile} />}
                 {currentTab === "+ More" && <More profile={profile} />}
               </div>
-            </>
+            </div>
           )}
           {(!narrow || (narrow && mobileTab === "preview")) && (
-            <>
-              <div className="preview-profile-section flex-col-center">
-                <div className="darken-preview-background" />
-                <Profile
-                  previewPage={profile}
-                  preview={true}
-                  previewStyle={previewStyle}
-                />
-              </div>
+            <div style={{ flexGrow: "1", overflow: "hidden", height: "100vh" }}>
               <h2
                 className="preview-header manage-nav"
                 // onClick={() => setPreviewStyle((prev) => !prev)}
@@ -102,30 +104,19 @@ const EditProfile = () => {
                   Mobile Preview
                 </span>
               </h2>
-            </>
+              <div className="preview-profile-section flex-col-center">
+                <div className="darken-preview-background" />
+                <Profile
+                  previewPage={profile}
+                  preview={true}
+                  previewStyle={previewStyle}
+                />
+              </div>
+            </div>
           )}
-          <div className="switch-header manage-nav">
-            {narrow && mobileTab === "preview" ? (
-              <div
-                className="button-hover switch-manage-button"
-                onClick={() => setMobileTab("manage")}
-              >
-                Manage
-              </div>
-            ) : narrow && mobileTab === "manage" ? (
-              <div
-                className="button-hover switch-manage-button"
-                onClick={() => setMobileTab("preview")}
-              >
-                Preview
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
