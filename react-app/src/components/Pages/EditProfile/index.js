@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation, NavLink, useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import "./EditProfile.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getSessionProfileThunk } from "../../../store/profiles";
@@ -17,7 +17,11 @@ const EditProfile = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const profile = useSelector((state) => Object.values(state.profiles)[0]);
+  const profile = useSelector((state) => {
+    return Object.values(state.profiles).find(
+      (profile) => profile.userId === state.session.user.id
+    );
+  });
   const [currentTab, setCurrentTab] = useState("General");
   const [narrow, setNarrow] = useState(false);
   const [mobileTab, setMobileTab] = useState("manage");
@@ -27,7 +31,7 @@ const EditProfile = () => {
 
   useEffect(async () => {
     document.title = "REPP";
-    await dispatch(getSessionProfileThunk()).then((data) => {
+    await dispatch(getSessionProfileThunk()).then(() => {
       setIsLoaded(true);
     });
     if (window.innerWidth <= 700) setNarrow(true);
@@ -48,7 +52,7 @@ const EditProfile = () => {
     if (location.state) setCurrentTab(location.state);
   }, [location.state]);
 
-  if (isLoaded && (!user || !user.isRepp)) {
+  if (!user || !user.isRepp) {
     history.push("/");
   }
 
