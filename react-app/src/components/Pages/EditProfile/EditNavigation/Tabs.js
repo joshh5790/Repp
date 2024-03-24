@@ -1,27 +1,9 @@
 import "./Tabs.css";
 
-const Tabs = ({ currentTab, setCurrentTab, mobileTab, setMobileTab, narrow }) => {
+const Tabs = ({ currentTab, setCurrentTab }) => {
   return (
     <div className="manage-profile-tabs">
-      <div className="switch-header manage-nav">
-            {narrow && mobileTab === "preview" ? (
-              <div
-                className="button-hover switch-manage-button"
-                onClick={() => setMobileTab("manage")}
-              >
-                Manage
-              </div>
-            ) : narrow && mobileTab === "manage" ? (
-              <div
-                className="button-hover switch-manage-button"
-                onClick={() => setMobileTab("preview")}
-              >
-                Preview
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
+      <div className="manage-nav" />
       <span
         className={currentTab === "General" ? "focus-tab" : " "}
         onClick={() => setCurrentTab("General")}

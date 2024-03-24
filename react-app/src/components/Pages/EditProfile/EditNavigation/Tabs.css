@@ -1,9 +1,8 @@
 .manage-profile-tabs {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 250px;
-  padding: 5rem 0 0 0;
+  width: 30%;
+  max-width: 200px;
   height: 100vh;
 }
 

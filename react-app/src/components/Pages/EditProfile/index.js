@@ -10,7 +10,8 @@ import EditVideos from "./EditVideos";
 import More from "./More";
 import Profile from "../Profile";
 import EditTours from "./EditTours";
-import Tabs from "./Tabs";
+import Tabs from "./EditNavigation/Tabs";
+import Headers from "./EditNavigation/Headers";
 
 const EditProfile = () => {
   const history = useHistory();
@@ -24,16 +25,20 @@ const EditProfile = () => {
   });
   const [currentTab, setCurrentTab] = useState("General");
   const [narrow, setNarrow] = useState(false);
-  const [mobileTab, setMobileTab] = useState("manage");
+
+  // mobile tab is for full screen edit/preview while on narrow
+  const [mobileTab, setMobileTab] = useState("edit");
   const [isLoaded, setIsLoaded] = useState(false);
   // previewStyle false is desktop, true is mobile
   const [previewStyle, setPreviewStyle] = useState(true);
 
   useEffect(async () => {
-    document.title = "REPP";
+    document.title = "Edit Profile";
+    // retrieve profile of session user
     await dispatch(getSessionProfileThunk()).then(() => {
       setIsLoaded(true);
     });
+    // reorganize components if screen is narrow
     if (window.innerWidth <= 700) setNarrow(true);
     else setNarrow(false);
   }, [dispatch]);
@@ -52,29 +57,30 @@ const EditProfile = () => {
     if (location.state) setCurrentTab(location.state);
   }, [location.state]);
 
-  if (!user || !user.isRepp) {
-    history.push("/");
-  }
+  if (!user || !user.isRepp) history.push("/");
 
   return (
     <>
       {isLoaded && (
         <div className="manage-profile-content-container">
           {!(narrow && mobileTab === "preview") && (
-            <Tabs
-              currentTab={currentTab}
-              setCurrentTab={setCurrentTab}
-              mobileTab={mobileTab}
-              setMobileTab={setMobileTab}
-              narrow={narrow}
-            />
+            <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
           )}
-          {(!narrow || (narrow && mobileTab === "manage")) && (
+          {(!narrow || (narrow && mobileTab === "edit")) && (
             <div
-              className={narrow && mobileTab === "manage" ? "flexgrow" : ""}
-              style={{ height: "100vh", overflow: "hidden" }}
+              className={narrow && mobileTab === "edit" ? "flexgrow" : ""}
+              style={{
+                height: "100vh",
+                overflow: "hidden",
+                backgroundColor: "#F1F1F1",
+              }}
             >
-              <h2 className="manage-nav">Manage Profile</h2>
+              <Headers
+                text="manage"
+                narrow={narrow}
+                mobileTab={mobileTab}
+                setMobileTab={setMobileTab}
+              />
               <div className="manage-profile-section flex-col">
                 {currentTab === "General" && <EditGeneral profile={profile} />}
                 {currentTab === "Socials" && <EditSocials profile={profile} />}
@@ -89,26 +95,12 @@ const EditProfile = () => {
           )}
           {(!narrow || (narrow && mobileTab === "preview")) && (
             <div style={{ flexGrow: "1", overflow: "hidden", height: "100vh" }}>
-              <h2
-                className="preview-header manage-nav"
-                // onClick={() => setPreviewStyle((prev) => !prev)}
-              >
-                {/* <span
-                    style={{
-                      fontWeight: `${previewStyle ? "normal" : "bold"}`,
-                    }}
-                  >
-                    Desktop
-                  </span>
-                  &nbsp;|&nbsp; */}
-                <span
-                  style={{
-                    fontWeight: `${!previewStyle ? "normal" : "bold"}`,
-                  }}
-                >
-                  Mobile Preview
-                </span>
-              </h2>
+              <Headers
+                text="preview"
+                narrow={narrow}
+                mobileTab={mobileTab}
+                setMobileTab={setMobileTab}
+              />
               <div className="preview-profile-section flex-col-center">
                 <div className="darken-preview-background" />
                 <Profile

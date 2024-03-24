@@ -1,0 +1,21 @@
+.mobile-header {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #CCCCCC;
+  width: 100%;
+  top: 5.4rem;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 20px;
+}
+
+.mobile-header-name {
+  padding: 0.5rem 0;
+  width: 10rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.mobile-header-name.focus {
+  background-color: #CCCCCC;
+}

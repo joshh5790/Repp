@@ -117,4 +117,7 @@
     flex-grow: 1;
     width: 100%;
   }
+  .manage-nav {
+    height: 3rem;
+  }
 }
