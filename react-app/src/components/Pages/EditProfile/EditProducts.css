@@ -4,6 +4,11 @@
   cursor: pointer;
 }
 
+.delete-card.delete-product {
+  align-self: start;
+  justify-self: end;
+}
+
 .manage-product-cards {
   all: unset;
   display: flex;

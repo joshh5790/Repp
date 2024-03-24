@@ -102,7 +102,7 @@ const EditProducts = ({ profile }) => {
                 }}
               >
                 <OpenModalButton
-                  className={"delete-card ease-bg"}
+                  className={"delete-card delete-product ease-bg"}
                   buttonText={<i className="fa-solid fa-x" />}
                   modalComponent={
                     <DeleteProduct

@@ -39,7 +39,7 @@ const EditProfile = () => {
       setIsLoaded(true);
     });
     // reorganize components if screen is narrow
-    if (window.innerWidth <= 700) setNarrow(true);
+    if (window.innerWidth <= 900) setNarrow(true);
     else setNarrow(false);
   }, [dispatch]);
 

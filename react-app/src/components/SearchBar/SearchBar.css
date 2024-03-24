@@ -62,7 +62,7 @@
   min-height: 5rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .search-bar,
   .search-button-mobile.mobile-search {
       display: none;

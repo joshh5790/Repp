@@ -28,7 +28,7 @@
   grid-area: visual;
   border-radius: 10px;
   max-width: 23rem;
-  width: 30vw;
+  width: 70%;
   aspect-ratio: 16 / 9;
 }
 
@@ -67,7 +67,7 @@
   background-color: #F1F1F1;
   padding: 0.5rem;
   max-width: 22rem;
-  width: 28vw;
+  width: 70%;
   margin-top: 0.5rem;
   border-radius: 10px;
 }
@@ -75,13 +75,4 @@
 .no-video-hover:hover {
   background-color: #DDDDDD;
   cursor: auto;
-}
-
-@media (max-width: 700px) {
-  .edit-list-video {
-    width: 50vw;
-  }
-  .update-video-input {
-    width: 47vw;
-  }
 }

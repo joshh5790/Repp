@@ -31,9 +31,9 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
     if (preview) return setIsMobile(previewStyle);
     const handleResize = () => {
       const windowWidth = window.innerWidth;
-      if (isMobile && windowWidth > 700) {
+      if (isMobile && windowWidth > 900) {
         setIsMobile(false);
-      } else if (!isMobile && windowWidth <= 700) {
+      } else if (!isMobile && windowWidth <= 900) {
         setIsMobile(true);
       }
     };
