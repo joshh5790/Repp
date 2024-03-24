@@ -1,0 +1,26 @@
+.manage-profile-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  max-width: 200px;
+  height: 100vh;
+}
+
+.manage-profile-tabs span {
+  margin-left: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 10px 0 0 10px;
+}
+
+.focus-tab,
+.manage-profile-tabs span:hover {
+  background-color: #DDDDDD;
+  font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  .manage-profile-tabs {
+    margin-left: 0.1rem;
+  }
+}

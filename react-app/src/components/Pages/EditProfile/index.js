@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { useLocation, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import "./EditProfile.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getSessionProfileThunk } from "../../../store/profiles";
@@ -10,211 +10,107 @@ import EditVideos from "./EditVideos";
 import More from "./More";
 import Profile from "../Profile";
 import EditTours from "./EditTours";
+import Tabs from "./EditNavigation/Tabs";
+import Headers from "./EditNavigation/Headers";
 
 const EditProfile = () => {
+  const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const profile = useSelector((state) => Object.values(state.profiles)[0]);
+  const profile = useSelector((state) => {
+    return Object.values(state.profiles).find(
+      (profile) => profile.userId === state.session.user.id
+    );
+  });
   const [currentTab, setCurrentTab] = useState("General");
-  const [height, setHeight] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [mobileTab, setMobileTab] = useState("manage");
+  const [narrow, setNarrow] = useState(false);
+
+  // mobile tab is for full screen edit/preview while on narrow
+  const [mobileTab, setMobileTab] = useState("edit");
   const [isLoaded, setIsLoaded] = useState(false);
   // previewStyle false is desktop, true is mobile
   const [previewStyle, setPreviewStyle] = useState(true);
-  const heightRef = useRef();
+
+  useEffect(async () => {
+    document.title = "Edit Profile";
+    // retrieve profile of session user
+    await dispatch(getSessionProfileThunk()).then(() => {
+      setIsLoaded(true);
+    });
+    // reorganize components if screen is narrow
+    if (window.innerWidth <= 700) setNarrow(true);
+    else setNarrow(false);
+  }, [dispatch]);
 
   useEffect(() => {
     const handleResize = () => {
       const windowWidth = window.innerWidth;
-      if (isMobile && windowWidth > 700) {
-        setIsMobile(false);
-      } else if (!isMobile && windowWidth <= 700) {
-        setIsMobile(true);
-      }
+      windowWidth > 900 ? setNarrow(false) : setNarrow(true);
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(async () => {
-    document.title = "REPP";
-    await dispatch(getSessionProfileThunk()).then(async (data) => {
-      if (data && heightRef?.current) {
-        await setHeight(heightRef.current.clientHeight);
-      }
-      await setIsLoaded(true);
-    });
-    if (window.innerWidth <= 700) setIsMobile(true);
-    else setIsMobile(false);
-  }, [dispatch]);
-
   useEffect(() => {
     if (location.state) setCurrentTab(location.state);
   }, [location.state]);
 
-  if (isLoaded && (!user || !user.isRepp)) {
-    return (
-      <div className="unavailable page-container">
-        <h1>Sorry, this page isn't available.</h1>
-        <p>
-          The link you followed may be broken, or the page may have been
-          removed.
-        </p>
-        <NavLink to="/">Click here to return to the home page.</NavLink>
-      </div>
-    );
-  }
+  if (!user || !user.isRepp) history.push("/");
 
   return (
     <>
       {isLoaded && (
-        <div className="manage-profile-page page-container">
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            {/* add these two to the respective containers instead */}
-          </div>
-          <div className="manage-profile-content-container">
-            <div className="manage-profile-tabs">
-              <span
-                className={currentTab === "General" ? "focus-tab" : " "}
-                onClick={async () => {
-                  await setCurrentTab("General");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                General
-              </span>
-              <span
-                className={currentTab === "Socials" ? "focus-tab" : " "}
-                onClick={async () => {
-                  await setCurrentTab("Socials");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                Socials
-              </span>
-              <span
-                className={currentTab === "Products" ? "focus-tab" : " "}
-                onClick={async () => {
-                  await setCurrentTab("Products");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                Products
-              </span>
-              <span
-                className={currentTab === "Tours" ? "focus-tab" : ""}
-                onClick={async () => {
-                  await setCurrentTab("Tours");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                Tours
-              </span>
-              <span
-                className={currentTab === "Videos" ? "focus-tab" : " "}
-                onClick={async () => {
-                  await setCurrentTab("Videos");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                Videos
-              </span>
-              <span
-                className={currentTab === "+ More" ? "focus-tab" : " "}
-                onClick={async () => {
-                  await setCurrentTab("+ More");
-                  if (heightRef.current)
-                    await setHeight(heightRef.current.clientHeight);
-                }}
-              >
-                + More
-              </span>
+        <div className="manage-profile-content-container">
+          {!(narrow && mobileTab === "preview") && (
+            <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
+          )}
+          {(!narrow || (narrow && mobileTab === "edit")) && (
+            <div
+              className={narrow && mobileTab === "edit" ? "flexgrow" : ""}
+              style={{
+                height: "100vh",
+                overflow: "hidden",
+                backgroundColor: "#F1F1F1",
+              }}
+            >
+              <Headers
+                text="manage"
+                narrow={narrow}
+                mobileTab={mobileTab}
+                setMobileTab={setMobileTab}
+              />
+              <div className="manage-profile-section flex-col">
+                {currentTab === "General" && <EditGeneral profile={profile} />}
+                {currentTab === "Socials" && <EditSocials profile={profile} />}
+                {currentTab === "Products" && (
+                  <EditProducts profile={profile} />
+                )}
+                {currentTab === "Tours" && <EditTours profile={profile} />}
+                {currentTab === "Videos" && <EditVideos profile={profile} />}
+                {currentTab === "+ More" && <More profile={profile} />}
+              </div>
             </div>
-            {(!isMobile || (isMobile && mobileTab === "manage")) && (
-              <>
-                <div
-                  className="manage-profile-section flex-col"
-                  ref={heightRef}
-                >
-                  {currentTab === "General" && (
-                    <EditGeneral profile={profile} />
-                  )}
-                  {currentTab === "Socials" && (
-                    <EditSocials profile={profile} />
-                  )}
-                  {currentTab === "Products" && (
-                    <EditProducts profile={profile} />
-                  )}
-                  {currentTab === "Tours" && <EditTours profile={profile} />}
-                  {currentTab === "Videos" && <EditVideos profile={profile} />}
-                  {currentTab === "+ More" && <More profile={profile} />}
-                </div>
-                <h2 className="manage-header manage-nav">Manage Profile</h2>
-              </>
-            )}
-            {(!isMobile || (isMobile && mobileTab === "preview")) && (
-              <>
-                <div
-                  className="preview-profile-section flex-col-center"
-                  style={{ height }}
-                >
-                  <div className="darken-preview-background"/>
-                  <Profile
-                    previewPage={profile}
-                    preview={true}
-                    previewStyle={previewStyle}
-                  />
-                </div>
-                <h2
-                  className="preview-header manage-nav"
-                  // onClick={() => setPreviewStyle((prev) => !prev)}
-                >
-                  {/* <span
-                    style={{
-                      fontWeight: `${previewStyle ? "normal" : "bold"}`,
-                    }}
-                  >
-                    Desktop
-                  </span>
-                  &nbsp;|&nbsp; */}
-                  <span
-                    style={{
-                      fontWeight: `${!previewStyle ? "normal" : "bold"}`,
-                    }}
-                  >
-                    Mobile
-                  </span>
-                </h2>
-              </>
-            )}
-            <div className="switch-header manage-nav">
-              {isMobile && mobileTab === "preview" ? (
-                <div
-                  className="button-hover switch-manage-button"
-                  onClick={() => setMobileTab("manage")}
-                >
-                  Manage
-                </div>
-              ) : isMobile && mobileTab === "manage" ? (
-                <div
-                  className="button-hover switch-manage-button"
-                  onClick={() => setMobileTab("preview")}
-                >
-                  Preview
-                </div>
-              ) : (
-                <></>
-              )}
+          )}
+          {(!narrow || (narrow && mobileTab === "preview")) && (
+            <div style={{ flexGrow: "1", overflow: "hidden", height: "100vh" }}>
+              <Headers
+                text="preview"
+                narrow={narrow}
+                mobileTab={mobileTab}
+                setMobileTab={setMobileTab}
+              />
+              <div className="preview-profile-section flex-col-center">
+                <div className="darken-preview-background" />
+                <Profile
+                  previewPage={profile}
+                  preview={true}
+                  previewStyle={previewStyle}
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </>

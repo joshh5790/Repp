@@ -1,28 +1,22 @@
 .manage-profile-content-container {
   position: relative;
-  display: grid;
-  grid-template-columns: 15vw minmax(auto, 30rem) auto;
-  grid-template-areas:
-    "switch manageHeader previewHeader"
-    "manageTabs manageMain previewMain";
+  display: flex;
+  max-height: 100vh;
   width: 100%;
 }
 
 .manage-nav {
-  position: sticky;
-  top: 5rem;
   background-color: #F1F1F1;
-  width: 100%;
   text-align: center;
   padding: 1rem;
-  margin: 0;
+  height: 4rem;
+  margin: 5rem 0 0 0;
   border-bottom: 2px solid #CCCCCC;
-  z-index: 2;
 }
 
 .switch-header.manage-nav {
+  margin-top: 0;
   padding: 0;
-  grid-area: switch;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,44 +36,15 @@
   color: #1C1C1C;
 }
 
-.manage-profile-tabs {
-  grid-area: manageTabs;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding-left: 1rem;
-  position: sticky;
-  top: 9rem;
-  height: fit-content;
-}
-
-.manage-profile-tabs span {
-  padding: 1rem;
-  cursor: pointer;
-  border-radius: 10px 0 0 10px;
-}
-
-.focus-tab,
-.manage-profile-tabs span:hover {
-  background-color: #DDDDDD;
-  font-weight: bold;
-}
-
-.manage-header {
-  grid-area: manageHeader;
-}
-
 .manage-profile-section {
-  grid-area: manageMain;
-  position: relative;
   gap: 1rem;
   border-left: 2px solid #DDDDDD;
   border-right: 2px solid #DDDDDD;
   padding: 1rem;
-  height: fit-content;
-  min-height: calc(100vh - 8rem);
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
+  height: calc(100vh - 9rem);
+  width: 30vw;
 }
 
 .update-socials-label {
@@ -117,20 +82,9 @@
   background-color: #AAAAAA;
 }
 
-.preview-header {
-  grid-area: previewHeader;
-}
-
 .preview-profile-section {
-  grid-area: previewMain;
-  flex: 1;
-  position: relative;
-  min-height: calc(100vh - 8rem);
-  overflow: auto;
-}
-
-.preview-profile-section::-webkit-scrollbar {
-  display: none;
+  height: calc(100vh - 9rem);
+  overflow-y: auto;
 }
 
 .delete-profile-button {
@@ -154,32 +108,16 @@
 
 @media (max-width: 1250px) {
   .manage-profile-section {
-    min-width: 40vw;
+    min-width: 30vw;
   }
 }
 
-@media (max-width: 700px) {
-  .manage-profile-content-container {
-    grid-template-areas:
-    "switch mainHeader"
-    "manageTabs mainContent";
-    grid-template-columns: 25vw 75vw;
-  }
-  .manage-profile-tabs {
-    padding: 0;
-  }
-
-  .manage-header,
-  .preview-header {
-    grid-area: mainHeader;
-  }
-
+@media (max-width: 900px) {
   .manage-profile-section {
-    grid-area: mainContent;
+    flex-grow: 1;
+    width: 100%;
   }
-  .preview-profile-section {
-    grid-area: mainContent;
-    height: fit-content;
+  .manage-nav {
+    height: 3rem;
   }
-
 }
