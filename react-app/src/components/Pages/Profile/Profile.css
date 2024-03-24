@@ -59,7 +59,7 @@
     background-color: #F1F1F1;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .repp-main-video {
         aspect-ratio: 16 / 9;
         height: auto;

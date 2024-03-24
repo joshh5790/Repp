@@ -222,7 +222,7 @@
   margin-bottom: 1rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .nav-right {
     margin-right: 2rem;
   }

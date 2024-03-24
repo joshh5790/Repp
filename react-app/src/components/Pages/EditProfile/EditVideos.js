@@ -9,6 +9,8 @@ import {
 import { updateProfileThunk } from "../../../store/profiles";
 import "./EditVideos.css";
 
+// figure out what to do with the extra white space
+
 const EditVideos = ({ profile }) => {
   const dispatch = useDispatch();
   const videos = useSelector((state) => Object.values(state.videos));

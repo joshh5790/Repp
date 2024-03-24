@@ -13,7 +13,7 @@
   background-color: white;
   color: #4444FF;
 }
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .tour-modal {
     width: 70vw;
   }

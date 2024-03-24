@@ -73,7 +73,7 @@
   color: #1C1C1C;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .info-inputs-div {
     flex-direction: column;
   }
