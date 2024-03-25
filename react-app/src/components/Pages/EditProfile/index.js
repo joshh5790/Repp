@@ -84,7 +84,7 @@ const EditProfile = () => {
               />
               <div className="manage-profile-section flex-col">
                 {currentTab === "General" && <EditGeneral profile={profile} />}
-                {currentTab === "Main Links" && <EditProfileLinks profile={profile} />}
+                {/* {currentTab === "Main Links" && <EditProfileLinks profile={profile} />} */}
                 {currentTab === "Socials" && <EditSocials profile={profile} />}
                 {currentTab === "Products" && (
                   <EditProducts profile={profile} />
