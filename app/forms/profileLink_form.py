@@ -17,4 +17,4 @@ def link_data(form, field):
 
 class ProfileLinkForm(FlaskForm):
     text = StringField("Link Text", [DataRequired()])
-    Link = URLField("Link URL", [DataRequired(), link_data])
+    link = URLField("Link URL", [DataRequired(), link_data])

@@ -24,10 +24,12 @@ def update_profileLink(profileLinkId):
             "Unauthorized": "User does not have permission to update this profileLink"
         }, 401
     form = ProfileLinkForm(obj=profileLink)
+    print("AAAAAAAAAAAAAAAAAAAAAAAAA")
+    print(form.data)
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         data = form.data
-        profileLink.venue = data["venue"]
+        profileLink.text = data["text"]
         profileLink.link = data["link"]
         db.session.commit()
         return profileLink.to_dict()
