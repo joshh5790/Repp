@@ -56,9 +56,8 @@
 
 .tour-card-button.button-hover {
   justify-self: end;
-  left: 50%;
   background-color: black;
-  color: white;
+  color: #F1F1F1;
   max-width: 10rem;
   width: 10vw;
   height: 2rem;
@@ -71,7 +70,7 @@
 
 .tour-card-button:hover {
   color: black;
-  background-color: white;
+  background-color: #F1F1F1;
 }
 
 .tour-input {
@@ -113,13 +112,13 @@
   padding-top: 0.6rem;
   width: 100%;
   background-color: red;
-  color: white;
+  color: #F1F1F1;
   border: 1px solid red;
 }
 
 .clear-all-tours-button:hover {
   color: red;
-  background-color: white;
+  background-color: #F1F1F1;
 }
 
 .edit-tour-button.edit-card {

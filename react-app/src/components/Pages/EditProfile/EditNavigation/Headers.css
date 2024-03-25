@@ -2,10 +2,12 @@
   position: fixed;
   display: flex;
   justify-content: space-around;
-  border-bottom: 2px solid #CCCCCC;
+  background-color: #CCCCFF;
+  border-bottom: 2px solid #CCCCFF;
   width: 100%;
   top: 5.4rem;
   left: 50%;
+  height: 3.6rem;
   transform: translate(-50%);
   font-size: 20px;
 }
@@ -13,8 +15,11 @@
 .mobile-header-name {
   padding: 1rem 0;
   width: 10rem;
+  border: 2px solid #AAAAFF;
+  border-bottom: none;
   border-radius: 10px 10px 0 0;
   cursor: pointer;
+  color: #888888;
 }
 
 .mobile-header-name:hover {
@@ -23,4 +28,7 @@
 
 .mobile-header-name.focus {
   background-color: #CCCCCC;
+  border: 2px solid #9999FF;
+  border-bottom: none;
+  color: black;
 }

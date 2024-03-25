@@ -3,18 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteProfileLinkThunk,
   getProfileLinksThunk,
-  updateProfileLinkThunk,
 } from "../../../store/profileLinks";
-// import AddProfileLink from "../../Modals/AddProfileLink";
+import ManageProfileLink from "../../Modals/ManageProfileLink";
 import OpenModalButton from "../../OpenModalButton";
 import "./EditProfileLinks.css";
 
 const EditProfileLinks = ({ profile }) => {
   const dispatch = useDispatch();
-  const profileLinks = useSelector((state) => Object.values(state.profileLinks)); // .sort((a, b) => a.date - b.date), profileLink dates are not date variables
-  const [text, setText] = useState("");
-  const [link, setLink] = useState("");
-  const [editInput, setEditInput] = useState(0);
+  const profileLinks = useSelector((state) =>
+    Object.values(state.profileLinks)
+  );
 
   useEffect(() => {
     if (profile) {
@@ -22,101 +20,64 @@ const EditProfileLinks = ({ profile }) => {
     }
   }, [dispatch, profile]);
 
-  const focusProfileLink = (e, profileLink) => {
-    e.preventDefault();
-    if (!editInput) {
-      setEditInput(profileLink.id);
-      setText(profileLink.text);
-      setLink(profileLink.link);
-    }
-  };
-
   const handleDeleteProfileLink = (profileLinkId, e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(deleteProfileLinkThunk(profileLinkId));
-    resetState();
-  };
-
-  const handleUpdateProfileLink = (profileLinkId) => {
-    dispatch(
-      updateProfileLinkThunk({ profileLinkId, text, link })
-    );
-    resetState();
-  };
-
-  const resetState = () => {
-    setEditInput(0);
-    setText("");
-    setLink("");
   };
 
   return (
     <>
-      {/* <OpenModalButton
-        modalComponent={<AddProfileLink profileId={profile?.id}/>}
-        buttonText={<b>+ New Link</b>}
-        className={"new-card-button"}
-      /> */}
-      <div className="edit-profileLinks-list">
-        {profileLinks &&
+      {profileLinks.length < 5 ? (
+        <OpenModalButton
+          modalComponent={<ManageProfileLink profileId={profile?.id} />}
+          buttonText={<b>+ Links {profileLinks.length}/5</b>}
+          className={"new-card-button"}
+        />
+      ) : (
+        <div
+          id="max-links-reached"
+          className="new-card-button"
+          style={{ color: "#999999" }}
+        >
+          Links 5/5
+        </div>
+      )}
+      <div className="edit-profilelinks-list flex-col">
+        {profileLinks.length ? (
           profileLinks.map((profileLink) => (
-            <form
-              key={profileLink?.id}
-              className={`profileLink-card ease-bg ${
-                editInput === profileLink?.id ? "focus-profileLink" : ""
-              }`}
-            >
-              <button
-                className="edit-card"
-                style={{
-                  position: "absolute",
-                  top: "5px",
-                  right: "40px",
-                  alignSelf: "start",
-                  justifySelf: "end",
-                }}
-                onClick={(e) => focusProfileLink(e, profileLink)}
+            <div key={profileLink?.id} className="profilelink-card">
+              <a
+                target="_blank"
+                className="profilelink-text button-hover"
+                style={{ textDecoration: "none" }}
+                href={profileLink?.link}
               >
-                <i className="fa-regular fa-pen-to-square" />
-              </button>
-              <button
-                className="delete-card delete-profilelink"
-                onClick={(e) => handleDeleteProfileLink(profileLink.id, e)}
-              >
-                <i className="fa-solid fa-x" />
-              </button>
-              <input
-                className="profilelink-input"
-                placeholder="Text"
-                value={editInput !== profileLink.id ? profileLink.text : text}
-                onChange={(e) => setText(e.target.value)}
-                disabled={editInput !== profileLink.id}
-              />
-              {editInput === profileLink.id && (
-                <div
-                  style={{
-                    marginTop: "0.5rem",
-                    gridArea: "buttons",
-                    display: "flex",
-                    gap: "1rem",
-                  }}
+                {profileLink?.text}
+              </a>
+              <div>
+                <OpenModalButton
+                  className="edit-card ease-bg"
+                  buttonText={<i className="fa-regular fa-pen-to-square" />}
+                  modalComponent={
+                    <ManageProfileLink profileLink={profileLink} />
+                  }
+                />
+                <button
+                  className="delete-card delete-profilelink"
+                  onClick={(e) => handleDeleteProfileLink(profileLink.id, e)}
+                  style={{ justifySelf: "flex-end" }}
                 >
-                  <button
-                    className="profilelink-button-cancel button-hover"
-                    onClick={resetState}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="profilelink-button-save button-hover"
-                    onClick={() => handleUpdateProfileLink(profileLink.id)}
-                  >
-                    Save
-                  </button>
-                </div>
-              )}
-            </form>
-          ))}
+                  <i className="fa-solid fa-x" />
+                </button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div style={{ textAlign: "center" }}>
+            These links will be the first thing your users see when they visit
+            your page. Add links to your profile to make it more personal!
+          </div>
+        )}
       </div>
     </>
   );

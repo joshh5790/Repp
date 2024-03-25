@@ -1,16 +1,25 @@
-.tour-button.button-hover {
+#profilelink-modal {
+  width: 70vw;
+  max-width: 25rem;
+}
+
+.save-profilelink.button-hover {
   margin-top: 1rem;
   background-color: #4444FF;
   border: 1px solid #4444FF;
   color: #F1F1F1;
+  align-self: center;
+  width: 100%;
+  max-width: 15rem;
 }
 
-.tour-button:hover {
+.save-profilelink:hover {
   background-color: #F1F1F1;
   color: #4444FF;
 }
+
 @media (max-width: 900px) {
-  .tour-modal {
+  #profilelink-modal {
     width: 70vw;
   }
 }

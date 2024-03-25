@@ -42,17 +42,14 @@ export const getProfileLinksThunk = (profileId) => async (dispatch) => {
 
 // POST /profiles/:profileId/profileLinks
 export const createProfileLinkThunk =
-  ({ profileId, venue, location, profileLinkDate, ticketsLink, soldOut, }) =>
+  ({ profileId, text, link }) =>
   async (dispatch) => {
     const response = await fetch(`/api/profiles/${profileId}/profileLinks`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        venue,
-        location,
-        profileLinkDate,
-        ticketsLink,
-        soldOut,
+        text,
+        link,
       }),
     });
 
@@ -68,24 +65,14 @@ export const createProfileLinkThunk =
 
 // PUT /profileLinks/:profileLinkId
 export const updateProfileLinkThunk =
-  ({
-    profileLinkId,
-    venue,
-    location,
-    profileLinkDate,
-    ticketsLink,
-    soldOut,
-  }) =>
+  ({ profileLinkId, text, link }) =>
   async (dispatch) => {
     const response = await fetch(`/api/profileLinks/${profileLinkId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        venue,
-        location,
-        profileLinkDate,
-        ticketsLink,
-        soldOut,
+        text,
+        link,
       }),
     });
 

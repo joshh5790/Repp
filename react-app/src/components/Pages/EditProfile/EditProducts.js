@@ -69,7 +69,6 @@ const EditProducts = ({ profile }) => {
                 className="manage-product-img"
                 src={product?.previewImage}
                 onError={invalidImage}
-                // style={{ gridArea: "visual" }}
               />
               <div
                 style={{
