@@ -1,7 +1,3 @@
-/* #tour-modal {
-
-} */
-
 .tour-button.button-hover {
   margin-top: 1rem;
   background-color: #4444FF;
@@ -10,7 +6,7 @@
 }
 
 .tour-button:hover {
-  background-color: white;
+  background-color: #F1F1F1;
   color: #4444FF;
 }
 @media (max-width: 900px) {

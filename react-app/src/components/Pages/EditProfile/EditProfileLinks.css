@@ -1,0 +1,30 @@
+.edit-profilelinks-list {
+  gap: 1rem;
+}
+
+.profilelink-text.button-hover {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 60%;
+  max-width: 15rem;
+  font-size: 14px;
+  background-color: black;
+  color: #F1F1F1;
+  height: 3rem;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.profilelink-text:hover {
+  color: black;
+  background-color: #F1F1F1;
+}
+
+.profilelink-card {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
