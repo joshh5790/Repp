@@ -41,7 +41,7 @@ const LinkSection = ({
   return (
     <>
       <img
-        className="profile-page-home-img"
+        id="profile-page-home-img"
         src={mainImage}
         alt={profile?.displayName}
         onError={invalidImage}

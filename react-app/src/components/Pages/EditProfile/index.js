@@ -63,7 +63,7 @@ const EditProfile = () => {
   return (
     <>
       {isLoaded && (
-        <div className="manage-profile-content-container">
+        <div id="manage-profile-content-container">
           {!(narrow && mobileTab === "preview") && (
             <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
           )}
@@ -82,7 +82,7 @@ const EditProfile = () => {
                 mobileTab={mobileTab}
                 setMobileTab={setMobileTab}
               />
-              <div className="manage-profile-section flex-col">
+              <div id="manage-profile-section" className="flex-col">
                 {currentTab === "General" && <EditGeneral profile={profile} />}
                 {currentTab === "Main Links" && <EditProfileLinks profile={profile} />}
                 {currentTab === "Socials" && <EditSocials profile={profile} />}
@@ -103,7 +103,7 @@ const EditProfile = () => {
                 mobileTab={mobileTab}
                 setMobileTab={setMobileTab}
               />
-              <div className="preview-profile-section flex-col-center">
+              <div id="preview-profile-section" className="flex-col-center">
                 <div className="darken-preview-background" />
                 <Profile
                   previewPage={profile}

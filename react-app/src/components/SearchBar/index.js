@@ -25,7 +25,7 @@ function SearchBar() {
 
   return (
     <>
-      <form onClick={focusInput} className={`search-bar`}>
+      <form onClick={focusInput} id="search-bar">
         <DebounceInput
           type="text"
           id="search-input"

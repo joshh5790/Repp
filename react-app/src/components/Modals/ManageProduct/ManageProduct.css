@@ -1,4 +1,4 @@
-.edit-product-modal {
+#edit-product-modal {
   display: flex;
   height: 80vh;
   width: 80vw;
@@ -74,7 +74,7 @@
 }
 
 @media (max-width: 900px) {
-  .edit-product-modal {
+  #edit-product-modal {
     flex-direction: column;
     overflow: auto;
   }

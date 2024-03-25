@@ -2,7 +2,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <div className="profile-page-footer">
+    <div id="profile-page-footer">
       {/* <button className='subscribe-button button-hover'>
         Subscribe to Newsletter
       </button> */}

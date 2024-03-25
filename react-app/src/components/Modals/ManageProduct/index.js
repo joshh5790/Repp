@@ -87,7 +87,7 @@ const ManageProduct = ({ product, profileId, numProducts, videoSection }) => {
   };
 
   return (
-    <div className="edit-product-modal">
+    <div id="edit-product-modal">
       <i onClick={closeModal} className="fa-solid fa-x modal" />
       <div className="product-img-container">
         <img

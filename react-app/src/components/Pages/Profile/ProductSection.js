@@ -23,7 +23,7 @@ const ProductSection = ({
   return (
     <>
       <h2>MERCH</h2>
-      <ul className={"product-list " + (previewStyle ? "mobile" : "desktop")}>
+      <ul id="product-list" className={previewStyle ? "mobile" : "desktop"}>
         {products.map((product) => (
           <li className="product-container" key={product?.id}>
             <OpenModalButton

@@ -1,11 +1,11 @@
-.videos-list {
+#videos-list {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
-.videos-list.mobile {
+#videos-list.mobile {
   grid-template-columns: 1fr;
 }
 
@@ -29,7 +29,7 @@
 }
 
 @media (max-width: 900px) {
-  .videos-list {
+  #videos-list {
       grid-template-columns: 1fr;
   }
 }

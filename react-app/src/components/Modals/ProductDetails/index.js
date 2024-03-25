@@ -90,7 +90,7 @@ const ProductDetails = ({ product, setNumCartItems, preview, user }) => {
   return (
     <>
       {isLoaded ? (
-        <div className="product-modal">
+        <div id="product-modal">
           <i onClick={closeModal} className="fa-solid fa-x modal" />
           <div className="product-img-container">
             <div className="product-carousel-container">

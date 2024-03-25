@@ -19,13 +19,13 @@ function DeleteAccount({ user }) {
   }, [confirmation, user.email]);
 
   const handleDelete = () => {
-    dispatch(deleteUser(user.id))
+    dispatch(deleteUser(user.id));
     closeModal();
     history.push("/");
   };
 
   return (
-    <div className="delete-account-container">
+    <div id="delete-account-container">
       <h2>Delete Your Account?</h2>
       <p>
         This action <b>cannot</b> be undone.
@@ -33,13 +33,13 @@ function DeleteAccount({ user }) {
       <p> All information associated with your account will be deleted.</p>
       <p>Are you sure you want to delete your account?</p>
       <p>
-        Type <span className="red-text">delete account {user.email}</span>{" "}
-        below to confirm.
+        Type <span className="red-text">delete account {user.email}</span> below
+        to confirm.
       </p>
       <input
         value={confirmation}
         onChange={(e) => setConfirmation(e.target.value)}
-        className="delete-confirmation"
+        id="delete-confirmation"
       />
       <div className="delete-button-div">
         <button className="delete-acc-cancel button-hover" onClick={closeModal}>

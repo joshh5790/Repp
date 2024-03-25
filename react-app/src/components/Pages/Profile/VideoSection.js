@@ -13,7 +13,7 @@ const VideoSection = ({ profileId, previewStyle }) => {
   return (
     <>
       <h1>VIDEOS</h1>
-      <div className={"videos-list " + (previewStyle ? "mobile" : "desktop")}>
+      <div id="videos-list" className={previewStyle ? "mobile" : "desktop"}>
         {videos.map((video) => (
           <div key={video?.id} className="video-container flex-col-center">
             <iframe

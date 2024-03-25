@@ -14,7 +14,7 @@ const TourSection = ({ profileId, tourName, previewStyle }) => {
     dispatch(getToursThunk(profileId));
   }, [dispatch, profileId]);
   return (
-    <div className="profile-page-tours">
+    <div id="profile-page-tours">
       <h2>{tourName}</h2>
       {tours.map((tour) => (
         <div

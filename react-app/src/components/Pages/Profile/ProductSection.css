@@ -1,4 +1,4 @@
-.product-list {
+#product-list {
     list-style: none;
     display: grid;
     gap: 1vw;
@@ -6,7 +6,7 @@
     padding: 0;
 }
 
-.product-list.mobile {
+#product-list.mobile {
     grid-template-columns: 1fr;
 }
 
@@ -24,7 +24,7 @@
 }
 
 @media (max-width: 900px) {
-    .product-list {
+    #product-list {
         grid-template-columns: 1fr;
     }
 }

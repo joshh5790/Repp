@@ -1,4 +1,4 @@
-.home-page {
+#home-page {
   position: relative;
   background-size: cover;
   background-position: center;
@@ -7,7 +7,7 @@
   top: 0;
 }
 
-.home-page-text {
+#home-page-text {
   position: absolute;
   right: 8rem;
   bottom: 8rem;
@@ -16,7 +16,7 @@
   background-color: rgb(200, 200, 200, 0.7);
 }
 
-.home-page-text > * {
+#home-page-text > * {
   color: #1C1C1C;
 }
 
@@ -76,7 +76,7 @@
   outline: auto;
 }
 
-.home-page-create-profile {
+#home-page-create-profile {
   color: #F1F1F1;
   position: absolute;
   width: 35rem;
@@ -102,11 +102,11 @@
 }
 
 @media (max-width: 900px) {
-  .home-page {
+  #home-page {
     height: calc(50vh - 3rem);
     min-height: calc(50vh - 3rem);
   }
-  .home-page-text {
+  #home-page-text {
     right: 3rem;
     bottom: 3rem;
     padding: 1rem;
@@ -115,7 +115,7 @@
     padding: 0.5rem;
     font-size: 1.5rem;
   }
-  .home-page-create-profile {
+  #home-page-create-profile {
     padding: 3rem 0 7rem 0;
     color: #1C1C1C;
     position: relative;
