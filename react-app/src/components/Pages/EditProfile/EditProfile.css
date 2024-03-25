@@ -6,12 +6,12 @@
 }
 
 .manage-nav {
-  background-color: #F1F1F1;
+  background-color: #CCCCFF;
   text-align: center;
   padding: 1rem;
   height: 4rem;
   margin: 5rem 0 0 0;
-  border-bottom: 2px solid #CCCCCC;
+  border-bottom: 2px solid #CCCCFF;
 }
 
 .switch-header.manage-nav {
