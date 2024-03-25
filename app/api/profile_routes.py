@@ -216,6 +216,9 @@ def create_profileLink(profileId):
         return {
             "Unauthorized": "User does not have permission to add a profileLink to this profile"
         }, 401
+    if len(profile.get_profileLinks()) > 5:
+        return {"error": "Profile already has 5 profileLinks"}, 400
+
     form = ProfileLinkForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():

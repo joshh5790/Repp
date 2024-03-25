@@ -2,6 +2,15 @@
   gap: 1rem;
 }
 
+#max-links-reached {
+  background-color: #DDDDDD;
+}
+
+#max-links-reached:hover {
+  background-color: #DDDDDD;
+  cursor: default;
+}
+
 .profilelink-text.button-hover {
   text-overflow: ellipsis;
   overflow: hidden;

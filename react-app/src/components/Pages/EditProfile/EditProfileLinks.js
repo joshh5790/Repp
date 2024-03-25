@@ -27,13 +27,23 @@ const EditProfileLinks = ({ profile }) => {
 
   return (
     <>
-      <OpenModalButton
-        modalComponent={<ManageProfileLink profileId={profile?.id} />}
-        buttonText={<b>+ New Link</b>}
-        className={"new-card-button"}
-      />
+      {profileLinks.length < 5 ? (
+        <OpenModalButton
+          modalComponent={<ManageProfileLink profileId={profile?.id} />}
+          buttonText={<b>+ Links {profileLinks.length}/5</b>}
+          className={"new-card-button"}
+        />
+      ) : (
+        <div
+          id="max-links-reached"
+          className="new-card-button"
+          style={{ color: "#999999" }}
+        >
+          Links 5/5
+        </div>
+      )}
       <div className="edit-profilelinks-list flex-col">
-        {profileLinks &&
+        {profileLinks.length ? (
           profileLinks.map((profileLink) => (
             <div key={profileLink?.id} className="profilelink-card">
               <a
@@ -61,7 +71,13 @@ const EditProfileLinks = ({ profile }) => {
                 </button>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <div style={{ textAlign: "center" }}>
+            These links will be the first thing your users see when they visit
+            your page. Add links to your profile to make it more personal!
+          </div>
+        )}
       </div>
     </>
   );
