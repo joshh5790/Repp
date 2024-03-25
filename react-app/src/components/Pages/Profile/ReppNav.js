@@ -52,11 +52,11 @@ const ReppNav = ({
               <img
                 alt={profile?.displayName}
                 src={profile?.personalLogo}
-                className="repp-nav-logo"
+                id="repp-nav-logo"
                 onClick={() => scrollToId(profile?.linkName)}
               />
             ) : (
-              <h2 onClick={() => scrollToId(profile?.linkName)}>
+              <h2 id="repp-nav-logo" onClick={() => scrollToId(profile?.linkName)}>
                 {profile?.displayName}
               </h2>
             )}

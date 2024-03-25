@@ -40,6 +40,12 @@ const LinkSection = ({
 
   return (
     <>
+      <img
+        className="profile-page-home-img"
+        src={mainImage}
+        alt={profile?.displayName}
+        onError={invalidImage}
+      />
       {isMobile && (
         <>
           <div className="mobile-page-links flex-col-center">
@@ -50,7 +56,7 @@ const LinkSection = ({
                   className="profile-section-link"
                   key={link?.id}
                   target="_blank"
-                  style={{textDecoration: "none"}}
+                  style={{ textDecoration: "none" }}
                 >
                   {link?.text}
                 </a>
@@ -163,12 +169,6 @@ const LinkSection = ({
           ))}
         </div>
       )}
-      <img
-        className="profile-page-home-img"
-        src={mainImage}
-        alt={profile?.displayName}
-        onError={invalidImage}
-      />
     </>
   );
 };
