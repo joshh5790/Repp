@@ -38,8 +38,12 @@
     cursor: pointer;
 }
 
-.repp-nav-logo {
+#repp-nav-logo {
     max-width: 7rem;
+}
+
+#repp-nav-logo:hover {
+    text-shadow: 0 0 30px rgba(255, 255, 255);
 }
 
 .repp-nav-nav-buttons > i:hover {
@@ -62,6 +66,7 @@
 
 .repp-nav-links > div:hover {
     text-decoration: underline;
+    text-shadow: 0 0 30px rgba(255, 255, 255);
 }
 
 .repp-nav-right {
