@@ -1,4 +1,4 @@
-.delete-account-container {
+#delete-account-container {
   max-width: 20rem;
   width: 80vw;
 }
@@ -8,7 +8,7 @@
   color: red;
 }
 
-.delete-confirmation {
+#delete-confirmation {
   border-radius: 5px;
   width: 100%;
   box-shadow: 0 0 10px #CCCCCC;

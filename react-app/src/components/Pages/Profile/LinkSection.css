@@ -53,9 +53,9 @@
   z-index: 1;
 }
 
-.profile-page-home-img {
+#profile-page-home-img {
   position: absolute;
-  z-index: -0.7;
+  z-index: -0.1;
   height: 100vh;
   width: 100%;
   object-fit: cover;

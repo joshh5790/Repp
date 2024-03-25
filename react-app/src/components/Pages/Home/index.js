@@ -36,7 +36,7 @@ const Home = () => {
   if (isLoaded) {
     return (
       <>
-        <div className="home-page">
+        <div id="home-page">
           <div style={{ width: "100%", height: "100%", position: "relative" }}>
             <div
               style={{
@@ -72,7 +72,7 @@ const Home = () => {
           >
             <i className="fa-solid fa-chevron-right" />
           </button>
-          <div className="home-page-text">
+          <div id="home-page-text">
             <h1 className="no-top">{profiles[imageIndex]?.displayName}</h1>
             <NavLink to={`/${profiles[imageIndex]?.linkName}`}>
               Visit Page {">"}
@@ -103,7 +103,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className="flex-col home-page-create-profile">
+        <div id="home-page-create-profile" className="flex-col">
           <h1>Design Your Online Home</h1>
           <p style={{ margin: "1rem 0 2rem 0", lineHeight: "1.5rem" }}>
             Your free personal website alternative.
@@ -123,9 +123,9 @@ const Home = () => {
             are functionally and visually identical to their own personal
             websites, but without the fees that come with maintaining a website
             and without the stress of having to pick out a good design. With
-            REPP, creating a personal website for fans to access is as simple as
-            setting up a dating profile, providing music artists with direct
-            control over every aspect of their site.
+            REPP, creating an accessible personal website is as simple as
+            setting up a LinkedIn profile, providing fans with a one-stop shop of
+            artists' entire online presence.
           </div>
         </div>
       </>

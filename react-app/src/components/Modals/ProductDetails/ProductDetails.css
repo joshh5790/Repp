@@ -1,4 +1,4 @@
-.product-modal {
+#product-modal {
   display: flex;
   width: 70vw;
   max-width: 55rem;
@@ -9,7 +9,7 @@
   overflow-x: hidden;
 }
 
-.product-modal::-webkit-scrollbar {
+#product-modal::-webkit-scrollbar {
   display: none;
 }
 
@@ -159,7 +159,7 @@
 }
 
 @media (max-width: 900px) {
-  .product-modal,
+  #product-modal,
   .product-img-container {
     flex-direction: column;
   }

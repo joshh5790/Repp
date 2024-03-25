@@ -32,7 +32,7 @@ function AccountSettings() {
   return (
     <>
       {isLoaded && (
-        <div className="account-settings">
+        <div id="account-settings">
           {user?.id === 1 && (
             <b className="error-msg">Can't edit demo user's information</b>
           )}

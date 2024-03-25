@@ -42,7 +42,7 @@ function DeleteProfile({ page }) {
       <input
         value={confirmation}
         onChange={(e) => setConfirmation(e.target.value)}
-        className="delete-confirmation"
+        id="delete-confirmation"
       />
       <div className="delete-button-div">
         <button className="delete-acc-cancel button-hover" onClick={closeModal}>

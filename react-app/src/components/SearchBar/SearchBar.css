@@ -1,4 +1,4 @@
-.search-bar {
+#search-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -14,7 +14,7 @@
   display: none;
 }
 
-.search-bar:hover {
+#search-bar:hover {
   box-shadow: 0 0 5px #F1F1F1;
   cursor: text;
 }
@@ -63,16 +63,16 @@
 }
 
 @media (max-width: 900px) {
-  .search-bar,
+  #search-bar,
   .search-button-mobile.mobile-search {
       display: none;
   }
   .search-button-mobile,
-  .search-bar.mobile-search,
+  #search-bar.mobile-search,
   .clear-search.hide {
       display: flex;
   }
-  .search-bar.mobile-search {
+  #search-bar.mobile-search {
       position: fixed;
       background-color: #F1F1F1;
       width: 50vw;
