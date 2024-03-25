@@ -11,9 +11,14 @@
 }
 
 .mobile-header-name {
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   width: 10rem;
   border-radius: 10px 10px 0 0;
+  cursor: pointer;
+}
+
+.mobile-header-name:hover {
+  background-color: #CCCCCC;
 }
 
 .mobile-header-name.focus {

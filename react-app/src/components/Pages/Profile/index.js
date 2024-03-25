@@ -74,7 +74,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
           dispatch(setNavVisibility(false));
         })
         .then(() => setIsLoaded(true));
-      if (window.innerWidth <= 700) setIsMobile(true);
+      if (window.innerWidth <= 900) setIsMobile(true);
       else setIsMobile(false);
     }
   }, [dispatch, linkName, preview, previewStyle]);

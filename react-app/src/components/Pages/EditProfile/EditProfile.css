@@ -118,9 +118,9 @@
     flex-grow: 1;
     width: 100%;
   }
-  .manage-nav {
+  /* .manage-nav {
     height: 3rem;
-  }
+  } */
   .new-card-button {
     font-size: 16px;
     min-height: 3rem;

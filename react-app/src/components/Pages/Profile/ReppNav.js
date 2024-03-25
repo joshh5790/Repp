@@ -10,7 +10,7 @@ const ReppNav = ({
   navVisible,
   isMobile,
   preview,
-  previewStyle
+  previewStyle,
 }) => {
   const dispatch = useDispatch();
   const [scrollTop, setScrollTop] = useState(true);
@@ -36,8 +36,11 @@ const ReppNav = ({
 
   return (
     <div
-      style={{ position: `${preview && "absolute"}`, top: `${preview && "0"}` }}
-      className={`repp-nav ${scrollTop ? "" : "black-nav"} ${
+      style={{
+        position: `${preview && "absolute"}`,
+        top: `${preview && "9rem"}`,
+      }}
+      className={`repp-nav ${!scrollTop || preview ? "black-nav" : ""} ${
         navVisible ? "lower-nav" : ""
       } ${previewStyle ? "mobile" : "desktop"}`}
     >

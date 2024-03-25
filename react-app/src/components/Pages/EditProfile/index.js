@@ -4,12 +4,13 @@ import "./EditProfile.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getSessionProfileThunk } from "../../../store/profiles";
 import EditGeneral from "./EditGeneral";
+import EditProfileLinks from "./EditProfileLinks";
 import EditSocials from "./EditSocials";
 import EditProducts from "./EditProducts";
 import EditVideos from "./EditVideos";
+import EditTours from "./EditTours";
 import More from "./More";
 import Profile from "../Profile";
-import EditTours from "./EditTours";
 import Tabs from "./EditNavigation/Tabs";
 import Headers from "./EditNavigation/Headers";
 
@@ -83,6 +84,7 @@ const EditProfile = () => {
               />
               <div className="manage-profile-section flex-col">
                 {currentTab === "General" && <EditGeneral profile={profile} />}
+                {currentTab === "Main Links" && <EditProfileLinks profile={profile} />}
                 {currentTab === "Socials" && <EditSocials profile={profile} />}
                 {currentTab === "Products" && (
                   <EditProducts profile={profile} />

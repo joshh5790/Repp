@@ -54,7 +54,7 @@ const EditProfileLinks = ({ profile }) => {
     <>
       {/* <OpenModalButton
         modalComponent={<AddProfileLink profileId={profile?.id}/>}
-        buttonText={<b>+ New Profile Link</b>}
+        buttonText={<b>+ New Link</b>}
         className={"new-card-button"}
       /> */}
       <div className="edit-profileLinks-list">
