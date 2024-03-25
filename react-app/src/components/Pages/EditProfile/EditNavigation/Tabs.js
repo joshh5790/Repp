@@ -10,12 +10,12 @@ const Tabs = ({ currentTab, setCurrentTab }) => {
       >
         General
       </span>
-      <span
+      {/* <span
         className={currentTab === "Main Links" ? "focus-tab" : " "}
         onClick={() => setCurrentTab("Main Links")}
       >
         Main Links
-      </span>
+      </span> */}
       <span
         className={currentTab === "Socials" ? "focus-tab" : " "}
         onClick={() => setCurrentTab("Socials")}
