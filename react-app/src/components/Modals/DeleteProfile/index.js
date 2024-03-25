@@ -6,7 +6,7 @@ import { deleteProfileThunk } from "../../../store/profiles";
 import { updateUser } from "../../../store/session";
 import "./DeleteProfile.css";
 
-function DeleteProfile({ page }) {
+function DeleteProfile({ profile }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [confirmation, setConfirmation] = useState("");
@@ -14,13 +14,17 @@ function DeleteProfile({ page }) {
   const { closeModal } = useModal();
 
   useEffect(() => {
-    if (confirmation === `delete profile ${page.displayName}`) {
+    if (
+      confirmation === `delete profile ${profile?.displayName}` &&
+      profile?.id !== 1
+    ) {
       setDisableButton(false);
     } else setDisableButton(true);
-  }, [confirmation, page.displayName]);
+    if (profile?.id === 1) setConfirmation("Cannot delete demo profile");
+  }, [confirmation, profile?.displayName]);
 
   const handleDelete = () => {
-    dispatch(deleteProfileThunk(page.id)).then(() => {
+    dispatch(deleteProfileThunk(profile.id)).then(() => {
       dispatch(updateUser({ isRepp: false }));
       closeModal();
       history.push("/");
@@ -33,10 +37,11 @@ function DeleteProfile({ page }) {
       <p>
         This action <b>cannot</b> be undone.
       </p>
-      <p> All information associated with your page will be deleted.</p>
-      <p>Are you sure you want to delete your page?</p>
+      <p> All information associated with your profile will be deleted.</p>
+      <p>Are you sure you want to delete your profile?</p>
       <p>
-        Type <span className="red-text">delete page {page.displayName}</span>{" "}
+        Type{" "}
+        <span className="red-text">delete profile {profile?.displayName}</span>{" "}
         below to confirm.
       </p>
       <input
@@ -53,7 +58,7 @@ function DeleteProfile({ page }) {
           className="confirm-delete-acc-button button-hover"
           onClick={handleDelete}
         >
-          Delete Page
+          Delete Profile
         </button>
       </div>
     </div>
