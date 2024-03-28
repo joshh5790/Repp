@@ -2,7 +2,7 @@ import { useState, useEffect, React } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../../images/repp_name.png";
-import { setSidebarVisibility } from "../../store/navigation";
+import { setNavVisibility, setSidebarVisibility } from "../../store/navigation";
 import ProfileButton from "./ProfileButton";
 import OpenModalButton from "../OpenModalButton";
 import LoginForm from "../Modals/LoginForm";
@@ -18,6 +18,11 @@ function Navigation() {
 
   useEffect(() => {
     setIsHome(location.pathname === "/");
+    setNavVisibility(
+      location.pathname.startsWith("/profile") ||
+        location.pathname.startsWith("/account") ||
+        location.pathname.startsWith("/confirmation")
+    );
   }, [location.pathname]);
 
   useEffect(() => {}, [sessionUser, dispatch]);
@@ -48,8 +53,8 @@ function Navigation() {
               <h4>Home Page/Navbar</h4>
               <ul>
                 <li>
-                  Visiting artist profile will cause navbar to disappear, clicking
-                  side ellipsis will make it show up
+                  Visiting artist profile will cause navbar to disappear,
+                  clicking side ellipsis will make it show up
                 </li>
                 <li>Click logo to return to home page</li>
                 <li>

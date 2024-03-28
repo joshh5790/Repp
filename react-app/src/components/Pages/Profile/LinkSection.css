@@ -19,7 +19,7 @@
 
 .mobile-page-links {
   position: absolute;
-  bottom: 5rem;
+  bottom: 3rem;
   left: 50%;
   transform: translateX(-50%);
   gap: 1rem;

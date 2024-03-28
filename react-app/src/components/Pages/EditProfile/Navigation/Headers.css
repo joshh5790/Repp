@@ -8,13 +8,14 @@
   top: 5.4rem;
   left: 50%;
   height: 3.6rem;
-  transform: translate(-50%);
+  transform: translateX(-50%);
   font-size: 20px;
 }
 
 .mobile-header-name {
   padding: 1rem 0;
-  width: 10rem;
+  width: 30vw;
+  max-width: 10rem;
   border: 2px solid #AAAAFF;
   border-bottom: none;
   border-radius: 10px 10px 0 0;

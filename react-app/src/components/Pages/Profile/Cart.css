@@ -29,6 +29,7 @@
   left: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
+  z-index: 3;
 }
 
 .cart-sidebar {
@@ -42,7 +43,7 @@
   height: 100vh;
   transition: right 0.3s ease-in-out;
   background-color: #F1F1F1;
-  z-index: 1;
+  z-index: 3;
 }
 
 .cart-sidebar.hide-cart {
