@@ -43,7 +43,7 @@ const ReppNav = ({
         top: `${preview && "9rem"}`,
       }}
       className={`repp-nav ${
-        !scrollTop || preview || navVisible ? "black-nav" : ""
+        !scrollTop || preview || navVisible || !hideDropdown ? "black-nav" : ""
       } ${navVisible ? "lower-nav" : ""} ${
         previewStyle ? "mobile" : "desktop"
       }`}

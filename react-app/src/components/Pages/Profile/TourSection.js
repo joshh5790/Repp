@@ -18,11 +18,24 @@ const TourSection = ({ profileId, tourName, previewStyle }) => {
           key={tour?.id}
           className={"tour-details " + (previewStyle ? "mobile" : "desktop")}
         >
-          <div style={{ gridArea: "date", fontWeight: "bold" }}>
-            {tour?.tourDate}
+          <div style={{ maxWidth: "50vw" }}>
+            <div style={{ fontWeight: "bold" }}>{tour?.tourDate}</div>
+            <div>{tour?.venue}</div>
+            <div
+              className={
+                "tour-location-div-one " + (previewStyle ? "mobile" : "desktop")
+              }
+            >
+              {tour?.location}
+            </div>
           </div>
-          <div style={{ gridArea: "venue" }}>{tour?.venue}</div>
-          <div className={"tour-location-div " + (previewStyle ? "mobile" : "desktop")}>{tour?.location}</div>
+          <div
+            className={
+              "tour-location-div-two " + (previewStyle ? "mobile" : "desktop")
+            }
+          >
+            {tour?.location}
+          </div>
           <a
             target="_blank"
             rel="noreferrer"
