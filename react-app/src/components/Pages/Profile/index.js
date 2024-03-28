@@ -12,6 +12,7 @@ import Cart from "./Cart";
 import LinkSection from "./LinkSection";
 import TourSection from "./TourSection";
 import { authenticate } from "../../../store/session";
+import MobileSocials from "./Navigation/MobileSocials";
 
 const Profile = ({ previewPage, preview, previewStyle }) => {
   const dispatch = useDispatch();
@@ -97,7 +98,10 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
         <div
           className={"profile-page " + (previewStyle ? "mobile" : "desktop")}
         >
-          <div id={linkName} style={{ height: "100vh", position: "relative" }}>
+          <div
+            id={linkName}
+            className={`link-section ${preview ? "preview" : ""}`}
+          >
             <LinkSection
               user={user}
               profile={profile}
@@ -165,6 +169,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
             preview={preview}
             previewStyle={previewStyle}
           />
+          <MobileSocials profile={profile} preview={preview} />
           {!preview && (
             <Cart
               profileId={profile?.id}

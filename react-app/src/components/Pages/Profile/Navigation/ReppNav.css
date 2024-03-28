@@ -60,10 +60,6 @@
     text-shadow: 0 0 30px rgba(255, 255, 255);
 }
 
-.repp-nav-nav-buttons > i:hover {
-    cursor: pointer;
-}
-
 .repp-nav-center {
     position: relative;
     display: flex;
@@ -71,15 +67,17 @@
     gap: 1rem;
 }
 
+.repp-nav-center *,
+.repp-nav-right *,
+.repp-nav-nav-buttons > i {
+    cursor: pointer;
+}
+
 .repp-nav-right {
     margin-right: 2rem;
     display: flex;
     gap: 1.5rem;
     transition: gap 100ms ease-in-out, margin-right 100ms ease-in-out;
-}
-
-.repp-nav-right * {
-    cursor: pointer;
 }
 
 .repp-socials.fa-tiktok,

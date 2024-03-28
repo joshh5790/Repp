@@ -39,20 +39,6 @@
   color: #1C1C1C;
 }
 
-.mobile-socials-div {
-  position: fixed;
-  width: 100%;
-  padding: 1rem;
-  bottom: 0;
-  background-color: #1C1C1C;
-  display: flex;
-  gap: 1rem;
-  display: flex;
-  justify-content: center;
-  border-radius: 200% 200% 0 0;
-  z-index: 1;
-}
-
 #profile-page-home-img {
   position: absolute;
   z-index: -0.1;
