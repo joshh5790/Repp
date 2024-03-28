@@ -98,10 +98,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
         <div
           className={"profile-page " + (previewStyle ? "mobile" : "desktop")}
         >
-          <div
-            id={linkName}
-            className={`link-section ${preview ? "preview" : ""}`}
-          >
+          <div id={linkName} className="link-section">
             <LinkSection
               user={user}
               profile={profile}

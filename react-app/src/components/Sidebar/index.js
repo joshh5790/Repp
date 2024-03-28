@@ -45,7 +45,7 @@ const Sidebar = () => {
             style={{ color: "black" }}
           />
           <NavLink exact to="/" className="logo-link">
-            <img src={logo} alt="repp" className="logo" />
+            <img onClick={hideSidebar} src={logo} alt="repp" className="logo" />
           </NavLink>
         </div>
         <h3 style={{ margin: "2rem 0 1rem 1.5rem" }}>Following</h3>

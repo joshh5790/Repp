@@ -24,9 +24,6 @@
     position: relative;
 }
 
-.link-section.preview {
-    height: calc(100vh - 9rem);
-}
 
 /* .mobile-grid {
     grid-template-columns: 1fr;

@@ -20,8 +20,8 @@ function Navigation() {
     setIsHome(location.pathname === "/");
     setNavVisibility(
       location.pathname.startsWith("/profile") ||
-        location.pathname.startsWith("/account") ||
-        location.pathname.startsWith("/confirmation")
+      location.pathname.startsWith("/account") ||
+      location.pathname.startsWith("/confirmation")
     );
   }, [location.pathname]);
 
