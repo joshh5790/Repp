@@ -137,7 +137,10 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
             </div>
           )}
           {profile?.tourName && (
-            <div id="tours" className="profile-page-section">
+            <div
+              id="tours"
+              className={`profile-page-section ${preview ? "preview" : ""}`}
+            >
               <TourSection
                 profileId={profile?.id}
                 tourName={profile?.tourName}

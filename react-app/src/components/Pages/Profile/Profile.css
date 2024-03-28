@@ -45,8 +45,12 @@
 #merch,
 #videos,
 #tours {
-    margin: 0rem 5vw;
+    margin: 0 5vw;
     padding-top: 0.1rem;
+}
+
+#tours.preview {
+    margin: 0 3vw;
 }
 
 #merch,
