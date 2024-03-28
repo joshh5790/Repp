@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { setNavVisibility } from "../../../store/navigation";
+import { setNavVisibility } from "../../../../store/navigation";
 import { useDispatch } from "react-redux";
 import "./ReppNav.css";
+import RNDropdown from "./RNDropdown";
 
 const ReppNav = ({
   sectionHeaders,
@@ -14,6 +15,7 @@ const ReppNav = ({
 }) => {
   const dispatch = useDispatch();
   const [scrollTop, setScrollTop] = useState(true);
+  const [hideDropdown, setHideDropdown] = useState(true);
 
   const setNavVisible = () => {
     if (!preview) dispatch(setNavVisibility(!navVisible));
@@ -45,9 +47,13 @@ const ReppNav = ({
       } ${previewStyle ? "mobile" : "desktop"}`}
     >
       <div className="repp-nav-left">
-        {!isMobile ? (
+        <i
+          style={{ cursor: "pointer" }}
+          onClick={setNavVisible}
+          className="fa-solid fa-ellipsis"
+        />
+        {!isMobile && (
           <>
-            <i onClick={setNavVisible} className="fa-solid fa-ellipsis" />
             {profile?.personalLogo ? (
               <img
                 alt={profile?.displayName}
@@ -56,41 +62,50 @@ const ReppNav = ({
                 onClick={() => scrollToId(profile?.linkName)}
               />
             ) : (
-              <h2 id="repp-nav-logo" onClick={() => scrollToId(profile?.linkName)}>
-                {profile?.displayName}
-              </h2>
-            )}
-          </>
-        ) : (
-          <i onClick={setNavVisible} className="fa-solid fa-ellipsis" />
-        )}
-      </div>
-      <div className="repp-nav-links">
-        {!isMobile ? (
-          <>
-            {sectionHeaders.map((header) => (
-              <div onClick={() => scrollToId(header)} key={header}>
-                {header}
-              </div>
-            ))}
-          </>
-        ) : (
-          <>
-            {profile?.personalLogo ? (
-              <img
-                alt={profile?.displayName}
-                src={profile?.personalLogo}
-                className="repp-nav-logo"
+              <h2
+                id="repp-nav-logo"
                 onClick={() => scrollToId(profile?.linkName)}
-              />
-            ) : (
-              <h2 onClick={() => scrollToId(profile?.linkName)}>
+              >
                 {profile?.displayName}
               </h2>
             )}
+            <div id="repp-nav-links">
+              {sectionHeaders.map((header) => (
+                <div onClick={() => scrollToId(header)} key={header}>
+                  {header}
+                </div>
+              ))}
+            </div>
           </>
         )}
       </div>
+      {isMobile && (
+        <div className="repp-nav-center">
+          <i
+            onClick={() => setHideDropdown(false)}
+            className="fa-solid fa-angle-down"
+          />
+          {profile?.personalLogo ? (
+            <img
+              alt={profile?.displayName}
+              src={profile?.personalLogo}
+              className="repp-nav-logo"
+              onClick={() => {
+                scrollToId(profile?.linkName);
+                setHideDropdown(true);
+              }}
+            />
+          ) : (
+            <h2 onClick={() => scrollToId(profile?.linkName)}>
+              {profile?.displayName}
+            </h2>
+          )}
+          <i
+            onClick={() => setHideDropdown(false)}
+            className="fa-solid fa-angle-down"
+          />
+        </div>
+      )}
       <div className="repp-nav-right">
         {!isMobile && (
           <>
@@ -161,6 +176,13 @@ const ReppNav = ({
         )}
         <i onClick={setNavVisible} className="fa-solid fa-ellipsis" />
       </div>
+      <RNDropdown
+        sectionHeaders={sectionHeaders}
+        scrollToId={scrollToId}
+        hideDropdown={hideDropdown}
+        setHideDropdown={setHideDropdown}
+        preview={preview}
+      />
     </div>
   );
 };

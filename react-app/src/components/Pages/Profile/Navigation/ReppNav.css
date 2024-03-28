@@ -34,15 +34,29 @@
     transition: margin-left 100ms ease-in-out;
 }
 
-.repp-nav-left * {
-    cursor: pointer;
-}
-
 #repp-nav-logo {
-    max-width: 7rem;
+    max-width: 9rem;
 }
 
 #repp-nav-logo:hover {
+    text-shadow: 0 0 30px rgba(255, 255, 255);
+    cursor: pointer;
+}
+
+#repp-nav-links {
+    margin-left: 1.5rem;
+    display: flex;
+    gap: 2rem;
+    font-weight: bold;
+}
+
+#repp-nav-links > div {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#repp-nav-links > div:hover {
+    text-decoration: underline;
     text-shadow: 0 0 30px rgba(255, 255, 255);
 }
 
@@ -50,23 +64,11 @@
     cursor: pointer;
 }
 
-.repp-nav-links {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.repp-nav-center {
+    position: relative;
     display: flex;
-    gap: 1.5rem;
-}
-
-.repp-nav-links > div {
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.repp-nav-links > div:hover {
-    text-decoration: underline;
-    text-shadow: 0 0 30px rgba(255, 255, 255);
+    align-items: center;
+    gap: 1rem;
 }
 
 .repp-nav-right {
@@ -88,7 +90,7 @@
 
 @media (max-width: 1000px) {
     .repp-nav-right {
-        gap: 0.7rem;
+        gap: 0.8rem;
         margin-right: 1rem;
     }
     .repp-nav-left {

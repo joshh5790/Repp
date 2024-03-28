@@ -1,0 +1,46 @@
+#rn-dropdown {
+  position: fixed;
+  background: black;
+  color: white;
+  font-weight: bold;
+  height: calc(100vh - 5rem);
+  width: 100vw;
+  left: 0;
+  top: 5rem;
+  display: flex;
+  transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#rn-dropdown.rn-preview {
+  position: absolute;
+  width: 400px;
+  top: 4rem;
+  height: calc(100vh - 13.5rem);
+}
+
+#rn-dropdown.rn-hidden {
+  opacity: 0;
+  top: -100vh;
+}
+
+
+.hide-rn-dropdown {
+  position: absolute;
+  top: 10px;
+  font-size: 24px;
+  right: 20px;
+  cursor: pointer;
+}
+
+#rn-dropdown-links {
+  margin: 0 0 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+#rn-dropdown-links > div {
+  font-size: 30px;
+  cursor: pointer;
+}

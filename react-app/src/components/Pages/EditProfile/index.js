@@ -11,8 +11,8 @@ import EditVideos from "./EditVideos";
 import EditTours from "./EditTours";
 import More from "./More";
 import Profile from "../Profile";
-import Tabs from "./EditNavigation/Tabs";
-import Headers from "./EditNavigation/Headers";
+import Tabs from "./Navigation/Tabs";
+import Headers from "./Navigation/Headers";
 
 const EditProfile = () => {
   const history = useHistory();
@@ -84,7 +84,9 @@ const EditProfile = () => {
               />
               <div id="manage-profile-section" className="flex-col">
                 {currentTab === "General" && <EditGeneral profile={profile} />}
-                {currentTab === "Main Links" && <EditProfileLinks profile={profile} />}
+                {currentTab === "Main Links" && (
+                  <EditProfileLinks profile={profile} />
+                )}
                 {currentTab === "Socials" && <EditSocials profile={profile} />}
                 {currentTab === "Products" && (
                   <EditProducts profile={profile} />

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneProfileThunk } from "../../../store/profiles";
 import { setNavVisibility } from "../../../store/navigation";
-import ReppNav from "./ReppNav";
+import ReppNav from "./Navigation/ReppNav";
 import ProductSection from "./ProductSection";
 import VideoSection from "./VideoSection";
 import Footer from "./Footer";
