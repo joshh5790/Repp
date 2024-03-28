@@ -82,7 +82,7 @@ const ReppNav = ({
       {isMobile && (
         <div className="repp-nav-center">
           <i
-            onClick={() => setHideDropdown(false)}
+            onClick={() => setHideDropdown(prev => !prev)}
             className="fa-solid fa-angle-down"
           />
           {profile?.personalLogo ? (
@@ -101,7 +101,7 @@ const ReppNav = ({
             </h2>
           )}
           <i
-            onClick={() => setHideDropdown(false)}
+            onClick={() => setHideDropdown(prev => !prev)}
             className="fa-solid fa-angle-down"
           />
         </div>

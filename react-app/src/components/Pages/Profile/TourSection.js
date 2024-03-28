@@ -5,11 +5,8 @@ import { getToursThunk } from "../../../store/tours";
 
 const TourSection = ({ profileId, tourName, previewStyle }) => {
   const dispatch = useDispatch();
-  const tours = useSelector((state) => Object.values(state.tours)); // rename tours to tourName, optional
-  // can create tours whenever, add button to clear all tours
-  // tours edit page will have a text bar on top for the title, and underneath is the same just add tour location
+  const tours = useSelector((state) => Object.values(state.tours));
 
-  // each tour will have date top left, venue right under, location center, booking link right, sold out boolean
   useEffect(() => {
     dispatch(getToursThunk(profileId));
   }, [dispatch, profileId]);

@@ -46,8 +46,9 @@ const LinkSection = ({
         alt={profile?.displayName}
         onError={invalidImage}
       />
-      {isMobile && (
+      {isMobile ? (
         <>
+          <img src={profile?.profileImage} id="mobile-profile-headshot" />
           <div className="mobile-page-links flex-col-center">
             <div className="mobile-headers-div flex-col-center">
               {profileLinks.map((link) => (
@@ -64,33 +65,30 @@ const LinkSection = ({
             </div>
           </div>
         </>
-      )}
-      <div className="repp-home-text">
-        {!isMobile && (
-          <>
+      ) : (
+        <>
+          <div className="repp-home-text">
             <h1>{profile?.displayName}</h1>
             {user && following === "notFollowing" && (
               <div onClick={addFollow} className="follow-button button-hover">
                 + Follow
               </div>
             )}
-          </>
-        )}
-      </div>
-      {!isMobile && (
-        <div className="profile-links-div">
-          {profileLinks.map((link) => (
-            <a
-              href={link?.link}
-              target="_blank"
-              className="profile-section-link"
-              key={link?.id}
-              style={{ textDecoration: "none" }}
-            >
-              {link?.text}
-            </a>
-          ))}
-        </div>
+          </div>
+          <div className="profile-links-div">
+            {profileLinks.map((link) => (
+              <a
+                href={link?.link}
+                target="_blank"
+                className="profile-section-link"
+                key={link?.id}
+                style={{ textDecoration: "none" }}
+              >
+                {link?.text}
+              </a>
+            ))}
+          </div>
+        </>
       )}
     </>
   );

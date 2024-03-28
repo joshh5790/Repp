@@ -3,7 +3,18 @@
   width: 8rem;
   object-fit: cover;
   border-radius: 50%;
+}
 
+#mobile-profile-headshot {
+  position: absolute;
+  top: 7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 2;
 }
 
 .mobile-page-links {
