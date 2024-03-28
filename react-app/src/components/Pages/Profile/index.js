@@ -169,7 +169,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
             preview={preview}
             previewStyle={previewStyle}
           />
-          <MobileSocials profile={profile} preview={preview} />
+          {isMobile && <MobileSocials profile={profile} preview={preview} />}
           {!preview && (
             <Cart
               profileId={profile?.id}
