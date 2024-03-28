@@ -26,7 +26,7 @@ const ReppNav = ({
       const scrollPosition =
         window.scrollY || document.documentElement.scrollTop;
 
-      setScrollTop(scrollPosition <= 150);
+      setScrollTop(scrollPosition <= 50);
     }
 
     window.addEventListener("scroll", handleScroll);
@@ -42,9 +42,11 @@ const ReppNav = ({
         position: `${preview && "absolute"}`,
         top: `${preview && "9rem"}`,
       }}
-      className={`repp-nav ${!scrollTop || preview ? "black-nav" : ""} ${
-        navVisible ? "lower-nav" : ""
-      } ${previewStyle ? "mobile" : "desktop"}`}
+      className={`repp-nav ${
+        !scrollTop || preview || navVisible ? "black-nav" : ""
+      } ${navVisible ? "lower-nav" : ""} ${
+        previewStyle ? "mobile" : "desktop"
+      }`}
     >
       <div className="repp-nav-left">
         <i
@@ -82,14 +84,14 @@ const ReppNav = ({
       {isMobile && (
         <div className="repp-nav-center">
           <i
-            onClick={() => setHideDropdown(prev => !prev)}
+            onClick={() => setHideDropdown((prev) => !prev)}
             className="fa-solid fa-angle-down"
           />
           {profile?.personalLogo ? (
             <img
               alt={profile?.displayName}
               src={profile?.personalLogo}
-              className="repp-nav-logo"
+              id="repp-nav-logo"
               onClick={() => {
                 scrollToId(profile?.linkName);
                 setHideDropdown(true);
@@ -101,7 +103,7 @@ const ReppNav = ({
             </h2>
           )}
           <i
-            onClick={() => setHideDropdown(prev => !prev)}
+            onClick={() => setHideDropdown((prev) => !prev)}
             className="fa-solid fa-angle-down"
           />
         </div>
