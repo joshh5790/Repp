@@ -15,33 +15,30 @@ This website offers a space for music artists to create a page that looks and fu
 
 ## Features
 
-* Full Cruds (7): users, follows, pages, products, carts, cart items, videos
-* Partial Cruds (4): product images, product stock
+* Full Cruds (11): users, follows, profiles, products, product stock, product images, carts, cart items, videos, tours, profile links
+* Partial Cruds (2): orders, orderItems
 * artists can create their own page on the website, which features one long page containing all of the sections that they included in their page
 * sections include:
   * main video section
   * merch section
   * videos section
-  * about section
+  * tours section
 * users have separate carts for separate artist profiles, and can view their order history
-* limited mobile preview while artist is editing their page
+* mobile preview available while artist is editing their page
 
 <br>
 
 ### Current Projects:
 
-* implement Stripe for payments
-* use the google maps API to autofill addresses
-* creating Tours section
+* creating a unique subdomain for each profile page
 
 <br>
 
 ### Future Features:
 
-* create an interactions section that allows page visitors to interact with the music artist
-* Enable messaging between artists that mutually follow one another
 * Enable desktop preview while an artist edits their page
 * Create newsletter functionality for each artist page
+* implement Stripe for payments
 
 <div align="center">
 
@@ -58,7 +55,7 @@ This website offers a space for music artists to create a page that looks and fu
 2. Install dependencies.
 
       ```bash
-      npm install --prefix react-app && npm run build --prefix react-app && pip install -r requirements.txt && pip install psycopg2
+      npm install --prefix react-app && npm run --openssl-legacy-provider build --prefix react-app && pip install -r requirements.txt && pip install psycopg2
       ```
 
 3. Create a `.env` file based on the example with proper settings for your
