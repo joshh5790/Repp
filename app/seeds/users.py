@@ -7,7 +7,7 @@ def seed_users():
     eric = User(
         firstName="Eric",
         lastName="Nam",
-        email="ericnam@aa.io",
+        email="ericnam@reppofficial.com",
         gender="Male",
         address1="121 Third St",
         city="Los Angeles",
@@ -21,7 +21,7 @@ def seed_users():
     tiff = User(
         firstName="Tiffany",
         lastName="Day",
-        email="demo@aa.io",
+        email="tiffanyday@reppofficial.com",
         gender="Female",
         address1="123 Main St",
         city="Los Angeles",
@@ -35,7 +35,7 @@ def seed_users():
     ivoris = User(
         firstName="Ivoris",
         lastName="Dunno",
-        email="ivoris@aa.io",
+        email="ivoris@reppofficial.com",
         gender="Female",
         address1="124 Third St",
         city="Los Angeles",
@@ -49,7 +49,7 @@ def seed_users():
     chris = User(
         firstName="Chris",
         lastName="James",
-        email="chrisjames@aa.io",
+        email="chrisjames@reppofficial.com",
         gender="Male",
         address1="125 Second St",
         city="Los Angeles",
@@ -63,7 +63,7 @@ def seed_users():
     josiah = User(
         firstName="Josiah",
         lastName="Won",
-        email="josiah@aa.io",
+        email="highvyn@reppofficial.com",
         gender="Male",
         address1="122 Second St",
         city="Los Angeles",
