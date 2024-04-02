@@ -55,7 +55,7 @@ This website offers a space for music artists to create a page that looks and fu
 2. Install dependencies.
 
       ```bash
-      npm install --prefix react-app && npm run --openssl-legacy-provider build --prefix react-app && pip install -r requirements.txt && pip install psycopg2
+      npm install --prefix react-app && npm run build --prefix react-app && pip install -r requirements.txt && pip install psycopg2
       ```
 
 3. Create a `.env` file based on the example with proper settings for your
