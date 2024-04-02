@@ -62,7 +62,6 @@ function Navigation() {
                   to the logo
                 </li>
                 <li>Right side of navbar has login button/user settings</li>
-                <li>login for tiffany is demo@aa.io, password is password</li>
                 <li>site is fully mobile friendly</li>
               </ul>
             </div>
@@ -86,10 +85,15 @@ function Navigation() {
                   clicking on artist name in profile navbar brings user to top
                 </li>
                 <li>
+                  Desktop: clicking on tabs next to artist name will bring you to that part of the page
+                </li>
+                <li>
+                  Mobile: clicking the down arrows next to artist name will show the above tabs
+                </li>
+                <li>
                   Cart is profile specific, carts will only show for the
                   respective artist's profile
                 </li>
-                <li>Newsletter functionality not yet available</li>
               </ul>
             </div>
           )}
