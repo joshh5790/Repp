@@ -32,7 +32,7 @@ function LoginForm() {
   };
 
   const handleDemo = () => {
-    dispatch(login("ericnam@aa.io", "password"))
+    dispatch(login("ericnam@reppofficial.com", "password"))
       .then(closeModal)
       .then(() => window.location.reload());
   };

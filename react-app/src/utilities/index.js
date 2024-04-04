@@ -37,7 +37,7 @@ export const getSubdomain = () => {
   const locationParts = window.location.hostname.split(".")
   const isLocalHost = locationParts.slice(-1)[0] === "localhost"
   const subdomain = locationParts.slice(0, isLocalHost ? -1 : -2)
-  return subdomain === "" ? "www" : subdomain
+  return subdomain === "" ? "www" : subdomain[0]
 }
 
 
