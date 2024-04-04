@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
-import { getSubdomain } from "./utilities";
-import { useSubdomain } from "./context/Subdomain";
+import { getDomain } from "./utilities";
+import { useDomain } from "./context/Domain";
 import Navigation from "./components/Navigation";
 import Home from "./components/Pages/Home";
 import Profile from "./components/Pages/Profile";
@@ -19,11 +19,11 @@ import Sidebar from "./components/Sidebar";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const { subdomain, setSubdomain } = useSubdomain()
+  const { domain, setDomain } = useDomain()
   useEffect(() => {
     document.title = "REPP";
     dispatch(authenticate()).then(() => {
-      setSubdomain(getSubdomain())
+      setDomain(getDomain()[0])
       setIsLoaded(true)
     });
   }, [dispatch]);
@@ -32,7 +32,7 @@ function App() {
     <>
       {isLoaded && (
         <>
-          {!subdomain || subdomain === "www" ?
+          {!domain.length || domain[0] === "www" ?
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -63,7 +63,7 @@ function App() {
               </Route>
             </Switch> : <Switch>
               <Route exact path="/">
-                <Profile subdomain={subdomain} />
+                <Profile domain={domain} />
               </Route>
             </Switch>
           }

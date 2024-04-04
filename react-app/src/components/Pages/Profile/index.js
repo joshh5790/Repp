@@ -14,11 +14,10 @@ import TourSection from "./TourSection";
 import { authenticate } from "../../../store/session";
 import MobileSocials from "./Navigation/MobileSocials";
 
-const Profile = ({ subdomain, previewPage, preview, previewStyle }) => {
+const Profile = ({ domain, previewPage, preview, previewStyle }) => {
   const dispatch = useDispatch();
   let { linkName } = useParams();
-  console.log(subdomain)
-  if (subdomain && subdomain !== "www") linkName = subdomain;
+  if (domain.length && domain[0] !== "www") linkName = domain[0];
   const user = useSelector((state) => state.session.user);
   let profile = useSelector((state) => state.profiles[linkName]);
   if (previewPage) profile = previewPage;

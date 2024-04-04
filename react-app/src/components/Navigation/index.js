@@ -3,12 +3,13 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../../images/repp_name.png";
 import { setNavVisibility, setSidebarVisibility } from "../../store/navigation";
-import { useSubdomain } from "../../context/Subdomain";
+import { useDomain } from "../../context/Domain";
 import ProfileButton from "./ProfileButton";
 import OpenModalButton from "../OpenModalButton";
 import LoginForm from "../Modals/LoginForm";
 import SearchBar from "../SearchBar";
 import "./Navigation.css";
+import { getDomain } from "../../utilities";
 
 function Navigation() {
   const dispatch = useDispatch();
@@ -16,10 +17,11 @@ function Navigation() {
   const navVisible = useSelector((state) => state.visibility.nav);
   const location = useLocation();
   const [isHome, setIsHome] = useState(true);
-  const { subdomain, setSubdomain } = useSubdomain();
+  const { domain, setDomain } = useDomain();
 
   useEffect(() => {
-    setIsHome(location.pathname === "/" && subdomain === "www");
+    setDomain(() => getDomain())
+    setIsHome(location.pathname === "/" && domain[0] === "www");
     setNavVisibility(
       location.pathname.startsWith("/profile") ||
       location.pathname.startsWith("/account") ||
@@ -48,7 +50,7 @@ function Navigation() {
           />
         )}
         <NavLink exact to="/" className="logo-link">
-          <img src={logo} alt="repp" className="logo" onClick={() => setSubdomain("www")} />
+          <img src={logo} alt="repp" className="logo" onClick={() => setDomain("www")} />
         </NavLink>
         <i className="fa-solid fa-info">
           {isHome && (

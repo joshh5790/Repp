@@ -33,11 +33,13 @@ export function invalidImage({ target }) {
     "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
 }
 
-export const getSubdomain = () => {
-  const locationParts = window.location.hostname.split(".")
-  const isLocalHost = locationParts.slice(-1)[0] === "localhost"
-  const subdomain = locationParts.slice(0, isLocalHost ? -1 : -2)
-  return subdomain === "" ? "www" : subdomain[0]
+export const getDomain = () => {
+  const locationParts = window.location.host.split(".")
+  console.log(locationParts)
+  const root = locationParts.slice(-1)[0]
+  const isLocalHost = root.startsWith("localhost")
+  const subdomain = locationParts.slice(0, isLocalHost ? -1 : -2)[0]
+  return [subdomain === "" ? "www" : subdomain, root]
 }
 
 

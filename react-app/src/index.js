@@ -7,7 +7,7 @@ import configureStore from "./store"
 import * as sessionActions from "./store/session"
 import App from "./App"
 import "./index.css"
-import { SubdomainProvider } from "./context/Subdomain"
+import { DomainProvider } from "./context/Domain"
 
 const store = configureStore()
 
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== "production") {
 
 function Root() {
 	return (
-		<SubdomainProvider>
+		<DomainProvider>
 			<ModalProvider>
 				<Provider store={store}>
 					<BrowserRouter>
@@ -31,7 +31,7 @@ function Root() {
 					</BrowserRouter>
 				</Provider>
 			</ModalProvider>
-		</SubdomainProvider>
+		</DomainProvider>
 	)
 }
 
