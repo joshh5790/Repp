@@ -102,7 +102,7 @@ function Navigation() {
           style={{
             display: "flex",
             gap: "1rem",
-            fontSize: "2rem",
+            fontSize: "1.5rem",
             marginLeft: "1rem",
           }}
         >
