@@ -33,5 +33,13 @@ export function invalidImage({ target }) {
     "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
 }
 
-// random line I need to run
-// export NODE_OPTIONS=--openssl-legacy-provider
+export const getSubdomain = () => {
+  const locationParts = window.location.hostname.split(".")
+  const isLocalHost = locationParts.slice(-1)[0] === "localhost"
+  const subdomain = locationParts.slice(0, isLocalHost ? -1 : -2)
+  return subdomain === "" ? "www" : subdomain[0]
+}
+
+
+// use node version 16+
+// nvm use 16

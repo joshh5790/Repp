@@ -14,9 +14,11 @@ import TourSection from "./TourSection";
 import { authenticate } from "../../../store/session";
 import MobileSocials from "./Navigation/MobileSocials";
 
-const Profile = ({ previewPage, preview, previewStyle }) => {
+const Profile = ({ subdomain, previewPage, preview, previewStyle }) => {
   const dispatch = useDispatch();
-  const { linkName } = useParams();
+  let { linkName } = useParams();
+  console.log(subdomain)
+  if (subdomain && subdomain !== "www") linkName = subdomain;
   const user = useSelector((state) => state.session.user);
   let profile = useSelector((state) => state.profiles[linkName]);
   if (previewPage) profile = previewPage;
@@ -62,6 +64,7 @@ const Profile = ({ previewPage, preview, previewStyle }) => {
       dispatch(getOneProfileThunk(linkName))
         .then((profile) => {
           if (!profile) return setInvalidPage(true);
+          // set section headers only for the sections the user has
           setSectionHeaders(
             [
               profile.mainVideo && "WATCH",
