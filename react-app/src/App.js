@@ -32,7 +32,7 @@ function App() {
     <>
       {isLoaded && (
         <>
-          {!domain.length || domain[0] === "www" ?
+          {!domain || domain[0] === "www" ?
             <Switch>
               <Route exact path="/">
                 <Home />
