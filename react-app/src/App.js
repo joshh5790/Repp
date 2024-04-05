@@ -32,7 +32,7 @@ function App() {
     <>
       {isLoaded && (
         <>
-          {!domain || domain[0] === "www" ?
+          {/* {!domain || domain[0] === "www" ? */}
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -61,12 +61,13 @@ function App() {
               <Route exact path="/:linkName">
                 <Profile />
               </Route>
-            </Switch> : <Switch>
+            </Switch>
+            {/* : <Switch>
               <Route exact path="/">
                 <Profile domain={domain} />
               </Route>
             </Switch>
-          }
+          } */}
           <Navigation isLoaded={isLoaded} />
           <Sidebar />
         </>

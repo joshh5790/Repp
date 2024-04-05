@@ -21,7 +21,7 @@ function Navigation() {
 
   useEffect(() => {
     setDomain(() => getDomain())
-    setIsHome(location.pathname === "/" && domain[0] === "www");
+    setIsHome(location.pathname === "/" && domain && domain[0] === "www");
     setNavVisibility(
       location.pathname.startsWith("/profile") ||
       location.pathname.startsWith("/account") ||

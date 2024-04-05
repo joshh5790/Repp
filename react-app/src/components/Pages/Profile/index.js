@@ -17,7 +17,7 @@ import MobileSocials from "./Navigation/MobileSocials";
 const Profile = ({ domain, previewPage, preview, previewStyle }) => {
   const dispatch = useDispatch();
   let { linkName } = useParams();
-  if (domain && domain[0] !== "www") linkName = domain[0];
+  // if (domain && domain[0] !== "www") linkName = domain[0];
   const user = useSelector((state) => state.session.user);
   let profile = useSelector((state) => state.profiles[linkName]);
   if (previewPage) profile = previewPage;
