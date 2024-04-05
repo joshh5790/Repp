@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     document.title = "REPP";
     dispatch(authenticate()).then(() => {
-      setDomain(getDomain()[0])
+      setDomain(() => getDomain())
       setIsLoaded(true)
     });
   }, [dispatch]);
