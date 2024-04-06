@@ -22,7 +22,7 @@ function SearchBar() {
     const input = document.getElementById("search-input")
     input.focus()
   }
-
+// for mobile, turn the search bar into a modal opened by a magnifying glass
   return (
     <>
       <form onClick={focusInput} id="search-bar">
