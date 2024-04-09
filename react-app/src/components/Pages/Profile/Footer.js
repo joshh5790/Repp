@@ -17,9 +17,9 @@ const Footer = () => {
             fontSize: "2rem",
           }}
         >
-          <a href="https://github.com/joshh5790" target="_blank">
+          {/* <a href="https://github.com/joshh5790" target="_blank">
             <i className="fa-brands fa-github" style={{ color: "#F1F1F1" }} />
-          </a>
+          </a> */}
           <a href="https://www.linkedin.com/in/joshua-ho-5790/" target="_blank">
             <i className="fa-brands fa-linkedin" style={{ color: "#F1F1F1" }} />
           </a>
