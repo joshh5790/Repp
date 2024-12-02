@@ -1,9 +1,3 @@
-<br>
-
-### [Link to Live Site](https://reppofficial.com)
-
-<br>
-
 ## Description
 
 This website offers a space for music artists to create a page that looks and functions exactly like their own personal website. Its simplicity makes it perfect for up and coming artists who are simply looking to create their first website as well as larger artists who are looking for more fine-tuned control over their online presence.
